@@ -331,6 +331,546 @@ export const getQuestionPool = () => {
         { id: 'C', text: "Enviar un mensaje por Slack pidiendo más orden.", score: 0, type: "Inútil" }
       ],
       explanation: "El orden no ocurre por buena voluntad, ocurre por diseño del sistema. La gobernanza (quién puede editar qué) y la estructura clara son fundamentales."
+    },
+
+    // --- BLOQUE 7: CRISIS DE PRODUCTO & PRESIÓN DE ROADMAP ---
+    {
+      id: 'churn_spike_investigation',
+      category: "Gestión de Crisis & Liderazgo",
+      icon: <AlertTriangle className="w-6 h-6 text-red-600" />,
+      scenario: "El dashboard de analytics muestra un churn del 40% en los últimos 7 días. El equipo de Customer Success culpa al rediseño del flujo de pago que lanzaste hace 2 semanas. Hay pánico generalizado en la empresa.",
+      question: "¿Cuál es tu primer movimiento?",
+      options: [
+        { id: 'A', text: "Revertir inmediatamente el diseño nuevo y volver al anterior mientras investigas qué pasó.", score: 2, type: "Reactivo (Puede ser prematuro)" },
+        { id: 'B', text: "Análisis de Cohorte Urgente: Segmentar el churn por fecha de registro (nuevos vs antiguos), flujo usado (nuevo vs legacy) y analizar heat maps para identificar el punto exacto de abandono antes de concluir causas.", score: 5, type: "Lead (Data-First)" },
+        { id: 'C', text: "Convocar una reunión de emergencia con todos los stakeholders para generar hipótesis en grupo.", score: 0, type: "Comité de Crisis (Caos)" }
+      ],
+      explanation: "Revertir sin evidencia (A) es pánico corporativo. El análisis estructurado (B) te permite identificar si el problema es el diseño, un bug técnico, un cambio de precio o algo externo."
+    },
+    {
+      id: 'competitor_feature_launch',
+      category: "Estrategia Competitiva",
+      icon: <Trophy className="w-6 h-6 text-yellow-600" />,
+      scenario: "Tu competidor principal acaba de lanzar una funcionalidad de 'Reportes Personalizados' que se ve espectacular. Ventas entra en pánico porque están perdiendo deals. Te piden clonarla en 2 semanas.",
+      question: "¿Cómo evalúas si vale la pena construirla?",
+      options: [
+        { id: 'A', text: "La clonamos inmediatamente. Si Ventas lo necesita para cerrar, es prioridad P0.", score: 0, type: "Feature Factory (Sin estrategia)" },
+        { id: 'B', text: "Análisis de Jobs-to-be-Done: Entrevistar a los 5 clientes perdidos para entender qué problema intentaban resolver con esa feature. Si es crítico, diseñas una solución propia mejor que copiar pixel a pixel.", score: 5, type: "Lead (Estratégico)" },
+        { id: 'C', text: "Proponer un MVP rápido de 'Exportar a Excel' que resuelva el 80% del caso de uso sin construir toda la infraestructura de reportes.", score: 2, type: "Pragmático (Parche)" }
+      ],
+      explanation: "Copiar features sin entender el contexto es la trampa clásica de producto reactivo. La opción B valida el problema real y permite innovar en la solución."
+    },
+    {
+      id: 'investor_demo_cosmetics',
+      category: "Gestión de Stakeholders",
+      icon: <Star className="w-6 h-6 text-purple-500" />,
+      scenario: "Hay un pitch con inversores en 3 días. El CEO te pide 'embellecer' el dashboard para la demo: gráficos más 'wow', animaciones, colores vibrantes. El producto real es funcional pero visualmente sobrio.",
+      question: "¿Qué balanceas entre lo real y lo aspiracional?",
+      options: [
+        { id: 'A', text: "Diseñas una versión 'Demo Mode' completamente falsa con datos ficticios hermosos que nunca se usará en producción.", score: 0, type: "Fraude (Deuda ética)" },
+        { id: 'B', text: "Polish Estratégico: Mejoras solo lo que está en el roadmap próximo (Q actual) para que la demo muestre la dirección real del producto, no un espejismo.", score: 5, type: "Lead (Honestidad Aspiracional)" },
+        { id: 'C', text: "Te niegas a 'maquillar' el producto. Lo que ven los inversores debe ser exactamente lo que usan los clientes hoy.", score: 2, type: "Purista (Pierde el deal)" }
+      ],
+      explanation: "Una demo puede mostrar visión de futuro (B), pero crear un producto falso (A) es una bomba de tiempo. La opción C ignora que las inversiones se cierran con narrativa y momentum."
+    },
+    {
+      id: 'technical_debt_explosion',
+      category: "Arquitectura de Sistemas",
+      icon: <AlertOctagon className="w-6 h-6 text-orange-600" />,
+      scenario: "El CTO declara que el frontend está tan roto técnicamente que propone pausar features por 1 trimestre completo para hacer un 'Gran Refactor' de la arquitectura.",
+      question: "¿Cuál es tu posición como líder de diseño?",
+      options: [
+        { id: 'A', text: "Apoyas el refactor completo. Es momento de pagar la deuda técnica antes de que colapse todo.", score: 0, type: "Ingenuo (Suicidio de negocio)" },
+        { id: 'B', text: "Propones 'Strangler Fig Pattern': Refactorizar módulo por módulo mientras se siguen entregando features en paralelo, aceptando convivencia temporal de sistemas.", score: 5, type: "Lead (Incremental)" },
+        { id: 'C', text: "Defiendes al equipo de producto: No se puede parar el roadmap. Que ingeniería arregle su desorden sin afectar el negocio.", score: 2, type: "Silo (Irresponsable)" }
+      ],
+      explanation: "Pausar el roadmap por un trimestre mata el revenue y la moral. La opción B equilibra la deuda técnica con la supervivencia del negocio."
+    },
+
+    // --- BLOQUE 8: DATA, MÉTRICAS & EXPERIMENTACIÓN ---
+    {
+      id: 'ab_test_interpretation_bias',
+      category: "Data-Driven Design",
+      icon: <BarChart2 className="w-6 h-6 text-green-600" />,
+      scenario: "Corres un A/B test del checkout. La variante B aumenta las conversiones un 8% (estadísticamente significativo), pero los usuarios escriben feedback negativo diciendo que 'se siente confuso' y 'no confían'.",
+      question: "¿Qué decisión tomas con esta data contradictoria?",
+      options: [
+        { id: 'A', text: "Shippear la variante B. Los datos cuantitativos superan a las opiniones subjetivas. La conversión es el norte.", score: 2, type: "Quantitative Dogma" },
+        { id: 'B', text: "Investigación Profunda: Analizar qué segmento de usuarios convierte más (¿nuevos impulsivos?) y cuál abandona (¿clientes recurrentes?). Si estás optimizando para transacciones de corto plazo pero destruyendo LTV, es una trampa.", score: 5, type: "Lead (Pensamiento Sistémico)" },
+        { id: 'C', text: "Quedarte con la variante A original. La confianza es más importante que las conversiones inmediatas.", score: 2, type: "Conservative (Deja dinero sobre la mesa)" }
+      ],
+      explanation: "Un incremento de conversión puede esconder una optimización para el comportamiento equivocado (compras impulsivas vs clientes de calidad). La opción B busca entender la calidad del cambio."
+    },
+    {
+      id: 'vanity_metric_viral_growth',
+      category: "Métricas de Producto",
+      icon: <Zap className="w-6 h-6 text-yellow-500" />,
+      scenario: "Diseñas un feature de 'Compartir en Redes Sociales' que genera 50K shares en la primera semana. Marketing celebra. Pero analizas la data: solo el 2% de los que hacen click realmente crean cuenta.",
+      question: "¿Cómo reportas el resultado del feature?",
+      options: [
+        { id: 'A', text: "Celebras con Marketing. 50K impresiones de marca tienen valor aunque no conviertan directamente.", score: 0, type: "Vanity Metric Trap" },
+        { id: 'B', text: "Pivot del Feature: Rediseñas el flow compartido para que sea 'Invite-Only' (con incentivo para quien invita), cambiando de viralidad pasiva a Growth Loop activo.", score: 5, type: "Lead (Optimización de Valor)" },
+        { id: 'C', text: "Matas el feature. Si no convierte, solo genera costo de mantenimiento sin ROI.", score: 2, type: "Despiadado (Pierde oportunidad)" }
+      ],
+      explanation: "Los shares sin conversión son ruido. La opción B transforma un vanity metric en un growth loop funcional con incentivos alineados."
+    },
+    {
+      id: 'sample_size_impatience',
+      category: "Validación Ágil",
+      icon: <Timer className="w-6 h-6 text-blue-500" />,
+      scenario: "Lanzas un A/B test un lunes. El miércoles, la variante B está ganando por 12% pero el tamaño de muestra es de solo 300 usuarios (necesitas 2000 para significancia estadística). El PM quiere declararlo ganador ya.",
+      question: "¿Cedes a la presión o esperas?",
+      options: [
+        { id: 'A', text: "Esperas hasta alcanzar significancia estadística completa, aunque tome 2 semanas más.", score: 2, type: "Científico (Lento)" },
+        { id: 'B', text: "Decisión Bayesiana: Si la ganancia potencial es enorme (ej: +12% en revenue) y el riesgo de error es bajo (no es un cambio destructivo), shippeas early con monitoreo intensivo post-launch.", score: 5, type: "Lead (Risk-Reward)" },
+        { id: 'C', text: "Shippeas inmediatamente sin cuestionarlo. El PM es quien decide.", score: 0, type: "Cómplice de mala ciencia" }
+      ],
+      explanation: "La significancia estadística es importante, pero en startups la velocidad de aprendizaje a veces vale más que la perfección científica (B). La clave es evaluar el riesgo de equivocarse."
+    },
+    {
+      id: 'retention_vs_acquisition_focus',
+      category: "Estrategia de Producto",
+      icon: <Target className="w-6 h-6 text-red-500" />,
+      scenario: "El equipo de Growth está obsesionado con aumentar Sign-Ups (Adquisición). Pero tu análisis muestra que el 60% de los usuarios abandona el producto en la primera semana sin activarse.",
+      question: "¿Cómo redireccionas el foco estratégico?",
+      options: [
+        { id: 'A', text: "Dejas que Growth siga su plan. Tú te enfocas en mejorar la experiencia del core product para los usuarios activos.", score: 0, type: "Silo (Balde roto)" },
+        { id: 'B', text: "Intervención de Priorización: Presentas al CEO la métrica de 'Leaky Bucket'. Propones pausar campañas de adquisición y redirigir TODO el esfuerzo a activación (Onboarding, Aha Moment) por 1 mes.", score: 5, type: "Lead (First Principles)" },
+        { id: 'C', text: "Propones un experimento pequeño de onboarding sin tocar el presupuesto de Growth.", score: 2, type: "Tibio (Insuficiente)" }
+      ],
+      explanation: "Llenar un balde roto es quemar dinero. Si la retención está quebrada, aumentar adquisición solo amplifica el problema. La opción B detiene la hemorragia."
+    },
+
+    // --- BLOQUE 9: DISEÑO DE FLUJOS & INTERACCIÓN ---
+    {
+      id: 'onboarding_length_debate',
+      category: "Onboarding & Activación",
+      icon: <Play className="w-6 h-6 text-green-500" />,
+      scenario: "Product quiere un onboarding de 7 pasos para 'educar al usuario'. Tú ves en la data que el 70% abandona en el paso 3. Argumentan que 'los usuarios necesitan entender el valor'.",
+      question: "¿Cuál es tu contra-argumento?",
+      options: [
+        { id: 'A', text: "Aceptas los 7 pasos pero haces el diseño más atractivo con ilustraciones y microinteracciones para reducir la fricción.", score: 0, type: "Lipstick on a pig" },
+        { id: 'B', text: "Onboarding Progresivo: Diseñas un flujo mínimo de 2 pasos obligatorios para llegar al 'Aha Moment' rápido, y contextualizas el resto con tooltips y tutoriales in-app durante el uso real.", score: 5, type: "Lead (Time-to-Value)" },
+        { id: 'C', text: "Propones hacer los 7 pasos opcionales (skip button) para que el usuario decida.", score: 2, type: "Parche (No resuelve abandono)" }
+      ],
+      explanation: "El mejor onboarding es el que no existe. La opción B prioriza llevar al usuario al valor (Aha Moment) lo antes posible y educa en contexto."
+    },
+    {
+      id: 'error_message_user_blame',
+      category: "UX Writing & Errores",
+      icon: <AlertTriangle className="w-6 h-6 text-red-500" />,
+      scenario: "El equipo de ingeniería escribió mensajes de error técnicos ('Error 403: Invalid Token Refresh'). Los usuarios están confundidos y abandonan el flujo.",
+      question: "¿Cómo intervienes en la calidad del copy?",
+      options: [
+        { id: 'A', text: "Reescribir todos los errores con lenguaje humano ('Algo salió mal, por favor intenta de nuevo').", score: 2, type: "Genérico (Poco útil)" },
+        { id: 'B', text: "Mensajes Accionables: Clasificar errores por causa (usuario, sistema, red) y diseñar mensajes específicos con pasos siguientes claros ('Tu sesión expiró. Inicia sesión nuevamente [CTA]').", score: 5, type: "Lead (UX Writing Strategy)" },
+        { id: 'C', text: "Mantener los mensajes técnicos pero agregar un link de 'Ayuda' que abre el soporte.", score: 0, type: "Evasión (Traslada el problema)" }
+      ],
+      explanation: "Los mensajes genéricos (A) frustran al usuario tanto como los técnicos. La opción B empodera al usuario con contexto y acción clara."
+    },
+    {
+      id: 'loading_spinner_anxiety',
+      category: "Micro-interacciones",
+      icon: <RefreshCw className="w-6 h-6 text-blue-400" />,
+      scenario: "El proceso de 'Generar Reporte' toma 8 segundos (backend lento). Los usuarios creen que está roto y hacen click múltiples veces, generando duplicados.",
+      question: "¿Cómo manejas la percepción de espera?",
+      options: [
+        { id: 'A', text: "Poner un spinner genérico con el texto 'Cargando...'.", score: 0, type: "Lazy Default" },
+        { id: 'B', text: "Loading con Narrativa: Skeleton screens + Progress indicator con mensajes ('Analizando datos...', 'Generando gráficos...') que dan sensación de progreso y deshabilitan el botón para evitar duplicados.", score: 5, type: "Lead (Perceived Performance)" },
+        { id: 'C', text: "Optimizar el backend para que tarde menos de 3 segundos.", score: 2, type: "Ideal (pero fuera de tu control)" }
+      ],
+      explanation: "Si no puedes hacer el proceso más rápido (C), debes hacer que se sienta más rápido (B). La narrativa de progreso reduce la ansiedad percibida."
+    },
+    {
+      id: 'infinite_scroll_vs_pagination',
+      category: "Patrones de Interacción",
+      icon: <ArrowRight className="w-6 h-6 text-indigo-500" />,
+      scenario: "Tienes una tabla de 10,000 registros de transacciones. Marketing quiere 'Infinite Scroll' porque se ve moderno. Finanzas quiere paginación porque necesitan navegar a la página 300 directamente.",
+      question: "¿Qué patrón eliges y por qué?",
+      options: [
+        { id: 'A', text: "Infinite Scroll. Es el estándar de apps modernas y elimina fricciones.", score: 0, type: "Trend Follower (Ignora el contexto)" },
+        { id: 'B', text: "Híbrido Contextual: Infinite Scroll con un botón de 'Ir a página...' oculto en un menú avanzado para power users. Optimizas para el 90% (navegación secuencial) sin romper el 10% (búsqueda específica).", score: 5, type: "Lead (Context-Aware)" },
+        { id: 'C', text: "Paginación tradicional. Priorizar la funcionalidad sobre la estética.", score: 2, type: "Conservador (UX del 2010)" }
+      ],
+      explanation: "Infinite scroll es terrible para navegación no-lineal (B2B, finanzas, legal). La opción B respeta ambos Jobs-to-be-Done sin forzar un patrón inadecuado."
+    },
+
+    // --- BLOQUE 10: MOBILE, RESPONSIVE & PLATAFORMAS ---
+    {
+      id: 'mobile_web_vs_native_app',
+      category: "Estrategia de Plataforma",
+      icon: <Smartphone className="w-6 h-6 text-purple-600" />,
+      scenario: "El 65% del tráfico es móvil, pero todos usan el sitio web responsive. Ventas insiste en que necesitan una App Nativa 'para verse serios' ante clientes Enterprise.",
+      question: "¿Cuál es tu recomendación estratégica?",
+      options: [
+        { id: 'A', text: "Construir una app nativa. Si Ventas dice que cierra deals con eso, es inversión directa en revenue.", score: 0, type: "Feature Factory (Sin validación)" },
+        { id: 'B', text: "PWA (Progressive Web App): Mejorar el mobile web actual con capacidades de app (instalable, notificaciones, offline) sin duplicar código. Validar tracción antes de ir nativo.", score: 5, type: "Lead (Incremental Investment)" },
+        { id: 'C', text: "Preguntar a los usuarios actuales si usarían una app mediante una encuesta.", score: 2, type: "Investigación sin acción" }
+      ],
+      explanation: "Una app nativa duplica costos de desarrollo y QA sin garantía de adopción. La PWA (B) te permite testear la hipótesis sin el commitment total."
+    },
+    {
+      id: 'tablet_edge_case',
+      category: "Diseño Responsive",
+      icon: <Layers className="w-6 h-6 text-cyan-500" />,
+      scenario: "El analytics muestra que solo el 3% del tráfico viene de tablets. El diseño actual se rompe en ese breakpoint (iPad landscape). El equipo de QA lo reporta como bug crítico.",
+      question: "¿Cómo priorizas este issue?",
+      options: [
+        { id: 'A', text: "Arreglarlo inmediatamente. 'Funcionar en todos los dispositivos' es parte de la calidad básica del producto.", score: 0, type: "Perfeccionista (Mal ROI)" },
+        { id: 'B', text: "Análisis de Impacto: Si ese 3% representa clientes Enterprise de alto valor, se arregla. Si es tráfico casual de bajo valor, se backlogea como P3.", score: 5, type: "Lead (Value-Based Priority)" },
+        { id: 'C', text: "Arreglar solo si alguien se queja explícitamente via soporte.", score: 2, type: "Reactivo" }
+      ],
+      explanation: "No todos los bugs son iguales. El % de tráfico no cuenta toda la historia: ¿quién es ese 3%? La opción B prioriza por impacto en el negocio, no por principios."
+    },
+    {
+      id: 'gesture_vs_button_mobile',
+      category: "Interacción Móvil",
+      icon: <Zap className="w-6 h-6 text-yellow-500" />,
+      scenario: "Diseñas un flujo donde el usuario puede 'swipe left' para archivar un item (como email). En los tests, el 40% de usuarios no descubre el gesto y busca un botón de archivar.",
+      question: "¿Cómo resuelves la discoverability?",
+      options: [
+        { id: 'A', text: "Mantener solo el gesto. Agregar un tooltip de 'Desliza para archivar' la primera vez que entran.", score: 2, type: "Coach (Fricción inicial)" },
+        { id: 'B', text: "Diseño Dual: Mantener el swipe para power users, pero agregar también un ícono de menú (tres dots) con la acción visible. Optimizar para ambos niveles de habilidad.", score: 5, type: "Lead (Progressive Disclosure)" },
+        { id: 'C', text: "Eliminar el gesto y usar solo botones. Priorizar la claridad sobre la elegancia.", score: 2, type: "Conservador (Pierde velocidad)" }
+      ],
+      explanation: "Los gestos ocultos son eficientes para expertos pero invisibles para novatos. La opción B permite descubrir visualmente y luego acelerar con el gesto."
+    },
+    {
+      id: 'dark_mode_accessibility_conflict',
+      category: "Accesibilidad & Diseño",
+      icon: <Heart className="w-6 h-6 text-pink-500" />,
+      scenario: "El Dark Mode que diseñaste se ve hermoso, pero al auditarlo descubres que varios textos grises sobre fondo oscuro no cumplen el contraste mínimo WCAG AA (4.5:1).",
+      question: "¿Qué sacrificas: estética o accesibilidad?",
+      options: [
+        { id: 'A', text: "Ajustar los grises para cumplir el contraste mínimo, aunque se vean menos sutiles y más duros.", score: 5, type: "Lead (Accesibilidad no negociable)" },
+        { id: 'B', text: "Mantener la estética actual y agregar un 'High Contrast Mode' opcional en Settings para usuarios que lo necesiten.", score: 2, type: "Compromiso (Fragmenta la experiencia)" },
+        { id: 'C', text: "Mantener el diseño actual. WCAG AA es una guía, no una ley (a menos que estés en gobierno/educación).", score: 0, type: "Irresponsable (Riesgo legal)" }
+      ],
+      explanation: "La accesibilidad no es opcional ni cosmética. Un 'modo especial' (B) estigmatiza. La opción A integra la inclusión como estándar, no como feature."
+    },
+
+    // --- BLOQUE 11: COLABORACIÓN, PROCESO & HANDOFF ---
+    {
+      id: 'dev_pushback_animation',
+      category: "Colaboración con Ingeniería",
+      icon: <Code className="w-6 h-6 text-blue-500" />,
+      scenario: "Diseñaste una animación de transición de 400ms con easing personalizado. El desarrollador dice que es 'demasiado complejo' y propone hacerla linear de 200ms para ahorrar tiempo.",
+      question: "¿Cómo negocías la implementación?",
+      options: [
+        { id: 'A', text: "Insistes en tu spec original. Los detalles de micro-interacción definen la calidad percibida del producto.", score: 0, type: "Purista (Relación tóxica)" },
+        { id: 'B', text: "Pair Programming: Te sientas con el dev, le muestras el código CSS exacto (cubic-bezier) y lo implementan juntos en 10 minutos. Educas mientras entregas.", score: 5, type: "Lead (Enabler)" },
+        { id: 'C', text: "Aceptas el linear de 200ms. Las batallas pequeñas no valen la pena.", score: 2, type: "Resignado (Pierde calidad)" }
+      ],
+      explanation: "Si el dev dice 'es complejo', muchas veces significa 'no sé cómo hacerlo'. La opción B transforma el conflicto en upskilling y fortalece la relación."
+    },
+    {
+      id: 'pm_changes_scope_mid_sprint',
+      category: "Gestión de Roadmap",
+      icon: <Target className="w-6 h-6 text-red-500" />,
+      scenario: "Estás a mitad de sprint. El PM viene con un 'small request': agregar un filtro nuevo al dashboard. Dices que tomará 2 días. Responde 'pero es solo un dropdown, ¿cuánto puede costar?'.",
+      question: "¿Cómo educas sobre el costo real del cambio?",
+      options: [
+        { id: 'A', text: "Aceptas hacerlo para mantener buena relación con Product. Total, son solo 2 días.", score: 0, type: "Complaciente (Mata el Sprint)" },
+        { id: 'B', text: "Visibilidad del Iceberg: Le muestras el breakdown (diseño, estados de error, casos edge, handoff, QA, responsive). Le ofreces meterlo al siguiente sprint o quitar algo del actual.", score: 5, type: "Lead (Educador de Proceso)" },
+        { id: 'C', text: "Te niegas rotundamente. 'Mid-sprint changes' están prohibidos por proceso Agile.", score: 2, type: "Dogmático (Inflexible)" }
+      ],
+      explanation: "Decir solo 'no' (C) crea fricción. La opción B hace visible el trabajo oculto y empodera al PM para tomar decisiones informadas de trade-offs."
+    },
+    {
+      id: 'qa_reject_pixel_perfect',
+      category: "Quality Assurance",
+      icon: <CheckCircle className="w-6 h-6 text-green-500" />,
+      scenario: "QA rechaza el feature porque 'el espaciado del botón es de 14px en lugar de 16px'. Faltan 2 días para el deadline de lanzamiento.",
+      question: "¿Cómo clasificas la severidad de este bug?",
+      options: [
+        { id: 'A', text: "Bloqueador (P0). La inconsistencia visual rompe la percepción de calidad. Se arregla antes de lanzar.", score: 0, type: "Pixel-Peeper (Pierde el deadline)" },
+        { id: 'B', text: "Menor (P3): Se documenta para arreglarlo en la próxima iteración, pero no bloquea el lanzamiento. La funcionalidad funciona, el spacing no afecta usabilidad.", score: 5, type: "Lead (Impact-Based Triage)" },
+        { id: 'C', text: "Le pides a QA que sea menos estricto y se enfoque en bugs funcionales.", score: 2, type: "Evasivo (Pierde credibilidad)" }
+      ],
+      explanation: "Hay una diferencia entre 'imperfecto' y 'roto'. Un spacing de 2px no impacta al usuario final. La opción B prioriza lanzar valor sobre perfección cosmética."
+    },
+    {
+      id: 'documentation_handoff_speed',
+      category: "Design Ops",
+      icon: <FileText className="w-6 h-6 text-gray-500" />,
+      scenario: "Hay presión extrema por velocidad. El PM te pregunta si puedes 'saltarte la documentación de Figma' y solo hacer una llamada rápida con el dev para explicar el diseño verbalmente.",
+      question: "¿Qué riesgos evalúas?",
+      options: [
+        { id: 'A', text: "Aceptas. La documentación es overhead burocrático. La comunicación directa es más ágil.", score: 0, type: "Cowboy (Deuda de conocimiento)" },
+        { id: 'B', text: "Documentación Mínima Viable: Anotas los specs críticos (medidas, estados, lógica) directamente en Figma con Auto Layout visible, pero skipeas el documento Word extenso. Grabas un Loom de 3 min.", score: 5, type: "Lead (Async-First)" },
+        { id: 'C', text: "Insistes en hacer la documentación completa como dicta el proceso. No se negocia.", score: 2, type: "Burocrático (Lento)" }
+      ],
+      explanation: "La documentación cero (A) genera bugs y re-work. La documentación excesiva (C) mata la velocidad. La opción B balancea: lo suficiente para no depender de tu memoria."
+    },
+
+    // --- BLOQUE 12: CULTURA, FEEDBACK & MENTORÍA ---
+    {
+      id: 'critique_session_dominance',
+      category: "Cultura de Diseño",
+      icon: <MessageSquare className="w-6 h-6 text-purple-400" />,
+      scenario: "En las sesiones de Critique, siempre hablan los mismos 2 diseñadores seniors. Los juniors nunca opinan y solo asienten con la cabeza.",
+      question: "¿Cómo balanceas las voces en la sala?",
+      options: [
+        { id: 'A', text: "Dejar que fluya naturalmente. Los que tienen más experiencia naturalmente tendrán más que decir.", score: 0, type: "Pasivo (Mata la diversidad)" },
+        { id: 'B', text: "Facilitación Activa: Implementar 'Round Robin' donde cada persona debe dar al menos 1 feedback antes de que alguien pueda hablar dos veces. Preguntas dirigidas a los silenciosos.", score: 5, type: "Lead (Inclusive Facilitator)" },
+        { id: 'C', text: "Hablar en privado con los juniors después para preguntarles qué piensan.", score: 2, type: "Band-aid (No cambia la dinámica)" }
+      ],
+      explanation: "La diversidad cognitiva muere si solo hablan los seniors. La facilitación activa (B) democratiza el espacio sin forzar participación incómoda."
+    },
+    {
+      id: 'feedback_sandwich_method',
+      category: "Mentoría & Crecimiento",
+      icon: <Heart className="w-6 h-6 text-pink-500" />,
+      scenario: "Un junior presenta un diseño con un error fundamental de jerarquía visual. Tienes que dar feedback correctivo en la sesión grupal.",
+      question: "¿Cómo estructuras el feedback?",
+      options: [
+        { id: 'A', text: "Método Sándwich: Empiezas con algo positivo, luego la crítica, luego otro positivo para suavizar.", score: 2, type: "Diplomático (Confuso)" },
+        { id: 'B', text: "Feedback Directo pero Específico: 'La jerarquía actual hace que el CTA se pierda. Si movemos X aquí y aumentamos el contrast Y, guiamos mejor la atención. ¿Probamos eso?'.", score: 5, type: "Lead (Constructivo y Claro)" },
+        { id: 'C', text: "Preguntas Socráticas: '¿Cuál es el elemento más importante de esta pantalla? ¿Dónde va tu ojo primero?'.", score: 2, type: "Coach (Lento para grupos)" }
+      ],
+      explanation: "El 'sándwich' diluye el mensaje. El feedback directo (B) con solución propuesta es más útil y respetuoso que rodeos. Las preguntas socráticas (C) funcionan 1-on-1, no en grupo."
+    },
+    {
+      id: 'imposter_syndrome_senior',
+      category: "Bienestar del Equipo",
+      icon: <Brain className="w-6 h-6 text-teal-500" />,
+      scenario: "Una diseñadora senior te confiesa en privado que siente que 'no es suficientemente buena' comparándose con los portfolios de Dribbble y está considerando renunciar.",
+      question: "¿Cómo la reubicas mentalmente?",
+      options: [
+        { id: 'A', text: "Validación emocional: Le dices que es excelente, que no se compare, que su trabajo es valioso.", score: 2, type: "Emocional (Sin raíz)" },
+        { id: 'B', text: "Reframe de Impacto: Le muestras métricas concretas de cómo su trabajo movió el negocio (conversión, revenue, NPS). Le recuerdas que Dribbble es arte, no producto. El valor está en el impacto, no en los likes.", score: 5, type: "Lead (Recontextualización)" },
+        { id: 'C', text: "Le sugieres que tome un curso de ilustración o animación para mejorar sus skills visuales.", score: 0, type: "Refuerza el síndrome" }
+      ],
+      explanation: "El síndrome del impostor se alimenta de comparaciones irrelevantes. La opción B reconecta a la persona con su valor real medible en el contexto correcto."
+    },
+    {
+      id: 'promotion_readiness_debate',
+      category: "Gestión de Talento",
+      icon: <Star className="w-6 h-6 text-yellow-500" />,
+      scenario: "Un diseñador lleva 18 meses en el rol Junior y pide una promoción a Mid. Es técnicamente bueno, pero nunca toma iniciativa, siempre espera instrucciones y no colabora proactivamente con otros equipos.",
+      question: "¿Cuál es tu decisión y cómo la comunicas?",
+      options: [
+        { id: 'A', text: "Lo promocionas. El tiempo en el rol y la calidad técnica son suficientes. La proactividad se desarrollará con el nuevo título.", score: 0, type: "Inflación de Títulos" },
+        { id: 'B', text: "No promoción con Roadmap Claro: Le explicas que 'Mid' requiere autonomía y ownership. Le das 3 meses con objetivos específicos (liderar 1 feature end-to-end, facilitar 1 critique) y reevalúan.", score: 5, type: "Lead (Growth Path)" },
+        { id: 'C', text: "Le ofreces un aumento de sueldo sin cambio de título como 'reconocimiento'.", score: 2, type: "Parche (No resuelve expectativa)" }
+      ],
+      explanation: "Promocionar sin mérito (A) rompe el equipo y las expectativas. La opción B es transparente: define el gap y da un plan concreto para cerrarlo."
+    },
+
+    // --- BLOQUE 13: NEGOCIO, VENTAS & STAKEHOLDERS ---
+    {
+      id: 'enterprise_client_custom_request',
+      category: "Producto vs Ventas",
+      icon: <Briefcase className="w-6 h-6 text-blue-700" />,
+      scenario: "Un cliente Enterprise que paga $500K anuales amenaza con irse si no agregas un feature muy específico para su workflow interno que solo ellos usarían.",
+      question: "¿Cómo evalúas si construirlo?",
+      options: [
+        { id: 'A', text: "Rechazarlo. Construir features para un solo cliente es la muerte de un producto SaaS escalable.", score: 2, type: "Purista (Pierde $500K)" },
+        { id: 'B', text: "Build vs Buy Analysis: Si el desarrollo toma menos de 3 meses Y puede generalizarse para al menos 3 clientes similares, se construye. Si no, se cobra como Custom Development aparte.", score: 5, type: "Lead (Strategic Flexibility)" },
+        { id: 'C', text: "Construirlo inmediatamente. $500K anuales justifican cualquier request.", score: 0, type: "Feature Factory (Sin criterio)" }
+      ],
+      explanation: "No todo request de cliente se debe aceptar ni rechazar. La opción B evalúa ROI, escalabilidad y opciones de monetización custom."
+    },
+    {
+      id: 'freemium_upgrade_friction',
+      category: "Monetización & UX",
+      icon: <Lock className="w-6 h-6 text-slate-700" />,
+      scenario: "El plan gratuito tiene 80% de los usuarios pero solo genera el 5% del revenue. Product quiere agregar 'upgrade prompts' agresivos cada 3 clicks. Temes que arruine la experiencia.",
+      question: "¿Cuál es tu propuesta de balance?",
+      options: [
+        { id: 'A', text: "Rechazar los prompts. La UX no se negocia. Los usuarios pagarán si ven valor, no por presión.", score: 0, type: "Idealista (Ignora el negocio)" },
+        { id: 'B', text: "Contextual Upselling: Mostrar el upgrade prompt solo cuando el usuario choca con un límite del plan gratuito (ej: 'Has alcanzado tu límite de 10 proyectos. Actualiza para ilimitados').", score: 5, type: "Lead (Value-Based Friction)" },
+        { id: 'C', text: "Implementar los prompts pero con un botón de 'No volver a mostrar'.", score: 2, type: "Parche (Usuario cierra para siempre)" }
+      ],
+      explanation: "Los upsells genéricos (cada 3 clicks) entrenan al usuario a ignorarlos. Los contextuales (B) educan sobre el valor del upgrade en el momento de necesidad real."
+    },
+    {
+      id: 'pricing_page_complexity',
+      category: "Estrategia de Producto",
+      icon: <BarChart2 className="w-6 h-6 text-green-600" />,
+      scenario: "La página de Pricing tiene 5 tiers de planes con 30 features listadas. Los usuarios están paralizados y el abandono en esa página es del 60%.",
+      question: "¿Cómo simplificas la decisión?",
+      options: [
+        { id: 'A', text: "Reducir a 3 planes (Good-Better-Best) y listar solo las 5 diferencias clave. Esconder el resto en un 'Ver comparación completa'.", score: 5, type: "Lead (Paradox of Choice)" },
+        { id: 'B', text: "Agregar un 'Plan Recomendado' badge en el tier más popular para guiar la decisión.", score: 2, type: "Nudge (Insuficiente solo)" },
+        { id: 'C', text: "Crear un quiz interactivo de 5 preguntas que recomienda el plan ideal según el perfil del usuario.", score: 2, type: "Creativo (Agrega fricción)" }
+      ],
+      explanation: "La parálisis por análisis es real. La opción A elimina la complejidad cognitiva. El quiz (C) parece lindo pero agrega pasos antes de la decisión."
+    },
+    {
+      id: 'seo_vs_ux_url_structure',
+      category: "SEO vs Experiencia",
+      icon: <Globe className="w-6 h-6 text-blue-400" />,
+      scenario: "Marketing quiere cambiar todas las URLs del producto para incluir keywords SEO (/dashboard → /financial-dashboard-analytics). Ingeniería dice que romperá todos los links compartidos y favoritos de usuarios.",
+      question: "¿Cómo medias entre SEO y UX?",
+      options: [
+        { id: 'A', text: "Priorizar SEO. El tráfico orgánico es vital para el crecimiento.", score: 0, type: "Rompe la experiencia de usuarios activos" },
+        { id: 'B', text: "Implementar Redirects 301: Cambian las URLs pero mantienen compatibilidad con los links antiguos. Monitorear impacto en analytics por 1 mes antes de commitear permanentemente.", score: 5, type: "Lead (Migration Strategy)" },
+        { id: 'C', text: "Rechazar el cambio. Las URLs son parte de la UX establecida y no se tocan.", score: 2, type: "Conservador (Pierde oportunidad)" }
+      ],
+      explanation: "Cambiar URLs sin strategy rompe la confianza del usuario (links muertos). Los redirects (B) permiten evolucionar sin destruir lo existente."
+    },
+
+    // --- BLOQUE 14: INNOVACIÓN, TRENDS & TECH DEBT ---
+    {
+      id: 'ai_feature_hype_cycle',
+      category: "Innovación & AI",
+      icon: <Brain className="w-6 h-6 text-teal-500" />,
+      scenario: "El Board quiere que agregues 'AI' al producto porque 'todos lo están haciendo'. No hay un problema específico identificado, solo FOMO corporativo.",
+      question: "¿Cómo canalizas la presión hacia valor real?",
+      options: [
+        { id: 'A', text: "Implementar un chatbot básico con GPT para cumplir con la expectativa rápidamente.", score: 0, type: "Teatro de Innovación" },
+        { id: 'B', text: "Discovery de Pain Points: Entrevistas a 10 usuarios power para identificar tareas repetitivas/aburridas que la AI podría automatizar genuinamente (categorización, predicción, generación de reportes).", score: 5, type: "Lead (Problem-First Innovation)" },
+        { id: 'C', text: "Agregar un badge de 'Powered by AI' a features existentes que usan algoritmos simples.", score: 0, type: "AI-Washing (Fraude)" }
+      ],
+      explanation: "Agregar AI por moda (A, C) es ruido. La opción B encuentra casos de uso reales donde la tecnología resuelve problemas existentes, no crea features buscando problemas."
+    },
+    {
+      id: 'design_trend_neumorphism',
+      category: "Tendencias de Diseño",
+      icon: <Layers className="w-6 h-6 text-indigo-600" />,
+      scenario: "Un diseñador quiere rediseñar el UI con 'Neumorphism' (el trend visual del momento). Se ve espectacular en Dribbble pero tiene problemas severos de contraste y accesibilidad.",
+      question: "¿Cómo evalúas adoptar trends visuales?",
+      options: [
+        { id: 'A', text: "Permitirlo. La innovación visual diferencia al producto y atrae usuarios.", score: 0, type: "Trend Chaser (Ignora usabilidad)" },
+        { id: 'B', text: "Accessibility First: Si el trend no puede pasar WCAG AA sin compromisos, se rechaza. La moda no justifica excluir usuarios.", score: 5, type: "Lead (Principios sobre Estética)" },
+        { id: 'C', text: "Permitirlo solo en secciones de Marketing (landing page) pero no en el producto core.", score: 2, type: "Híbrido (Inconsistencia de marca)" }
+      ],
+      explanation: "Los trends visuales van y vienen. La accesibilidad es permanente. Un producto inaccesible es un producto roto, sin importar qué tan bonito se vea."
+    },
+    {
+      id: 'legacy_code_rewrite_temptation',
+      category: "Estrategia de Migración",
+      icon: <RotateCcw className="w-6 h-6 text-orange-500" />,
+      scenario: "El código frontend tiene 5 años, está en Angular.js (legacy). Hay presión para reescribir todo en React 'moderno'. El CTO estima 6 meses de trabajo.",
+      question: "¿Cuál es tu postura como stakeholder de diseño?",
+      options: [
+        { id: 'A', text: "Apoyar el rewrite completo. Es momento de saldar la deuda técnica.", score: 0, type: "Ingenuo (Gran Bomba)" },
+        { id: 'B', text: "Micro-Frontends o Modular Rewrite: Migrar pantalla por pantalla, permitiendo que convivan Angular y React temporalmente. Priorizar las vistas con más tráfico primero.", score: 5, type: "Lead (Incremental De-Risking)" },
+        { id: 'C', text: "Oponerse completamente. Si funciona, no se toca. Priorizar features sobre refactoring.", score: 2, type: "Cortoplacista (Acumula más deuda)" }
+      ],
+      explanation: "Los 'Big Bang Rewrites' casi siempre fallan (A). La migración incremental (B) permite entregar valor mientras se moderniza sin apostar todo."
+    },
+    {
+      id: 'design_system_v2_breaking_changes',
+      category: "Arquitectura de Sistemas",
+      icon: <Code className="w-6 h-6 text-blue-500" />,
+      scenario: "Quieres lanzar la V2 del Design System con cambios radicales (nuevos tokens, arquitectura de componentes). Ingeniería dice que romperá 200 archivos y tomará 3 sprints migrar todo.",
+      question: "¿Cómo lanzas la V2 sin paralizar la operación?",
+      options: [
+        { id: 'A', text: "Pausar features por 3 sprints para hacer la migración completa de una vez.", score: 0, type: "Big Bang (Mata el roadmap)" },
+        { id: 'B', text: "Versionado Coexistente: Publicar la V2 en un namespace separado (@design-system/v2), permitir que ambas versiones convivan, y migrar módulo por módulo durante 6 meses.", score: 5, type: "Lead (Graceful Migration)" },
+        { id: 'C', text: "Lanzar solo los componentes nuevos en V2, manteniendo los viejos sin cambios.", score: 2, type: "Fragmentación (Dos sistemas eternos)" }
+      ],
+      explanation: "Forzar una migración masiva (A) detiene el negocio. La coexistencia temporal (B) permite evolucionar sin destruir lo que funciona."
+    },
+
+    // --- BLOQUE 15: ÉTICA, COMPLIANCE & DARK PATTERNS ---
+    {
+      id: 'gdpr_cookie_consent_ux',
+      category: "Compliance & UX",
+      icon: <ShieldAlert className="w-6 h-6 text-orange-600" />,
+      scenario: "Legal exige implementar un banner de consentimiento de cookies por GDPR. Te mandan un texto de 400 palabras que debe ser visible antes de que el usuario haga nada.",
+      question: "¿Cómo diseñas el cumplimiento sin destruir la UX?",
+      options: [
+        { id: 'A', text: "Un modal full-screen que bloquea todo hasta que acepte. Cumplimiento estricto.", score: 0, type: "Hostile UX (Ahuyenta usuarios)" },
+        { id: 'B', text: "Banner Bottom con Resumen: Texto corto + link a 'Leer más'. Botones claros de 'Aceptar' y 'Personalizar'. El cumplimiento no requiere saturación, requiere consentimiento informado.", score: 5, type: "Lead (Compliance + UX)" },
+        { id: 'C', text: "Esconder el banner detrás de un ícono pequeño de 'Cookies' en el footer.", score: 0, type: "No cumple GDPR" }
+      ],
+      explanation: "El GDPR no exige hostilidad, exige claridad y consentimiento. Un banner bien diseñado (B) cumple sin arruinar la primera impresión."
+    },
+    {
+      id: 'addictive_design_notifications',
+      category: "Ética de Diseño",
+      icon: <Heart className="w-6 h-6 text-pink-500" />,
+      scenario: "Growth quiere implementar notificaciones push diarias con mensajes tipo 'Tu reporte te extraña' para aumentar el engagement. Sabes que es manipulación emocional.",
+      question: "¿Dónde trazas la línea ética?",
+      options: [
+        { id: 'A', text: "Implementarlo. El engagement es una métrica clave del negocio.", score: 0, type: "Cómplice de manipulación" },
+        { id: 'B', text: "Proponer notificaciones basadas en valor real: 'Nuevo reporte disponible', 'Anomalía detectada en tus datos'. Engagement por utilidad, no por guilt-tripping.", score: 5, type: "Lead (Ética de Valor)" },
+        { id: 'C', text: "Rechazar todas las notificaciones push por principio.", score: 2, type: "Extremista (Pierde canal válido)" }
+      ],
+      explanation: "Las notificaciones no son inherentemente malas, pero el tono manipulador sí lo es. La opción B usa el canal para entregar valor real, no para jugar con emociones."
+    },
+    {
+      id: 'data_collection_transparency',
+      category: "Privacidad & Trust",
+      icon: <Lock className="w-6 h-6 text-slate-700" />,
+      scenario: "El equipo de Analytics quiere trackear cada click, scroll y tiempo en pantalla del usuario. Marketing dice que es 'estándar de la industria'. No hay consentimiento explícito.",
+      question: "¿Qué nivel de tracking defiendes?",
+      options: [
+        { id: 'A', text: "Trackear todo. Es data agregada y anónima, no hay problema ético.", score: 0, type: "Surveillance UX" },
+        { id: 'B', text: "Tracking con Consentimiento: Implementar un sistema opt-in claro en Settings donde el usuario decide qué comparte. Por defecto, solo tracking funcional (errores, performance).", score: 5, type: "Lead (Privacy by Design)" },
+        { id: 'C', text: "Solo trackear eventos de negocio críticos (sign-up, purchase), nada más.", score: 2, type: "Limitante (Pierde insights de UX)" }
+      ],
+      explanation: "'Todo el mundo lo hace' no es justificación ética. La opción B respeta al usuario como dueño de sus datos y construye confianza de marca."
+    },
+    {
+      id: 'fake_social_proof',
+      category: "Growth Hacking vs Ética",
+      icon: <Users className="w-6 h-6 text-purple-600" />,
+      scenario: "Marketing quiere agregar un popup de 'Juan de México acaba de suscribirse' (estilo Booking.com) para generar FOMO. Te piden usar datos reales de sign-ups. Hay 5 sign-ups al día reales.",
+      question: "¿Qué implementas?",
+      options: [
+        { id: 'A', text: "Mostrar los 5 sign-ups reales espaciados durante el día. Social proof honesto.", score: 5, type: "Lead (Autenticidad)" },
+        { id: 'B', text: "Generar notificaciones falsas cada 2 minutos para crear sensación de actividad constante.", score: 0, type: "Fraude (Erosión de confianza)" },
+        { id: 'C', text: "No implementar social proof. Es manipulación psicológica.", score: 2, type: "Purista (Pierde conversión legítima)" }
+      ],
+      explanation: "El social proof funciona cuando es real (A). Fake urgency (B) es mentir al usuario y eventualmente se descubre, destruyendo la confianza. La opción C es demasiado extrema."
+    },
+
+    // --- BLOQUE 16: CRISIS, FAILURES & LEARNING ---
+    {
+      id: 'production_bug_major_incident',
+      category: "Gestión de Crisis & Liderazgo",
+      icon: <AlertOctagon className="w-6 h-6 text-red-500" />,
+      scenario: "Sale un bug crítico a producción que rompe el flujo de pago. Los usuarios no pueden comprar. Perdiste $50K en 2 horas. Fue un error en el handoff de diseño (faltó documentar un estado de error).",
+      question: "¿Cómo manejas la post-mortem?",
+      options: [
+        { id: 'A', text: "Asumir responsabilidad pública en la reunión de post-mortem y ofrecer tu renuncia si es necesario.", score: 0, type: "Dramático (Innecesario)" },
+        { id: 'B', text: "Blameless Post-Mortem: Analizar la falla sistémica (proceso de QA, checklist de handoff, cobertura de tests) y proponer mejoras concretas para que no vuelva a pasar.", score: 5, type: "Lead (Cultura de Aprendizaje)" },
+        { id: 'C', text: "Culpar al desarrollador que no preguntó por ese estado específico.", score: 0, type: "Tóxico (Destruye confianza)" }
+      ],
+      explanation: "Los errores individuales son síntomas de procesos rotos. La cultura blameless (B) convierte fallas en aprendizaje sistémico. Culpar (A, C) genera miedo y oculta futuros problemas."
+    },
+    {
+      id: 'failed_redesign_metrics_drop',
+      category: "Data-Driven Design",
+      icon: <XCircle className="w-6 h-6 text-red-600" />,
+      scenario: "Lanzaste un rediseño 'basado en research' con mucha confianza. A las 2 semanas, las métricas clave cayeron un 12%. El equipo está desmoralizado.",
+      question: "¿Cuál es tu respuesta?",
+      options: [
+        { id: 'A', text: "Revertir inmediatamente al diseño anterior y olvidar que pasó.", score: 2, type: "Reactivo (Pierde el aprendizaje)" },
+        { id: 'B', text: "Root Cause Analysis: Analizar qué específicamente causó la caída (¿un flujo? ¿un botón? ¿mobile vs desktop?). Iterar rápido sobre las hipótesis de falla sin revertir todo.", score: 5, type: "Lead (Scientific Iteration)" },
+        { id: 'C', text: "Esperar 1 mes más. A veces los usuarios necesitan tiempo para acostumbrarse al cambio.", score: 0, type: "Negación (Quema dinero)" }
+      ],
+      explanation: "Una caída del 12% no se 'arregla sola' (C). Revertir (A) es seguro pero no aprendes nada. La opción B diagnostica el problema específico y ajusta con datos."
+    },
+    {
+      id: 'user_backlash_social_media',
+      category: "Community Management",
+      icon: <MessageSquare className="w-6 h-6 text-purple-400" />,
+      scenario: "Cambias el ícono del producto y los usuarios explotan en Twitter/Reddit diciendo que 'el nuevo logo es horrible' y 'ya no entienden la marca'. Hay 2000 tweets negativos.",
+      question: "¿Cómo respondes a la crisis de percepción?",
+      options: [
+        { id: 'A', text: "Revertir el logo inmediatamente para calmar a la comunidad.", score: 0, type: "Reactivo (Pierde autoridad)" },
+        { id: 'B', text: "Vocal Minority Bias: Analizar la data real (¿cuántos usuarios activos son esos 2000? ¿cambió el NPS/retention?). Si las métricas de negocio no se mueven, es ruido. Comunicar la visión del cambio con confianza.", score: 5, type: "Lead (Data over Noise)" },
+        { id: 'C', text: "Ignorar completamente el feedback. 'Los usuarios se acostumbrarán'.", score: 2, type: "Arrogante (Pierde empatía)" }
+      ],
+      explanation: "Twitter no es representativo de toda tu base. La opción B separa ruido de señal. Si la métrica clave (retención, conversión) no cambió, es resistencia al cambio, no un problema real."
+    },
+    {
+      id: 'layoff_team_morale',
+      category: "Bienestar del Equipo",
+      icon: <Users className="w-6 h-6 text-purple-600" />,
+      scenario: "La empresa hace un layoff del 20%. Tu equipo se salvó, pero el ambiente está devastado: miedo, culpa del sobreviviente, desconfianza en la dirección.",
+      question: "¿Cómo reconstruyes la moral?",
+      options: [
+        { id: 'A', text: "Organizar un team building o happy hour para 'levantar los ánimos'.", score: 0, type: "Tone-deaf (Insulta la situación)" },
+        { id: 'B', text: "Transparencia Radical: Reunión 1-on-1 con cada persona para validar sus emociones, explicar la situación financiera con honestidad y darles visibilidad del roadmap próximo. Acción > Palabras.", score: 5, type: "Lead (Honestidad + Estabilidad)" },
+        { id: 'C', text: "Dar espacio. No forzar conversaciones incómodas y dejar que el tiempo cure.", score: 2, type: "Pasivo (Deja heridas abiertas)" }
+      ],
+      explanation: "Un layoff rompe la confianza. La transparencia (B) reconstruye más rápido que el silencio (C) o la distracción superficial (A). Las personas necesitan claridad, no fiestas."
     }
   ];
 };
