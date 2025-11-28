@@ -412,4 +412,3 @@ Una pregunta se considera "obvia" cuando:
 1. Priorizar las 10 preguntas más obvias para reescritura inmediata
 2. Crear versiones con "área gris" para cada pregunta identificada
 3. Validar que las nuevas versiones mantengan dificultad sin obviedad
-4. A/B test con usuarios para verificar que las respuestas se distribuyen más
