@@ -2,8 +2,8 @@ import { useState, useCallback } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 import { getQuestionPool } from '../data/questionPool';
 
-const QUESTIONS_PER_SESSION = 12;
-const TOTAL_TIME_SECONDS = 12 * 30; // 6 minutos
+const QUESTIONS_PER_SESSION = 24; // TODAS las preguntas en una sola tirada
+const TOTAL_TIME_SECONDS = 5 * 60; // 5 minutos BRUTAL MODE 🔥
 
 /**
  * Hook personalizado para manejar todo el estado del juego

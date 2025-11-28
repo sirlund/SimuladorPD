@@ -47,7 +47,7 @@ export const IntroScreen = ({ stats, onStart, onReset }) => {
               <li className="flex gap-2">
                 <Timer className="w-4 h-4 shrink-0" />
                 <div>
-                  <strong>Gestión de Tiempo:</strong> 30 segundos promedio por decisión. Si dudas, pierdes.
+                  <strong>Gestión de Tiempo:</strong> 24 preguntas en 5 minutos. ~12 segundos por decisión. BRUTAL MODE 🔥
                 </div>
               </li>
             </ul>

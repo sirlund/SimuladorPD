@@ -1,6 +1,6 @@
 import { Timer as TimerIcon } from 'lucide-react';
 
-const URGENT_THRESHOLD = 180; // 3 minutos
+const URGENT_THRESHOLD = 120; // 2 minutos finales - PRESIÓN EXTREMA 🔥
 
 /**
  * Componente de timer con alertas visuales
