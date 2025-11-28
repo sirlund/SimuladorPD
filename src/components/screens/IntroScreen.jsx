@@ -35,7 +35,7 @@ export const IntroScreen = ({ stats, onStart, onReset }) => {
               <li className="flex gap-2">
                 <Target className="w-4 h-4 shrink-0" />
                 <div>
-                  <strong>Contexto Real:</strong> Los escenarios tienen ruido y presión política. Lee cada palabra.
+                  <strong>Solo Preguntas Nuevas:</strong> Cada ronda presenta únicamente escenarios que no has visto antes.
                 </div>
               </li>
               <li className="flex gap-2">

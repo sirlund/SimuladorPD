@@ -116,25 +116,30 @@ export const ReviewScreen = ({
           {/* Action Button */}
           <div className="flex justify-center">
             {remainingQuestions > 0 ? (
-              <button
-                onClick={onContinue}
-                className="bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-indigo-700 transition-all shadow-md flex items-center gap-2"
-              >
-                <RefreshCw className="w-5 h-5" />
-                Continuar Campaña ({remainingQuestions} preguntas restantes)
-              </button>
+              <div className="flex flex-col items-center gap-3">
+                <button
+                  onClick={onContinue}
+                  className="bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-indigo-700 transition-all shadow-md flex items-center gap-2"
+                >
+                  <RefreshCw className="w-5 h-5" />
+                  Siguiente Ronda
+                </button>
+                <p className="text-sm text-slate-500 font-medium">
+                  {remainingQuestions} preguntas nuevas disponibles
+                </p>
+              </div>
             ) : (
               <div className="flex flex-col items-center gap-3">
-                <p className="text-sm font-bold bg-green-50 text-green-700 px-6 py-3 rounded-full border-2 border-green-200 flex items-center gap-2">
+                <p className="text-base font-bold bg-green-50 text-green-700 px-6 py-3 rounded-full border-2 border-green-200 flex items-center gap-2">
                   <Trophy className="w-5 h-5" />
-                  ¡Campaña Completada!
+                  ¡Has completado todas las preguntas del simulador!
                 </p>
                 <button
                   onClick={onContinue}
                   className="bg-slate-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-slate-700 transition-all flex items-center gap-2 text-sm"
                 >
                   <RefreshCw className="w-4 h-4" />
-                  Reiniciar Campaña
+                  Reiniciar desde cero
                 </button>
               </div>
             )}

@@ -34,10 +34,6 @@ export const useGameState = () => {
     // Mezclar todas las preguntas disponibles (sin límite)
     const shuffledAvailable = [...availableQuestions].sort(() => 0.5 - Math.random());
 
-    // Marcar todas las preguntas disponibles como "quemadas" para esta campaña
-    const newBurnedIds = shuffledAvailable.map(q => q.id);
-    setBurnedQuestionIds(prev => [...prev, ...newBurnedIds]);
-
     // Mezclar opciones de cada pregunta
     const finalQuestions = shuffledAvailable.map(q => ({
       ...q,
@@ -51,7 +47,7 @@ export const useGameState = () => {
     setTotalScore(0);
     setMaxPossibleScore(0); // Se calculará dinámicamente según preguntas respondidas
     setGameState('test');
-  }, [burnedQuestionIds, setBurnedQuestionIds]);
+  }, [burnedQuestionIds]);
 
   // Responder pregunta y avanzar
   const handleAnswer = useCallback((selectedOption) => {
@@ -83,8 +79,14 @@ export const useGameState = () => {
 
   // Finalizar assessment (por tiempo o por completar)
   const finishAssessment = useCallback(() => {
-    setGameState('review');
-  }, []);
+    // Marcar solo las preguntas RESPONDIDAS como "quemadas"
+    setAnswers(currentAnswers => {
+      const answeredQuestionIds = Object.keys(currentAnswers);
+      setBurnedQuestionIds(prev => [...prev, ...answeredQuestionIds]);
+      setGameState('review');
+      return currentAnswers;
+    });
+  }, [setBurnedQuestionIds]);
 
   // Reiniciar toda la campaña
   const resetCampaign = useCallback(() => {

@@ -6,11 +6,15 @@ export const CampaignCompleteScreen = ({ onReset }) => {
       <Trophy className="w-24 h-24 text-yellow-400 mb-6 animate-bounce" />
 
       <h1 className="text-4xl font-black mb-4">
-        ¡Campaña Completada!
+        ¡Todas las Preguntas Completadas! 🎉
       </h1>
 
-      <p className="text-xl opacity-90 max-w-lg mb-8">
-        Has sobrevivido a los 24 escenarios más difíciles de gestión, estrategia y técnica.
+      <p className="text-xl opacity-90 max-w-lg mb-4">
+        Has respondido todas las <strong>96 preguntas</strong> del simulador.
+      </p>
+
+      <p className="text-lg opacity-80 max-w-lg mb-8">
+        Dominas los escenarios de gestión de crisis, estrategia de producto, liderazgo de equipos, y toma de decisiones bajo presión.
       </p>
 
       <button
