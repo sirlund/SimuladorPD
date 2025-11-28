@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useLocalStorage } from './useLocalStorage';
-import { getQuestionPool } from '../data/questionPool';
+import { getQuestions } from '../data/getQuestions';
 
 const TOTAL_TIME_SECONDS = 7 * 60; // 7 minutos BRUTAL MODE 🔥
 
@@ -22,7 +22,12 @@ export const useGameState = () => {
 
   // Iniciar nueva sesión de assessment
   const startAssessment = useCallback(() => {
-    const fullPool = getQuestionPool();
+    // TIER 1.1: getQuestions ya incluye shuffle de opciones por defecto
+    const fullPool = getQuestions({
+      shuffleOptions: true,    // Rompe el patrón de "B siempre correcta"
+      shuffleQuestions: true   // También mezcla el orden de preguntas
+    });
+
     const availableQuestions = fullPool.filter(q => !burnedQuestionIds.includes(q.id));
 
     // Si no hay preguntas disponibles, campaña completa
@@ -31,17 +36,8 @@ export const useGameState = () => {
       return;
     }
 
-    // Mezclar todas las preguntas disponibles (sin límite)
-    const shuffledAvailable = [...availableQuestions].sort(() => 0.5 - Math.random());
-
-    // Mezclar opciones de cada pregunta
-    const finalQuestions = shuffledAvailable.map(q => ({
-      ...q,
-      options: [...q.options].sort(() => 0.5 - Math.random())
-    }));
-
-    // Resetear estado del juego
-    setActiveQuestions(finalQuestions);
+    // Ya no necesitamos shuffle manual - getQuestions lo hace
+    setActiveQuestions(availableQuestions);
     setCurrentQuestionIndex(0);
     setAnswers({});
     setTotalScore(0);
@@ -96,7 +92,7 @@ export const useGameState = () => {
 
   // Calcular estadísticas
   const getStats = useCallback(() => {
-    const fullPool = getQuestionPool();
+    const fullPool = getQuestions({ shuffleOptions: false }); // Sin shuffle para contar
     const totalQuestions = fullPool.length;
     const remainingQuestions = totalQuestions - burnedQuestionIds.length;
     const progressPercent = ((totalQuestions - remainingQuestions) / totalQuestions) * 100;
