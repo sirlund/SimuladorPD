@@ -770,40 +770,40 @@ export const getQuestionPool = () => {
       id: 'gdpr_cookie_consent_ux',
       category: "Compliance & UX",
       icon: <ShieldAlert className="w-6 h-6 text-orange-600" />,
-      scenario: "Legal exige implementar un banner de consentimiento de cookies por GDPR. Te mandan un texto de 400 palabras que debe ser visible antes de que el usuario haga nada.",
-      question: "¿Cómo diseñas el cumplimiento sin destruir la UX?",
+      scenario: "Legal termina su revisión de GDPR  y te manda email: 'El banner de cookies actual no cumple. Necesitamos texto completo de consent (280 palabras) VISIBLE antes de usar el sitio. Inspirándose en Wikipedia.org'. Marketing entra en pánico porque benchmarking muestra que banners agresivos reducen sign-ups 12-18%. Tienes 1 semana para redesign antes de que Legal bloquee el deploy.",
+      question: "¿Qué implementación balanceas entre compliance legal y conversion?",
       options: [
-        { id: 'A', text: "Un modal full-screen que bloquea todo hasta que acepte. Cumplimiento estricto.", score: 0, type: "Hostile UX (Ahuyenta usuarios)" },
-        { id: 'B', text: "Banner Bottom con Resumen: Texto corto + link a 'Leer más'. Botones claros de 'Aceptar' y 'Personalizar'. El cumplimiento no requiere saturación, requiere consentimiento informado.", score: 5, type: "Lead (Compliance + UX)" },
-        { id: 'C', text: "Esconder el banner detrás de un ícono pequeño de 'Cookies' en el footer.", score: 0, type: "No cumple GDPR" }
+        { id: 'A', text: "Banner Bottom Sticky No-Bloqueante: Texto resumido (40 palabras) + link 'Ver detalles' + botones claros 'Aceptar Todo'/'Personalizar'/'Rechazar'. Cumple GDPR porque el consent es activo y previo, pero no bloquea navegación inicial. Negociabl e con Legal.", score: 5, type: "Lead (Compliance pragmático)" },
+        { id: 'B', text: "Modal Bloqueante con Micro-copy: Implementas modal que bloquea TODO contenido pero optimizas el copy a 80 palabras esenciales + 'Leer política completa'. Cumplimiento estricto literal de Legal. Aceptas el hit de conversion.", score: 3, type: "Conservador (Privilegia compliance sobre UX)" },
+        { id: 'C', text: "Two-Step Soft Banner: Primera visita muestra banner suave no-bloqueante. Si el usuario interactúa con el sitio sin consentir, ENTONCES  aparece modal exigiendo decisión. Das 'preview' antes de bloquear. Riesgo: Legal puede argumentar que no es 'previo'.", score: 4, type: "Grey zone (Interpretación de 'previo')" }
       ],
-      explanation: "El GDPR no exige hostilidad, exige claridad y consentimiento. Un banner bien diseñado (B) cumple sin arruinar la primera impresión."
+      explanation: "GDPR exige 'consentimiento previo', pero 'previo' no significa necesariamente 'bloqueante'. Un banner sticky visible (A) cumple la letra de la ley sin destruir conversion. Modal bloqueante (B) es ultra-safe pero hostil. Two-step (C) es creativo pero Legal puede rechazarlo."
     },
     {
       id: 'addictive_design_notifications',
       category: "Ética de Diseño",
       icon: <Heart className="w-6 h-6 text-pink-500" />,
-      scenario: "Growth quiere implementar notificaciones push diarias con mensajes tipo 'Tu reporte te extraña' para aumentar el engagement. Sabes que es manipulación emocional.",
-      question: "¿Dónde trazas la línea ética?",
+      scenario: "En el All-Hands de Q, el VP de Growth presenta OKR: 'Aumentar DAU 25% en Q2'. Su estrategia propuesta: notificaciones push diarias con mensajes emocionales - 'Tu dashboard te extraña 😢', 'Han pasado 3 días sin ti', '¿Todo bien? Tu equipo notó tu ausencia'. Cita benchmarks de Duolingo y LinkedIn que usan guilt-driven notifications exitosamente. CFO apoya porque churn es problema crítico.",
+      question: "¿Dónde trazas la línea entre  engagement legítimo y manipulación emocional?",
       options: [
-        { id: 'A', text: "Implementarlo. El engagement es una métrica clave del negocio.", score: 0, type: "Cómplice de manipulación" },
-        { id: 'B', text: "Proponer notificaciones basadas en valor real: 'Nuevo reporte disponible', 'Anomalía detectada en tus datos'. Engagement por utilidad, no por guilt-tripping.", score: 5, type: "Lead (Ética de Valor)" },
-        { id: 'C', text: "Rechazar todas las notificaciones push por principio.", score: 2, type: "Extremista (Pierde canal válido)" }
+        { id: 'A', text: "Implementar Estrategia de Growth: Las notificaciones emocionales funcionan (Duolingo tiene 500M users). Si otros lo hacen y es efectivo, negar nos pone en desventaja competitiva. El engagement es métrica core de negocio.", score: 2, type: "Utilitarista (Normaliza manipulación)" },
+        { id: 'B', text: "Value-Based Notifications Only: Propones notificaciones basadas en UTILIDAD real para el usuario: 'Nuevo reporte disponible', 'Anomalía detectada requiere atención', 'Alguien te mencionó en comentario'. Engagement por valor entregado, no por guilt-trip.", score: 5, type: "Lead (Ética de valor genuino)" },
+        { id: 'C', text: "Rechazar Push Notifications Completamente: Argumentas que es canal inherentemente invasivo. Propones estrategia 100% pull (email digests opcionales, in-app badges). Principio sobre pragmatismo.", score: 3, type: "Purista (Pierde canal efectivo)" }
       ],
-      explanation: "Las notificaciones no son inherentemente malas, pero el tono manipulador sí lo es. La opción B usa el canal para entregar valor real, no para jugar con emociones."
+      explanation: "'Otros lo hacen' no es justificación ética (A). Las notificaciones no son malas per se, pero el TONO manipulador sí (guilt-tripping). La C es purista pero sacrifica canal válido. Un Lead usa el canal para entregar valor real (B), construyendo engagement sost enible vs artificial."
     },
     {
       id: 'data_collection_transparency',
       category: "Privacidad & Trust",
       icon: <Lock className="w-6 h-6 text-slate-700" />,
-      scenario: "El equipo de Analytics quiere trackear cada click, scroll y tiempo en pantalla del usuario. Marketing dice que es 'estándar de la industria'. No hay consentimiento explícito.",
-      question: "¿Qué nivel de tracking defiendes?",
+      scenario: "El VP de Product Data presenta propuesta en roadmap meeting: comprehensive tracking de TODA interacción (clicks, scrolls, mouse movement heatmaps, tiempo en cada sección, A/B tests implícitos). Argumenta: 'Es estándar - Hotjar, FullStory, todos lo hacen. Data es agregada y anónima'. Marketing apoya porque necesitan insights de UX. Actual mente NO hay consentimiento explícito de usuarios.",
+      question: "¿Qué nivel de data collection defiendes para balancear insights vs privacidad?",
       options: [
-        { id: 'A', text: "Trackear todo. Es data agregada y anónima, no hay problema ético.", score: 0, type: "Surveillance UX" },
-        { id: 'B', text: "Tracking con Consentimiento: Implementar un sistema opt-in claro en Settings donde el usuario decide qué comparte. Por defecto, solo tracking funcional (errores, performance).", score: 5, type: "Lead (Privacy by Design)" },
-        { id: 'C', text: "Solo trackear eventos de negocio críticos (sign-up, purchase), nada más.", score: 2, type: "Limitante (Pierde insights de UX)" }
+        { id: 'A', text: "Comprehensive Tracking Opt-Out: Implementas tracking completo por default pero con toggle visible en Settings: 'Ayuda a mejorar el producto compartiendo datos de uso'. 90% de usuarios nunca cambian defaults - obtienes data sin fricción.", score: 3, type: "Dark pattern suave (Aprovecha inercia)" },
+        { id: 'B', text: "Privacy-First Opt-In: Sistema donde usuario ELIGE explícitamente qué comparte (Analytics de uso / Crash reports / Feature usage). Por default: solo errores críticos. Construyes confianza pero pierdes 60-70% de data potencial.", score: 5, type: "Lead (Privacy by design, costo de insights)" },
+        { id: 'C', text: "Business Events Only: Solo trackeas eventos directamente tied a negocio (sign-ups, purchases, feature adoption core). Zero tracking de comportamiento granular. Proteges privacidad pero quedas ciego a fricciones de UX.", score: 4, type: "Minimalista (Trade-off de  visibility)" }
       ],
-      explanation: "'Todo el mundo lo hace' no es justificación ética. La opción B respeta al usuario como dueño de sus datos y construye confianza de marca."
+      explanation: "'Es agregado y anónimo' no elimina la cuestión de consentimiento - el usuario merece saber. Opt-out (A) es legal pero éticamente cuestionable (explota inercia). Opt-in (B) respeta autonomía pero sacrifica insights. Business-only (C) es conservador pero limita aprendizaje de UX. Un Lead elige confianza sobre conveniencia (B)."
     },
     {
       id: 'fake_social_proof',
