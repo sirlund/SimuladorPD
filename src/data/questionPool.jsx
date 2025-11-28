@@ -871,6 +871,454 @@ export const getQuestionPool = () => {
         { id: 'C', text: "Dar espacio. No forzar conversaciones incómodas y dejar que el tiempo cure.", score: 2, type: "Pasivo (Deja heridas abiertas)" }
       ],
       explanation: "Un layoff rompe la confianza. La transparencia (B) reconstruye más rápido que el silencio (C) o la distracción superficial (A). Las personas necesitan claridad, no fiestas."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 17 - GESTIÓN DE CRISIS & LIDERAZGO ---
+    {
+      id: 'crisis_investor_demo_failure',
+      category: "Gestión de Crisis & Liderazgo",
+      icon: <AlertTriangle className="w-6 h-6 text-red-600" />,
+      scenario: "Es el día del demo crítico con inversionistas para cerrar la Serie A. 30 minutos antes, el ambiente de staging se cae por un problema de infraestructura. El equipo de ingeniería dice que tomará 2 horas arreglarlo. Los inversionistas ya están en camino.",
+      question: "¿Cuál es tu plan de contingencia inmediato?",
+      options: [
+        { id: 'A', text: "Retrasar la reunión 2 horas enviando una excusa corporativa ('Conflicto de agenda del CEO'). Esperas que staging se arregle para hacer el demo perfecto.", score: 0, type: "Mentiroso (Pierde credibilidad)" },
+        { id: 'B', text: "Demo en Producción con Datos Reales: Usas el ambiente live con usuarios reales, preparas un script tight para minimizar riesgos y asignas a alguien del equipo a monitorear errores en tiempo real. La autenticidad puede ser una ventaja.", score: 5, type: "Lead (Improvisa con Confianza)" },
+        { id: 'C', text: "Convertir el demo en una presentación de slides con capturas de pantalla y videos pregrabados del producto.", score: 2, type: "Backup Plan (Menos impacto)" }
+      ],
+      explanation: "Mentir a inversionistas (A) es suicida si se descubre. Los slides (C) pierden el impacto del producto vivo. La opción B muestra resiliencia operativa y confianza en el producto real."
+    },
+    {
+      id: 'crisis_key_designer_quits',
+      category: "Gestión de Crisis & Liderazgo",
+      icon: <Users className="w-6 h-6 text-red-600" />,
+      scenario: "Tu diseñador estrella, que lidera el rediseño completo del sistema de pagos (60% completado), renuncia abruptamente por una oferta de FAANG. Tiene 2 semanas de notice. El deadline con el cliente no se puede mover.",
+      question: "¿Cómo gestionas la transición de conocimiento?",
+      options: [
+        { id: 'A', text: "Contraoferta agresiva: Igualas o superas el salario de FAANG para retenerlo esas 8 semanas críticas.", score: 0, type: "Desesperado (Insostenible)" },
+        { id: 'B', text: "Knowledge Transfer Intensivo: Las próximas 2 semanas son SOLO documentación, grabación de Looms, sesiones de pair design con el siguiente senior, y traspaso estructurado. Nada de features nuevas.", score: 5, type: "Lead (Minimiza Pérdida)" },
+        { id: 'C', text: "Contratar un freelance senior urgentemente para que trabaje en paralelo estas 2 semanas y aprenda observando.", score: 2, type: "Costoso (Curva de aprendizaje)" }
+      ],
+      explanation: "Contraatacar con dinero (A) genera resentimiento si cedes bajo presión. La opción B maximiza la transferencia de conocimiento estructurado en el tiempo limitado disponible."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 18 - DATA-DRIVEN DESIGN ---
+    {
+      id: 'data_contradictory_qualitative_quantitative',
+      category: "Data-Driven Design",
+      icon: <BarChart2 className="w-6 h-6 text-green-600" />,
+      scenario: "El research cualitativo (entrevistas con 15 usuarios) dice que odian el nuevo flujo de checkout. Pero el A/B test cuantitativo muestra un aumento del 8% en conversión. Product dice 'los números no mienten'.",
+      question: "¿Cómo concilias la contradicción?",
+      options: [
+        { id: 'A', text: "Priorizar la data cuantitativa. La conversión subió, eso es lo único que importa para el negocio.", score: 0, type: "Miope (Ignora calidad)" },
+        { id: 'B', text: "Análisis de Cohortes: Investigar si el aumento de conversión viene de nuevos usuarios (que no conocen la versión vieja) vs usuarios recurrentes. Podríamos estar optimizando para una sola vez a costa de la retención.", score: 5, type: "Lead (Profundidad Analítica)" },
+        { id: 'C', text: "Mantener el diseño nuevo pero abrir un backlog de mejoras UX basadas en el feedback cualitativo para iterar después.", score: 2, type: "Compromiso (No resuelve la tensión)" }
+      ],
+      explanation: "Un incremento de conversión puede ser a corto plazo si degrada la experiencia. La opción B busca entender QUIÉN convierte más y si hay trade-offs ocultos en retención o NPS."
+    },
+    {
+      id: 'data_analytics_instrumentation_debt',
+      category: "Data-Driven Design",
+      icon: <Code className="w-6 h-6 text-blue-500" />,
+      scenario: "Lanzaste 5 features nuevas en los últimos 2 meses, pero ninguna tiene tracking de eventos implementado. No puedes medir su impacto. Ingeniería dice que 'no hubo tiempo' para agregar analytics.",
+      question: "¿Cómo prevenis que esto vuelva a pasar?",
+      options: [
+        { id: 'A', text: "Crear un ticket de 'Analytics Sprint' para instrumentar todo retroactivamente.", score: 2, type: "Reactivo (Nunca se prioriza)" },
+        { id: 'B', text: "Definition of Done: Cambiar el proceso para que NINGUNA feature se considere 'completada' sin eventos de tracking implementados y validados en staging. Bloqueo de QA.", score: 5, type: "Lead (Cambio de Proceso)" },
+        { id: 'C', text: "Contratar un Data Analyst dedicado para que sea responsable de implementar el tracking.", score: 2, type: "Bandaid (No resuelve cultura)" }
+      ],
+      explanation: "Arreglar retroactivamente (A) nunca se hace. Contratar (C) no cambia la cultura. La opción B hace que el tracking sea un requerimiento no negociable del flujo de desarrollo."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 19 - PRODUCTO VS VENTAS ---
+    {
+      id: 'sales_promise_impossible_timeline',
+      category: "Producto vs Ventas",
+      icon: <Briefcase className="w-6 h-6 text-blue-700" />,
+      scenario: "El equipo de Ventas prometió a un cliente Enterprise una integración con Salesforce 'en 3 semanas' para cerrar un contrato de $800K. El tech lead dice que realistamente toma 3 meses construirla bien.",
+      question: "¿Cómo manejas la desconexión entre expectativa y realidad?",
+      options: [
+        { id: 'A', text: "Forzar al equipo a hacer un MVP sucio en 3 semanas trabajando overtime para no perder el contrato.", score: 0, type: "Burnout Factory (Deuda técnica brutal)" },
+        { id: 'B', text: "Renegociación con el Cliente: Ventas y Product van juntos a ofrecer un plan de entrega por fases (integración básica en 3 semanas, features completas en 3 meses). Transparencia > Promesas rotas.", score: 5, type: "Lead (Realismo Profesional)" },
+        { id: 'C', text: "Buscar una solución no-code temporal (Zapier, Make) para cumplir la promesa mientras construyes la integración real en paralelo.", score: 2, type: "Parche Creativo (Funcional pero no escalable)" }
+      ],
+      explanation: "Prometer lo imposible y luego fallar (A) destruye la confianza del cliente Y del equipo. La opción B gestiona expectativas con honestidad profesional desde el principio."
+    },
+    {
+      id: 'sales_discount_feature_negotiation',
+      category: "Producto vs Ventas",
+      icon: <Target className="w-6 h-6 text-red-500" />,
+      scenario: "Ventas ofreció un 40% de descuento anual a un cliente a cambio de construir una feature específica de reporting que ellos necesitan. El cliente aceptó. Ahora Product debe entregarla en 2 meses sin haber participado en la negociación.",
+      question: "¿Cómo estableces límites para que esto no vuelva a pasar?",
+      options: [
+        { id: 'A', text: "Aceptar el compromiso pero escalar con el CEO para prohibir que Ventas prometa features sin aprobación de Product.", score: 2, type: "Reactivo (Cierra la puerta tarde)" },
+        { id: 'B', text: "Proceso de 'Deal Desk': Crear un comité obligatorio de Product + Engineering + Sales que debe aprobar CUALQUIER customización antes de que se cierre el contrato. Ventas no puede prometer unilateralmente.", score: 5, type: "Lead (Proceso de Gobernanza)" },
+        { id: 'C', text: "Construir la feature pero cobrar internamente a Ventas el costo de oportunidad (qué features del roadmap se retrasan por esto).", score: 2, type: "Político (No previene)" }
+      ],
+      explanation: "Quejarse después (A) no cambia nada. La opción B institucionaliza un proceso donde Product es stakeholder obligatorio en negociaciones que afectan el roadmap."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 20 - GESTIÓN DE TALENTO ---
+    {
+      id: 'talent_flight_risk_retention',
+      category: "Gestión de Talento",
+      icon: <Users className="w-6 h-6 text-purple-600" />,
+      scenario: "Detectas señales de que un diseñador Mid-Level está siendo reclutado activamente (actualización de LinkedIn, reuniones misteriosas, menos engagement). Es un momento crítico del proyecto y no puedes darte el lujo de perderlo.",
+      question: "¿Cómo intervienes preventivamente?",
+      options: [
+        { id: 'A', text: "Ofrecerle un aumento de sueldo preemptivo del 15% y un título de Senior para retenerlo.", score: 0, type: "Parche Costoso (Sin diagnóstico)" },
+        { id: 'B', text: "Conversación de Career Path: 1-on-1 honesto preguntando directamente por su satisfacción, visión de carrera y qué necesitaría para quedarse. Diagnosticar si es $ o crecimiento o cultura.", score: 5, type: "Lead (Escucha Activa)" },
+        { id: 'C', text: "Asignarle el proyecto más interesante del roadmap para re-engancharlo emocionalmente.", score: 2, type: "Incentivo Táctico (Temporal)" }
+      ],
+      explanation: "Tirar dinero (A) sin entender la causa subyacente no funciona. La opción B diagnostica la raíz del problema (¿es compensación, aburrimiento, falta de crecimiento?) antes de actuar."
+    },
+    {
+      id: 'talent_diversity_hiring_pressure',
+      category: "Gestión de Talento",
+      icon: <Search className="w-6 h-6 text-indigo-500" />,
+      scenario: "RRHH presiona para que contrates con 'cuotas de diversidad' (50% mujeres, minorías). Tuviste 8 candidatos en el último proceso: 6 hombres excelentes, 2 mujeres con skills levemente por debajo del nivel que buscas.",
+      question: "¿Cómo balanceas meritocracia y diversidad?",
+      options: [
+        { id: 'A', text: "Contratar al mejor candidato puro basado en skills, sin considerar género. La meritocracia no debe comprometerse.", score: 0, type: "Ignora el sesgo sistémico" },
+        { id: 'B', text: "Pipeline Fix: Rechazar a todos y reiniciar el proceso de reclutamiento expandiendo las fuentes (comunidades de mujeres en diseño, bootcamps diversos) para tener un pool más balanceado desde el inicio.", score: 5, type: "Lead (Ataca el Problema Raíz)" },
+        { id: 'C', text: "Contratar a una de las candidatas mujeres y darle un plan de onboarding intensivo para nivelarla rápidamente.", score: 2, type: "Diversity Hire (Riesgoso para ambos)" }
+      ],
+      explanation: "Si tu pipeline siempre es 80% hombres, el sesgo está en el sourcing, no en la evaluación. La opción B ataca la raíz del problema antes de tener que elegir."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 21 - GESTIÓN DE STAKEHOLDERS ---
+    {
+      id: 'stakeholder_ceo_personal_opinion',
+      category: "Gestión de Stakeholders",
+      icon: <Briefcase className="w-6 h-6 text-blue-700" />,
+      scenario: "Presentas un diseño final al CEO después de 3 sprints de investigación y validación. Su feedback: 'No me gusta el color verde, mi esposa tampoco. Cámbialo a azul'. No hay argumento de negocio, solo preferencia personal.",
+      question: "¿Cómo respondes sin quemar tu capital político?",
+      options: [
+        { id: 'A', text: "Cambias a azul inmediatamente. Al final del día, el CEO tiene la última palabra.", score: 0, type: "Sumiso (Invalida el proceso)" },
+        { id: 'B', text: "Data-Driven Pushback: 'Entiendo la preferencia estética. ¿Podemos hacer un A/B test de 1 semana entre verde y azul para validar cuál performa mejor con usuarios reales antes de commitear?'.", score: 5, type: "Lead (Redirige a Evidencia)" },
+        { id: 'C', text: "Ofrecer un compromiso: Un tono de verde más azulado (verde-agua) que satisfaga parcialmente su preferencia.", score: 2, type: "Negociador (Salomónico)" }
+      ],
+      explanation: "Ceder a caprichos personales (A) establece un precedente peligroso. La opción B redirige la decisión desde opinión a evidencia sin confrontar directamente al CEO."
+    },
+    {
+      id: 'stakeholder_legal_vs_ux_tension',
+      category: "Gestión de Stakeholders",
+      icon: <ShieldAlert className="w-6 h-6 text-orange-600" />,
+      scenario: "Legal exige que cada feature tenga un disclaimer de 2 párrafos visible antes de usar. UX Research muestra que nadie lee esos textos y aumentan la fricción un 30%. Legal no cede porque 'es riesgo regulatorio'.",
+      question: "¿Cómo medias entre compliance y experiencia?",
+      options: [
+        { id: 'A', text: "Sided with Legal. El riesgo legal es más importante que la fricción de UX.", score: 0, type: "Rendición (UX destruida)" },
+        { id: 'B', text: "Workshop de Soluciones: Reúnes a Legal + UX + Product para co-diseñar alternativas que cumplan ambos objetivos (ej: disclaimer colapsado con checkbox 'He leído', tooltips contextuales, videos cortos).", score: 5, type: "Lead (Facilitador de Soluciones)" },
+        { id: 'C', text: "Mostrar el disclaimer solo en el primer uso y luego ocultarlo para usuarios recurrentes.", score: 2, type: "Workaround (Legal puede objetar)" }
+      ],
+      explanation: "Legal y UX no son enemigos si colaboran. La opción B crea un espacio de problem-solving conjunto en lugar de guerra de trincheras."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 22 - ESTRATEGIA DE PRODUCTO ---
+    {
+      id: 'strategy_platform_vs_feature_focus',
+      category: "Estrategia de Producto",
+      icon: <Target className="w-6 h-6 text-red-500" />,
+      scenario: "El CEO quiere convertir el producto en una 'plataforma' con APIs públicas, marketplace de integraciones y white labeling. Actualmente tienen 500 clientes y el core product aún tiene bugs básicos de usabilidad sin resolver.",
+      question: "¿Cuál es tu recomendación estratégica?",
+      options: [
+        { id: 'A', text: "Apoyar la visión de plataforma. Pensar en grande es lo que diferencia a los ganadores.", score: 0, type: "Visionario sin fundamento" },
+        { id: 'B', text: "Product-Market Fit First: Argumentar que antes de ser plataforma, deben dominar su caso de uso core. Las plataformas se construyen DESPUÉS de tener tracción sólida, no antes.", score: 5, type: "Lead (Secuenciación Estratégica)" },
+        { id: 'C', text: "Proponer construir solo las APIs públicas (lo más fácil) y posponer marketplace/white-label.", score: 2, type: "Compromiso (Diluye el foco igual)" }
+      ],
+      explanation: "Muchas startups mueren intentando ser plataforma demasiado pronto. La opción B secuencia: primero dominar el vertical, luego expandir la superficie de ataque."
+    },
+    {
+      id: 'strategy_competitor_feature_parity',
+      category: "Estrategia de Producto",
+      icon: <Zap className="w-6 h-6 text-yellow-600" />,
+      scenario: "El competidor principal acaba de lanzar 10 features nuevas en un mega-release. Product Manager entra en pánico y quiere copiar todas las features para 'no quedarse atrás' en la matriz de comparación.",
+      question: "¿Cómo evalúas qué copiar y qué ignorar?",
+      options: [
+        { id: 'A', text: "Auditoría de Churn: Analizar si perdiste clientes citando esas features específicas. Si no hay evidencia de pérdida, no es urgente.", score: 5, type: "Lead (Evidence-Based)" },
+        { id: 'B', text: "Copiar las 3-4 features más visibles para actualizar la página de comparación y calmar a Ventas.", score: 2, type: "Defensivo (Feature parity race)" },
+        { id: 'C', text: "Ignorar al competidor completamente y seguir tu roadmap original. El foco es más importante que la reacción.", score: 2, type: "Dogmático (Puede ser arriesgado)" }
+      ],
+      explanation: "Copiar por pánico (B) te convierte en follower. Ignorar completamente (C) puede ser ingenuo. La opción A usa data de churn para priorizar racionalmente."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 23 - DESIGN OPS ---
+    {
+      id: 'designops_figma_file_chaos',
+      category: "Design Ops",
+      icon: <Layers className="w-6 h-6 text-cyan-600" />,
+      scenario: "El workspace de Figma es un caos: 400 archivos sin nombrar bien, duplicados, versiones antiguas mezcladas con nuevas. Nadie encuentra nada y pierden 30 minutos diarios buscando archivos.",
+      question: "¿Cómo implementas orden sin frenar la operación?",
+      options: [
+        { id: 'A', text: "Asignar 1 semana completa de 'Cleanup Sprint' donde nadie diseña, solo organizan archivos.", score: 0, type: "Utópico (Nunca se aprueba)" },
+        { id: 'B', text: "Naming Convention + Archivo + Governance: Crear una estructura de carpetas obligatoria, template de nombres, y asignar 'File Owners'. Migrar archivos activos gradualmente mientras archivas los legacy.", score: 5, type: "Lead (Sistema Sostenible)" },
+        { id: 'C', text: "Contratar un Design Ops Manager para que se encargue de mantener el orden.", score: 2, type: "Delegación (Funciona si tienes $)" }
+      ],
+      explanation: "El cleanup masivo (A) nunca pasa. La opción B crea un sistema con roles y reglas que previene que el caos vuelva a crecer."
+    },
+    {
+      id: 'designops_version_control_disaster',
+      category: "Design Ops",
+      icon: <RotateCcw className="w-6 h-6 text-orange-500" />,
+      scenario: "Un diseñador borró accidentalmente 3 días de trabajo en Figma y la funcionalidad de Version History no va tan atrás. No hay backup. El deadline es mañana.",
+      question: "¿Cómo prevenis que vuelva a pasar?",
+      options: [
+        { id: 'A', text: "Implementar un plugin de auto-backup diario de archivos críticos a Google Drive.", score: 5, type: "Lead (Safety Net)" },
+        { id: 'B', text: "Capacitar al equipo en el uso correcto de Version History y hacer recordatorios semanales.", score: 2, type: "Educativo (No previene accidentes)" },
+        { id: 'C', text: "Duplicar manualmente los archivos importantes cada viernes como política de equipo.", score: 2, type: "Manual (No escalable)" }
+      ],
+      explanation: "Confiar en la memoria humana (B, C) falla eventualmente. La opción A automatiza el backup para que sea imposible perder trabajo sin importar errores humanos."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 24 - CULTURA DE DISEÑO ---
+    {
+      id: 'cultura_credit_stealing_conflict',
+      category: "Cultura de Diseño",
+      icon: <Star className="w-6 h-6 text-yellow-500" />,
+      scenario: "Un diseñador junior hizo el 80% del trabajo de un feature exitoso, pero en el All-Hands el diseñador senior que lo supervisó presentó el caso de estudio sin mencionar al junior. El junior está furioso.",
+      question: "¿Cómo manejas esta violación de cultura?",
+      options: [
+        { id: 'A', text: "Hablar en privado con el senior para pedirle que dé crédito la próxima vez.", score: 2, type: "Suave (Sin consecuencia)" },
+        { id: 'B', text: "Intervención Pública + Privada: Enviar un mensaje en Slack dando crédito explícito al junior post-presentación. Luego hablar con el senior sobre valores de equipo y hacer clear que repetirlo tiene consecuencias.", score: 5, type: "Lead (Restaura Justicia + Educación)" },
+        { id: 'C', text: "Dejar que ellos lo resuelvan entre sí como adultos.", score: 0, type: "Evasivo (Normaliza el abuso)" }
+      ],
+      explanation: "Robar crédito es tóxico y debe corregirse visiblemente. La opción B restaura la justicia públicamente y educa al senior sobre las consecuencias de esa conducta."
+    },
+    {
+      id: 'cultura_remote_office_divide',
+      category: "Cultura de Diseño",
+      icon: <Globe className="w-6 h-6 text-blue-400" />,
+      scenario: "El equipo está dividido: 3 diseñadores en la oficina (que colaboran todo el día) y 2 remotos (que sienten que se pierden decisiones y contexto). Empieza a haber resentimiento.",
+      question: "¿Cómo nivelar el campo de juego?",
+      options: [
+        { id: 'A', text: "Pedir a todos que vuelvan a la oficina para mantener la cohesión.", score: 0, type: "Autoritario (Pierde talento remoto)" },
+        { id: 'B', text: "Remote-First Practices: TODAS las decisiones se documentan por escrito (Notion/Slack), TODAS las reuniones se graban, y se establece una regla: si hay 1 persona remota, TODOS se conectan desde su laptop (no sala de conferencia).", score: 5, type: "Lead (Nivel Playing Field)" },
+        { id: 'C', text: "Rotar: 1 semana al mes todos trabajan remoto para que los de oficina 'entiendan la experiencia'.", score: 2, type: "Experimental (No resuelve estructura)" }
+      ],
+      explanation: "Forzar presencialidad (A) es regresivo. La opción B cambia los defaults del equipo para que el trabajo asíncrono y documentado sea el estándar, no la excepción."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 25 - COLABORACIÓN CON INGENIERÍA ---
+    {
+      id: 'engineering_technical_constraints_creative',
+      category: "Colaboración con Ingeniería",
+      icon: <Code className="w-6 h-6 text-blue-500" />,
+      scenario: "Diseñaste un scroll parallax hermoso para la landing page. El tech lead dice que 'mata la performance en mobile' y los tests muestran un aumento de 2 segundos en el load time.",
+      question: "¿Qué priorizas: la experiencia visual o la performance?",
+      options: [
+        { id: 'A', text: "Mantener el parallax. Los 2 segundos extra valen la pena por la diferenciación visual.", score: 0, type: "Ego sobre Datos (UX rota)" },
+        { id: 'B', text: "Progressive Enhancement: Implementar el parallax solo en desktop/tablets y usar una versión estática optimizada en mobile. Adaptas la experiencia al contexto técnico.", score: 5, type: "Lead (Pragmatismo Contextual)" },
+        { id: 'C', text: "Simplificar el diseño completamente para que funcione igual en todas las plataformas sin parallax.", score: 2, type: "Conservador (Pierde diferenciación)" }
+      ],
+      explanation: "2 segundos de load en mobile matan la conversión. La opción B reconoce que no todas las plataformas necesitan la misma implementación si las capacidades técnicas difieren."
+    },
+    {
+      id: 'engineering_designer_code_boundary',
+      category: "Colaboración con Ingeniería",
+      icon: <Layers className="w-6 h-6 text-indigo-600" />,
+      scenario: "Un diseñador del equipo aprendió React y empezó a hacer pull requests directamente al código para 'agilizar' el proceso. Los desarrolladores se quejan de que el código no sigue los estándares y genera bugs.",
+      question: "¿Cómo estableces límites saludables?",
+      options: [
+        { id: 'A', text: "Prohibir que diseñadores toquen el código. Cada rol tiene su expertise.", score: 0, type: "Silo Rígido (Mata colaboración)" },
+        { id: 'B', text: "Code Review Obligatorio: Permitir que los diseñadores contribuyan código, pero SIEMPRE debe pasar por revisión de un developer senior antes de mergear. Upskilling con guardrails.", score: 5, type: "Lead (Colaboración con Calidad)" },
+        { id: 'C', text: "Crear un repositorio separado de 'Design Experiments' donde puedan codear libremente sin afectar producción.", score: 2, type: "Sandbox (Desconectado de impacto real)" }
+      ],
+      explanation: "Prohibir (A) mata la iniciativa. La opción B permite el aprendizaje y contribución mientras mantiene la calidad del código a través de procesos existentes."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 26 - BIENESTAR DEL EQUIPO ---
+    {
+      id: 'bienestar_toxic_positivity_culture',
+      category: "Bienestar del Equipo",
+      icon: <Heart className="w-6 h-6 text-pink-500" />,
+      scenario: "Después de un trimestre brutal con 3 deadlines imposibles, la empresa organiza una 'Fiesta de Celebración' obligatoria. El equipo está exhausto y preferiría descansar. RRHH insiste en que 'es importante para la cultura'.",
+      question: "¿Cómo abordas la desconexión entre la intención y la realidad?",
+      options: [
+        { id: 'A', text: "Forzar la asistencia del equipo. Es solo 2 horas y puede ayudar a relajarse.", score: 0, type: "Toxic Positivity (Ignora agotamiento)" },
+        { id: 'B', text: "Negociar con RRHH: Hacer la 'celebración' opcional y ofrecer como alternativa un día libre compensatorio para quienes prefieran descansar. Respeto por la autonomía.", score: 5, type: "Lead (Escucha Real)" },
+        { id: 'C', text: "Asistir tú mismo pero decirle al equipo en privado que no vayan si no quieren.", score: 2, type: "Hipocresía (Mensaje confuso)" }
+      ],
+      explanation: "Forzar celebraciones cuando el equipo está quemado (A) es contraproducente. La opción B reconoce que diferentes personas se recuperan de formas distintas."
+    },
+    {
+      id: 'bienestar_perfectionism_junior',
+      category: "Bienestar del Equipo",
+      icon: <Coffee className="w-6 h-6 text-brown-600" />,
+      scenario: "Una diseñadora junior está re-haciendo un componente por quinta vez porque 'no se ve perfecto'. Ha pasado 2 días en algo que debía tomar 4 horas. El perfeccionismo la está paralizando.",
+      question: "¿Cómo intervienes para desbloquearla?",
+      options: [
+        { id: 'A', text: "Dejarla continuar. El perfeccionismo es señal de estándares altos.", score: 0, type: "Enabler (Refuerza el vicio)" },
+        { id: 'B', text: "Timeboxing + 'Good Enough': Establecer un límite de 1 hora más y luego shippearlo como está. Enseñarle que 'shipped imperfect' > 'perfect pero nunca lanzado'.", score: 5, type: "Lead (Enseña Pragmatismo)" },
+        { id: 'C', text: "Tomar el archivo tú mismo y finalizarlo para quitarle la presión.", score: 2, type: "Rescate (No aprende)" }
+      ],
+      explanation: "El perfeccionismo no gestionado mata la productividad. La opción B enseña que el progreso iterativo es más valioso que la perfección paralizante."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 27 - ARQUITECTURA DE SISTEMAS ---
+    {
+      id: 'arquitectura_monorepo_vs_separate_systems',
+      category: "Arquitectura de Sistemas",
+      icon: <Layers className="w-6 h-6 text-cyan-600" />,
+      scenario: "Tienes 3 productos diferentes (Web App, Mobile App, Marketing Site) cada uno con su propio Design System en Figma. Empiezan a divergir visualmente y duplicas trabajo. Ingeniería pregunta si deberían compartir componentes.",
+      question: "¿Cuál es tu estrategia de consolidación?",
+      options: [
+        { id: 'A', text: "Mantenerlos separados. Cada producto tiene necesidades diferentes.", score: 0, type: "Silos (Duplicación eterna)" },
+        { id: 'B', text: "Design System Core + Product Extensions: Crear una librería base compartida con primitivos (colores, tipografía, componentes básicos) y permitir que cada producto extienda con sus propios componentes específicos.", score: 5, type: "Lead (Shared Foundation)" },
+        { id: 'C', text: "Forzar un único Design System para todo. Total estandarización.", score: 2, type: "Rígido (No refleja realidad)" }
+      ],
+      explanation: "Sistemas completamente separados (A) duplican trabajo. Un único sistema (C) no reconoce necesidades específicas. La opción B balancea consistencia y flexibilidad."
+    },
+    {
+      id: 'arquitectura_atomic_design_complexity',
+      category: "Arquitectura de Sistemas",
+      icon: <Code className="w-6 h-6 text-blue-500" />,
+      scenario: "Implementaste Atomic Design (Átomos > Moléculas > Organismos > Templates). Ahora el equipo pasa más tiempo debatiendo 'si X es una molécula o un organismo' que diseñando. La taxonomía se volvió un obstáculo.",
+      question: "¿Cómo simplificas sin perder estructura?",
+      options: [
+        { id: 'A', text: "Mantener Atomic Design pero hacer un workshop de alineación para que todos entiendan la clasificación correcta.", score: 0, type: "Dogmático (El problema es el sistema)" },
+        { id: 'B', text: "Simplificación Pragmática: Colapsar a solo 2 categorías (Primitives + Components). Si un equipo gasta más energía en la taxonomía que en el diseño, la taxonomía está sobrediseñada.", score: 5, type: "Lead (Utilidad > Pureza)" },
+        { id: 'C', text: "Eliminar toda la estructura y dejar que cada quien organice como quiera.", score: 0, type: "Caos (Pierde la arquitectura)" }
+      ],
+      explanation: "Atomic Design puede ser over-engineering para muchos equipos. La opción B reconoce que el sistema debe servir al equipo, no al revés."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 28 - ÉTICA DE DISEÑO ---
+    {
+      id: 'etica_gambling_mechanics_gamification',
+      category: "Ética de Diseño",
+      icon: <AlertTriangle className="w-6 h-6 text-red-600" />,
+      scenario: "Product quiere agregar 'loot boxes' o recompensas aleatorias al producto para aumentar engagement. El mecanismo es idéntico al de apps de gambling. Los usuarios objetivo incluyen menores de edad.",
+      question: "¿Dónde trazas la línea ética?",
+      options: [
+        { id: 'A', text: "Implementarlo. Gamification es una técnica válida de producto y está en todas las apps exitosas.", score: 0, type: "Cómplice (Explotación)" },
+        { id: 'B', text: "Rechazo con Alternativa: Rechazar mecánicas de azar y proponer sistemas de progreso predecibles (badges, niveles basados en logros) que recompensen la acción sin crear adicción.", score: 5, type: "Lead (Engagement Ético)" },
+        { id: 'C', text: "Aceptarlo pero con un disclaimer de 'Este feature puede crear hábitos'.", score: 0, type: "Disclaimer washing (No cambia nada)" }
+      ],
+      explanation: "Las mecánicas de gambling están diseñadas para crear adicción. La opción B busca engagement genuino sin explotar vulnerabilidades psicológicas, especialmente en menores."
+    },
+    {
+      id: 'etica_ai_generated_fake_testimonials',
+      category: "Ética de Diseño",
+      icon: <Brain className="w-6 h-6 text-teal-500" />,
+      scenario: "Marketing te pide usar testimonials generados con AI (fotos falsas de 'clientes') porque no tienen suficientes testimoniales reales aún. Argumentan que 'representan la experiencia que los usuarios TENDRÍAN'.",
+      question: "¿Qué implementas?",
+      options: [
+        { id: 'A', text: "Usar los testimoniales AI. Son indistinguibles de reales y ayudan a la conversión.", score: 0, type: "Fraude (Destruye confianza)" },
+        { id: 'B', text: "No testimoniales > Testimoniales Falsos: Diseñar la landing sin testimoniales o usar 'early adopter reviews' reales aunque sean solo 2. La autenticidad construye confianza a largo plazo.", score: 5, type: "Lead (Integridad)" },
+        { id: 'C', text: "Usar los testimoniales AI pero agregar un disclaimer pequeño de 'Representaciones ilustrativas'.", score: 0, type: "Transparencia falsa (Sigue siendo engañoso)" }
+      ],
+      explanation: "Los usuarios eventualmente descubren los testimoniales falsos. Perder esa confianza es devastador. La opción B construye credibilidad desde la honestidad."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 29 - VALIDACIÓN ÁGIL ---
+    {
+      id: 'validacion_prototype_vs_pixel_perfect',
+      category: "Validación Ágil",
+      icon: <Zap className="w-6 h-6 text-yellow-600" />,
+      scenario: "Necesitas validar un concepto nuevo con usuarios. Un diseñador quiere hacer un prototipo de alta fidelidad pixel-perfect que tomará 3 días. Otro propone hacer un wireframe interactivo en Figma que toma 3 horas.",
+      question: "¿Qué nivel de fidelidad es apropiado para validación temprana?",
+      options: [
+        { id: 'A', text: "Alta fidelidad. Los usuarios no pueden opinar correctamente sobre wireframes feos.", score: 0, type: "Perfeccionista (Desperdicia tiempo)" },
+        { id: 'B', text: "Fidelidad Mínima Testeable: Wireframes interactivos son suficientes para validar flujo y lógica. La estética se pulirá DESPUÉS de validar que el concepto funciona.", score: 5, type: "Lead (Lean Validation)" },
+        { id: 'C', text: "Mid-fidelity: Un punto medio con algunos colores y tipografía pero sin pulir cada pixel.", score: 2, type: "Compromiso (Toma más tiempo)" }
+      ],
+      explanation: "En validación temprana, gastar 3 días en fidelidad visual es prematuro. La opción B valida la hipótesis crítica (¿el flujo funciona?) antes de invertir en pulido."
+    },
+    {
+      id: 'validacion_research_synthesis_paralysis',
+      category: "Validación Ágil",
+      icon: <Search className="w-6 h-6 text-indigo-500" />,
+      scenario: "Después de 15 entrevistas con usuarios, tienes 200 páginas de notas y insights. El equipo está esperando tus recomendaciones pero te sientes abrumado con tanta data y no sabes cómo sintetizarla rápidamente.",
+      question: "¿Cómo priorizas los insights para acción inmediata?",
+      options: [
+        { id: 'A', text: "Tomarte 1 semana para hacer un reporte exhaustivo con todos los findings, gráficos y quotes.", score: 0, type: "Análisis paralítico (Pierde momentum)" },
+        { id: 'B', text: "Impact-Effort Matrix: Identificar los 3 insights que más se repitieron Y que tienen solución viable. Presentarlos en 1 slide con 'Top 3 Actions' en lugar de reporte completo.", score: 5, type: "Lead (Actionable Insights)" },
+        { id: 'C', text: "Hacer una sesión de co-análisis con el equipo completo para que todos lean las notas juntos.", score: 2, type: "Democrático (Lento)" }
+      ],
+      explanation: "El research que no se convierte en acción es desperdicio. La opción B prioriza velocidad de decisión sobre exhaustividad académica."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 30 - MENTORÍA & CRECIMIENTO ---
+    {
+      id: 'mentoria_delegation_fear_control',
+      category: "Mentoría & Crecimiento",
+      icon: <Star className="w-6 h-6 text-yellow-500" />,
+      scenario: "Tienes un proyecto crítico y puedes delegarlo a tu Mid-Level designer o hacerlo tú mismo. Delegar le daría crecimiento pero existe riesgo de que no alcance tu estándar de calidad y tengas que rehacer parte del trabajo.",
+      question: "¿Cómo balanceas desarrollo de talento vs riesgo?",
+      options: [
+        { id: 'A', text: "Hacerlo tú mismo. El proyecto es demasiado importante para arriesgarlo.", score: 0, type: "Cuello de Botella (No escala)" },
+        { id: 'B', text: "Delegación con Checkpoints: Asignar el proyecto pero establecer 3 puntos de revisión (Concepto, Wireframes, Alta Fidelidad) para dar feedback temprano y corregir curso sin perder control total.", score: 5, type: "Lead (Coaching Estructurado)" },
+        { id: 'C', text: "Delegarlo completamente sin supervisión para demostrar confianza.", score: 2, type: "Naive Trust (Alto riesgo)" }
+      ],
+      explanation: "Delegar sin estructura (C) es negligencia. Hacerlo todo tú (A) impide el crecimiento del equipo. La opción B permite aprendizaje con safety nets."
+    },
+    {
+      id: 'mentoria_career_path_ic_vs_management',
+      category: "Mentoría & Crecimiento",
+      icon: <Users className="w-6 h-6 text-purple-600" />,
+      scenario: "Un diseñador Senior te dice que quiere ser manager 'porque es el siguiente paso natural'. Pero observas que es introvertido, odia las reuniones y brilla cuando diseña solo. Sospechas que busca el título, no el rol.",
+      question: "¿Cómo lo orientas?",
+      options: [
+        { id: 'A', text: "Darle la oportunidad de ser manager. La única forma de saber si le gusta es probarlo.", score: 0, type: "Experimento costoso (Arruina al diseñador Y al equipo)" },
+        { id: 'B', text: "Presentar IC Track: Explicarle que existe un camino de Staff Designer / Principal Designer (Individual Contributor senior) con igual compensación y prestigio que management, enfocado en craft y liderazgo técnico.", score: 5, type: "Lead (Career Path Clarity)" },
+        { id: 'C', text: "Proponerle liderar un proyecto como 'Design Lead' temporal para probar sus habilidades de coordinación.", score: 2, type: "Piloto (Confunde Lead con Manager)" }
+      ],
+      explanation: "Muchos diseñadores creen que management es la única progresión. La opción B abre los ojos a un track IC que premia excelencia sin forzar un cambio de rol que no es natural."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 31 - INNOVACIÓN & AI ---
+    {
+      id: 'ai_design_automation_job_threat',
+      category: "Innovación & AI",
+      icon: <Brain className="w-6 h-6 text-teal-500" />,
+      scenario: "Un diseñador junior está aterrado porque vio que Midjourney genera interfaces en segundos. Pregunta si 'los diseñadores van a ser reemplazados por AI'. El resto del equipo también está nervioso.",
+      question: "¿Cómo recontextualizas el rol del diseñador ante la AI?",
+      options: [
+        { id: 'A', text: "Minimizar el miedo: 'La AI nunca podrá reemplazar la creatividad humana'. Negar la amenaza.", score: 0, type: "Negación (Pierde credibilidad)" },
+        { id: 'B', text: "Shift de Skills: 'La AI automatiza la ejecución, no la estrategia. Nuestro valor está en entender al usuario, el negocio y el contexto. Usen AI como asistente de ejecución, no como amenaza.'", score: 5, type: "Lead (Reframe Constructivo)" },
+        { id: 'C', text: "Prohibir el uso de herramientas de AI en el equipo para proteger el craft.", score: 0, type: "Ludita (Retrasa la evolución)" }
+      ],
+      explanation: "Negar la AI (A) o prohibirla (C) es miope. La opción B ayuda al equipo a entender que el diseño es problem-solving, no solo pixel-pushing."
+    },
+    {
+      id: 'ai_personalization_ethical_limit',
+      category: "Innovación & AI",
+      icon: <Lock className="w-6 h-6 text-slate-700" />,
+      scenario: "Tienes capacidad de usar AI para personalizar la UI de cada usuario basado en su comportamiento histórico (colores, layout, CTAs). Aumentaría conversión un 15% pero requiere tracking intensivo y perfiles psicológicos.",
+      question: "¿Hasta dónde llevas la personalización?",
+      options: [
+        { id: 'A', text: "Implementarlo completamente. 15% de conversión es enorme y la personalización es el futuro.", score: 0, type: "Surveillance Capitalism (Sin ética)" },
+        { id: 'B', text: "Personalización Transparente con Opt-In: Ofrecer la experiencia personalizada como una opción que el usuario ELIGE activar después de explicarle qué datos se usan y cómo.", score: 5, type: "Lead (Privacy by Design)" },
+        { id: 'C', text: "Solo personalizar cosas menores (tema claro/oscuro, idioma) sin tocar comportamiento psicológico.", score: 2, type: "Conservador (Deja valor sobre la mesa)" }
+      ],
+      explanation: "La personalización sin consentimiento (A) es manipulación. La opción B da poder al usuario de elegir si quiere esa experiencia, convirtiendo una táctica opaca en una feature transparente."
+    },
+
+    // --- NUEVAS PREGUNTAS: BLOQUE 32 - ESTRATEGIA DE MIGRACIÓN ---
+    {
+      id: 'migracion_forced_upgrade_user_backlash',
+      category: "Estrategia de Migración",
+      icon: <RefreshCw className="w-6 h-6 text-blue-400" />,
+      scenario: "Lanzas una versión 2.0 del producto con nueva arquitectura y fuerza a todos los usuarios a migrar. El 30% de los power users están furiosos porque removiste features 'legacy' que ellos usaban diariamente.",
+      question: "¿Cómo gestionas la migración forzada?",
+      options: [
+        { id: 'A', text: "Mantener la posición: 'La V2 es superior, eventualmente se acostumbrarán'. Ignorar el feedback.", score: 0, type: "Arrogante (Churn garantizado)" },
+        { id: 'B', text: "Feature Parity Roadmap: Escuchar qué features específicos extrañan, evaluar cuáles son críticos, y comprometerse públicamente a reintroducirlos en V2 en los próximos 2 meses.", score: 5, type: "Lead (Responsive Migration)" },
+        { id: 'C', text: "Ofrecer acceso a la V1 legacy en paralelo para quienes no quieran migrar.", score: 2, type: "Parche (Duplica mantenimiento)" }
+      ],
+      explanation: "Forzar sin escuchar (A) aliena a tus usuarios más leales. Mantener V1 (C) es costoso. La opción B escucha pain real y construye un plan de mitigación concreto."
+    },
+    {
+      id: 'migracion_sunset_product_line',
+      category: "Estrategia de Migración",
+      icon: <XCircle className="w-6 h-6 text-red-600" />,
+      scenario: "La empresa decidió discontinuar un producto que tiene 500 usuarios activos (pequeño pero leal). Tienes 6 meses para migrarlos al producto principal o perderlos. El producto principal no tiene feature parity.",
+      question: "¿Cuál es tu estrategia de sunset?",
+      options: [
+        { id: 'A', text: "Apagar el producto en la fecha anunciada. Los usuarios tuvieron 6 meses de aviso.", score: 0, type: "Corporate Cruelty (Churn 100%)" },
+        { id: 'B', text: "Migration Concierge: Asignar recursos para construir las 3 features más críticas que faltan, crear guías de migración personalizadas y ofrecer sesiones 1-on-1 de onboarding al nuevo producto para clientes de alto valor.", score: 5, type: "Lead (Retención Activa)" },
+        { id: 'C', text: "Ofrecer descuentos del 50% en el nuevo producto a los usuarios afectados como compensación.", score: 2, type: "$$$ (No resuelve el gap de features)" }
+      ],
+      explanation: "500 usuarios pequeños pueden incluir clientes de alto valor o advocates. La opción B trata el sunset como un problema de retención, no solo como un apagado técnico."
     }
   ];
 };

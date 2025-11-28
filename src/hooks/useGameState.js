@@ -2,8 +2,7 @@ import { useState, useCallback } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 import { getQuestionPool } from '../data/questionPool';
 
-const QUESTIONS_PER_SESSION = 24; // TODAS las preguntas en una sola tirada
-const TOTAL_TIME_SECONDS = 5 * 60; // 5 minutos BRUTAL MODE 🔥
+const TOTAL_TIME_SECONDS = 7 * 60; // 7 minutos BRUTAL MODE 🔥
 
 /**
  * Hook personalizado para manejar todo el estado del juego
@@ -26,22 +25,21 @@ export const useGameState = () => {
     const fullPool = getQuestionPool();
     const availableQuestions = fullPool.filter(q => !burnedQuestionIds.includes(q.id));
 
-    // Si no hay suficientes preguntas disponibles, campaña completa
-    if (availableQuestions.length < QUESTIONS_PER_SESSION) {
+    // Si no hay preguntas disponibles, campaña completa
+    if (availableQuestions.length === 0) {
       setGameState('campaign_complete');
       return;
     }
 
-    // Seleccionar y mezclar preguntas
+    // Mezclar todas las preguntas disponibles (sin límite)
     const shuffledAvailable = [...availableQuestions].sort(() => 0.5 - Math.random());
-    const selectedSession = shuffledAvailable.slice(0, QUESTIONS_PER_SESSION);
 
-    // Marcar preguntas como "quemadas" para esta campaña
-    const newBurnedIds = selectedSession.map(q => q.id);
+    // Marcar todas las preguntas disponibles como "quemadas" para esta campaña
+    const newBurnedIds = shuffledAvailable.map(q => q.id);
     setBurnedQuestionIds(prev => [...prev, ...newBurnedIds]);
 
     // Mezclar opciones de cada pregunta
-    const finalQuestions = selectedSession.map(q => ({
+    const finalQuestions = shuffledAvailable.map(q => ({
       ...q,
       options: [...q.options].sort(() => 0.5 - Math.random())
     }));
@@ -51,7 +49,7 @@ export const useGameState = () => {
     setCurrentQuestionIndex(0);
     setAnswers({});
     setTotalScore(0);
-    setMaxPossibleScore(finalQuestions.length * 5);
+    setMaxPossibleScore(0); // Se calculará dinámicamente según preguntas respondidas
     setGameState('test');
   }, [burnedQuestionIds, setBurnedQuestionIds]);
 
@@ -71,8 +69,9 @@ export const useGameState = () => {
       }
     }));
 
-    // Actualizar score
+    // Actualizar score y maxPossibleScore dinámicamente
     setTotalScore(prev => prev + selectedOption?.score);
+    setMaxPossibleScore(prev => prev + 5); // Cada pregunta vale máximo 5 puntos
 
     // Avanzar o finalizar
     if (currentQuestionIndex < activeQuestions.length - 1) {
