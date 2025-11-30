@@ -1,39 +1,60 @@
 /**
  * Index de todas las preguntas del simulador
- * NOTA: Este es un trabajo en progreso. 
- * Actualmente solo block-01 está separado, el resto viene del archivo original.
+ * Importa y combina todos los bloques temáticos
  */
 
-import { block01Questions } from './blocks/block-01-strategy-systems-leadership';
-import { getQuestionPool as getOriginalQuestions } from '../questionPool';
-
-// Por ahora, combina el block-01 separado con el resto del archivo original
-const originalQuestions = getOriginalQuestions();
-
-// Filtrar las preguntas que ya están en block-01 para evitar duplicados
-const block01Ids = new Set(block01Questions.map(q => q.id));
-const remainingQuestions = originalQuestions.filter(q => !block01Ids.has(q.id));
+import { block_01_strategy_systems_leadership_questions } from './blocks/block-01-strategy-systems-leadership.jsx';
+import { block_02_research_ethics_collaboration_questions } from './blocks/block-02-research-ethics-collaboration.jsx';
+import { block_03_crisis_data_experimentation_questions } from './blocks/block-03-crisis-data-experimentation.jsx';
+import { block_04_mobile_platforms_handoff_questions } from './blocks/block-04-mobile-platforms-handoff.jsx';
+import { block_05_culture_stakeholders_business_questions } from './blocks/block-05-culture-stakeholders-business.jsx';
+import { block_06_innovation_ethics_crisis_questions } from './blocks/block-06-innovation-ethics-crisis.jsx';
 
 /**
- * Todas las preguntas combinadas
- * TODO: Completar el split de todos los bloques
+ * Combina todas las preguntas en un solo array
  */
 export const allQuestions = [
-    ...block01Questions,      // 12 preguntas ya separadas
-    ...remainingQuestions     // ~84 preguntas restantes del archivo original
+    ...block_01_strategy_systems_leadership_questions,
+    ...block_02_research_ethics_collaboration_questions,
+    ...block_03_crisis_data_experimentation_questions,
+    ...block_04_mobile_platforms_handoff_questions,
+    ...block_05_culture_stakeholders_business_questions,
+    ...block_06_innovation_ethics_crisis_questions
 ];
 
 /**
  * Función helper para obtener preguntas con opciones de filtrado
- * @param {Object} options - Opciones de filtrado
- * @param {boolean} options.shuffle - Mezclar preguntas aleatoriamente
- * @param {string} options.difficulty - Filtrar por dificultad (cuando se agregue metadata)
- * @param {string} options.category - Filtrar por categoría
- * @param {number} options.limit - Limitar cantidad de preguntas
- * @param {string[]} options.excludeIds - IDs de preguntas a excluir
- * @returns {Array} Array de preguntas filtradas
  */
-export { getQuestionPool } from '../questionPool';
+export const getQuestionPool = (options = {}) => {
+    const {
+        shuffle = false,
+        difficulty = 'all',
+        category = 'all',
+        limit = null,
+        excludeIds = []
+    } = options;
 
-// Re-exportar para compatibilidad
-export default allQuestions;
+    let pool = [...allQuestions];
+
+    // Filtrar por categoría
+    if (category !== 'all') {
+        pool = pool.filter(q => q.category === category);
+    }
+
+    // Excluir IDs
+    if (excludeIds.length > 0) {
+        pool = pool.filter(q => !excludeIds.includes(q.id));
+    }
+
+    // Shuffle si se solicita
+    if (shuffle) {
+        pool = pool.sort(() => Math.random() - 0.5);
+    }
+
+    // Limitar cantidad
+    if (limit) {
+        pool = pool.slice(0, limit);
+    }
+
+    return pool;
+};

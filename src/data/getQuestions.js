@@ -1,4 +1,4 @@
-import { getQuestionPool as getOriginalPool } from './questionPool.jsx';
+import { getQuestionPool as getOriginalPool } from './questions/index.js';
 
 /**
  * TIER 1.1 FIX: Shuffle de opciones para romper el "Síndrome de la Opción B"

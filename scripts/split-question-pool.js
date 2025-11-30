@@ -5,8 +5,12 @@
  * Uso: node scripts/split-question-pool.js
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Configuración
 const SOURCE_FILE = path.join(__dirname, '../src/data/questionPool.jsx');
@@ -107,6 +111,8 @@ async function main() {
     console.log('📝 Generando archivos de bloques...\n');
 
     for (const [filename, content] of Object.entries(blocks)) {
+        // Asegurar extensión .jsx
+        const outputFilename = filename.replace('.js', '.jsx');
         const exportName = filename.replace('.js', '').replace(/-/g, '_') + '_questions';
         const title = BLOCK_TITLES[filename];
 
@@ -121,9 +127,9 @@ ${content.join('\n')}
 ];
 `;
 
-        const outputPath = path.join(OUTPUT_DIR, filename);
+        const outputPath = path.join(OUTPUT_DIR, outputFilename);
         fs.writeFileSync(outputPath, fileContent);
-        console.log(`✅ Creado: ${filename}`);
+        console.log(`✅ Creado: ${outputFilename}`);
     }
 
     // Generar index.js
@@ -136,7 +142,8 @@ ${content.join('\n')}
 
 ${Object.keys(blocks).map((filename, i) => {
         const exportName = filename.replace('.js', '').replace(/-/g, '_') + '_questions';
-        return `import { ${exportName} } from './blocks/${filename}';`;
+        const importFilename = filename.replace('.js', '.jsx');
+        return `import { ${exportName} } from './blocks/${importFilename}';`;
     }).join('\n')}
 
 /**
@@ -193,7 +200,9 @@ export const getQuestionPool = (options = {}) => {
     console.log('\n🎉 Split completado exitosamente!');
     console.log('\n📊 Resumen:');
     console.log(`   - ${Object.keys(blocks).length} archivos creados`);
-    console.log(`   - ${allQuestions.length} preguntas distribuidas`);
+    console.log(`   - ${Object.keys(blocks).length} archivos creados`);
+    // console.log(`   - ${allQuestions.length} preguntas distribuidas`); // Variable no disponible aquí
+    console.log(`   - index.js con getQuestionPool() generado`);
     console.log(`   - index.js con getQuestionPool() generado`);
     console.log('\n💡 Próximo paso: Actualizar src/data/questionPool.jsx para importar desde ./questions/index.js');
 }
