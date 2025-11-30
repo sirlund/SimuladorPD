@@ -1,8 +1,8 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 import { getQuestions } from '../data/getQuestions';
 
-const TOTAL_TIME_SECONDS = 7 * 60; // 7 minutos BRUTAL MODE 🔥
+const TOTAL_TIME_SECONDS = 12 * 60; // 12 minutos BRUTAL MODE 🔥
 
 /**
  * Hook personalizado para manejar todo el estado del juego
@@ -107,6 +107,40 @@ export const useGameState = () => {
       maxPossibleScore
     };
   }, [burnedQuestionIds, totalScore, maxPossibleScore]);
+
+  // URL Sync: Update URL when question changes
+  useEffect(() => {
+    if (gameState === 'test' && activeQuestions[currentQuestionIndex]) {
+      const currentQ = activeQuestions[currentQuestionIndex];
+      const url = new URL(window.location);
+      url.searchParams.set('q', currentQ.displayId);
+      window.history.replaceState({}, '', url);
+    }
+  }, [gameState, currentQuestionIndex, activeQuestions]);
+
+  // URL Init: Check for ?q=ID on mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const questionId = params.get('q');
+
+    if (questionId && gameState === 'intro') {
+      const fullPool = getQuestions({
+        shuffleOptions: true,
+        shuffleQuestions: true
+      });
+
+      const targetIndex = fullPool.findIndex(q => q.displayId === questionId);
+
+      if (targetIndex !== -1) {
+        setActiveQuestions(fullPool);
+        setCurrentQuestionIndex(targetIndex);
+        setAnswers({});
+        setTotalScore(0);
+        setMaxPossibleScore(0);
+        setGameState('test');
+      }
+    }
+  }, []); // Run once on mount
 
   return {
     // Estado

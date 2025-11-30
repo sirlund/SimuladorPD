@@ -41,9 +41,14 @@ export const QuestionScreen = ({
               <div className="p-3 bg-indigo-50 rounded-lg text-indigo-600 shadow-sm border border-indigo-100">
                 {question.icon}
               </div>
-              <span className="text-sm font-bold text-indigo-900 uppercase tracking-wide opacity-80">
-                {question.category}
-              </span>
+              <div className="flex flex-col">
+                <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider">
+                  {question.displayId}
+                </span>
+                <span className="text-sm font-bold text-indigo-900 uppercase tracking-wide opacity-80">
+                  {question.category}
+                </span>
+              </div>
             </div>
 
             {/* Scenario */}

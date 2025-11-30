@@ -1,4 +1,4 @@
-import { getQuestionPool as getOriginalPool } from './questionPool';
+import { getQuestionPool as getOriginalPool } from './questionPool.jsx';
 
 /**
  * TIER 1.1 FIX: Shuffle de opciones para romper el "Síndrome de la Opción B"
@@ -37,7 +37,10 @@ export const getQuestions = (options = {}) => {
         limit = null
     } = options;
 
-    let pool = getOriginalPool();
+    let pool = getOriginalPool().map((q, index) => ({
+        ...q,
+        displayId: `${q.category.charAt(0).toUpperCase()}-${index + 1}`
+    }));
 
     // Filtrar por categoría
     if (category !== 'all') {
