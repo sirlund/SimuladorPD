@@ -12,7 +12,7 @@ import {
 /**
  * Research, Ética & Colaboración
  */
-export const block_02_research_ethics_collaboration_questions = [
+export const research_questions = [
   // --- BLOQUE 4: RESEARCH, USUARIOS & ÉTICA ---
   {
     id: 'research_ignore_darkmode',

@@ -20,31 +20,40 @@ const INDEX_FILE = path.join(__dirname, '../src/data/questions/index.js');
 // Mapeo de bloques originales a archivos de salida
 const BLOCK_MAPPING = {
     // Bloques 1-5 van a block-01
-    1: 'block-01-strategy-systems-leadership.js',
-    2: 'block-01-strategy-systems-leadership.js',
-    3: 'block-01-strategy-systems-leadership.js',
-    4: 'block-02-research-ethics-collaboration.js',
-    5: 'block-02-research-ethics-collaboration.js',
-    6: 'block-02-research-ethics-collaboration.js',
-    7: 'block-03-crisis-data-experimentation.js',
-    8: 'block-03-crisis-data-experimentation.js',
-    9: 'block-03-crisis-data-experimentation.js',
-    10: 'block-04-mobile-platforms-handoff.js',
-    11: 'block-04-mobile-platforms-handoff.js',
-    12: 'block-05-culture-stakeholders-business.js',
-    13: 'block-05-culture-stakeholders-business.js',
-    14: 'block-06-innovation-ethics-crisis.js',
-    15: 'block-06-innovation-ethics-crisis.js',
-    16: 'block-06-innovation-ethics-crisis.js'
+    1: '01-strategy.js',
+    2: '01-strategy.js',
+    3: '01-strategy.js',
+    4: '02-research.js',
+    5: '02-research.js',
+    6: '02-research.js',
+    7: '03-metrics.js',
+    8: '03-metrics.js',
+    9: '03-metrics.js',
+    10: '04-mobile.js',
+    11: '04-mobile.js',
+    12: '05-culture.js',
+    13: '05-culture.js',
+    14: '06-innovation.js',
+    15: '06-innovation.js',
+    16: '06-innovation.js'
 };
 
 const BLOCK_TITLES = {
-    'block-01-strategy-systems-leadership.js': 'Estrategia, Sistemas & Liderazgo',
-    'block-02-research-ethics-collaboration.js': 'Research, Ética & Colaboración',
-    'block-03-crisis-data-experimentation.js': 'Crisis, Data & Experimentación',
-    'block-04-mobile-platforms-handoff.js': 'Mobile, Plataformas & Handoff',
-    'block-05-culture-stakeholders-business.js': 'Cultura, Stakeholders & Business',
-    'block-06-innovation-ethics-crisis.js': 'Innovación, Ética Avanzada & Crisis'
+    '01-strategy.js': 'Estrategia, Sistemas & Liderazgo',
+    '02-research.js': 'Research, Ética & Colaboración',
+    '03-metrics.js': 'Crisis, Data & Experimentación',
+    '04-mobile.js': 'Mobile, Plataformas & Handoff',
+    '05-culture.js': 'Cultura, Stakeholders & Business',
+    '06-innovation.js': 'Innovación, Ética Avanzada & Crisis'
+};
+
+const BLOCK_PREFIXES = {
+    '01-strategy.js': 'STR',
+    '02-research.js': 'RES',
+    '03-metrics.js': 'MET',
+    '04-mobile.js': 'MOB',
+    '05-culture.js': 'CUL',
+    '06-innovation.js': 'INN'
 };
 
 async function main() {
@@ -113,7 +122,8 @@ async function main() {
     for (const [filename, content] of Object.entries(blocks)) {
         // Asegurar extensión .jsx
         const outputFilename = filename.replace('.js', '.jsx');
-        const exportName = filename.replace('.js', '').replace(/-/g, '_') + '_questions';
+        // Generar nombre de exportación minimalista (ej: strategy_questions)
+        const exportName = filename.replace(/^\d+-/, '').replace('.js', '') + '_questions';
         const title = BLOCK_TITLES[filename];
 
         const fileContent = `import React from 'react';
@@ -147,13 +157,24 @@ ${Object.keys(blocks).map((filename, i) => {
     }).join('\n')}
 
 /**
- * Combina todas las preguntas en un solo array
+ * Helper para asignar IDs lógicos basados en bloque
+ */
+const processBlock = (block, prefix) => {
+    return block.map((q, index) => ({
+        ...q,
+        displayId: \`\${prefix}-\${String(index + 1).padStart(2, '0')}\`
+    }));
+};
+
+/**
+ * Combina todas las preguntas en un solo array con IDs procesados
  */
 export const allQuestions = [
-  ${Object.keys(blocks).map(filename => {
-        const exportName = filename.replace('.js', '').replace(/-/g, '_') + '_questions';
-        return `...${exportName}`;
-    }).join(',\n  ')}
+${Object.keys(blocks).map(filename => {
+        const exportName = filename.replace(/^\d+-/, '').replace('.js', '') + '_questions';
+        const prefix = BLOCK_PREFIXES[filename];
+        return `    ...processBlock(${exportName}, '${prefix}')`;
+    }).join(',\n')}
 ];
 
 /**

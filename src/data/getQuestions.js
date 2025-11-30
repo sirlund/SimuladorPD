@@ -37,9 +37,9 @@ export const getQuestions = (options = {}) => {
         limit = null
     } = options;
 
-    let pool = getOriginalPool().map((q, index) => ({
+    let pool = getOriginalPool().map((q) => ({
         ...q,
-        displayId: `${q.category.charAt(0).toUpperCase()}-${index + 1}`
+        // displayId ya viene asignado desde index.js (STR-01, RES-01, etc)
     }));
 
     // Filtrar por categoría

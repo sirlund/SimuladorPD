@@ -3,23 +3,33 @@
  * Importa y combina todos los bloques temáticos
  */
 
-import { block_01_strategy_systems_leadership_questions } from './blocks/block-01-strategy-systems-leadership.jsx';
-import { block_02_research_ethics_collaboration_questions } from './blocks/block-02-research-ethics-collaboration.jsx';
-import { block_03_crisis_data_experimentation_questions } from './blocks/block-03-crisis-data-experimentation.jsx';
-import { block_04_mobile_platforms_handoff_questions } from './blocks/block-04-mobile-platforms-handoff.jsx';
-import { block_05_culture_stakeholders_business_questions } from './blocks/block-05-culture-stakeholders-business.jsx';
-import { block_06_innovation_ethics_crisis_questions } from './blocks/block-06-innovation-ethics-crisis.jsx';
+import { strategy_questions } from './blocks/01-strategy.jsx';
+import { research_questions } from './blocks/02-research.jsx';
+import { metrics_questions } from './blocks/03-metrics.jsx';
+import { mobile_questions } from './blocks/04-mobile.jsx';
+import { culture_questions } from './blocks/05-culture.jsx';
+import { innovation_questions } from './blocks/06-innovation.jsx';
 
 /**
- * Combina todas las preguntas en un solo array
+ * Helper para asignar IDs lógicos basados en bloque
+ */
+const processBlock = (block, prefix) => {
+    return block.map((q, index) => ({
+        ...q,
+        displayId: `${prefix}-${String(index + 1).padStart(2, '0')}`
+    }));
+};
+
+/**
+ * Combina todas las preguntas en un solo array con IDs procesados
  */
 export const allQuestions = [
-    ...block_01_strategy_systems_leadership_questions,
-    ...block_02_research_ethics_collaboration_questions,
-    ...block_03_crisis_data_experimentation_questions,
-    ...block_04_mobile_platforms_handoff_questions,
-    ...block_05_culture_stakeholders_business_questions,
-    ...block_06_innovation_ethics_crisis_questions
+    ...processBlock(strategy_questions, 'STR'),
+    ...processBlock(research_questions, 'RES'),
+    ...processBlock(metrics_questions, 'MET'),
+    ...processBlock(mobile_questions, 'MOB'),
+    ...processBlock(culture_questions, 'CUL'),
+    ...processBlock(innovation_questions, 'INN')
 ];
 
 /**
