@@ -129,7 +129,7 @@ export const useGameState = () => {
         shuffleQuestions: true
       });
 
-      const targetIndex = fullPool.findIndex(q => q.displayId === questionId);
+      const targetIndex = fullPool.findIndex(q => q.displayId.toLowerCase() === questionId.toLowerCase());
 
       if (targetIndex !== -1) {
         setActiveQuestions(fullPool);
