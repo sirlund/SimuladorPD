@@ -267,4 +267,17 @@ export const metrics_questions = [
     ],
     explanation: "Cambiar URLs sin strategy rompe bookmarks, links compartidos y confianza (A). La C es conservadora pero pierde ganancia real de SEO. Los redirects 301 (B) permiten evolucionar sin destruir - literalmente win-win si está bien implementado."
   },
+  {
+    id: 'analytics_platform_cost_explosion',
+    category: "Data-Driven Design",
+    icon: <BarChart2 className="w-6 h-6 text-green-600" />,
+    scenario: "Tu plan de Segment/Amplitude cuesta $15K/mes y va a subir a $45K/mes el próximo Q por volumen de eventos. CFO exige cortar el plan a la mitad o migrar a solución más barata. Data Science depende de estos eventos para sus modelos de ML.",
+    question: "¿Cómo resuelves la crisis de costo sin destruir analytics?",
+    options: [
+      { id: 'A', text: "Reducir Tracking 50%: Eliminas eventos 'nice to have' y tracking de features secundarias. Cumples budget pero pierdes visibilidad en funnels que podrían tener oportunidades ocultas.", score: 2, type: "Budget-first (Ceguera estratégica)" },
+      { id: 'B', text: "Event Sampling Strategy: Trackeas 100% de conversions críticas, 20% de pageviews, 5% de hover/scroll events. Reduces volumen 60% manteniendo calidad de insights donde importa.", score: 5, type: "Lead (Sampling inteligente)" },
+      { id: 'C', text: "Migrar a PostHog Self-Hosted: 2 meses de migración, $8K setup inicial, ownership total. Riesgo de perder data histórica en transición y 2 meses sin analytics confiables.", score: 3, type: "Build vs Buy (Alto switching cost)" }
+    ],
+    explanation: "Cortar tracking ciegamente (A) puede eliminar señales tempranas de churn o growth. Migrar plataformas (C) es válido pero 2 meses sin analytics confiables durante transición es riesgoso. Event sampling (B) es la jugada: 100% de events críticos, sample estadístico de volumen alto - reduces costo 60% sin perder poder predictivo."
+  },
 ];

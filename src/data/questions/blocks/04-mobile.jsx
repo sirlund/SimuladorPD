@@ -174,4 +174,82 @@ export const mobile_questions = [
     ],
     explanation: "Los estándares de Apple y Google existen por biomecánica, no capricho. Un área táctil invisible (padding) resuelve la usabilidad sin necesariamente cambiar la estética visual (A)."
   },
+  {
+    id: 'pwa_vs_native_political_war',
+    category: "Estrategia de Plataforma",
+    icon: <Smartphone className="w-6 h-6 text-blue-400" />,
+    scenario: "Engineering quiere PWA (1 codebase, deploy rápido). iOS PM exige app nativa ('push notifications mejores, mejor performance'). Android PM neutral. Tienes 1 sprint para decidir antes de Q planning.",
+    question: "¿Cómo decides la arquitectura mobile sin iniciar guerra política?",
+    options: [
+      { id: 'A', text: "Hybrid Approach (React Native): Compromiso que satisface a nadie completamente. Performance menor a native, complejidad mayor a PWA, pero evitas confrontación directa.", score: 3, type: "Compromiso político (Nadie gana)" },
+      { id: 'B', text: "Platform-Specific MVP Test: PWA para Android (80% userbase, menos exigente), Native para iOS (20% userbase, crítico). Aprendes con inversión controlada antes de comprometer arquitectura.", score: 5, type: "Lead (Learn before commit)" },
+      { id: 'C', text: "Let Engineering Decide: 'Es decisión técnica, ustedes saben más'. Abdicas liderazgo de producto/UX en momento crítico de arquitectura que afectará 3 años.", score: 1, type: "Abdicación (Pierde influence)" }
+    ],
+    explanation: "Hybrid (A) es compromiso tibio que no optimiza para ningún caso. Dejar que Engineering decida solo (C) ignora que UX/producto tienen stake crítico en performance y capabilities. Platform-specific test (B) da data real sobre trade-offs antes de bet-the-company decision."
+  },
+  {
+    id: 'mobile_performance_budget_sacrifice',
+    category: "Mobile Performance",
+    icon: <Zap className="w-6 h-6 text-yellow-600" />,
+    scenario: "Tu app pesa 85MB y tarda 8s en cold start. Compromiso con Product: llegar a <40MB y <3s. Ingeniería dice que remover half-used SDKs (analytics de 3 vendors, AB testing, crashlytics, feature flags) es 'imposible sin romper funcionalidad'.",
+    question: "¿Cómo alcanzas performance budget sin romper features críticas?",
+    options: [
+      { id: 'A', text: "SDK Audit ROI: Evalúas cada MB de SDK vs su valor real. Mantienes Crashlytics + 1 analytics tool, removes el resto. 28MB menos, funcionalidad core intacta.", score: 5, type: "Lead (ROI-based pruning)" },
+      { id: 'B', text: "Lazy Load Everything: Descargas SDKs on-demand cuando se necesiten. Reduces tamaño inicial pero aumentas latencia en runtime. Users no esperarán 3s para usar analytics.", score: 2, type: "Técnico (Ignora UX real)" },
+      { id: 'C', text: "Timeline Pushback: Negocias 2 sprints extra para refactor perfecto. Timing correcto, pero PM pierde confianza en tu ability to deliver under pressure.", score: 3, type: "Conservador (Pierde momentum)" }
+    ],
+    explanation: "Lazy loading (B) traslada el problema de startup a runtime - users siguen esperando. Pedir más tiempo (C) es honesto pero erosiona confianza cuando todos están under pressure. SDK audit (A) es brutal pero necesario: la mayoría de SDKs son legacy de experimentos pasados que ya no justifican su peso."
+  },
+  {
+    id: 'touch_target_accessibility_rebellion',
+    category: "Accesibilidad & Diseño",
+    icon: <Smartphone className="w-6 h-6 text-blue-400" />,
+    scenario: "Diseñador Senior se niega a hacer botones de 44pt ('se ve feo, rompe mi diseño minimalista'). Su portfolio tiene 50K followers en Dribbble. El resto del equipo lo idolatra. Accessibility audit encontró 15 violaciones críticas.",
+    question: "¿Cómo manejas la rebelión de diseño vs accessibility standards?",
+    options: [
+      { id: 'A', text: "Compromise Visual: Permites 36pt 'como experimento'. Fallas audit igual y estableces precedente peligroso de negociar accessibility por estética.", score: 1, type: "Compromiso débil (Bad precedent)" },
+      { id: 'B', text: "Educación + Enforcement: Muestras ejemplos de Apple/Google usando 44pt elegantemente. Si se niega, lo sacas del proyecto. Accessibility no es negociable.", score: 5, type: "Lead (Principios > Popularidad)" },
+      { id: 'C', text: "Invisible Padding: Implementas hit area de 44pt con padding transparente, ícono visible de 32pt. Cumples standard técnicamente pero cedes en principio educativo.", score: 3, type: "Hack técnico (Funciona pero no enseña)" }
+    ],
+    explanation: "Comprometer a 36pt (A) falla el audit y le dice al equipo que acc cessibility es negociable si tienes influencia. Invisible padding (C) funciona pero perpetúa la mentalidad de que accessibility es 'hack' vs diseño fundamental. Un Lead (B) usa esto como teachable moment: accessibility IS good design."
+  },
+  {
+    id: 'offline_mode_scope_creep',
+    category: "Mobile Architecture",
+    icon: <Wifi className="w-6 h-6 text-blue-400" />,
+    scenario: "PM quiere 'offline mode' para cerrar deal Enterprise ($400K). Ingeniería estima 4 meses (sync conflicts, data consistency, cache invalidation). El cliente necesita demo funcional en 6 semanas para board approval.",
+    question: "¿Cómo balanceas promesa de venta vs realidad técnica?",
+    options: [
+      { id: 'A', text: "Fake Offline (Optimistic UI): Simulas que funciona offline cacheando last state. Funciona para demo pero explota en production con conflictos reales de sync.", score: 2, type: "Demo-driven (Deuda técnica masiva)" },
+      { id: 'B', text: "Scoped Offline (Read-Only): Implementas offline viewing de data crítica en 3 semanas. Escritura requiere conexión. Cumples 80% del caso de uso Enterprise sin 4 meses de complejidad.", score: 5, type: "Lead (Pragmatic scoping)" },
+      { id: 'C', text: "Enterprise Custom Build: Vendes como Professional Service ($80K, 4 meses). No contamina roadmap core pero requiere capital político con CPO para aprobar services model.", score: 4, type: "Services (Clean pero requiere buy-in)" }
+    ],
+    explanation: "Fake offline (A) es trampa que explota en real use - conflictos de sync son problema hard, no falta de tiempo. Professional service (C) es limpio pero startups raramente tienen services org. Scoped offline read-only (B) cumple el job-to-be-done real (ver data on plane) sin construir Google Docs offline sync."
+  },
+  {
+    id: 'cross_platform_design_debt_explosion',
+    category: "Design Ops",
+    icon: <Layers className="w-6 h-6 text-indigo-600" />,
+    scenario: "Tienes 3 designers: uno diseña solo iOS (HIG purista), otro solo Android (Material fanático), otro Web. Los 3 productos se ven completamente distintos. Users confundidos, engineering mantiene 3 design systems.",
+    question: "¿Cómo unificas sin iniciar revuelta de plataform puristas?",
+    options: [
+      { id: 'A', text: "Platform-Specific Excellence: Aceptas divergencia como 'respeto por platform conventions'. Cada plataforma es excelente en su silo pero brand inconsistente.", score: 3, type: "Purista (Fragmentación de marca)" },
+      { id: 'B', text: "Core + Platform Variants: Defines 20 componentes core unificados (buttons, forms, nav) + permites platform-specific flourishes en 20% del UI. Brand coherente, platforms respetadas.", score: 5, type: "Lead (Principled flexibility)" },
+      { id: 'C', text: "Force One Design: Impones Material Design en todos lados ('Android tiene más users'). iOS users odian la experiencia, tu iOS designer renuncia.", score: 1, type: "Autoritario (Aliena users y equipo)" }
+    ],
+    explanation: "Pure platform fidelity (A) fragmenta la marca cuando user cruza devices. Forcing one design language (C) ignora que iOS users EXPECT iOS patterns. Core + variants (B) es el balance: button styling puede variar (platform), pero placement y IA son consistentes (brand)."
+  },
+  {
+    id: 'mobile_onboarding_seven_screen_hell',
+    category: "Mobile Onboarding",
+    icon: <Smartphone className="w-6 h-6 text-blue-400" />,
+    scenario: "Tu onboarding tiene 7 pantallas explicativas. Analytics: 60% drop-off en screen 3. Marketing exige agregar 2 screens más (GDPR consent + promotional opt-in). Completion rate actual: 22%.",
+    question: "¿Qué haces con el onboarding que nadie completa?",
+    options: [
+      { id: 'A', text: "Progressive Onboarding: Eliminas todo onboarding upfront. Users entran directo, aprenden con tooltips contextuales on-demand. GDPR en primera interacción relevante, promo opt-in post-first-value.", score: 5, type: "Lead (Zero friction onboarding)" },
+      { id: 'B', text: "Reduce a 3 Screens Core: Cortas a valor esencial solamente. GDPR y promo van después. Mejora a ~40% completion pero sigue siendo fricción upfront vs progressive.", score: 3, type: "Mejora incremental (No resuelve raíz)" },
+      { id: 'C', text: "Gamify Onboarding: Agregas 'progress bar' y 'skip' button. Maquillas el problema sin eliminar las 7 screens. Drop-off mejora marginalmente a 25%.", score: 2, type: "Lipstick on pig" }
+    ],
+    explanation: "Gamification (C) es parche cosmético cuando el problema es que users no quieren 7 screens. Reducir a 3 (B) es mejor pero todavía pregunta 'qué quieres lograr' antes de dejar usar el producto. Progressive (A) es contraintuitivo pero funciona: Slack/Notion te dejan entrar sin tutorial, aprendes haciendo. GDPR se puede mostrar en first data access."
+  },
 ];

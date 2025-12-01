@@ -158,6 +158,51 @@ Ejemplo de uso:
 - ✅ **Concisión**: Foco inmediato en la tensión y decisión
 - ✅ **Option Balance**: ~±20% de longitud entre opciones
 
+### 🚨 Regla Anti-Telegraph (NO Revelar Respuesta Incorrecta)
+
+**CRÍTICO**: Las opciones incorrectas deben sonar TENTADORAS y profesionales. El usuario debe dudar, no obviar.
+
+❌ **NUNCA en el texto de la opción:**
+- Consecuencias negativas directas: "Fallas audit igual", "Pierdes talento", "Destruyes marca"
+- Auto-sabotaje evidente: "te conviertes en cuello de botella", "pierdes autonomía"
+- Verbos evidentemente negativos: falla, destruye, pierde, rompe, ignora, abdica, contamina, aliena
+- Frases derrotistas: "se ignora", "probablemente será ignorado", "dañas al negocio"
+
+❌ **Ejemplos de lenguaje PROHIBIDO en option text:**
+```javascript
+// MAL ❌
+{ text: "Permites 36pt. Fallas audit y estableces precedente peligroso.", score: 1 }
+{ text: "Arreglar tú los diseños. Te conviertes en cuello de botella.", score: 1 }
+{ text: "Ignorar el feedback. Pierdes todo talento junior.", score: 1 }
+{ text: "PMs ignoran la regla y publican páginas feas, perdiste autoridad.", score: 2 }
+```
+
+✅ **SÍ en el texto de la opción:**
+- Describe la ACCIÓN concretamente
+- Include justificación plausible (por qué alguien haría esto)
+- Suena profesional y razonable bajo presión
+- Lenguaje neutral o positivo
+
+✅ **Ejemplos CORRECTOS:**
+```javascript
+// BIEN ✅
+{ text: "Compromise de 36pt: Negocias target intermedio entre aesthetics (32pt del diseñador) y accessibility (44pt standard). Implementas como pilot en features no-críticas primero.", score: 1 }
+{ text: "Coaching Intensivo: Dedicas 2 horas diarias revisando cada diseño del junior para acelerar su curva de aprendizaje en momento crítico del proyecto.", score: 1 }
+{ text: "Mantener Roadmap Original: El feedback es ruido temporal de early adopters. Confías en tu research inicial y data que justificó la decisión.", score: 1 }
+```
+
+✅ **Las consecuencias negativas VAN en explanation:**
+```javascript
+explanation: "El compromise a 36pt (A) falla WCAG AA standards (44pt mínimo) y sienta precedente peligroso de que accessibility es negociable por aesthetics. Aunque suena pragmático, users con motor challenges seguirán struggling..."
+```
+
+**Excepción Score 0 (Catastrófico):**
+- Opciones score-0 PUEDEN usar lenguaje más directo en "type": "Fraudulento", "Negligente", "Tóxico"
+- Pero el TEXTO todavía debe describir la acción, no auto-sabotearse
+- Ejemplo: ✅ "Ignorar el pánico: Asumes que el riesgo legal no aplica a tu caso específico dado el contexto B2B del producto."
+- No: ❌ "Ignorar el pánico y apostar a la suerte. Irresponsable."
+
+
 ### Al asignar scores:
 - ✅ Lee `/docs/SCORING_GUIDELINES.md` primero
 - ✅ Mantén exactamente 1 opción score-5 por pregunta

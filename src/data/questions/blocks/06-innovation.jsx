@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Brain, Layers, Lock, Palette
+  Brain, Layers, Lock, Palette, Users
 } from 'lucide-react';
 
 /**
@@ -168,5 +168,83 @@ export const innovation_questions = [
       { id: 'C', text: "Priorizar Key Journeys: Actualizar solo el Login y Navigation bar inmediatamente para que coincidan con Marketing. El resto puede esperar. Arreglas la primera impresión crítica.", score: 5, type: "Lead (Priorización por impacto)" }
     ],
     explanation: "La opción C pierde todo el momentum de rebrand (Marketing ya lanzó campañas, PR, etc. - no puedes revertir). La A suena limpia pero forzar un 'Big Bang' en 400+ screens es altísimo riesgo de bugs (y requiere overtime brutal). La B es la jugada inteligente: aceptas que 6 meses de transición es inevitable, pero comunicas TRANSPARENTEMENTE a usuarios que están en medio de un rebrand. Un banner simple ('We're updating our look!') convierte confusión en anticipación. Es comunicación proactiva en vez de dejar que usuarios asuman phishing."
-  }
+  },
+  {
+    id: 'nocode_tools_designer_replacement_threat',
+    category: "Innovación & AI",
+    icon: <Brain className="w-6 h-6 text-teal-500" />,
+    scenario: "PMs descubrieron Framer/Webflow y están diseñando landing pages sin involucrar diseño. 'Ya no necesitamos diseñadores para esto - hacemos 3 páginas por semana ahora'. Tu equipo se siente amenazado, morale cae.",
+    question: "¿Cómo respondes a la democratización de diseño vía no-code?",
+    options: [
+      { id: 'A', text: "Prohibir No-Code: 'Todo diseño pasa por nuestro equipo, sin excepciones'. PMs ignoran la regla y publican páginas feas en producción igual, perdiste autoridad.", score: 2, type: "Autoritario (Pierde enforcement)" },
+      { id: 'B', text: "Upskill + Design QA: Entrenas PMs en design basics (tipografía, spacing, color) + estableces Design QA review al final. PMs hacen landing pages, designers se enfocan en producto core. Win-win.", score: 5, type: "Lead (Leverage, no control)" },
+      { id: 'C', text: "Designers Learn No-Code: Tu equipo aprende Framer para mantener control. Resuelve amenaza política pero designers gastan tiempo en trabajo de menor strategic value.", score: 3, type: "Defensivo (Mantiene control, pierde focus)" }
+    ],
+    explanation: "Prohibir (A) falla porque no-code es demasiado accesible - enforcement es imposible. Que designers hagan landing pages (C) es usar talento senior en trabajo commodity. Upskilling PMs (B) reconoce que no todo diseño requiere diseñador senior - libera tu equipo para problemas complejos mientras PMs hacen páginas simples con guardrails."
+  },
+  {
+    id: 'ai_generated_assets_policy_chaos',
+    category: "Innovación & AI",
+    icon: <Brain className="w-6 h-6 text-teal-500" />,
+    scenario: "Diseñador usa Midjourney para hero images en homepage. Legal dice 'copyright unclear, posible lawsuit'. Otro usa ChatGPT para microcopy. Brand team furioso: 'no refleja nuestra voz, suena genérico'. No hay policy establecida.",
+    question: "¿Qué policy implementas para AI-generated assets?",
+    options: [
+      { id: 'A', text: "AI Augmentation Guidelines: AI permitido para inspiration/iteration, humano valida y edita output final. Todo AI-generated content requiere disclosure obligatorio en file metadata.", score: 5, type: "Lead (Harness AI con accountability)" },
+      { id: 'B', text: "Ban AI Completely: 'Solo trabajo 100% humano'. Proteges copyright y brand pero te quedas deliberately atrás vs competencia leveraging AI como productivity multiplier.", score: 2, type: "Purista (Pierde leverage)" },
+      { id: 'C', text: "Laissez-Faire: 'Usen lo que quieran, confío en su criterio'. Legal liability sin control, brand inconsistency masiva, team usa AI como crutch sin desarrollar skills.", score: 1, type: "Negligente (Abdica responsabilidad)" }
+    ],
+    explanation: "Ban total (B) es insostenible cuando every competitor usa AI para 3x velocity. Laissez-faire (C) expone a company a legal risk (copyright de Midjourney es grey area) y brand degradation. AI augmentation (A) captura benefits (velocity, inspiration) con guardrails (human validation, disclosure)."
+  },
+  {
+    id: 'spatial_computing_roi_vs_desktop_reality',
+    category: "Innovación & AI",
+    icon: <Brain className="w-6 h-6 text-teal-500" />,
+    scenario: "CEO quiere 'Apple Vision Pro experience' para Q3 launch después de ver el keynote. 0.01% de users tienen el headset ($3500). Estimación: 6 meses, $300K development. Tu roadmap desktop tiene 12 features críticas esperando.",
+    question: "¿Cómo priorizas innovation PR vs product reality?",
+    options: [
+      { id: 'A', text: "Vision Pro Prototype for PR: 2 semanas, 1 screen showcase inmersivo para press/demos. Cero production deployment. ROI = innovation brand positioning, no product revenue. Desktop roadmap continúa.", score: 5, type: "Lead (PR vs Product separation)" },
+      { id: 'B', text: "Full Vision Pro Build: Sacrificas roadmap desktop y construyes experiencia espacial completa. App 'increíble' que literalmente 50 personas en el mundo pueden usar. Investors impressed, users frustrated.", score: 1, type: "Hype-driven (Ignora userbase real)" },
+      { id: 'C', text: "Wait Until 5% Adoption: Proposal sensato basada en market reality, pero CEO quiere 'innovation leadership'. Pierdes momentum político interno y PR opportunity window.", score: 3, type: "Conservador (Pierde momento)" }
+    ],
+    explanation: "Full build (B) es vanity project que sirve a ego de CEO vs users reales. Wait-and-see (C) es racional pero timing matters - Vision Pro window de PR es NOW. Prototype for PR (A) es pragmático: captura innovation narrative con minimal investment, mantiene focus en roadmap que mueve metrics reales."
+  },
+  {
+    id: 'realtime_collaboration_feature_hype',
+    category: "Innovación & AI",
+    icon: <Users className="w-6 h-6 text-purple-600" />,
+    scenario: "Product quiere 'Figma-style real-time collaboration' en tu B2B tool después de user interviews con 3 enterprise prospects. Ingeniería: 9 meses (CRDTs, conflict resolution, WebSockets). Analytics actuales: solo 8% de users colaboran sincrónicamente, 92% trabaja async.",
+    question: "¿Cómo evalúas investment en real-time collab?",
+    options: [
+      { id: 'A', text: "Async Collaboration First: Comments + version history + notifications delivered en 6 semanas. ROI positivo para 92% de users. Real-time va a backlog condicional post-PMF validation.", score: 5, type: "Lead (Serve majority first)" },
+      { id: 'B', text: "Real-Time But Simplified: Implementas 'pseudo real-time' (polling cada 5s vs true WebSockets). Delivery en 3 meses pero se siente laggy, users decepcionados. Worst of both worlds.", score: 2, type: "Compromiso técnico (Decepciona)" },
+      { id: 'C', text: "Build Real-Time Correctly: 9 meses, feature technically perfect como Figma. Beneficia 8% de users, opportunity cost massive en features con 10x mayor adoption potential.", score: 4, type: "Platform bet (Correcto pero costoso)" }
+    ],
+    explanation: "Pseudo real-time (B) promete algo que no cumple - latency frustra. Build perfecto (C) es válido como strategic platform bet PERO requiere conviction de que sync collab es future (vs current 8%). Async first (A) es pragmático: sirve al 92%, valida si demand de real-time justifica 9 meses."
+  },
+  {
+    id: 'blockchain_ux_beyond_crypto_wallets',
+    category: "Innovación & AI",
+    icon: <Lock className="w-6 h-6 text-slate-700" />,
+    scenario: "CTO propone 'blockchain-backed audit trail' para HIPAA compliance después de leer whitepaper. Ingeniero blockchain especializado costa $180K/año salary. Auditoría immutable puede hacerse con PostgreSQL + append-only logs a $0 infra cost extra.",
+    question: "¿Cómo evalúas blockchain vs soluciones convencionales?",
+    options: [
+      { id: 'A', text: "PostgreSQL Immutable Logs: Cumple HIPAA, completamente auditable, zero blockchain complexity/cost. CTO se siente menos innovador pero CFO y Legal felices con solution probada.", score: 5, type: "Lead (Boring tech que funciona)" },
+      { id: 'B', text: "Blockchain Pilot: 'Probemos 3 meses con consultant'. $50K gastados en POC, discover que PostgreSQL hacía lo mismo. CTO aprende (expensive lesson) pero al menos no full commitment.", score: 2, type: "Expensive learning (Predecible outcome)" },
+      { id: 'C', text: "Full Blockchain Build: $180K engineer + 6 meses Development. Solución 'technically interesting' a problema que no existía. Resume-driven development para CTO, zero business value.", score: 0, type: "Resume-driven (Destruye budget)" }
+    ],
+    explanation: "Blockchain pilot (B) es $50K para aprender lo queググ research podía revelar gratis. Full build (C) es resume-driven development puro. PostgreSQL (A) es 'boring technology' que cumple requirements sin hype - esto ES lead thinking: solve problema, no chase trends."
+  },
+  {
+    id: 'figma_ai_features_adoption_timing',
+    category: "Tendencias de Diseño",
+    icon: <Layers className="w-6 h-6 text-indigo-600" />,
+    scenario: "Figma lanzó 'AI auto-layout' y 'AI rename layers'. Tu equipo exige adopción inmediata. Tienes 200 archivos legacy con layer naming caótico y structure inconsistente. AI 'auto-fix' corrompe archivos existentes en beta testing.",
+    question: "¿Cómo manejas adoption de bleeding-edge features con legacy debt?",
+    options: [
+      { id: 'A', text: "Pilot with New Projects Only: AI features habilitadas solo en archivos nuevos. Files legacy se migran gradualmente cuando hay touch natural. Evitas caos masivo de re-naming batch.", score: 5, type: "Lead (Incremental adoption)" },
+      { id: 'B', text: "Enable for Everyone Immediately: Team presiona, habilitas global. AI chaos en legacy files, 3 días perdidos limpiando auto-renames incorrectos. Learn expensive lesson sobre early adoption.", score: 2, type: "FOMO-driven (Predictable chaos)" },
+      { id: 'C', text: "Training First, Enable Later: 2 weeks de capacitación formal antes de rollout. Timing approach correcto pero equipo frustrado por delay de 'obvious beneficial feature'.", score: 3, type: "Conservative (Timing friction)" }
+    ],
+    explanation: "Enable immediately (B) ignora que AI features en beta + legacy debt = disaster predictable. Training first (C) es correcto en spirit pero 2 weeks es excessive para feature toggle. Pilot with new (A) da team chance de aprender con archivos clean mientras legacy permanence stable - incremental adoption es clave con bleeding-edge features."
+  },
 ];

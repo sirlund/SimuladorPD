@@ -187,4 +187,30 @@ export const culture_questions = [
     ],
     explanation: "Cobrar por hora castiga la experiencia (mientras mejor eres, menos tardas y menos ganas). Value-Based Pricing (B) alinea incentivos: cobras por el resultado, no el esfuerzo."
   },
+  {
+    id: 'design_critique_toxic_culture',
+    category: "Team Dynamics",
+    icon: <Users className="w-6 h-6 text-purple-600" />,
+    scenario: "Tus design critiques se convirtieron en 'roast sessions'. Diseñadores junior lloran después de presentar. Senior designer defiende: 'Así aprendí yo, si no aguantas crítica no sirves para esto'. Retention cayó 40% este Q, HR te alertó.",
+    question: "¿Cómo transformas la cultura tóxica sin perder al senior influyente?",
+    options: [
+      { id: 'A', text: "Reestructurar Critique Culture: Implementas 'I like, I wish, What if' framework obligatorio. Senior resiste pero lo obligas a reentrenar en feedback constructivo. Si no cambia conducta en 30 días, sale del equipo.", score: 5, type: "Lead (Cultura > Talento individual)" },
+      { id: 'B', text: "Separate Junior/Senior Critiques: Proteges juniors en sesiones aparte con tono constructivo. Seniors pueden seguir siendo brutales entre ellos. Resuelve síntoma pero mantiene cultura tóxica latente.", score: 3, type: "Segregación (Parche temporal)" },
+      { id: 'C', text: "'Toughen Up' Mentality: 'El diseño es duro, que se adapten'. Normalizas el abuso como 'profesionalismo'. Pierdes todo talento junior, equipo se vuelve homogéneo y tribal.", score: 0, type: "Tóxico (Destruye equipo)" }
+    ],
+    explanation: "Separar sesiones (B) es band-aid que no arregla la raíz: senior designer tóxico sigue infectando cultura. 'Toughen up' (C) garantiza que solo sobreviven los que normalizan abuso. Un Lead (A) reconoce que una cultura sana es más valiosa que un contributor brillante tóxico - cambias o sales."
+  },
+  {
+    id: 'junior_designer_overwhelm_sprint_planning',
+    category: "Mentoría & Crecimiento",
+    icon: <TrendingUp className="w-6 h-6 text-green-600" />,
+    scenario: "Junior designer tiene 4 projects en paralelo (feature redesign, marketing page, dashboard, iconography refresh). Llora en 1-on-1: 'No duermo, todo es urgente, no sé priorizar'. PM dice 'todos estamos así, es startup life'. Junior amenaza con renunciar.",
+    question: "¿Cómo intervienes sin bloquear momentum del equipo?",
+    options: [
+      { id: 'A', text: "Load Rebalancing + Mentoring: Reasignas 2 projects a otros inmediatamente, enseñas priorización en tiempo real con los 2 que quedan. PM se molesta pero defiendes que burnout cuesta más que retrasos.", score: 5, type: "Lead (Protege talento > Velocity corto plazo)" },
+      { id: 'B', text: "Time Management Workshop: Le enseñas Pomodoro/GTD y técnicas de productividad. Es útil pero no resuelve el overload objetivo - sigue con 4 projects urgentes simultáneos.", score: 3, type: "Skill building (Ignora root cause)" },
+      { id: 'C', text: "'Everyone is Busy': Normalizas el burnout como parte de startup culture. Junior renuncia en 2 semanas. Cuesta $40K+ reemplazar y 3 meses re-onboard. Lost velocity real.", score: 1, type: "Negligente (Falsa economía)" }
+    ],
+    explanation: "Time management (B) no resuelve que 4 projects simultáneos son objetivamente demasiado para un junior. Normalizar burnout (C) es penny-wise, pound-foolish: reemplazo + onboarding cuesta más que negociar timelines. Un Lead (A) entiende que sustainable velocity requiere load realista."
+  },
 ];
