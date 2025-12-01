@@ -38,7 +38,7 @@ export const research_questions = [
       { id: 'B', text: "Consultores Externos: Contratas agencia especializada ($20K) para arreglar issues en paralelo. Mantienes velocity del team pero pierdes know-how interno.", score: 3, type: "Solve con $ (Trade-off de conocimiento)" },
       { id: 'C', text: "Overtime Intensivo: Intentas meter el trabajo en 'bordes' del sprint (noches/fines de semana) para cumplir con todo. Riesgo alto de burnout y bugs.", score: 1, type: "Wishful thinking (Falla en ambos)" }
     ],
-    explanation: "Una amenaza legal de cliente de 20% ARR es riesgo existencial que puede costar más que features del Q completo. La C es ilusoria: intentar hacer ambas cosas mal garantiza fallar en las dos (burnout + bugs + lawsuit). La B es válida si tienes budget, pero sacrifica aprendizaje interno. Un Lead re-prioriza radicalmente ante riesgos existenciales (A), aunque duela comunicar retrasos."
+    explanation: "Una amenaza legal de cliente de 20% ARR es riesgo existencial que puede costar más que features del Q completo. La C es ilusoria: intentar hacer ambas cosas mal garantiza fallar en las dos (burnout + bugs + lawsuit). La B es válida si tienes budget, pero sacrifica aprendizaje interno. Un Lead re-prioriza radicalmente ante riesgos existenciales, aunque duela comunicar retrasos."
   },
   {
     id: 'dark_pattern_retention_ethics',
@@ -51,7 +51,7 @@ export const research_questions = [
       { id: 'B', text: "Fricción Ética: 'Hagámoslo fácil de cancelar, pero preguntemos POR QUÉ se van'. Usar el offboarding para aprender y retener con ofertas, no con trampas.", score: 5, type: "Lead (Retención Ética)" },
       { id: 'C', text: "Escalación Ética: Te niegas rotundamente y reportas la solicitud a HR como una violación de los valores de la empresa. Priorizas la integridad y los principios corporativos sobre las presiones del negocio.", score: 1, type: "Escalación Ética" }
     ],
-    explanation: "La retención ética (B) ofrece valor real (descuentos, pausas) que motiva quedarse sin ocultar la opción de cancelar. La friction (A) genera retención artificial que daña la confianza a largo plazo. Con Series B en juego, el riesgo reputacional de dark patterns puede costar más que el revenue temporal que generan."
+    explanation: "La retención ética ofrece valor real (descuentos, pausas) que motiva quedarse sin ocultar la opción de cancelar. La friction genera retención artificial que daña la confianza a largo plazo. Con Series B en juego, el riesgo reputacional de dark patterns puede costar más que el revenue temporal que generan."
   },
   {
     id: 'guerrilla_testing_speed',
@@ -79,7 +79,7 @@ export const research_questions = [
       { id: 'B', text: "Escalación: Exiges al CTO que levante el 'migration freeze' dado el valor del deal. Creas conflicto con Engineering para defender la UX.", score: 1, type: "Confrontación (Sabotea colaboración)" },
       { id: 'C', text: "Negociación en Fases: Implementas una versión simplificada (botón tradicional) ahora para cumplir fecha, con compromiso firmado de hacer el Drag & Drop en Q+1.", score: 5, type: "Lead (Pragmatismo con accountability)" }
     ],
-    explanation: "Nadie tiene la opción perfecta. La B sabotea la relación con Engineering. La A te convierte en un 'hero developer' no escalable. La C es pragmatismo ejecutivo: entrega valor hoy (V1 funcional) mientras asegura la evolución mañana (V2 documentado)."
+    explanation: "Nadie tiene la opción perfecta. El segundo enfoque sabotea la relación con Engineering. El primer enfoque te convierte en un 'hero developer' no escalable. La C es pragmatismo ejecutivo: entrega valor hoy (V1 funcional) mientras asegura la evolución mañana (V2 documentado)."
   },
   {
     id: 'copy_late_change_legal',
@@ -92,7 +92,7 @@ export const research_questions = [
       { id: 'B', text: "Rediseño de Emergencia: El equipo trabaja hasta tarde Miércoles y Jueves para rediseñar las 7 pantallas acomodando el texto completo en el flujo, ajustando spacing y jerarquía. Llegan exhaustos al viernes pero con diseño que cumple Legal sin trucos.", score: 3, type: "Fuerza bruta (Burnout del equipo)" },
       { id: 'C', text: "Negociación de Copy con Legal: Agendas reunión urgente con Legal para negociar micro-copy más conciso (de 4-5 líneas a 2 líneas + link a términos completos). Argumentas que el texto largo afecta conversión y nadie lo lee. Arriesgas que Legal no ceda y pierdas 1 día.", score: 1, type: "Negociación (Alto riesgo de tiempo)" }
     ],
-    explanation: "No puedes ganarle a Legal en temas de compliance (C suele fallar y quema tiempo). La B logra el resultado pero a costa de burnout de equipo a 48h de demo crítico. Un Lead conoce patterns de UI (progressive disclosure, collapsible content, modals) que resuelven el problema técnicamente sin rediseño masivo ni confrontación (A)."
+    explanation: "No puedes ganarle a Legal en temas de compliance (C suele fallar y quema tiempo). La B logra el resultado pero a costa de burnout de equipo a 48h de demo crítico. Un Lead conoce patterns de UI (progressive disclosure, collapsible content, modals) que resuelven el problema técnicamente sin rediseño masivo ni confrontación."
   },
   {
     id: 'design_committee_control',
@@ -118,7 +118,7 @@ export const research_questions = [
       { id: 'B', text: "Pilot Program: Propones un experimento de 1 mes migrando solo 1 proyecto no crítico a  Penpot para validar la hipótesis sin apostarlo todo. Si funciona bien, escalan gradualmente.", score: 3, type: "Incremental (Consume recursos sin decisión)" },
       { id: 'C', text: "Mantener Status Quo: Explicas que Figma es el estándar de la industria, tiene mejor UX, y cambiar herramientas en este momento distraería al equipo de entregar valor. El equipo debe enfocarse en features, no en migraciones.", score: 1, type: "Mantener Estándar" }
     ],
-    explanation: "Las herramientas son inversión, no religión. La C descarta argumentos legítimos de costo y vendor lock-in. La B consume recursos en experimentos cuando los números ya pueden responder. Un Lead evalúa switching cost realísticamente: migración + retraining + pérdida de momentum (A). Si ahorras $12K pero pierdes $60K en productividad, es mala decisión."
+    explanation: "Las herramientas son inversión, no religión. La C descarta argumentos legítimos de costo y vendor lock-in. La B consume recursos en experimentos cuando los números ya pueden responder. Un Lead evalúa switching cost realísticamente: migración + retraining + pérdida de momentum. Si ahorras $12K pero pierdes $60K en productividad, es mala decisión."
   },
 
   // --- BLOQUE 6: PRODUCTIVIDAD & REMOTO ---
@@ -133,7 +133,7 @@ export const research_questions = [
       { id: 'B', text: "Protocolo Async: Implementas 'Ready for Dev' con Loom obligatorio. Si no hay video explicando el ticket, no pasa a desarrollo. Elimina ambigüedad sin reuniones.", score: 5, type: "Lead (Async Ops)" },
       { id: 'C', text: "Limpieza Diaria: Dedicas tu última hora a limpiar archivos y dejar notas. Es manual y depende de tu disciplina diaria, pero evita cambiar el proceso de los devs.", score: 3, type: "Parche (No escala)" }
     ],
-    explanation: "El trabajo asíncrono requiere más estructura, no más reuniones. La opción A quema al equipo de diseño. La B sistematiza la claridad: Loom + Figma Sections elimina la ambigüedad sin requerir coincidencia horaria."
+    explanation: "El trabajo asíncrono requiere más estructura, no más reuniones. El enfoque correcto quema al equipo de diseño. El segundo enfoque sistematiza la claridad: Loom + Figma Sections elimina la ambigüedad sin requerir coincidencia horaria."
   },
   {
     id: 'meeting_overload_protection',
@@ -146,7 +146,7 @@ export const research_questions = [
       { id: 'B', text: "Optimización de Reuniones: Trabajas con cada dueño de reunión para reducir duración (Dailies a 15min, Planning a 90min) y consolidas syncs duplicados. Empoderas al equipo a agendar 'Office Hours' en lugar de meetings ad-hoc.", score: 3, type: "Incremental (No resuelve volumen)" },
       { id: 'C', text: "Async-First Protocol: Implementas que toda información debe compartirse por escrito primero (Notion, Slack threads), y solo si hay bloqueos o decisiones complejas se escala a meeting sincrónico. Reduces reuniones 30-40%.", score: 3, type: "Cultural shift (Requiere disciplina)" }
     ],
-    explanation: "El trabajo creativo requiere bloques ininterrumpidos de 3-4 horas (Deep Work). La B optimiza pero no elimina el problema de sobre-comunicación sincrónica. La C funciona pero requiere cambio cultural difícil de enforcement. Un Lead crea estructura institucional (No-Meeting Days) que protege tiempo por default (A), aunque requiere capital político con líderes de otras áreas."
+    explanation: "El trabajo creativo requiere bloques ininterrumpidos de 3-4 horas (Deep Work). La B optimiza pero no elimina el problema de sobre-comunicación sincrónica. La C funciona pero requiere cambio cultural difícil de enforcement. Un Lead crea estructura institucional (No-Meeting Days) que protege tiempo por default, aunque requiere capital político con líderes de otras áreas."
   },
   {
     id: 'file_chaos_structure',
@@ -159,7 +159,7 @@ export const research_questions = [
       { id: 'B', text: "Gobernanza Bloqueante: Creas un archivo 'Master' de solo lectura para Devs. Solo los Leads pueden mover diseños aprobados ahí. Estableces una 'Fuente de la Verdad' sistémica.", score: 5, type: "Lead (Gobernanza Sistémica)" },
       { id: 'C', text: "Workshop de Naming: Reúnes al equipo para acordar convenciones de nombres ('Final_V3'). Estableces estándares de organización basados en la disciplina del equipo.", score: 3, type: "Estándares de Equipo" }
     ],
-    explanation: "El orden no ocurre por buena voluntad, ocurre por diseño del sistema. La gobernanza (quién puede editar qué y dónde viven los entregables) elimina el error humano. La opción B crea un firewall entre el caos creativo y la producción."
+    explanation: "El orden no ocurre por buena voluntad, ocurre por diseño del sistema. La gobernanza (quién puede editar qué y dónde viven los entregables) elimina el error humano. La segunda opción crea un firewall entre el caos creativo y la producción."
   },
 
   // --- MIGRATED FROM INNOVATION BLOCK ---
@@ -174,7 +174,7 @@ export const research_questions = [
       { id: 'B', text: "Diseño Ético y Legal: Implementar el bloqueo pero con copy claro y opciones granulares fáciles. Aceptar el bounce rate como costo de hacer negocios éticos en Europa.", score: 5, type: "Lead (Ética > Conversión)" },
       { id: 'C', text: "Optimización de Conversión: Diseñar el banner con jerarquía visual clara: botón principal de aceptación destacado y opciones secundarias accesibles. Maximiza la tasa de consentimiento dentro del cumplimiento legal.", score: 1, type: "Optimización de Conversión" }
     ],
-    explanation: "El compliance no es opcional. Los Dark Patterns (C) son riesgosos legalmente a largo plazo. La opción B acepta la realidad regulatoria y optimiza dentro de la ética."
+    explanation: "El compliance no es opcional. Los Dark Patterns son riesgosos legalmente a largo plazo. La segunda opción acepta la realidad regulatoria y optimiza dentro de la ética."
   },
   {
     id: 'addictive_design_notifications',
@@ -187,7 +187,7 @@ export const research_questions = [
       { id: 'B', text: "Diseño 'Lite': Implementas las notificaciones pero sin los sonidos más agresivos. Intentas suavizar el impacto negativo sin confrontar al PM.", score: 1, type: "Cómplice Pasivo" },
       { id: 'C', text: "Cumplir Objetivos: Diseñas lo que pide el negocio. 'Si no lo hago yo, lo hará otro'. Tu trabajo es mover métricas, no ser policía moral.", score: -1, type: "Mercenario" }
     ],
-    explanation: "Hay líneas rojas. Diseñar adicción para menores es una de ellas. Un Lead debe tener una brújula moral firme (A), incluso si cuesta capital político."
+    explanation: "Hay líneas rojas. Diseñar adicción para menores es una de ellas. Un Lead debe tener una brújula moral firme, incluso si cuesta capital político."
   },
   {
     id: 'data_collection_transparency',
@@ -210,10 +210,10 @@ export const research_questions = [
     question: "¿Cómo abordas el conflicto ético?",
     options: [
       { id: 'A', text: "Rediseño Conductual: Proponer 'Streaks' o 'Badges' de logro en lugar de premios aleatorios. Fomentar el hábito por constancia, no por azar.", score: 5, type: "Lead (Gamificación Positiva)" },
-      { id: 'B', text: "Aceptar con Warning: Diseñar las cajas pero agregar un disclaimer de 'Juegue con responsabilidad'. Es un parche legal que no resuelve el problema de fondo.", score: 1, type: "Legalista" },
+      { id: 'B', text: "Aceptar con Warning: Diseñar las cajas pero agregar un disclaimer prominente de 'Juegue con responsabilidad'. Implementas la feature mientras cumples con responsabilidad legal y comunicativa.", score: 1, type: "Legalista" },
       { id: 'C', text: "Implementar tal cual: Si es legal y sube la retención, se hace. La ética es subjetiva y el negocio necesita crecer.", score: 1, type: "Amoral" }
     ],
-    explanation: "Introducir azar (gambling) en finanzas explota la vulnerabilidad. La gamificación basada en esfuerzo (Streaks) construye hábitos saludables (A)."
+    explanation: "Introducir azar (gambling) en finanzas explota la vulnerabilidad. La gamificación basada en esfuerzo (Streaks) construye hábitos saludables."
   },
   {
     id: 'etica_ai_generated_fake_testimonials',
@@ -226,7 +226,7 @@ export const research_questions = [
       { id: 'B', text: "Diseño Genérico: Usar ilustraciones abstractas en lugar de fotos para mantener un estilo visual consistente. El diseño no implica autenticidad del contenido, solo presenta la información proporcionada.", score: 1, type: "Diseño Genérico" },
       { id: 'C', text: "Placeholder Text: Diseñar el componente pero poner 'Lorem Ipsum' o 'Testimonio Real Aquí'. Dejas que Marketing pegue el texto falso después, lavándote las manos.", score: 3, type: "Pasivo-Agresivo" }
     ],
-    explanation: "La confianza es el activo más valioso. Falsificar testimonios es fraude. Un Lead protege la integridad de la marca negándose a participar en engaños (A)."
+    explanation: "La confianza es el activo más valioso. Falsificar testimonios es fraude. Un Lead protege la integridad de la marca negándose a participar en engaños."
   },
   {
     id: 'validacion_prototype_vs_pixel_perfect',
@@ -252,7 +252,7 @@ export const research_questions = [
       { id: 'B', text: "Esperar el Reporte: Retrasar el sprint 2 semanas. 'Sin research completo no movemos un pixel'. Priorizas el rigor académico sobre el time-to-market.", score: 1, type: "Académico (Lento)" },
       { id: 'C', text: "Intui ción Informada: Priorizas velocity sobre exhaustividad. Usas los insights que ya capturaste de las sesiones presenciadas más tu experiencia de 10+ años para decidir rápido.", score: 1, type: "Experience-based shortcut" }
     ],
-    explanation: "El research que llega tarde no sirve. El Debrief Diario (A) inyecta conocimiento fresco al equipo de producto sin esperar la 'tesis doctoral'."
+    explanation: "El research que llega tarde no sirve. El Debrief Diario inyecta conocimiento fresco al equipo de producto sin esperar la 'tesis doctoral'."
   },
   {
     id: 'legal_algorithmic_bias_gender',
@@ -265,7 +265,7 @@ export const research_questions = [
       { id: 'B', text: "Aceptar la definición legal: Si Legal lo aprueba, tu responsabilidad termina ahí. El objetivo es maximizar la predicción del modelo.", score: 1, type: "Cómplice" },
       { id: 'C', text: "Transparencia de Proceso: Agregar un texto que diga 'Nuestros créditos se basan en data objetiva'. Comunicar el proceso de evaluación de manera clara y transparente para los usuarios.", score: -1, type: "Transparencia de Proceso" }
     ],
-    explanation: "El diseño no es solo UI, es el diseño del sistema. Permitir variables proxy de discriminación (A) perpetúa injusticia sistémica. Un Lead levanta la bandera ética."
+    explanation: "El diseño no es solo UI, es el diseño del sistema. Permitir variables proxy de discriminación perpetúa injusticia sistémica. Un Lead levanta la bandera ética."
   },
   {
     id: 'legal_accessibility_wcag_lawsuit',
@@ -291,7 +291,7 @@ export const research_questions = [
       { id: 'B', text: "Diseñar Igual: Asumes que compliance es responsabilidad de Legal/Infra. Continúas diseñando la UI globalmente agnóstica mientras ellos resuel ven data residency.", score: 1, type: "Silo approach" },
       { id: 'C', text: "Pedir consentimiento: Agregar un checkbox 'Acepto que mis datos vayan a USA'. Legalmente dudoso que esto sea suficiente para GDPR hoy en día.", score: 1, type: "Parche Legal Débil" }
     ],
-    explanation: "Diseñar para un mercado donde no puedes operar legalmente es desperdicio. Un Lead identifica blockers estratégicos (A) antes de invertir horas de diseño."
+    explanation: "Diseñar para un mercado donde no puedes operar legalmente es desperdicio. Un Lead identifica blockers estratégicos antes de invertir horas de diseño."
   },
   {
     id: 'legal_minor_protection_addictive_mechanics',
@@ -304,7 +304,7 @@ export const research_questions = [
       { id: 'B', text: "Age Gate Robusto: Implementar verificación de edad real (ID o tarjeta de crédito) para features riesgosas (chat/compras). Fricción alta pero necesaria.", score: 5, type: "Lead (Safety First)" },
       { id: 'C', text: "Ignorancia Plausible: 'Si dijeron que tenían 18, no es nuestro problema'. Mantener los ojos cerrados ante la evidencia.", score: -1, type: "Negligencia Criminal" }
     ],
-    explanation: "La ignorancia no es defensa legal con menores. Implementar barreras reales (Age Gating) para features peligrosas (B) es la única vía responsable."
+    explanation: "La ignorancia no es defensa legal con menores. Implementar barreras reales (Age Gating) para features peligrosas es la única vía responsable."
   },
   {
     id: 'user_research_budget_cut_qual_vs_quant',
@@ -317,7 +317,7 @@ export const research_questions = [
       { id: 'B', text: "Aceptar la derrota: Enfocarse solo en funnels y A/B testing. Si la empresa no paga herramientas, no valora la empatía.", score: 1, type: "Resignado" },
       { id: 'C', text: "Pagar de tu bolsillo: Pagar una suscripción personal a herramientas básicas para mantener la calidad. Insostenible y sienta mal precedente.", score: 1, type: "Mártir" }
     ],
-    explanation: "El research es una mentalidad, no una herramienta. Analytics te dice QUÉ pasa (el drop-off), pero solo hablar con humanos te dice POR QUÉ. Guerrilla Research (A) mantiene vivo el pulso del usuario a costo cero."
+    explanation: "El research es una mentalidad, no una herramienta. Analytics te dice QUÉ pasa (el drop-off), pero solo hablar con humanos te dice POR QUÉ. Guerrilla Research mantiene vivo el pulso del usuario a costo cero."
   },
   {
     id: 'user_research_ceo_demands_speed_vs_quality',

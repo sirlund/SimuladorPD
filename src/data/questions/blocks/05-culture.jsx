@@ -51,7 +51,7 @@ export const culture_questions = [
       { id: 'B', text: "Reframe con ROI: Le muestras el dashboard: 'Tus flows generaron $2.1M. Las ilustraciones ganan likes, tu diseño paga sueldos'. Redefines Seniority como impacto de negocio, no estética.", score: 5, type: "Lead (Reframe con ROI concreto)" },
       { id: 'C', text: "Validación Emocional: 'Todos sentimos síndrome del impostor, eres talentosa'. Empatía pura sin evidencia objetiva que cambie su creencia raíz.", score: 1, type: "Superficial empático (No cambia creencia raíz)" }
     ],
-    explanation: "La A valida que 'le falta algo'. La C es amable pero no cambia su creencia. La B ataca la raíz con datos: demuestra que el Seniority real se mide en impacto de negocio ($2.1M), no en estética de Dribbble. Combates el sentimiento de fraude con evidencia irrefutable de valor."
+    explanation: "El primer enfoque valida que 'le falta algo'. La C es amable pero no cambia su creencia. La B ataca la raíz con datos: demuestra que el Seniority real se mide en impacto de negocio ($2.1M), no en estética de Dribbble. Combates el sentimiento de fraude con evidencia irrefutable de valor."
   },
   {
     id: 'promotion_readiness_debate',
@@ -64,7 +64,7 @@ export const culture_questions = [
       { id: 'B', text: "Roadmap Acelerado: Rechazas la promoción hoy pero ofreces un plan de 3 meses con objetivos claros de liderazgo. Si cumple, asciende. Pones la responsabilidad en él.", score: 5, type: "Lead (Growth plan acelerado con accountability)" },
       { id: 'C', text: "Aumento sin Título: Le das un aumento salarial por su craft, pero mantienes el título Mid. Intentas retener con dinero sin comprometer la estructura de roles.", score: 3, type: "Parche costoso (No resuelve expectativa ni garantiza retención)" }
     ],
-    explanation: "Promover por miedo (A) crea inflación de títulos. Dar dinero sin título (C) no resuelve la ambición de carrera. La B es justa: roadmap acelerado con criterios claros. Si se va porque no quiere liderar, validaste que no era Senior material."
+    explanation: "Promover por miedo crea inflación de títulos. Dar dinero sin título no resuelve la ambición de carrera. El segundo enfoque es justa: roadmap acelerado con criterios claros. Si se va porque no quiere liderar, validaste que no era Senior material."
   },
 
   // --- BLOQUE 13
@@ -94,7 +94,7 @@ export const culture_questions = [
       { id: 'B', text: "Horario Núcleo: Forzar a todos a coincidir 4 horas al día. Resuelve la sincronía pero destruye la flexibilidad del remoto.", score: 3, type: "Híbrido Rígido" },
       { id: 'C', text: "Status Quo: Seguir sufriendo en Zoom. 'Es el precio de trabajar remoto'.", score: 1, type: "Pasivo" }
     ],
-    explanation: "El trabajo remoto eficaz requiere comunicación asíncrona escrita. Intentar replicar la oficina en Zoom (C) quema al equipo. La cultura de escritura (A) democratiza la información."
+    explanation: "El trabajo remoto eficaz requiere comunicación asíncrona escrita. Intentar replicar la oficina en Zoom quema al equipo. La cultura de escritura democratiza la información."
   },
   {
     id: 'culture_feedback_sandwich_vs_radical_candor',
@@ -133,7 +133,7 @@ export const culture_questions = [
       { id: 'B', text: "Vulnerabilidad Estratégica: Admitir lo que no sabes y preguntar. 'No tengo la respuesta ahora, pero investigaré'. La confianza viene de la competencia, no de la omnisciencia.", score: 5, type: "Lead (Growth Mindset)" },
       { id: 'C', text: "Silencio: No hablar en las reuniones para no meter la pata. Te vuelves invisible.", score: 1, type: "Invisible" }
     ],
-    explanation: "El síndrome del impostor se cura con acción y humildad. Nadie lo sabe todo. Admitir ignorancia y comprometerse a aprender (B) genera más respeto que fingir (A)."
+    explanation: "El síndrome del impostor se cura con acción y humildad. Nadie lo sabe todo. Admitir ignorancia y comprometerse a aprender genera más respeto que fingir."
   },
   {
     id: 'hiring_portfolio_vs_whiteboard_challenge',
@@ -146,7 +146,7 @@ export const culture_questions = [
       { id: 'B', text: "Mantener Whiteboard: 'Necesitamos ver cómo piensan bajo presión'. Favorece a los extrovertidos y buenos oradores, no necesariamente a los buenos diseñadores.", score: 1, type: "Sesgado a Extrovertidos" },
       { id: 'C', text: "Solo Portfolio: Contratar solo viendo trabajos pasados. No garantiza que ellos hicieron todo el trabajo ni evalúa cómo resuelven problemas nuevos.", score: 3, type: "Incompleto" }
     ],
-    explanation: "Los Whiteboard Challenges evalúan performance teatral, no diseño. Un ejercicio asíncrono pagado (A) respeta el tiempo y simula el entorno real de trabajo."
+    explanation: "Los Whiteboard Challenges evalúan performance teatral, no diseño. Un ejercicio asíncrono pagado respeta el tiempo y simula el entorno real de trabajo."
   },
   {
     id: 'hiring_culture_fit_bias',
@@ -185,7 +185,7 @@ export const culture_questions = [
       { id: 'B', text: "Value-Based Pricing: Cobrar por el valor del activo ($5k - $10k). No vendes horas, vendes una solución de negocio. El cliente sigue ganando mucho y tú capturas valor justo.", score: 5, type: "Lead (Socio de Negocio)" },
       { id: 'C', text: "Inflar horas: Mentir y decir que tomará 50 horas. Es deshonesto y riesgoso.", score: -1, type: "Fraudulento" }
     ],
-    explanation: "Cobrar por hora castiga la experiencia (mientras mejor eres, menos tardas y menos ganas). Value-Based Pricing (B) alinea incentivos: cobras por el resultado, no el esfuerzo."
+    explanation: "Cobrar por hora castiga la experiencia (mientras mejor eres, menos tardas y menos ganas). Value-Based Pricing alinea incentivos: cobras por el resultado, no el esfuerzo."
   },
   {
     id: 'design_critique_toxic_culture',
@@ -195,10 +195,10 @@ export const culture_questions = [
     question: "¿Cómo transformas la cultura tóxica sin perder al senior influyente?",
     options: [
       { id: 'A', text: "Reestructurar Critique Culture: Implementas 'I like, I wish, What if' framework obligatorio. Senior resiste pero lo obligas a reentrenar en feedback constructivo. Si no cambia conducta en 30 días, sale del equipo.", score: 5, type: "Lead (Cultura > Talento individual)" },
-      { id: 'B', text: "Separate Junior/Senior Critiques: Proteges juniors en sesiones aparte con tono constructivo. Seniors pueden seguir siendo brutales entre ellos. Resuelve síntoma pero mantiene cultura tóxica latente.", score: 3, type: "Segregación (Parche temporal)" },
+      { id: 'B', text: "Critiques por Nivel: Crear espacios seguros segregados: Sesiones de mentoría para Juniors y 'High-Performance Critiques' para Seniors. Adaptamos el estilo de feedback a la madurez del diseñador.", score: 3, type: "Segregación (Parche temporal)" },
       { id: 'C', text: "Mantener Estándares Altos: Mantienes el estándar alto de critique argumentando que la excelencia requiere feedback directo. El equipo debe desarrollar resiliencia para alcanzar el nivel profesional esperado.", score: -1, type: "Estándares Altos" }
     ],
-    explanation: "Separar sesiones (B) es band-aid que no arregla la raíz: senior designer tóxico sigue infectando cultura. 'Toughen up' (C) garantiza que solo sobreviven los que normalizan abuso. Un Lead (A) reconoce que una cultura sana es más valiosa que un contributor brillante tóxico - cambias o sales."
+    explanation: "Separar sesiones es band-aid que no arregla la raíz: senior designer tóxico sigue infectando cultura. 'Toughen up' (C) garantiza que solo sobreviven los que normalizan abuso. Un Lead (A) reconoce que una cultura sana es más valiosa que un contributor brillante tóxico - cambias o sales."
   },
   {
     id: 'junior_designer_overwhelm_sprint_planning',
@@ -208,9 +208,9 @@ export const culture_questions = [
     question: "¿Cómo intervienes sin bloquear momentum del equipo?",
     options: [
       { id: 'A', text: "Load Rebalancing + Mentoring: Reasignas 2 projects a otros inmediatamente, enseñas priorización en tiempo real con los 2 que quedan. PM se molesta pero defiendes que burnout cuesta más que retrasos.", score: 5, type: "Lead (Protege talento > Velocity corto plazo)" },
-      { id: 'B', text: "Time Management Workshop: Le enseñas Pomodoro/GTD y técnicas de productividad. Es útil pero no resuelve el overload objetivo - sigue con 4 projects urgentes simultáneos.", score: 3, type: "Skill building (Ignora root cause)" },
+      { id: 'B', text: "Time Management Workshop: Le enseñas Pomodoro/GTD y técnicas de productividad. Mejoras su eficiencia y organización para manejar múltiples proyectos simultáneos con mayor control.", score: 3, type: "Skill building (Ignora root cause)" },
       { id: 'C', text: "Cultura de Alto Rendimiento: Explicar que en startups todos manejan múltiples proyectos simultáneos. Es parte del crecimiento profesional y la experiencia de trabajar en un ambiente dinámico.", score: 1, type: "Cultura de Alto Rendimiento" }
     ],
-    explanation: "Time management (B) no resuelve que 4 projects simultáneos son objetivamente demasiado para un junior. Normalizar burnout (C) es penny-wise, pound-foolish: reemplazo + onboarding cuesta más que negociar timelines. Un Lead (A) entiende que sustainable velocity requiere load realista."
+    explanation: "Time management no resuelve que 4 projects simultáneos son objetivamente demasiado para un junior. Normalizar burnout es penny-wise, pound-foolish: reemplazo + onboarding cuesta más que negociar timelines. Un Lead entiende que sustainable velocity requiere load realista."
   },
 ];

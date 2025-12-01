@@ -158,48 +158,99 @@ Ejemplo de uso:
 - ✅ **Concisión**: Foco inmediato en la tensión y decisión
 - ✅ **Option Balance**: ~±20% de longitud entre opciones
 
-### 🚨 Regla Anti-Telegraph (NO Revelar Respuesta Incorrecta)
+### 🚨 Regla Anti-Spoiler V2 (CRÍTICO - NO Revelar Respuesta Incorrecta)
 
-**CRÍTICO**: Las opciones incorrectas deben sonar TENTADORAS y profesionales. El usuario debe dudar, no obviar.
+**OBJETIVO**: Las opciones incorrectas deben sonar TENTADORAS y profesionales, como decisiones defendidas por un Manager con prisa o un CEO agresivo. El usuario debe dudar, no obviar.
 
-❌ **NUNCA en el texto de la opción:**
-- Consecuencias negativas directas: "Fallas audit igual", "Pierdes talento", "Destruyes marca"
-- Auto-sabotaje evidente: "te conviertes en cuello de botella", "pierdes autonomía"
-- Verbos evidentemente negativos: falla, destruye, pierde, rompe, ignora, abdica, contamina, aliena
-- Frases derrotistas: "se ignora", "probablemente será ignorado", "dañas al negocio"
+#### ❌ PROHIBIDO en el texto de opciones:
 
-❌ **Ejemplos de lenguaje PROHIBIDO en option text:**
+**1. Juicios de Valor Negativos:**
+- "innecesario", "maquillas", "ignoras", "tóxico", "parche"
+- "artificialmente", "genérico", "cobarde", "mártir", "ingenuo"
+- "negligente", "fraudulento", "irresponsable", "arrogante"
+
+**2. Consecuencias Futuras Auto-Delatoras:**
+- "...y luego fallará", "...pero generará deuda técnica"
+- "...users decepcionados", "...pierdas talento"
+- "...destruyes marca", "...explota en production"
+- "...fallas audit", "...pierdes autonomía"
+
+**3. Auto-Sabotaje Evidente:**
+- "te conviertes en cuello de botella"
+- "pierdes credibilidad", "dañas al negocio"
+- "se ignora probablemente", "setting mal precedente"
+
+**4. Verbos Evidentemente Negativos:**
+- falla, destruye, pierde, rompe, ignora, abdica
+- contamina, aliena, quema, sabotea, degrada
+
+#### ✅ SÍ permitido en opciones:
+
+**Lenguaje Neutral/Positivo que describe la ACCIÓN:**
+- Verbos ejecutivos: "Implementar", "Priorizar", "Enfocar", "Optimizar"
+- Justificaciones plausibles: "para cumplir deadline", "priorizando velocity"
+- Racionalización profesional: "asegura", "garantiza", "permite", "habilita"
+- Referencias a autoridad: "según best practices", "estándar de industria"
+
+#### ✅ **Ejemplos Sanitizados (Trampa Plausible):**
+
 ```javascript
-// MAL ❌
-{ text: "Permites 36pt. Fallas audit y estableces precedente peligroso.", score: 1 }
-{ text: "Arreglar tú los diseños. Te conviertes en cuello de botella.", score: 1 }
-{ text: "Ignorar el feedback. Pierdes todo talento junior.", score: 1 }
-{ text: "PMs ignoran la regla y publican páginas feas, perdiste autoridad.", score: 2 }
+// ❌ ANTES (Auto-Spoiler):
+{ 
+  text: "Alert Modal: Muestras un popup '¿Estás seguro?' antes de pagar. Agrega fricción innecesaria antes del click y no resuelve la espera posterior.",
+  score: 1
+}
+
+// ✅ DESPUÉS (Trampa Profesional):
+{
+  text: "Confirmation Step: Implementar un modal de confirmación '¿Confirmar pago de $X?' previo al envío. Reduces errores accidentales y aseguras la intención del usuario.",
+  score: 1
+}
+
+// ❌ ANTES (Predice Futuro):
+{ 
+  text: "Fake Offline (Optimistic UI): Simulas que funciona offline cacheando last state. Funciona para demo pero explota en production con conflict reales de sync.",
+  score: 1
+}
+
+// ✅ DESPUÉS (Suena Pragmático):
+{
+  text: "Optimistic UI: Implementar UI optimista que permita trabajar sin conexión y guarde cambios localmente para sincronizar al recuperar señal. Priorizas la fluidez de la demo para cerrar el trato.",
+  score: 1
+}
+
+// ❌ ANTES (Juicio Moral):
+{ 
+  text: "Silencio Estratégico: Dejas que Legal y PR gestionen la comunicación externa para evitar responsabilidad legal personal. Cobarde.",
+  score: -1
+}
+
+// ✅ DESPUÉS (Suena Corporativo):
+{
+  text: "Gestión Centralizada: Canalizar toda la comunicación a través del equipo Legal y PR para asegurar un mensaje unificado y evitar pánico innecesario. El equipo de diseño se enfoca exclusivamente en el fix técnico.",
+  score: -1
+}
 ```
 
-✅ **SÍ en el texto de la opción:**
-- Describe la ACCIÓN concretamente
-- Include justificación plausible (por qué alguien haría esto)
-- Suena profesional y razonable bajo presión
-- Lenguaje neutral o positivo
+#### 📋 **Checklist de Sanitización:**
 
-✅ **Ejemplos CORRECTOS:**
-```javascript
-// BIEN ✅
-{ text: "Compromise de 36pt: Negocias target intermedio entre aesthetics (32pt del diseñador) y accessibility (44pt standard). Implementas como pilot en features no-críticas primero.", score: 1 }
-{ text: "Coaching Intensivo: Dedicas 2 horas diarias revisando cada diseño del junior para acelerar su curva de aprendizaje en momento crítico del proyecto.", score: 1 }
-{ text: "Mantener Roadmap Original: El feedback es ruido temporal de early adopters. Confías en tu research inicial y data que justificó la decisión.", score: 1 }
-```
+Antes de aprobar una opción incorrecta, verifica:
+- [ ] ¿Usa verbos neutrales/positivos (implementar, priorizar, asegurar)?
+- [ ] ¿Incluye justificación plausible (cumplir deadline, best practice)?
+- [ ] ¿Elimina juicios ("innecesario", "tóxico", "maquillas")?
+- [ ] ¿Elimina consecuencias ("...pero explota", "...luego falla")?
+- [ ] ¿Suena como algo que un Manager con prisa defendería?
 
-✅ **Las consecuencias negativas VAN en explanation:**
+#### 🎯 **Las consecuencias negativas VAN en explanation:**
+
 ```javascript
-explanation: "El compromise a 36pt (A) falla WCAG AA standards (44pt mínimo) y sienta precedente peligroso de que accessibility es negociable por aesthetics. Aunque suena pragmático, users con motor challenges seguirán struggling..."
+explanation: "El Confirmation Step (A) suena razonable para prevenir errores, pero agrega fricción ANTES del problema real (la espera de 8s). No previene los doble-clicks durante el processing. Un Lead entiende que deshabilitar el botón (B) es la única forma de hacer el error físicamente imposible..."
 ```
 
 **Excepción Score 0 (Catastrófico):**
-- Opciones score-0 PUEDEN usar lenguaje más directo en "type": "Fraudulento", "Negligente", "Tóxico"
-- Pero el TEXTO todavía debe describir la acción, no auto-sabotearse
-- Ejemplo: ✅ "Ignorar el pánico: Asumes que el riesgo legal no aplica a tu caso específico dado el contexto B2B del producto."
+- Opciones score-0 PUEDEN usar lenguaje más directo en el campo **type**: "Fraudulento", "Negligente", "Tóxico"
+- Pero el **text** todavía debe describir la acción sin predecir desastre
+- Ejemplo: ✅ "Ignorar el riesgo: Asumes que el warning legal no aplica a tu caso específico dado el contexto B2B del producto."
 - No: ❌ "Ignorar el pánico y apostar a la suerte. Irresponsable."
 
 

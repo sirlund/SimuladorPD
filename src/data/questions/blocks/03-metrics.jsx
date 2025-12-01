@@ -25,7 +25,7 @@ export const metrics_questions = [
       { id: 'B', text: "Análisis Forense Urgente: Segmentas el churn por cohorte (usuarios nuevos vs antiguos), flujo usado (nuevo vs legacy), fuente de tráfico y analizas heat maps + session recordings para identificar el punto exacto de fricción antes de la reunión.", score: 5, type: "Lead (Data-First)" },
       { id: 'C', text: "War Room Inmediato: Convocas a todos los stakeholders (CS, Product, Eng, Data) a una sala para generar hipótesis colaborativas y dividir las investigaciones entre el equipo.", score: 3, type: "Comité de Crisis (Ruido)" }
     ],
-    explanation: "Revertir sin evidencia (A) puede ser prematuro si el problema no es el diseño (podría ser un bug, cambio de precio, campaña mala, etc.). La C genera ruido sin dirección. La B te permite llegar a la reunión con datos concretos para tomar la decisión correcta."
+    explanation: "Revertir sin evidencia puede ser prematuro si el problema no es el diseño (podría ser un bug, cambio de precio, campaña mala, etc.). El tercer enfoque genera ruido sin dirección. El segundo enfoque te permite llegar a la reunión con datos concretos para tomar la decisión correcta."
   },
   {
     id: 'competitor_feature_launch',
@@ -38,7 +38,7 @@ export const metrics_questions = [
       { id: 'B', text: "Diagnóstico de Deals: Entrevistar hoy mismo a esos 3 clientes. ¿Realmente querían 'AI' o solo necesitaban exportar data? Resuelves el problema de fondo, no la solución.", score: 5, type: "Lead (Estratégico)" },
       { id: 'C', text: "Contra-oferta Táctica: Lanzar 'Export to Excel' rápido y vender nuestra velocidad como ventaja competitiva. 'Ellos tienen AI lenta, nosotros reportes instantáneos'.", score: 3, type: "Pragmático" }
     ],
-    explanation: "Copiar por pánico (A) es amateur. La C es un buen parche. La B es liderazgo: frenar la histeria para entender el problema real. A veces el cliente pide 'AI' pero necesita 'Excel'."
+    explanation: "Copiar por pánico es amateur. El tercer enfoque es un buen parche. El segundo enfoque es liderazgo: frenar la histeria para entender el problema real. A veces el cliente pide 'AI' pero necesita 'Excel'."
   },
   {
     id: 'investor_demo_cosmetics',
@@ -51,7 +51,7 @@ export const metrics_questions = [
       { id: 'B', text: "Polish del Roadmap Q Actual: Mejoras SOLO features que están ya comprometidas en roadmap de Q2-Q3 (con designs WIP). La demo muestra dirección real del producto, no un espejismo. Es aspiracional pero honest-to-roadmap.", score: 5, type: "Lead (Honestidad aspiracional)" },
       { id: 'C', text: "Pureza Absoluta: Te niegas a 'maquillar' nada. Lo que ven los inversores debe ser EXACTAMENTE lo que usan los clientes hoy, pixel por pixel. La honestidad radical es tu principio.", score: 1, type: "Purista (Pierde momentum de pitch)" }
     ],
-    explanation: "Una demo puede mostrar visión de futuro PRÓXIMO (B), pero crear producto falso (A) es bomba de tiempo - cuando los VCs hagan DD verán la brecha. La C ignora que pitches son storytelling legítimo sobre ejecución futura. El balance está en mostrar lo que YA ESTÁ en roadmap funded."
+    explanation: "Una demo puede mostrar visión de futuro PRÓXIMO, pero crear producto falso es bomba de tiempo - cuando los VCs hagan DD verán la brecha. La C ignora que pitches son storytelling legítimo sobre ejecución futura. El balance está en mostrar lo que YA ESTÁ en roadmap funded."
   },
   {
     id: 'technical_debt_explosion',
@@ -64,7 +64,7 @@ export const metrics_questions = [
       { id: 'B', text: "Tax de Deuda: Acordar dedicar 20% de cada sprint a refactor progresivo. Evitas el parón total traumático pero pagas la deuda constantemente.", score: 5, type: "Lead (Sostenible)" },
       { id: 'C', text: "Parón Total: Apoyar detener el roadmap 2 semanas. Argumentas que es mejor sufrir un retraso corto ahora que sangrar eficiencia por meses.", score: 3, type: "Drástico" }
     ],
-    explanation: "Ignorar deuda (A) degrada velocidad permanentemente. Parar 2 semanas (C) es difícil de aprobar sin crisis visible. El 'Tax de Deuda' del 20% (B) paga deuda constantemente sin trauma, manteniendo delivery y moral del equipo. Es sostenible a largo plazo."
+    explanation: "Ignorar deuda degrada velocidad permanentemente. Parar 2 semanas es difícil de aprobar sin crisis visible. El 'Tax de Deuda' del 20% (B) paga deuda constantemente sin trauma, manteniendo delivery y moral del equipo. Es sostenible a largo plazo."
   },
 
   // --- BLOQUE 8: DATA, MÉTRICAS & EXPERIMENTACIÓN ---
@@ -79,7 +79,7 @@ export const metrics_questions = [
       { id: 'B', text: "Defensa de la Data: 'El test falló. Si lanzamos, ensuciamos el producto sin valor probado. Iteremos la hipótesis y testeemos de nuevo'.", score: 5, type: "Lead (Integridad de Data)" },
       { id: 'C', text: "Lanzamiento Vigilado: Lanzar pero monitorear de cerca por 48h. Si la conversión baja, haces rollback inmediato. Asumes el riesgo.", score: 3, type: "Riesgoso" }
     ],
-    explanation: "Lanzar un test fallido (A) compromete la credibilidad del proceso de experimentación. La C es riesgosa sin evidencia de mejora. Un Lead defiende la integridad de datos (B): si el test falló, iteremos la hipótesis. La credibilidad científica es más valiosa que un lanzamiento apresurado."
+    explanation: "Lanzar un test fallido compromete la credibilidad del proceso de experimentación. La C es riesgosa sin evidencia de mejora. Un Lead defiende la integridad de datos: si el test falló, iteremos la hipótesis. La credibilidad científica es más valiosa que un lanzamiento apresurado."
   },
   {
     id: 'vanity_metric_viral_growth',
@@ -92,7 +92,7 @@ export const metrics_questions = [
       { id: 'B', text: "Reality Check: Mostrar el gráfico de retención al CEO. 'Estamos llenando un balde agujereado. Pautemos el viral y arreglemos el onboarding ya'.", score: 5, type: "Lead (Honestidad Radical)" },
       { id: 'C', text: "Rediseño Reactivo: Detener todo para rediseñar el producto y adaptarlo a estos nuevos usuarios, asumiendo que son el nuevo target.", score: 1, type: "Reactivo" }
     ],
-    explanation: "50k usuarios con 0.5% de retención día-30 es tráfico basura. Un Lead muestra el funnel completo (B): crecimiento sin retención significa llenar un balde agujereado. La A celebra vanity metrics. La C rediseña reactivamente para usuarios que igual abandonarán."
+    explanation: "50k usuarios con 0.5% de retención día-30 es tráfico basura. Un Lead muestra el funnel completo: crecimiento sin retención significa llenar un balde agujereado. La A celebra vanity metrics. La C rediseña reactivamente para usuarios que igual abandonarán."
   },
   {
     id: 'sample_size_impatience',
@@ -105,7 +105,7 @@ export const metrics_questions = [
       { id: 'B', text: "Decisión Bayesiana: Si la ganancia es enorme (+12%) y el riesgo de error bajo, shippeas early con monitoreo intensivo post-launch.", score: 5, type: "Lead (Risk-Reward)" },
       { id: 'C', text: "Obediencia Ciega: Shippeas inmediatamente sin cuestionarlo. Asumes que el PM tiene la responsabilidad final de la decisión de negocio.", score: -1, type: "Cómplice de mala ciencia" }
     ],
-    explanation: "La significancia estadística es importante, pero en startups la velocidad de aprendizaje a veces vale más que la perfección científica (B). La clave es evaluar el riesgo de equivocarse."
+    explanation: "La significancia estadística es importante, pero en startups la velocidad de aprendizaje a veces vale más que la perfección científica. La clave es evaluar el riesgo de equivocarse."
   },
   {
     id: 'retention_vs_acquisition_focus',
@@ -118,7 +118,7 @@ export const metrics_questions = [
       { id: 'B', text: "Acquisition Freeze de 4 Semanas: Presentas 'Leaky Bucket' memo al CEO proponiendo pausar TODA adquisición paid por 1 mes para focus 100% en retención. Argumentas que llenar balde roto quema dinero. Propones medir impacto en activación antes de reactivar spend. Riesgo: Board ve caída de sign-ups en Q y entra en pánico. Delays en Series C podrían costar runway.", score: 1, type: "Bold pero arriesgado políticamente" },
       { id: 'C', text: "Growth-Led con Retention Insights: Propones AUMENTAR adquisición a $220K/mes pero con targeting más preciso basado en perfil de los usuarios que SÍ se activan (industria, company size, use case). Usas data de cohorte exitosa para mejorar CAC efficiency. Dejas onboarding como está - el producto ya funciona para quienes lo entienden. Prioridad: volumen para narrativa de Series C.", score: 3, type: "Growth-focused con optimización" }
     ],
-    explanation: "Con presión de Board para Series C, pausar adquisición (B) es arriesgado políticamente. Acelerar sin optimizar (C implícito) desperdicia inversión. El balance calculado (A) mejora unit economics sin detener crecimiento: reduce spend 30% y dedica recursos a mejorar activación 62%→75%, haciendo cada usuario 40% más valioso."
+    explanation: "Con presión de Board para Series C, pausar adquisición es arriesgado políticamente. Acelerar sin optimizar (C implícito) desperdicia inversión. El balance calculado mejora unit economics sin detener crecimiento: reduce spend 30% y dedica recursos a mejorar activación 62%→75%, haciendo cada usuario 40% más valioso."
   },
 
   // --- BLOQUE 9: DISEÑO DE FLUJOS & INTERACCIÓN ---
@@ -133,7 +133,7 @@ export const metrics_questions = [
       { id: 'B', text: "Botón 'Skip' Prominente: Mantienes los 7 pasos pero permites saltar. Es un compromiso político que calma al PM pero sigue mostrando fricción inicial. Muchos usuarios saltarán sin aprender nada.", score: 3, type: "Parche (Compromiso débil)" },
       { id: 'C', text: "Gamificación del Onboarding: Agregas barra de progreso y celebraciones (confeti) en cada paso para hacerlo 'menos aburrido'. Maquillas el problema de longitud con UI.", score: 1, type: "Lipstick on a pig" }
     ],
-    explanation: "70% de abandono con CAC de $200 es una emergencia financiera. La educación no sirve si el usuario se va antes de entrar. La opción A prioriza el 'Aha Moment' y mueve la educación al momento donde es relevante."
+    explanation: "70% de abandono con CAC de $200 es una emergencia financiera. La educación no sirve si el usuario se va antes de entrar. El enfoque correcto prioriza el 'Aha Moment' y mueve la educación al momento donde es relevante."
   },
   {
     id: 'error_message_user_blame',
@@ -146,7 +146,7 @@ export const metrics_questions = [
       { id: 'B', text: "Mapeo Pareto (Top 5): Identificas los 5 errores más frecuentes (80% del volumen) y diseñas mensajes con ACCIÓN clara. Ignoras los edge cases por ahora.", score: 5, type: "Lead (Pareto Principle)" },
       { id: 'C', text: "Self-Service: Agregas un link '¿Problemas?' debajo del error que lleva a una wiki técnica con soluciones comunes. Empoderas al usuario para resolver problemas de forma autónoma.", score: 1, type: "Self-Service" }
     ],
-    explanation: "Cuando los errores cuestan dinero ($5k/semana), la prioridad es la resolución autónoma. Mensajes genéricos (A) no resuelven. Mapear el Top 5 (B) aplica Pareto para eliminar el 80% del dolor con 20% de esfuerzo."
+    explanation: "Cuando los errores cuestan dinero ($5k/semana), la prioridad es la resolución autónoma. Mensajes genéricos no resuelven. Mapear el Top 5 aplica Pareto para eliminar el 80% del dolor con 20% de esfuerzo."
   },
   {
     id: 'loading_spinner_anxiety',
@@ -157,9 +157,9 @@ export const metrics_questions = [
     options: [
       { id: 'A', text: "Bloqueo de UI + Feedback: Deshabilitas el botón tras el primer click y cambias el texto a 'Procesando...'. Gestionas la ansiedad con narrativa.", score: 5, type: "Lead (Perceived Performance)" },
       { id: 'B', text: "Spinner más Grande: Haces el spinner más visible y agregas texto 'No cierres esta ventana'. Confías en que el usuario lea y obedezca.", score: 1, type: "Débil (No previene error)" },
-      { id: 'C', text: "Alert Modal: Muestras un popup '¿Estás seguro?' antes de pagar. Agrega fricción innecesaria antes del click y no resuelve la espera posterior.", score: 1, type: "Fricción incorrecta" }
+      { id: 'C', text: "Confirmation Step: Implementar un modal de confirmación '¿Confirmar pago de $X?' previo al envío. Reduces errores accidentales y aseguras la intención del usuario antes de procesar.", score: 1, type: "Fricción incorrecta" }
     ],
-    explanation: "El problema no es solo la espera, es el error catastrófico (doble cargo). La solución debe impedir físicamente el error (deshabilitar botón) y gestionar la ansiedad (narrativa). La opción A protege al negocio y al usuario."
+    explanation: "El problema no es solo la espera, es el error catastrófico (doble cargo). La solución debe impedir físicamente el error (deshabilitar botón) y gestionar la ansiedad (narrativa). El enfoque correcto protege al negocio y al usuario."
   },
   {
     id: 'infinite_scroll_vs_pagination',
@@ -170,7 +170,7 @@ export const metrics_questions = [
     options: [
       { id: 'A', text: "Paginación Inmediata: Reviertes a paginación estándar. La necesidad del CFO (auditoría legal) supera cualquier preferencia estética de Marketing. La funcionalidad crítica es innegociable.", score: 5, type: "Lead (Funcionalidad > Estética)" },
       { id: 'B', text: "Infinite Scroll con Filtros Avanzados: Mantienes el scroll pero agregas filtros potentes por fecha/monto. Resuelve la búsqueda del CFO sin sacrificar la UX moderna. (Toma más tiempo de dev, riesgo de no llegar al lunes).", score: 3, type: "Idealista (Riesgo de deadline)" },
-      { id: 'C', text: "Export to CSV: Le dices al CFO que use Excel para auditar y dejas la UI como está. Ignoras que el usuario necesita verificar visualmente en la plataforma.", score: 1, type: "Arrogante" }
+      { id: 'C', text: "External Audit Tool: Habilitar una exportación robusta a Excel/CSV para auditorías. Las herramientas de hoja de cálculo son más potentes para la tarea del CFO que cualquier UI que podamos construir.", score: 1, type: "Arrogante" }
     ],
     explanation: "En herramientas B2B/Financieras, la 'encontrabilidad' y auditoría son requisitos funcionales, no opcionales. Infinite scroll rompe la navegación profunda. Ante un bloqueo de cierre contable, la paginación (A) es la solución robusta y rápida."
   },
@@ -213,7 +213,7 @@ export const metrics_questions = [
       { id: 'B', text: "Correr el Test: 'Es solo un experimento'. Si funciona, el negocio gana más margen. La ética es secundaria a la rentabilidad.", score: -1, type: "Amoral" },
       { id: 'C', text: "Segmentación Geográfica: Sugerir hacerlo por país en lugar de dispositivo. Sigue siendo discriminación de precios pero 'se ve menos feo'.", score: 1, type: "Racionalización" }
     ],
-    explanation: "La discriminación de precios oculta basada en dispositivo es percibida como injusta y depredadora. Un Lead protege la relación a largo plazo con el cliente (A)."
+    explanation: "La discriminación de precios oculta basada en dispositivo es percibida como injusta y depredadora. Un Lead protege la relación a largo plazo con el cliente."
   },
   {
     id: 'data_driven_design_paralysis',
@@ -237,9 +237,9 @@ export const metrics_questions = [
     options: [
       { id: 'A', text: "Aguafiestas con Data: Presentar el análisis completo mostrando que son 'Vanity Metrics'. 'Tenemos más tráfico basura, pero menos negocio'. Reorientar al equipo a métricas de valor.", score: 5, type: "Lead (Truth Teller)" },
       { id: 'B', text: "Observación Pasiva: Dejar que celebren el éxito de Page Views. Si el management está satisfecho con estas métricas, no es necesario crear fricción innecesaria.", score: 1, type: "Observación Pasiva" },
-      { id: 'C', text: "Optimizar Clickbait: Sugerir más formas de aumentar Page Views artificialmente para seguir ganando bonos.", score: -1, type: "Mercenario" }
+      { id: 'C', text: "Maximizar Engagement: Doblar la apuesta en las tácticas de diseño que están generando tráfico. Si el Page View es alto, el interés existe; optimicemos los layouts para mantener esa tendencia.", score: -1, type: "Mercenario" }
     ],
-    explanation: "Las métricas de vanidad mienten. Un Lead se enfoca en métricas de negocio reales (Conversión, Retención) aunque sea impopular al principio (A)."
+    explanation: "Las métricas de vanidad mienten. Un Lead se enfoca en métricas de negocio reales (Conversión, Retención) aunque sea impopular al principio."
   },
   {
     id: 'freemium_upgrade_friction',
@@ -252,7 +252,7 @@ export const metrics_questions = [
       { id: 'B', text: "Upselling Contextual: Implementas prompts solo cuando el usuario choca con un límite real. Es fricción justificada por valor. Corres un A/B test para validar que la conversión compense la caída de NPS.", score: 5, type: "Lead (Fricción con propósito + data)" },
       { id: 'C', text: "Monetización Agresiva: Implementas la propuesta de Growth (prompts cada 5 clicks) con justificación de que el runway crítico requiere acción inmediata. Documentas el trade-off entre NPS y supervivencia para revisión posterior.", score: 3, type: "Monetización Agresiva" }
     ],
-    explanation: "La A es demasiado lenta para un runway de 7 meses. La C sacrifica la marca por pánico. La B es el balance de Lead: fricción contextual (educativa) validada con datos. No puedes morir adorado, pero tampoco debes alienar a tu base sin probar."
+    explanation: "El primer enfoque es demasiado lenta para un runway de 7 meses. El tercer enfoque sacrifica la marca por pánico. El segundo enfoque es el balance de Lead: fricción contextual (educativa) validada con datos. No puedes morir adorado, pero tampoco debes alienar a tu base sin probar."
   },
   {
     id: 'seo_vs_ux_url_structure',
@@ -265,7 +265,7 @@ export const metrics_questions = [
       { id: 'B', text: "Migration Strategy con Redirects 301: Cambias las URLs pero implementas redirects permanentes que mantienen compatibilidad con links antiguos. Monitoreas analytics por 30 días para validar que no hay caída de engagement antes de commitear.", score: 5, type: "Lead (No-downside migration)" },
       { id: 'C', text: "Rechazar Cambio Completamente: Las URLs son parte de la UX establecida, parte de muscle memory de usuarios. El SEO se puede mejorar con meta tags, contenido, backlinks - no sacrificas UX por ranking.", score: 3, type: "Conservador (Pierde oportunidad)" }
     ],
-    explanation: "Cambiar URLs sin strategy rompe bookmarks, links compartidos y confianza (A). La C es conservadora pero pierde ganancia real de SEO. Los redirects 301 (B) permiten evolucionar sin destruir - literalmente win-win si está bien implementado."
+    explanation: "Cambiar URLs sin strategy rompe bookmarks, links compartidos y confianza. La C es conservadora pero pierde ganancia real de SEO. Los redirects 301 permiten evolucionar sin destruir - literalmente win-win si está bien implementado."
   },
   {
     id: 'analytics_platform_cost_explosion',
@@ -278,6 +278,6 @@ export const metrics_questions = [
       { id: 'B', text: "Event Sampling Strategy: Trackeas 100% de conversions críticas, 20% de pageviews, 5% de hover/scroll events. Reduces volumen 60% manteniendo calidad de insights donde importa.", score: 5, type: "Lead (Sampling inteligente)" },
       { id: 'C', text: "Migrar a PostHog Self-Hosted: 2 meses de migración, $8K setup inicial, ownership total. Riesgo de perder data histórica en transición y 2 meses sin analytics confiables.", score: 3, type: "Build vs Buy (Alto switching cost)" }
     ],
-    explanation: "Cortar tracking ciegamente (A) puede eliminar señales tempranas de churn o growth. Migrar plataformas (C) es válido pero 2 meses sin analytics confiables durante transición es riesgoso. Event sampling (B) es la jugada: 100% de events críticos, sample estadístico de volumen alto - reduces costo 60% sin perder poder predictivo."
+    explanation: "Cortar tracking ciegamente puede eliminar señales tempranas de churn o growth. Migrar plataformas es válido pero 2 meses sin analytics confiables durante transición es riesgoso. Event sampling es la jugada: 100% de events críticos, sample estadístico de volumen alto - reduces costo 60% sin perder poder predictivo."
   },
 ];

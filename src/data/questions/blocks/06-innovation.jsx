@@ -19,7 +19,7 @@ export const innovation_questions = [
       { id: 'B', text: "Problem-First Discovery: 2 semanas de entrevistas con power users para hallar tareas repetitivas automatizables. Presentas 3 casos de uso con ROI medible y pides 1Q para build.", score: 5, type: "Lead (Delayed gratification)" },
       { id: 'C', text: "AI-Enhanced Badges: Agregas badges 'Powered by AI' o 'Smart Suggestions' a features existentes que ya usan algoritmos básicos. Costo cero, marketing instantáneo, pero riesgo de backlash.", score: -1, type: "AI-washing (Fraude que genera backlash)" }
     ],
-    explanation: "La C es fraude que genera backlash cuando usuarios descubren que no hay AI real. La A crea expectativa de 'asistente inteligente' que un chatbot genérico no cumple - decepciona. Requiere corage, pero un Lead encuentra casos de uso donde AI elimina trabajo tedioso genuino (B), aunque tome más tiempo."
+    explanation: "El tercer enfoque es fraude que genera backlash cuando usuarios descubren que no hay AI real. El primer enfoque crea expectativa de 'asistente inteligente' que un chatbot genérico no cumple - decepciona. Requiere corage, pero un Lead encuentra casos de uso donde AI elimina trabajo tedioso genuino (B), aunque tome más tiempo."
   },
   {
     id: 'design_trend_neumorphism',
@@ -32,7 +32,7 @@ export const innovation_questions = [
       { id: 'B', text: "Innovación Visual: Lo permites. La diferenciación visual atrae usuarios y demuestra que el producto es moderno. Los problemas de contraste se pueden ajustar iterativamente después del lanzamiento basado en feedback.", score: 1, type: "Trend Chaser (Arriesga usabilidad)" },
       { id: 'C', text: "Accessibility First: Si el trend no puede cumplir WCAG AA sin compromisos estéticos severos, se rechaza. La moda no justifica excluir usuarios con baja visión o condiciones de luz. Los principios no son negociables.", score: 5, type: "Lead (Principios > Estética)" }
     ],
-    explanation: "Los trends visuales vienen y van (Neumorphism ya está en decline), pero la accesibilidad es permanente y legal en muchas jurisdicciones. La B arriesga usabilidad por estética temporal. La A genera inconsistencia de marca. Un Lead sabe que un diseño que excluye usuarios es mal diseño (C)."
+    explanation: "Los trends visuales vienen y van (Neumorphism ya está en decline), pero la accesibilidad es permanente y legal en muchas jurisdicciones. La B arriesga usabilidad por estética temporal. La A genera inconsistencia de marca. Un Lead sabe que un diseño que excluye usuarios es mal diseño."
   },
 
   // --- NUEVAS PREGUNTAS: BLOQUE 31 - INNOVACIÓN & AI ---
@@ -47,7 +47,7 @@ export const innovation_questions = [
       { id: 'B', text: "Shift de Skills: 'La AI automatiza la ejecución, no la estrategia. Nuestro valor es entender al usuario y el negocio. Usen AI como asistente para acelerar, no como amenaza'.", score: 5, type: "Lead (Reframe Constructivo)" },
       { id: 'C', text: "Prohibición Defensiva: Prohibir terminantemente el uso de herramientas de AI en el equipo. Intentas proteger el 'craft' manual aislando al equipo de la evolución inevitable de la industria.", score: -1, type: "Ludita (Retrasa la evolución)" }
     ],
-    explanation: "Negar la AI (A) o prohibirla (C) es miope. La opción B ayuda al equipo a entender que el diseño es problem-solving, no solo pixel-pushing."
+    explanation: "Negar la AI o prohibirla es miope. La segunda opción ayuda al equipo a entender que el diseño es problem-solving, no solo pixel-pushing."
   },
   {
     id: 'ai_personalization_ethical_limit',
@@ -60,7 +60,7 @@ export const innovation_questions = [
       { id: 'B', text: "Personalización Transparente con Opt-In: Ofrecer la experiencia personalizada como opción que el usuario ELIGE activar, explicando claramente qué datos se usan y para qué.", score: 5, type: "Lead (Privacy by Design)" },
       { id: 'C', text: "Personalización Superficial: Limitarse a personalizar cosas menores como el tema (claro/oscuro) o el idioma. Evitas cualquier riesgo ético pero dejas todo el valor de negocio sobre la mesa.", score: 1, type: "Conservador (Deja valor sobre la mesa)" }
     ],
-    explanation: "La personalización sin consentimiento (A) es manipulación. La opción B da poder al usuario de elegir si quiere esa experiencia, convirtiendo una táctica opaca en una feature transparente."
+    explanation: "La personalización sin consentimiento es manipulación. La segunda opción da poder al usuario de elegir si quiere esa experiencia, convirtiendo una táctica opaca en una feature transparente."
   },
   {
     id: 'ai_strategy_ux',
@@ -73,7 +73,7 @@ export const innovation_questions = [
       { id: 'B', text: "Invisible AI (Magic Fill): Propones feature de 'Auto-completado de formularios con AI' (scan de PDF/imagen). Es menos vistoso que un chat, pero resuelve un dolor real (data entry). Haces un prototipo en video para el PR del lunes y prometes delivery en 4 semanas. Vendes 'Productividad Real' vs 'Hype'.", score: 5, type: "Lead (User-Centric AI)" },
       { id: 'C', text: "Fake Door Test: Anuncias 'AI Assistant Coming Soon' con un botón que recoge emails de interesados. Ganas tiempo para diseñar algo real mientras calmas al Board con el anuncio.", score: 1, type: "Vaporware (Riesgo de decepción)" }
     ],
-    explanation: "El mayor valor de la AI en UX no es conversar (Chatbot), es eliminar trabajo. La opción B ofrece una narrativa de 'Productividad' que es superior al hype de 'Chat' y protege la UX a largo plazo."
+    explanation: "El mayor valor de la AI en UX no es conversar (Chatbot), es eliminar trabajo. La segunda opción ofrece una narrativa de 'Productividad' que es superior al hype de 'Chat' y protege la UX a largo plazo."
   },
   {
     id: 'design_system_library_vs_custom',
@@ -86,7 +86,7 @@ export const innovation_questions = [
       { id: 'B', text: "Hybrid Approach: Migrar componentes genéricos (Buttons, Inputs) a la library, pero mantener componentes complejos y específicos del dominio (wizards, dashboards) custom. Reduces mantenimiento sin perder diferenciación.", score: 5, type: "Lead (Pragmatismo estratégico)" },
       { id: 'C', text: "Big Bang Migration: Planificar 6 meses para migrar TODO a Shadcn/UI. Paraizas el roadmap de features para hacer la transición completa y eliminar toda deuda técnica de una vez.", score: 1, type: "Big Bang (Mata momentum)" }
     ],
-    explanation: "Defender todo (A) ignora que mantener un DS custom cuesta $120-180K/año. Migrar todo (C) paraliza el negocio. La opción B reconoce que botones genéricos no diferencian tu producto - usa la library para lo commodity, mantén custom lo que genera valor único."
+    explanation: "Defender todo ignora que mantener un DS custom cuesta $120-180K/año. Migrar todo paraliza el negocio. La segunda opción reconoce que botones genéricos no diferencian tu producto - usa la library para lo commodity, mantén custom lo que genera valor único."
   },
   {
     id: 'web3_wallet_integration_skepticism',
@@ -99,7 +99,7 @@ export const innovation_questions = [
       { id: 'B', text: "Fake Door + Survey: Agregar un botón 'Connect Wallet (Coming Soon)' que registra interés. Si <3% clickea, la hipótesis se invalida sin costo de desarrollo.", score: 5, type: "Lead (Evidence before investment)" },
       { id: 'C', text: "Hard No: 'Web3 es hype pasajero, no agregamos tecnología sin demand signal clear'. Te niegas categóricamente, potencialmente bloqueando verdadera innovación.", score: 3, type: "Conservador (Puede perder ventana)" }
     ],
-    explanation: "Construir sin validación (A) desperdicia 2 meses en tech que usuarios B2B tradicionales no quieren/entienden. Rechazar por dogma (C) es cerrado. La opción B valida el interés real con costo cero antes de comprometer recursos."
+    explanation: "Construir sin validación desperdicia 2 meses en tech que usuarios B2B tradicionales no quieren/entienden. Rechazar por dogma es cerrado. La segunda opción valida el interés real con costo cero antes de comprometer recursos."
   },
   {
     id: 'ar_product_visualization_roi',
@@ -112,7 +112,7 @@ export const innovation_questions = [
       { id: 'B', text: "MVP Scoped: Hacer un pilot con 10 SKUs top-sellers y solo iOS. Medir conversion lift en esos productos antes de escalar a todo el catálogo. Aprendes con inversión controlada.", score: 5, type: "Lead (Learn before scale)" },
       { id: 'C', text: "Wait and See: 'Es muy early, esperamos a que la tecnología madure y sea cross-platform'. Evitas riesgo pero pierdes ventana de innovación.", score: 3, type: "Late follower" }
     ],
-    explanation: "Feature parity no es estrategia (A). Esperar a 'perfección' (C) te hace late follower. La opción B es lean: invierte lo mínimo para aprender si AR realmente mueve el needle antes de commitear $150K+ y 3 meses."
+    explanation: "Feature parity no es estrategia. Esperar a 'perfección' (C) te hace late follower. La opción B es lean: invierte lo mínimo para aprender si AR realmente mueve el needle antes de commitear $150K+ y 3 meses."
   },
   {
     id: 'voice_ui_accessibility_vs_power_users',
@@ -125,7 +125,7 @@ export const innovation_questions = [
       { id: 'B', text: "Dual Interface: Ofrecer voice como opción alternativa, manteniendo keyboard/visual como default. Los usuarios eligen su modalidad preferida según contexto.", score: 5, type: "Lead (Inclusive choice)" },
       { id: 'C', text: "Voice para Simple Tasks Only: Limitar voice a comandos básicos (search, filter). No invertir en voice para workflows complejos porque pocos lo usarían.", score: 3, type: "Pragmático (Limita alcance)" }
     ],
-    explanation: "Forzar voice (A) destruye la productividad de usuarios existentes. Limitarlo solo a simple tasks (C) pierde el valor para quienes más lo necesitan. La opción B da poder de elección: accesibilidad para quien la necesita, eficiencia para quien la prefiere."
+    explanation: "Forzar voice destruye la productividad de usuarios existentes. Limitarlo solo a simple tasks pierde el valor para quienes más lo necesitan. La segunda opción da poder de elección: accesibilidad para quien la necesita, eficiencia para quien la prefiere."
   },
   {
     id: 'ai_content_moderation_bias_risk',
@@ -138,7 +138,7 @@ export const innovation_questions = [
       { id: 'B', text: "Human-in-the-loop: AI flagea content, pero humanos revisan antes de eliminar. Reduces costo a $15K/mes (vs $40K) y eliminas falsos positivos. Es el balance.", score: 5, type: "Lead (Augment, not replace)" },
       { id: 'C', text: "No AI: Mantener 100% moderación humana por principios éticos. Es más costoso y más lento, pero preservas total control de calidad y evitas sesgos sistémicos.", score: 1, type: "Purista (Costly long-term)" }
     ],
-    explanation: "Full automation (A) ahorra dinero pero 8% de falsos positivos significa censurar usuarios legítimos sistemáticamente - erosiona confianza. Rechazar AI completamente (C) es costoso e insostenible a escala. Human-in-the-loop (B) usa AI como filtro, no como juez final."
+    explanation: "Full automation ahorra dinero pero 8% de falsos positivos significa censurar usuarios legítimos sistemáticamente - erosiona confianza. Rechazar AI completamente es costoso e insostenible a escala. Human-in-the-loop usa AI como filtro, no como juez final."
   },
   {
     id: 'emerging_tech_timing_pmf_tension',
@@ -151,7 +151,7 @@ export const innovation_questions = [
       { id: 'B', text: "PMF First, Then AI: Rechazar el pivot. Consolidar el PMF actual acelerándolo a 25% MoM. Con tracción sólida, fundraiseas sin necesidad de hype tech. Producto > Marketing.", score: 5, type: "Lead (Substance over hype)" },
       { id: 'C', text: "Dual Track: Mitad del equipo optimiza PMF, mitad construye 'AI features' para demo de fundraising. Intentas ambos pero divides foco en momento crítico.", score: 1, type: "Compromiso (Falla en ambos)" }
     ],
-    explanation: "Los inversores funding hype, no sustancia (A), crean burbujas. Eventualmente te pedirán resultados reales. Dividir el equipo (C) garantiza hacer ambas cosas a medias. La opción B se enfoca: con 25% MoM growth y churn bajo, levantas funding sin trucos."
+    explanation: "Los inversores funding hype, no sustancia, crean burbujas. Eventualmente te pedirán resultados reales. Dividir el equipo garantiza hacer ambas cosas a medias. La opción B se enfoca: con 25% MoM growth y churn bajo, levantas funding sin trucos."
   },
 
 
@@ -164,10 +164,10 @@ export const innovation_questions = [
     question: "¿Cómo gestionas la inconsistencia visual durante un rebrand gradual?",
     options: [
       { id: 'A', text: "Big Bang Release: Pausar updates graduales y lanzar todo junto cuando esté listo. Elimina la inconsistencia pero retrasa el valor para marketing.", score: 3, type: "Big Bang (Requiere delay de marketing)" },
-      { id: 'B', text: "Theme Switcher Temporal: Implementar un 'theme toggle' que permita a usuarios viejos seguir en el diseño anterior hasta que la migración esté 100% lista. Reduce confusión pero mantiene deuda técnica.", score: 3, type: "Técnico (Complejidad de mantenimiento)" },
+      { id: 'B', text: "Theme Switcher Temporal: Implementar un 'theme toggle' que permita a usuarios elegir entre el diseño nuevo y anterior. Reduces confusión y permite transición gradual según preferencia de cada usuario.", score: 3, type: "Técnico (Complejidad de mantenimiento)" },
       { id: 'C', text: "Priorizar Key Journeys: Actualizar solo el Login y Navigation bar inmediatamente para que coincidan con Marketing. El resto puede esperar. Arreglas la primera impresión crítica.", score: 5, type: "Lead (Priorización por impacto)" }
     ],
-    explanation: "Big Bang (A) es arriesgado con 400+ screens. Theme switcher (B) genera complejidad técnica. Priorizar key journeys (C) arregla la primera impresión crítica (Login/Nav) que coincida con Marketing, mientras el resto migra gradualmente. Comunicar el rebrand proactivamente convierte confusión en anticipación."
+    explanation: "Big Bang es arriesgado con 400+ screens. Theme switcher genera complejidad técnica. Priorizar key journeys arregla la primera impresión crítica (Login/Nav) que coincida con Marketing, mientras el resto migra gradualmente. Comunicar el rebrand proactivamente convierte confusión en anticipación."
   },
   {
     id: 'nocode_tools_designer_replacement_threat',
@@ -180,7 +180,7 @@ export const innovation_questions = [
       { id: 'B', text: "Upskill + Design QA: Entrenas PMs en design basics (tipografía, spacing, color) + estableces Design QA review al final. PMs hacen landing pages, designers se enfocan en producto core. Win-win.", score: 5, type: "Lead (Leverage, no control)" },
       { id: 'C', text: "Designers Learn No-Code: Tu equipo aprende Framer para mantener control. Resuelve amenaza política pero designers gastan tiempo en trabajo de menor strategic value.", score: 3, type: "Defensivo (Mantiene control, pierde focus)" }
     ],
-    explanation: "Prohibir (A) falla porque no-code es demasiado accesible - enforcement es imposible. Que designers hagan landing pages (C) es usar talento senior en trabajo commodity. Upskilling PMs (B) reconoce que no todo diseño requiere diseñador senior - libera tu equipo para problemas complejos mientras PMs hacen páginas simples con guardrails."
+    explanation: "Prohibir falla porque no-code es demasiado accesible - enforcement es imposible. Que designers hagan landing pages es usar talento senior en trabajo commodity. Upskilling PMs reconoce que no todo diseño requiere diseñador senior - libera tu equipo para problemas complejos mientras PMs hacen páginas simples con guardrails."
   },
   {
     id: 'ai_generated_assets_policy_chaos',
@@ -191,9 +191,9 @@ export const innovation_questions = [
     options: [
       { id: 'A', text: "AI Augmentation Guidelines: AI permitido para inspiration/iteration, humano valida y edita output final. Todo AI-generated content requiere disclosure obligatorio en file metadata.", score: 5, type: "Lead (Harness AI con accountability)" },
       { id: 'B', text: "Ban AI Completely: 'Solo trabajo 100% humano'. Proteges copyright y brand pero te quedas deliberately atrás vs competencia leveraging AI como productivity multiplier.", score: 1, type: "Purista (Pierde leverage)" },
-      { id: 'C', text: "Laissez-Faire: 'Usen lo que quieran, confío en su criterio'. Legal liability sin control, brand inconsistency masiva, team usa AI como crutch sin desarrollar skills.", score: 1, type: "Negligente (Abdica responsabilidad)" }
+      { id: 'C', text: "Autonomía Creativa: Permitir que cada diseñador elija sus herramientas. La velocidad es prioridad y bloquear herramientas por burocracia legal frenaría la innovación del equipo.", score: 1, type: "Negligente (Abdica responsabilidad)" }
     ],
-    explanation: "Ban total (B) es insostenible cuando every competitor usa AI para 3x velocity. Laissez-faire (C) expone a company a legal risk (copyright de Midjourney es grey area) y brand degradation. AI augmentation (A) captura benefits (velocity, inspiration) con guardrails (human validation, disclosure)."
+    explanation: "Ban total es insostenible cuando every competitor usa AI para 3x velocity. Laissez-faire expone a company a legal risk (copyright de Midjourney es grey area) y brand degradation. AI augmentation captura benefits (velocity, inspiration) con guardrails (human validation, disclosure)."
   },
   {
     id: 'spatial_computing_roi_vs_desktop_reality',
@@ -203,10 +203,10 @@ export const innovation_questions = [
     question: "¿Cómo priorizas innovation PR vs product reality?",
     options: [
       { id: 'A', text: "Vision Pro Prototype for PR: 2 semanas, 1 screen showcase inmersivo para press/demos. Cero production deployment. ROI = innovation brand positioning, no product revenue. Desktop roadmap continúa.", score: 5, type: "Lead (PR vs Product separation)" },
-      { id: 'B', text: "Full Vision Pro Build: Sacrificas roadmap desktop y construyes experiencia espacial completa. App 'increíble' que literalmente 50 personas en el mundo pueden usar. Investors impressed, users frustrated.", score: 1, type: "Hype-driven (Ignora userbase real)" },
-      { id: 'C', text: "Wait Until 5% Adoption: Proposal sensato basada en market reality, pero CEO quiere 'innovation leadership'. Pierdes momentum político interno y PR opportunity window.", score: 3, type: "Conservador (Pierde momento)" }
+      { id: 'B', text: "First-Mover Advantage: Apostar por el desarrollo completo. Ser los primeros en el Store nos garantiza featured placement de Apple y posicionamiento como líderes de innovación en la categoría.", score: 1, type: "Hype-driven (Ignora userbase real)" },
+      { id: 'C', text: "Market-Driven Decision: Proponer esperar hasta que la adopción de Vision Pro alcance 5% antes de invertir. Priorizas market reality y ROI medible sobre early adoption speculative.", score: 3, type: "Conservador (Pierde momento)" }
     ],
-    explanation: "Full build (B) es vanity project que sirve a ego de CEO vs users reales. Wait-and-see (C) es racional pero timing matters - Vision Pro window de PR es NOW. Prototype for PR (A) es pragmático: captura innovation narrative con minimal investment, mantiene focus en roadmap que mueve metrics reales."
+    explanation: "Full build es vanity project que sirve a ego de CEO vs users reales. Wait-and-see es racional pero timing matters - Vision Pro window de PR es NOW. Prototype for PR es pragmático: captura innovation narrative con minimal investment, mantiene focus en roadmap que mueve metrics reales."
   },
   {
     id: 'realtime_collaboration_feature_hype',
@@ -216,10 +216,10 @@ export const innovation_questions = [
     question: "¿Cómo evalúas investment en real-time collab?",
     options: [
       { id: 'A', text: "Async Collaboration First: Comments + version history + notifications delivered en 6 semanas. ROI positivo para 92% de users. Real-time va a backlog condicional post-PMF validation.", score: 5, type: "Lead (Serve majority first)" },
-      { id: 'B', text: "Real-Time But Simplified: Implementas 'pseudo real-time' (polling cada 5s vs true WebSockets). Delivery en 3 meses pero se siente laggy, users decepcionados. Worst of both worlds.", score: 1, type: "Compromiso técnico (Decepciona)" },
+      { id: 'B', text: "Polling Sync: Implementar sincronización por intervalos cortos (Short Polling) en lugar de WebSockets complejos. Logramos el 80% de la experiencia 'en vivo' con una fracción del costo de ingeniería.", score: 1, type: "Compromiso técnico (Decepciona)" },
       { id: 'C', text: "Build Real-Time Correctly: 9 meses, feature technically perfect como Figma. Beneficia 8% de users, opportunity cost massive en features con 10x mayor adoption potential.", score: 3, type: "Platform bet (Correcto pero costoso)" }
     ],
-    explanation: "Pseudo real-time (B) promete algo que no cumple - latency frustra. Build perfecto (C) es válido como strategic platform bet PERO requiere conviction de que sync collab es future (vs current 8%). Async first (A) es pragmático: sirve al 92%, valida si demand de real-time justifica 9 meses."
+    explanation: "Pseudo real-time promete algo que no cumple - latency frustra. Build perfecto es válido como strategic platform bet PERO requiere conviction de que sync collab es future (vs current 8%). Async first es pragmático: sirve al 92%, valida si demand de real-time justifica 9 meses."
   },
   {
     id: 'blockchain_ux_beyond_crypto_wallets',
@@ -232,7 +232,7 @@ export const innovation_questions = [
       { id: 'B', text: "Blockchain Pilot: 'Probemos 3 meses con consultant'. $50K gastados en POC, discover que PostgreSQL hacía lo mismo. CTO aprende (expensive lesson) pero al menos no full commitment.", score: 1, type: "Expensive learning (Predecible outcome)" },
       { id: 'C', text: "Full Blockchain Build: Contratar ingeniero especializado ($180K/año) y desarrollar solución blockchain completa en 6 meses. Inversión en tecnología de vanguardia que posiciona a la empresa como innovadora.", score: -1, type: "Inversión en Innovación" }
     ],
-    explanation: "Blockchain pilot (B) es $50K para aprender lo queググ research podía revelar gratis. Full build (C) es resume-driven development puro. PostgreSQL (A) es 'boring technology' que cumple requirements sin hype - esto ES lead thinking: solve problema, no chase trends."
+    explanation: "Blockchain pilot es $50K para aprender lo queググ research podía revelar gratis. Full build es resume-driven development puro. PostgreSQL es 'boring technology' que cumple requirements sin hype - esto ES lead thinking: solve problema, no chase trends."
   },
   {
     id: 'figma_ai_features_adoption_timing',
@@ -245,6 +245,6 @@ export const innovation_questions = [
       { id: 'B', text: "Enable for Everyone Immediately: Team presiona, habilitas global. AI chaos en legacy files, 3 días perdidos limpiando auto-renames incorrectos. Learn expensive lesson sobre early adoption.", score: 1, type: "FOMO-driven (Predictable chaos)" },
       { id: 'C', text: "Training First, Enable Later: 2 weeks de capacitación formal antes de rollout. Timing approach correcto pero equipo frustrado por delay de 'obvious beneficial feature'.", score: 3, type: "Conservative (Timing friction)" }
     ],
-    explanation: "Enable immediately (B) ignora que AI features en beta + legacy debt = disaster predictable. Training first (C) es correcto en spirit pero 2 weeks es excessive para feature toggle. Pilot with new (A) da team chance de aprender con archivos clean mientras legacy permanence stable - incremental adoption es clave con bleeding-edge features."
+    explanation: "Enable immediately ignora que AI features en beta + legacy debt = disaster predictable. Training first es correcto en spirit pero 2 weeks es excessive para feature toggle. Pilot with new da team chance de aprender con archivos clean mientras legacy permanence stable - incremental adoption es clave con bleeding-edge features."
   },
 ];
