@@ -79,7 +79,7 @@ export const culture_questions = [
     options: [
       { id: 'A', text: "Matar al Héroe: Hablar con él y prohibirle trabajar fuera de hora. Explicar públicamente al equipo que el overtime no es 'pasión', es fallo de planificación. Desactivar la cultura de héroes.", score: 5, type: "Lead (Cultura Sostenible)" },
       { id: 'B', text: "Elogiar con Cautela: 'Gracias por el esfuerzo, pero descansa'. Validar su sacrificio envía el mensaje de que trabajar extra es la forma de subir.", score: 2, type: "Mensaje Mixto" },
-      { id: 'C', text: "Ignorar: Si él quiere trabajar, es su decisión. Mientras entregue, el negocio gana.", score: 0, type: "Explotador" }
+      { id: 'C', text: "Respetar Autonomía: Asumes que es adulto y sabe lo que hace. Mientras entregue el trabajo, su horario es su responsabilidad.", score: 0, type: "Laissez-faire" }
     ],
     explanation: "El 'Hero Syndrome' es contagioso y tóxico. Si premias el burnout, estableces un estándar insostenible para todos. Un Lead protege al equipo de sí mismo (A)."
   },
@@ -105,7 +105,7 @@ export const culture_questions = [
     options: [
       { id: 'A', text: "Sándwich de Feedback: Elogio + Crítica + Elogio. 'Eres muy puntual, tu UI es fea, pero eres buen compañero'. Diluye el mensaje y confunde.", score: 2, type: "Confuso (Sándwich)" },
       { id: 'B', text: "Radical Candor: Desafiar directamente pero importándote personalmente. 'Tu diseño visual no cumple el estándar porque fallan la tipografía y el espaciado. Quiero ayudarte a mejorar esto porque sé que puedes'.", score: 5, type: "Lead (Claro y Humano)" },
-      { id: 'C', text: "Evitación: Arreglar tú los diseños finales para que salgan bien. Le quitas la oportunidad de aprender y te conviertes en cuello de botella.", score: 1, type: "Sobreprotector" }
+      { id: 'C', text: "Coaching Intensivo: Dedicas 2 horas diarias revisando cada diseño del junior para acelerar su curva de aprendizaje en el momento crítico del proyecto. Aseguras calidad inmediata.", score: 1, type: "Micromanagement temporal" }
     ],
     explanation: "El 'Sándwich' esconde la verdad. Radical Candor (B) es honestidad con empatía: dices la verdad dura porque te importa su crecimiento, no para herir."
   },
@@ -168,7 +168,7 @@ export const culture_questions = [
     scenario: "Eres freelance/agencia. El cliente aprobó el alcance, pero ahora pide 'cambios pequeños' constantes que suman 20 horas extra. 'Es solo mover esto, es rápido'.",
     question: "¿Cómo proteges tu rentabilidad?",
     options: [
-      { id: 'A', text: "Hacerlo gratis: 'Para mantener al cliente feliz'. Entrenas al cliente a que tu tiempo no vale y destruyes tu margen.", score: 0, type: "Pushover" },
+      { id: 'A', text: "Hacerlo Gratis: Absorbes el costo como inversión en relación cliente. Es solo 1 hora y el cliente tiene presupuesto apretado. Priorizas goodwill sobre revenue inmediato.", score: 0, type: "Relationship-first" },
       { id: 'B', text: "Change Request Formal: 'Claro, puedo hacerlo. Evaluaré el impacto en tiempo y presupuesto y te envío la cotización del extra'. Profesionalizas el cambio.", score: 5, type: "Lead (Límites Profesionales)" },
       { id: 'C', text: "Quejarse pasivamente: Hacerlo de mala gana y tardar mucho. Dañas la relación y trabajas gratis igual.", score: 1, type: "Pasivo-Agresivo" }
     ],
@@ -196,7 +196,7 @@ export const culture_questions = [
     options: [
       { id: 'A', text: "Reestructurar Critique Culture: Implementas 'I like, I wish, What if' framework obligatorio. Senior resiste pero lo obligas a reentrenar en feedback constructivo. Si no cambia conducta en 30 días, sale del equipo.", score: 5, type: "Lead (Cultura > Talento individual)" },
       { id: 'B', text: "Separate Junior/Senior Critiques: Proteges juniors en sesiones aparte con tono constructivo. Seniors pueden seguir siendo brutales entre ellos. Resuelve síntoma pero mantiene cultura tóxica latente.", score: 3, type: "Segregación (Parche temporal)" },
-      { id: 'C', text: "'Toughen Up' Mentality: 'El diseño es duro, que se adapten'. Normalizas el abuso como 'profesionalismo'. Pierdes todo talento junior, equipo se vuelve homogéneo y tribal.", score: 0, type: "Tóxico (Destruye equipo)" }
+      { id: 'C', text: "'High Standards' Mentality: Mantienes el estándar alto de critique. Argumentas que un ambiente demanding produce mejores designers. El team debe adaptarse a standard de excelencia.", score: 0, type: "Exigencia sin soporte" }
     ],
     explanation: "Separar sesiones (B) es band-aid que no arregla la raíz: senior designer tóxico sigue infectando cultura. 'Toughen up' (C) garantiza que solo sobreviven los que normalizan abuso. Un Lead (A) reconoce que una cultura sana es más valiosa que un contributor brillante tóxico - cambias o sales."
   },

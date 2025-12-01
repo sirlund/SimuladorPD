@@ -76,8 +76,8 @@ export const mobile_questions = [
     question: "¿Cómo negocias calidad visual vs performance?",
     options: [
       { id: 'A', text: "Optimización Colaborativa: Te sientas con él a simplificar la animación (CSS vs JS). Buscas el 80% del impacto visual con el 20% del costo de CPU. Respetas la restricción técnica.", score: 5, type: "Lead (Performance es UX)" },
-      { id: 'B', text: "Insistir en la Calidad: 'Los usuarios tienen teléfonos modernos, no podemos diseñar para el mínimo común denominador'. Ignoras la métrica de Lighthouse y priorizas la estética.", score: 1, type: "Elitista (Daña métricas)" },
-      { id: 'C', text: "Eliminar la Animación: Te rindes inmediatamente ante la métrica. 'Si performance es rey, que sea estático'. El producto pierde alma y diferenciación visual.", score: 2, type: "Derrotista" }
+      { id: 'B', text: "Insistir en la Calidad: Argumentas que la animación es differentiador de brand y que la mayoría de users tienen hardware reciente. Solicitas metrics de distribución de dispositivos antes de comprometer.", score: 1, type: "Design-first approach" },
+      { id: 'C', text: "Eliminar la Animación: Priorizas shipping rápido y score perfecto de Lighthouse. Removes la animación completamente para evitar debate técnico prolongado.", score: 2, type: "Pragmático conservador" }
     ],
     explanation: "Performance ES User Experience. Si tu animación laguea el teléfono, es mala UX. Un Lead no pelea contra la métrica, colabora para optimizar la implementación (A) o simplificar el diseño."
   },
@@ -103,7 +103,7 @@ export const mobile_questions = [
     options: [
       { id: 'A', text: "Ship It & Fix Monday: Autorizas el release asumiendo el riesgo por 48 horas. Creas ticket P0 para arreglar el lunes a primera hora. Priorizas la campaña de marketing ya pagada.", score: 4, type: "Pragmático (Riesgo calculado)" },
       { id: 'B', text: "Hotfix Inmediato: Te quedas con un dev a arreglar el color hexadecimal ahora mismo, aunque signifique salir tarde. Es un cambio de 1 línea de código. Pides a QA un smoke test rápido solo de ese botón. Proteges compliance y campaña.", score: 5, type: "Lead (Ownership de Calidad)" },
-      { id: 'C', text: "Bloquear Release: 'No lanzamos nada que viole WCAG'. Cancelas el deploy. Marketing pierde el día de campaña. Proteges el estándar pero dañas al negocio.", score: 2, type: "Dogmático (Ceguera comercial)" }
+      { id: 'C', text: "Bloquear Release: Mantienes el standard de compliance sin excepciones. Comunicas a Marketing que deben coordinar timelines con QA cycles para futuras campañas.", score: 2, type: "Compliance-first" }
     ],
     explanation: "Un contraste de 2.9:1 es un fallo técnico menor pero legalmente real. Cancelar una campaña (C) es desproporcionado. Ignorarlo (A) es riesgoso. Un Lead resuelve el problema pequeño (cambiar un hex code toma 5 min) en el momento (B) para habilitar al negocio sin bajar el estándar."
   },
@@ -114,7 +114,7 @@ export const mobile_questions = [
     scenario: "Debes entregar el diseño de 'Cálculo de Intereses Compuestos' para una Fintech. La lógica es compleja (casos borde, redondeo, fechas de corte). El PM presiona: 'Solo danos las pantallas, los devs deducen la lógica'. Sabes que si lo interpretan mal, usuarios perderán dinero real y habrá demandas. Documentar la lógica completa toma 2 días que no tienes.",
     question: "¿Cómo gestionas el riesgo de implementación en un feature financiero crítico?",
     options: [
-      { id: 'A', text: "Entregar Pantallas + Disclaimer: Entregas el UI y dices 'La lógica es responsabilidad de Backend'. Te lavas las manos del riesgo matemático. Si falla, no es tu culpa.", score: 1, type: "Irresponsable" },
+      { id: 'A', text: "Entregar Pantallas + Disclaimer: Entregas el UI y clarif icas que Backend owns la lógica de cálculo. Confías en que el Tech Lead tiene expertise financiero necesario para implementación correcta.", score: 1, type: "Handoff tradicional" },
       { id: 'B', text: "Pairing con Tech Lead: En lugar de documentar 2 días, te sientas 3 horas con el Tech Lead a escribir los 'Test Cases'. Aseguras entendimiento lógico antes de codear.", score: 5, type: "Lead (Colaboración de Alto Valor)" },
       { id: 'C', text: "Retrasar el Sprint: Bloqueas el handoff hasta que termines el documento de 20 páginas de especificación. El equipo se queda sin trabajo 2 días. 'La calidad toma tiempo'.", score: 2, type: "Cuello de Botella" }
     ],
@@ -183,7 +183,7 @@ export const mobile_questions = [
     options: [
       { id: 'A', text: "Hybrid Approach (React Native): Compromiso que satisface a nadie completamente. Performance menor a native, complejidad mayor a PWA, pero evitas confrontación directa.", score: 3, type: "Compromiso político (Nadie gana)" },
       { id: 'B', text: "Platform-Specific MVP Test: PWA para Android (80% userbase, menos exigente), Native para iOS (20% userbase, crítico). Aprendes con inversión controlada antes de comprometer arquitectura.", score: 5, type: "Lead (Learn before commit)" },
-      { id: 'C', text: "Let Engineering Decide: 'Es decisión técnica, ustedes saben más'. Abdicas liderazgo de producto/UX en momento crítico de arquitectura que afectará 3 años.", score: 1, type: "Abdicación (Pierde influence)" }
+      { id: 'C', text: "Let Engineering Decide: Confías en el criterio técnico del team dado que tienen más contexto de infraestructura. Ofreces support en UX testing una vez que hayan elegido approach.", score: 1, type: "Delegación técnica" }
     ],
     explanation: "Hybrid (A) es compromiso tibio que no optimiza para ningún caso. Dejar que Engineering decida solo (C) ignora que UX/producto tienen stake crítico en performance y capabilities. Platform-specific test (B) da data real sobre trade-offs antes de bet-the-company decision."
   },
@@ -207,7 +207,7 @@ export const mobile_questions = [
     scenario: "Diseñador Senior se niega a hacer botones de 44pt ('se ve feo, rompe mi diseño minimalista'). Su portfolio tiene 50K followers en Dribbble. El resto del equipo lo idolatra. Accessibility audit encontró 15 violaciones críticas.",
     question: "¿Cómo manejas la rebelión de diseño vs accessibility standards?",
     options: [
-      { id: 'A', text: "Compromise Visual: Permites 36pt 'como experimento'. Fallas audit igual y estableces precedente peligroso de negociar accessibility por estética.", score: 1, type: "Compromiso débil (Bad precedent)" },
+      { id: 'A', text: "Compromise de 36pt: Negocias target intermedio entre aesthetics (32pt del diseñador) y accessibility (44pt standard). Propones implementarlo como pilot en features no-críticas para validar con accessibility testers externos.", score: 1, type: "Compromiso incremental" },
       { id: 'B', text: "Educación + Enforcement: Muestras ejemplos de Apple/Google usando 44pt elegantemente. Si se niega, lo sacas del proyecto. Accessibility no es negociable.", score: 5, type: "Lead (Principios > Popularidad)" },
       { id: 'C', text: "Invisible Padding: Implementas hit area de 44pt con padding transparente, ícono visible de 32pt. Cumples standard técnicamente pero cedes en principio educativo.", score: 3, type: "Hack técnico (Funciona pero no enseña)" }
     ],
