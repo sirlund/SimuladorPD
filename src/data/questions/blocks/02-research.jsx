@@ -250,7 +250,7 @@ export const research_questions = [
     options: [
       { id: 'A', text: "Debrief Diario: Implementar sesiones de 30 min post-entrevistas donde el equipo comparte 'Top 3 hallazgos' inmediatamente. Construir el backlog con esto, el reporte formal viene después.", score: 5, type: "Lead (Agile Research)" },
       { id: 'B', text: "Esperar el Reporte: Retrasar el sprint 2 semanas. 'Sin research completo no movemos un pixel'. Priorizas el rigor académico sobre el time-to-market.", score: 2, type: "Académico (Lento)" },
-      { id: 'C', text: "Intuición Informada: Ignorar el research formal y decidir basado en lo que tú escuchaste en las 2 entrevistas que presenciaste. Sesgo de confirmación alto.", score: 1, type: "Arrogante" }
+      { id: 'C', text: "Intui ción Informada: Priorizas velocity sobre exhaustividad. Usas los insights que ya capturaste de las sesiones presenciadas más tu experiencia de 10+ años para decidir rápido.", score: 1, type: "Experience-based shortcut" }
     ],
     explanation: "El research que llega tarde no sirve. El Debrief Diario (A) inyecta conocimiento fresco al equipo de producto sin esperar la 'tesis doctoral'."
   },
@@ -288,7 +288,7 @@ export const research_questions = [
     question: "¿Cuál es tu rol desde Producto/Diseño en este problema de infraestructura?",
     options: [
       { id: 'A', text: "Alertar el Blocker: Marcar la expansión a Europa como 'Bloqueada por Compliance' en el roadmap. No diseñar ni una pantalla para Europa hasta que Infra resuelva el almacenamiento.", score: 5, type: "Lead (Strategic Blocker)" },
-      { id: 'B', text: "Diseñar igual: Asumir que es problema de Infra y seguir diseñando la UI en español/inglés. Si lanzan ilegalmente, no es tu culpa.", score: 2, type: "Silo (Ignora riesgo negocio)" },
+      { id: 'B', text: "Diseñar Igual: Asumes que compliance es responsabilidad de Legal/Infra. Continúas diseñando la UI globalmente agnóstica mientras ellos resuel ven data residency.", score: 2, type: "Silo approach" },
       { id: 'C', text: "Pedir consentimiento: Agregar un checkbox 'Acepto que mis datos vayan a USA'. Legalmente dudoso que esto sea suficiente para GDPR hoy en día.", score: 1, type: "Parche Legal Débil" }
     ],
     explanation: "Diseñar para un mercado donde no puedes operar legalmente es desperdicio. Un Lead identifica blockers estratégicos (A) antes de invertir horas de diseño."

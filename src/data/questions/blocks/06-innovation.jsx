@@ -176,7 +176,7 @@ export const innovation_questions = [
     scenario: "PMs descubrieron Framer/Webflow y están diseñando landing pages sin involucrar diseño. 'Ya no necesitamos diseñadores para esto - hacemos 3 páginas por semana ahora'. Tu equipo se siente amenazado, morale cae.",
     question: "¿Cómo respondes a la democratización de diseño vía no-code?",
     options: [
-      { id: 'A', text: "Prohibir No-Code: 'Todo diseño pasa por nuestro equipo, sin excepciones'. PMs ignoran la regla y publican páginas feas en producción igual, perdiste autoridad.", score: 2, type: "Autoritario (Pierde enforcement)" },
+      { id: 'A', text: "Prohibir No-Code: Estableces policy de que todo diseño visual debe pasar por Design QA. Implementas approval process formal para mantener brand consistency.", score: 2, type: "Governance approach" },
       { id: 'B', text: "Upskill + Design QA: Entrenas PMs en design basics (tipografía, spacing, color) + estableces Design QA review al final. PMs hacen landing pages, designers se enfocan en producto core. Win-win.", score: 5, type: "Lead (Leverage, no control)" },
       { id: 'C', text: "Designers Learn No-Code: Tu equipo aprende Framer para mantener control. Resuelve amenaza política pero designers gastan tiempo en trabajo de menor strategic value.", score: 3, type: "Defensivo (Mantiene control, pierde focus)" }
     ],

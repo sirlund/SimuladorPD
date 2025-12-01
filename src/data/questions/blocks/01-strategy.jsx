@@ -37,7 +37,7 @@ export const strategy_questions = [
     options: [
       { id: 'A', text: "Alineación Privada: Reúnes a VP y CMO antes del QBR. Muestras el funnel completo (Tráfico subió, Revenue bajó). Acuerdan presentar ambos datos como 'Aprendizaje de Calidad' para ajustar la estrategia sin culpas.", score: 5, type: "Lead (Diplomacia basada en datos)" },
       { id: 'B', text: "Desmentir en Público: Intervienes en el All-Hands aclarando que el revenue bajó un 8%. 'El tráfico basura no paga sueldos'. Proteges la verdad financiera pero humillas a Marketing públicamente.", score: 1, type: "Tóxico (Verdad sin tacto)" },
-      { id: 'C', text: "Silencio Táctico: Dejas que celebren. En tu reporte, te enfocas solo en optimizar el checkout y ignoras la caída de conversión, asumiendo que la calidad del tráfico es problema exclusivo de Marketing.", score: 2, type: "Silo (Falta de ownership)" }
+      { id: 'C', text: "Silencio Táctico: Dejas que celebren. En tu reporte, te enfocas solo en optimizar el checkout flow. Confías en que Marketing ajustará su targeting basado en sus propias métricas de calidad.", score: 2, type: "Silo funcional" }
     ],
     explanation: "Un Lead no deja que la empresa crea mentiras, pero tampoco humilla colegas públicamente. La opción A corrige la narrativa de negocio (Revenue > Tráfico) en el foro adecuado (QBR) y con alineación previa, transformando el conflicto en aprendizaje compartido."
   },
@@ -50,7 +50,7 @@ export const strategy_questions = [
     options: [
       { id: 'A', text: "Hardcode Aislado (Disposable Demo): Creas una rama separada o un prototipo en código 'sucio' SOLO para el demo, con disclaimer claro de que no es producción. Permites la venta sin contaminar el codebase real. Cobras el esfuerzo como 'Proof of Concept'.", score: 5, type: "Lead (Habilita negocio sin deuda técnica)" },
       { id: 'B', text: "Negarse por Principios: 'No hardcodeamos clientes. El sistema es escalable o no lo es'. Riesgo de perder el deal por rigidez técnica.", score: 2, type: "Bloqueador (Falta visión comercial)" },
-      { id: 'C', text: "Implementar en Prod: Hackeas el CSS en producción para que el cliente lo vea. Generas deuda técnica inmediata y riesgo de romper estilos para otros.", score: 1, type: "Irresponsable" }
+      { id: 'C', text: "Implementar en Prod: Hardcodeas el branding en producción usando feature flags para ese cliente específico. Sales cierra el deal inmediatamente con demo real vs mockup.", score: 1, type: "Quick win approach" }
     ],
     explanation: "Ventas necesita cerrar. Ingeniería necesita orden. La opción A satisface ambos: das la herramienta de venta (el demo visual) pero proteges la integridad del sistema (rama aislada/desechable). Un Lead busca el 'Cómo sí', no solo el 'No'."
   },

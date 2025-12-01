@@ -274,7 +274,7 @@ export const metrics_questions = [
     scenario: "Tu plan de Segment/Amplitude cuesta $15K/mes y va a subir a $45K/mes el próximo Q por volumen de eventos. CFO exige cortar el plan a la mitad o migrar a solución más barata. Data Science depende de estos eventos para sus modelos de ML.",
     question: "¿Cómo resuelves la crisis de costo sin destruir analytics?",
     options: [
-      { id: 'A', text: "Reducir Tracking 50%: Eliminas eventos 'nice to have' y tracking de features secundarias. Cumples budget pero pierdes visibilidad en funnels que podrían tener oportunidades ocultas.", score: 2, type: "Budget-first (Ceguera estratégica)" },
+      { id: 'A', text: "Reducir Tracking 50%: Auditas todos los events y eliminas tracking de features con <5% adoption y experiments concluidos. Priorizas budget compliance manteniendo core user journey metrics.", score: 2, type: "Budget-first approach" },
       { id: 'B', text: "Event Sampling Strategy: Trackeas 100% de conversions críticas, 20% de pageviews, 5% de hover/scroll events. Reduces volumen 60% manteniendo calidad de insights donde importa.", score: 5, type: "Lead (Sampling inteligente)" },
       { id: 'C', text: "Migrar a PostHog Self-Hosted: 2 meses de migración, $8K setup inicial, ownership total. Riesgo de perder data histórica en transición y 2 meses sin analytics confiables.", score: 3, type: "Build vs Buy (Alto switching cost)" }
     ],
