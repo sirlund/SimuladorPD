@@ -1,6 +1,6 @@
-# 🎯 Simulador PD - Lead Product Designer Assessment
+# 🎯 Product Lead Sim - Assessment de Liderazgo
 
-Simulador interactivo de evaluación para Product Design Leads. Una aplicación de assessment con 96 escenarios realistas de liderazgo, gestión de equipos, estrategia de producto y toma de decisiones difíciles bajo presión.
+Simulador interactivo de evaluación para Product Leads. Una aplicación de assessment con 96 escenarios realistas de liderazgo, gestión de equipos, estrategia de producto y toma de decisiones difíciles bajo presión.
 
 ## 🚀 Características
 

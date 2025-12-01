@@ -21,9 +21,9 @@ export const culture_questions = [
     scenario: "Heredaste un equipo donde los Design Critiques son 'Roasts'. Los Seniors destrozan el trabajo de los Juniors con comentarios brutales ('esto parece de 1998', '¿en serio pensaste eso?'). Ellos lo llaman 'mantener la vara alta'. Dos Juniors renunciaron el mes pasado citando 'ambiente tóxico'. Los Seniors son tus mejores performers individuales.",
     question: "¿Cómo intervienes sin perder a tus estrellas técnicas?",
     options: [
-      { id: 'A', text: "Prohibir la crítica negativa: Instaurar regla de 'solo feedback constructivo tipo sándwich'. Los Seniors sienten que estás 'suavizando' la cultura y bajando el estándar. Se quejan de que 'ya no se puede decir la verdad'.", score: 2, type: "Policía (Genera cinismo)" },
+      { id: 'A', text: "Prohibir la crítica negativa: Instaurar regla de 'solo feedback constructivo tipo sándwich'. Los Seniors sienten que estás 'suavizando' la cultura y bajando el estándar. Se quejan de que 'ya no se puede decir la verdad'.", score: 1, type: "Policía (Genera cinismo)" },
       { id: 'B', text: "Rediseñar el Ritual: Cambiar el formato a 'Design Studio' o 'Pairing' donde los Seniors deben CO-CREAR soluciones con los Juniors, no solo juzgar. Cambias su rol de 'Juez' a 'Mentor'. Mides a los Seniors por el crecimiento de sus Juniors.", score: 5, type: "Lead (Cambio Estructural)" },
-      { id: 'C', text: "Hablar con los Juniors: Decirles que no lo tomen personal, que así se aprende en la industria. Intentar darles herramientas de resiliencia.", score: 1, type: "Cómplice (Normaliza abuso)" }
+      { id: 'C', text: "Coaching Individual: Trabajar uno a uno con los Juniors para desarrollar resiliencia y habilidades de comunicación. Enfocarse en su crecimiento personal sin cambiar la dinámica del equipo.", score: 1, type: "Desarrollo Individual" }
     ],
     explanation: "La cultura de 'Roast' disfraza la toxicidad de excelencia. Prohibir (A) no funciona. La opción B cambia la estructura de incentivos: si el Senior es responsable del output del Junior, su comportamiento cambia de ataque a colaboración."
   },
@@ -34,9 +34,9 @@ export const culture_questions = [
     scenario: "Tienes un diseñador Mid-Level que es la persona más amable del equipo, trae donas, organiza happy hours. Pero ha fallado 3 deadlines consecutivos y su calidad técnica está estancada. El equipo lo adora, pero tienes que tener 'La Conversación' (Performance Improvement Plan - PIP). Si no mejora en 30 días, debes despedirlo.",
     question: "¿Cómo das feedback duro a alguien querido por todos?",
     options: [
-      { id: 'A', text: "Método Sándwich Extremo: 'Eres vital para la cultura... el trabajo técnico necesita mejorar un poco... pero te queremos mucho'. El mensaje se diluye y él sale pensando que todo está bien.", score: 1, type: "Cobarde (Daña al empleado)" },
+      { id: 'A', text: "Método Sándwich Extremo: 'Eres vital para la cultura... el trabajo técnico necesita mejorar un poco... pero te queremos mucho'. Balanceas el feedback negativo con reconocimiento positivo para mantener la motivación.", score: 1, type: "Feedback Balanceado" },
       { id: 'B', text: "Claridad Radical con Apoyo: 'Tu rol está en riesgo. Estos son los 3 gaps específicos. Este es el plan de 30 días para cerrarlos. Quiero que te quedes, pero necesito ver X, Y, Z'.", score: 5, type: "Lead (Duro con el problema, suave con la persona)" },
-      { id: 'C', text: "Delegar a HR: Pides a RRHH que inicie el proceso formal de PIP para no dañar tu relación personal. Te lavas las manos de la conversación difícil, perdiendo su respeto.", score: 0, type: "Abandono de Liderazgo" },
+      { id: 'C', text: "Proceso Formal con HR: Involucras a RRHH desde el inicio para asegurar que el PIP siga protocolos corporativos. Mantienes la relación personal separada del proceso de performance.", score: -1, type: "Proceso Formal" },
     ],
     explanation: "Ser 'amable' ocultando la gravedad de la situación (A) es cruel, porque le niegas la oportunidad de salvar su trabajo. La claridad radical (B) es la verdadera empatía: le das la verdad y las herramientas para mejorar."
   },
@@ -49,7 +49,7 @@ export const culture_questions = [
     options: [
       { id: 'A', text: "Upskilling Reactivo: Le pagas un curso de After Effects ($1,200) para 'llenar sus gaps'. Validas su inseguridad confirmando implícitamente que le faltan skills visuales.", score: 1, type: "Refuerza síndrome (Valida inseguridad + costo)" },
       { id: 'B', text: "Reframe con ROI: Le muestras el dashboard: 'Tus flows generaron $2.1M. Las ilustraciones ganan likes, tu diseño paga sueldos'. Redefines Seniority como impacto de negocio, no estética.", score: 5, type: "Lead (Reframe con ROI concreto)" },
-      { id: 'C', text: "Validación Emocional: 'Todos sentimos síndrome del impostor, eres talentosa'. Empatía pura sin evidencia objetiva que cambie su creencia raíz.", score: 2, type: "Superficial empático (No cambia creencia raíz)" }
+      { id: 'C', text: "Validación Emocional: 'Todos sentimos síndrome del impostor, eres talentosa'. Empatía pura sin evidencia objetiva que cambie su creencia raíz.", score: 1, type: "Superficial empático (No cambia creencia raíz)" }
     ],
     explanation: "La A valida que 'le falta algo'. La C es amable pero no cambia su creencia. La B ataca la raíz con datos: demuestra que el Seniority real se mide en impacto de negocio ($2.1M), no en estética de Dribbble. Combates el sentimiento de fraude con evidencia irrefutable de valor."
   },
@@ -78,8 +78,8 @@ export const culture_questions = [
     question: "¿Cómo intervienes como Lead?",
     options: [
       { id: 'A', text: "Matar al Héroe: Hablar con él y prohibirle trabajar fuera de hora. Explicar públicamente al equipo que el overtime no es 'pasión', es fallo de planificación. Desactivar la cultura de héroes.", score: 5, type: "Lead (Cultura Sostenible)" },
-      { id: 'B', text: "Elogiar con Cautela: 'Gracias por el esfuerzo, pero descansa'. Validar su sacrificio envía el mensaje de que trabajar extra es la forma de subir.", score: 2, type: "Mensaje Mixto" },
-      { id: 'C', text: "Respetar Autonomía: Asumes que es adulto y sabe lo que hace. Mientras entregue el trabajo, su horario es su responsabilidad.", score: 0, type: "Laissez-faire" }
+      { id: 'B', text: "Elogiar con Cautela: 'Gracias por el esfuerzo, pero descansa'. Validar su sacrificio envía el mensaje de que trabajar extra es la forma de subir.", score: 1, type: "Mensaje Mixto" },
+      { id: 'C', text: "Respetar Autonomía: Asumes que es adulto y sabe lo que hace. Mientras entregue el trabajo con calidad, su horario es su responsabilidad personal y no requiere intervención de management.", score: -1, type: "Autonomía del Empleado" }
     ],
     explanation: "El 'Hero Syndrome' es contagioso y tóxico. Si premias el burnout, estableces un estándar insostenible para todos. Un Lead protege al equipo de sí mismo (A)."
   },
@@ -103,7 +103,7 @@ export const culture_questions = [
     scenario: "Tienes que dar feedback negativo a un diseñador que se esfuerza mucho pero no llega a la calidad visual esperada. Temes desmotivarlo.",
     question: "¿Qué método de feedback usas?",
     options: [
-      { id: 'A', text: "Sándwich de Feedback: Elogio + Crítica + Elogio. 'Eres muy puntual, tu UI es fea, pero eres buen compañero'. Diluye el mensaje y confunde.", score: 2, type: "Confuso (Sándwich)" },
+      { id: 'A', text: "Sándwich de Feedback: Usas el método clásico de iniciar con algo positivo ('Tu puntualidad es excelente'), luego la crítica constructiva sobre tipografía/espaciado, y cierras con otro elogio. Suavizas el impacto emocional.", score: 1, type: "Método tradicional" },
       { id: 'B', text: "Radical Candor: Desafiar directamente pero importándote personalmente. 'Tu diseño visual no cumple el estándar porque fallan la tipografía y el espaciado. Quiero ayudarte a mejorar esto porque sé que puedes'.", score: 5, type: "Lead (Claro y Humano)" },
       { id: 'C', text: "Coaching Intensivo: Dedicas 2 horas diarias revisando cada diseño del junior para acelerar su curva de aprendizaje en el momento crítico del proyecto. Aseguras calidad inmediata.", score: 1, type: "Micromanagement temporal" }
     ],
@@ -116,9 +116,9 @@ export const culture_questions = [
     scenario: "Tu mejor diseñador Senior quiere ser Manager 'para ganar más dinero y tener más impacto', pero odia las reuniones y no tiene paciencia con los juniors.",
     question: "¿Cómo orientas su carrera?",
     options: [
-      { id: 'A', text: "Promoverlo a Manager: 'Aprenderá en el camino'. Arriesgas perder un gran diseñador y ganar un pésimo manager que queme al equipo.", score: 0, type: "Principio de Peter" },
+      { id: 'A', text: "Promoverlo a Manager: 'Aprenderá en el camino'. Arriesgas perder un gran diseñador y ganar un pésimo manager que queme al equipo.", score: -1, type: "Principio de Peter" },
       { id: 'B', text: "Dual Track: Mostrarle el camino de 'Staff/Principal Designer' (IC Track). Explicar que puede tener impacto y sueldo de liderazgo sin gestionar personas, enfocándose en craft y estrategia técnica.", score: 5, type: "Lead (IC Track Evangelist)" },
-      { id: 'C', text: "Negarle el ascenso: 'No sirves para manager'. Desmotivarlo sin ofrecer alternativa.", score: 1, type: "Matasueños" }
+      { id: 'C', text: "Evaluación Realista: Explicar que el rol de manager requiere habilidades específicas que no coinciden con su perfil actual. Ser directo sobre las expectativas del rol sin ofrecer alternativa inmediata.", score: 1, type: "Evaluación Directa" }
     ],
     explanation: "Gestión de personas es una profesión distinta, no un 'ascenso'. Forzar a grandes ICs a ser managers (A) es un error clásico. El Dual Track (B) retiene talento técnico senior."
   },
@@ -129,7 +129,7 @@ export const culture_questions = [
     scenario: "Acabas de ser promovido a Lead. En tu primera reunión con los VPs, sientes que no sabes nada y que todos se darán cuenta de que eres un fraude (Síndrome del Impostor).",
     question: "¿Cómo gestionas tu psicología interna?",
     options: [
-      { id: 'A', text: "Fingir confianza total: Hablar fuerte y nunca admitir dudas. 'Fake it till you make it'. Puede llevar a errores por arrogancia defensiva.", score: 2, type: "Máscara Frágil" },
+      { id: 'A', text: "Fingir confianza total: Hablar fuerte y nunca admitir dudas. 'Fake it till you make it'. Puede llevar a errores por arrogancia defensiva.", score: 1, type: "Máscara Frágil" },
       { id: 'B', text: "Vulnerabilidad Estratégica: Admitir lo que no sabes y preguntar. 'No tengo la respuesta ahora, pero investigaré'. La confianza viene de la competencia, no de la omnisciencia.", score: 5, type: "Lead (Growth Mindset)" },
       { id: 'C', text: "Silencio: No hablar en las reuniones para no meter la pata. Te vuelves invisible.", score: 1, type: "Invisible" }
     ],
@@ -143,7 +143,7 @@ export const culture_questions = [
     question: "¿Qué cambio implementas para evaluar mejor?",
     options: [
       { id: 'A', text: "Take-Home Exercise Pagado: Dar un problema pequeño y realista para hacer en casa (4h), pagando por el tiempo. Evalúa craft y pensamiento sin la presión del escenario.", score: 5, type: "Lead (Justo y Realista)" },
-      { id: 'B', text: "Mantener Whiteboard: 'Necesitamos ver cómo piensan bajo presión'. Favorece a los extrovertidos y buenos oradores, no necesariamente a los buenos diseñadores.", score: 2, type: "Sesgado a Extrovertidos" },
+      { id: 'B', text: "Mantener Whiteboard: 'Necesitamos ver cómo piensan bajo presión'. Favorece a los extrovertidos y buenos oradores, no necesariamente a los buenos diseñadores.", score: 1, type: "Sesgado a Extrovertidos" },
       { id: 'C', text: "Solo Portfolio: Contratar solo viendo trabajos pasados. No garantiza que ellos hicieron todo el trabajo ni evalúa cómo resuelven problemas nuevos.", score: 3, type: "Incompleto" }
     ],
     explanation: "Los Whiteboard Challenges evalúan performance teatral, no diseño. Un ejercicio asíncrono pagado (A) respeta el tiempo y simula el entorno real de trabajo."
@@ -156,8 +156,8 @@ export const culture_questions = [
     question: "¿Cómo desafías este feedback?",
     options: [
       { id: 'A', text: "Culture Add > Culture Fit: Explicar que buscar 'Fit' genera homogeneidad. Buscar 'Culture Add': ¿Qué perspectiva nueva trae? La seriedad puede ser un balance necesario en un equipo payaso.", score: 5, type: "Lead (Diversidad Cognitiva)" },
-      { id: 'B', text: "Aceptar el rechazo: 'La cultura es sagrada'. Si no cae bien, no trabajaremos bien. Priorizas comodidad social sobre diversidad.", score: 1, type: "Club de Amigos" },
-      { id: 'C', text: "Forzar la contratación: 'No me importa si les cae mal, es buena'. Impones autoridad pero dañas la dinámica del equipo.", score: 2, type: "Autoritario" }
+      { id: 'B', text: "Aceptar el rechazo: 'La cultura es sagrada'. Si no hay química con el equipo, la colaboración será difícil. Priorizas la cohesión del equipo sobre la diversidad de perfiles.", score: 1, type: "Cohesión de Equipo" },
+      { id: 'C', text: "Forzar la contratación: 'No me importa si les cae mal, es buena'. Impones autoridad pero dañas la dinámica del equipo.", score: 1, type: "Autoritario" }
     ],
     explanation: "'Culture Fit' suele ser código para 'se parece a nosotros'. Un Lead busca 'Culture Add' (A) para enriquecer el equipo con personalidades y perspectivas diferentes."
   },
@@ -168,7 +168,7 @@ export const culture_questions = [
     scenario: "Eres freelance/agencia. El cliente aprobó el alcance, pero ahora pide 'cambios pequeños' constantes que suman 20 horas extra. 'Es solo mover esto, es rápido'.",
     question: "¿Cómo proteges tu rentabilidad?",
     options: [
-      { id: 'A', text: "Hacerlo Gratis: Absorbes el costo como inversión en relación cliente. Es solo 1 hora y el cliente tiene presupuesto apretado. Priorizas goodwill sobre revenue inmediato.", score: 0, type: "Relationship-first" },
+      { id: 'A', text: "Hacerlo Gratis: Absorbes el costo como inversión en relación cliente. Es solo 1 hora y el cliente tiene presupuesto apretado. Priorizas goodwill sobre revenue inmediato.", score: -1, type: "Relationship-first" },
       { id: 'B', text: "Change Request Formal: 'Claro, puedo hacerlo. Evaluaré el impacto en tiempo y presupuesto y te envío la cotización del extra'. Profesionalizas el cambio.", score: 5, type: "Lead (Límites Profesionales)" },
       { id: 'C', text: "Quejarse pasivamente: Hacerlo de mala gana y tardar mucho. Dañas la relación y trabajas gratis igual.", score: 1, type: "Pasivo-Agresivo" }
     ],
@@ -181,9 +181,9 @@ export const culture_questions = [
     scenario: "Un cliente te pide diseñar una landing page que le generará $100k en ventas. Te pregunta tu tarifa por hora. Sabes que te tomará solo 5 horas porque eres experto.",
     question: "¿Cómo cotizas?",
     options: [
-      { id: 'A', text: "Por Hora: Cobrar $100/hora x 5 horas = $500. El cliente gana $99.5k, tú ganas migajas y se te castiga por ser rápido.", score: 1, type: "Commodity" },
+      { id: 'A', text: "Por Hora: Cobrar $100/hora x 5 horas = $500. Modelo de pricing estándar basado en tiempo invertido, transparente y fácil de entender para el cliente.", score: 1, type: "Pricing por Hora" },
       { id: 'B', text: "Value-Based Pricing: Cobrar por el valor del activo ($5k - $10k). No vendes horas, vendes una solución de negocio. El cliente sigue ganando mucho y tú capturas valor justo.", score: 5, type: "Lead (Socio de Negocio)" },
-      { id: 'C', text: "Inflar horas: Mentir y decir que tomará 50 horas. Es deshonesto y riesgoso.", score: 0, type: "Fraudulento" }
+      { id: 'C', text: "Inflar horas: Mentir y decir que tomará 50 horas. Es deshonesto y riesgoso.", score: -1, type: "Fraudulento" }
     ],
     explanation: "Cobrar por hora castiga la experiencia (mientras mejor eres, menos tardas y menos ganas). Value-Based Pricing (B) alinea incentivos: cobras por el resultado, no el esfuerzo."
   },
@@ -196,7 +196,7 @@ export const culture_questions = [
     options: [
       { id: 'A', text: "Reestructurar Critique Culture: Implementas 'I like, I wish, What if' framework obligatorio. Senior resiste pero lo obligas a reentrenar en feedback constructivo. Si no cambia conducta en 30 días, sale del equipo.", score: 5, type: "Lead (Cultura > Talento individual)" },
       { id: 'B', text: "Separate Junior/Senior Critiques: Proteges juniors en sesiones aparte con tono constructivo. Seniors pueden seguir siendo brutales entre ellos. Resuelve síntoma pero mantiene cultura tóxica latente.", score: 3, type: "Segregación (Parche temporal)" },
-      { id: 'C', text: "'High Standards' Mentality: Mantienes el estándar alto de critique. Argumentas que un ambiente demanding produce mejores designers. El team debe adaptarse a standard de excelencia.", score: 0, type: "Exigencia sin soporte" }
+      { id: 'C', text: "Mantener Estándares Altos: Mantienes el estándar alto de critique argumentando que la excelencia requiere feedback directo. El equipo debe desarrollar resiliencia para alcanzar el nivel profesional esperado.", score: -1, type: "Estándares Altos" }
     ],
     explanation: "Separar sesiones (B) es band-aid que no arregla la raíz: senior designer tóxico sigue infectando cultura. 'Toughen up' (C) garantiza que solo sobreviven los que normalizan abuso. Un Lead (A) reconoce que una cultura sana es más valiosa que un contributor brillante tóxico - cambias o sales."
   },
@@ -209,7 +209,7 @@ export const culture_questions = [
     options: [
       { id: 'A', text: "Load Rebalancing + Mentoring: Reasignas 2 projects a otros inmediatamente, enseñas priorización en tiempo real con los 2 que quedan. PM se molesta pero defiendes que burnout cuesta más que retrasos.", score: 5, type: "Lead (Protege talento > Velocity corto plazo)" },
       { id: 'B', text: "Time Management Workshop: Le enseñas Pomodoro/GTD y técnicas de productividad. Es útil pero no resuelve el overload objetivo - sigue con 4 projects urgentes simultáneos.", score: 3, type: "Skill building (Ignora root cause)" },
-      { id: 'C', text: "'Everyone is Busy': Normalizas el burnout como parte de startup culture. Junior renuncia en 2 semanas. Cuesta $40K+ reemplazar y 3 meses re-onboard. Lost velocity real.", score: 1, type: "Negligente (Falsa economía)" }
+      { id: 'C', text: "Cultura de Alto Rendimiento: Explicar que en startups todos manejan múltiples proyectos simultáneos. Es parte del crecimiento profesional y la experiencia de trabajar en un ambiente dinámico.", score: 1, type: "Cultura de Alto Rendimiento" }
     ],
     explanation: "Time management (B) no resuelve que 4 projects simultáneos son objetivamente demasiado para un junior. Normalizar burnout (C) es penny-wise, pound-foolish: reemplazo + onboarding cuesta más que negociar timelines. Un Lead (A) entiende que sustainable velocity requiere load realista."
   },

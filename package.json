@@ -1,9 +1,9 @@
 {
-  "name": "simulador-pd",
+  "name": "product-lead-sim",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Simulador de Liderazgo para Product Design Leads",
+  "description": "Product Lead Sim - Assessment de Liderazgo para Product Leads",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

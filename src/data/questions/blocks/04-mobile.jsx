@@ -22,7 +22,7 @@ export const mobile_questions = [
     question: "¿Cuál es tu recomendación estratégica para salvar el año?",
     options: [
       { id: 'A', text: "React Native / Wrapper: Usas Capacitor para empaquetar la web actual. Publicas en 3 semanas. Calidad 'media' pero cumples el requisito de venta ('tenemos app') sin contratar equipo nuevo.", score: 5, type: "Lead (Pragmático de Mercado)" },
-      { id: 'B', text: "Defender PWA: Intentas educar al banco sobre las bondades de las Progressive Web Apps. Arriesgas perder el deal porque los bancos compran checkboxes ('¿Tienen app? Sí/No').", score: 2, type: "Purista Técnico (Pierde negocio)" },
+      { id: 'B', text: "Defender PWA: Intentas educar al banco sobre las bondades de las Progressive Web Apps. Arriesgas perder el deal porque los bancos compran checkboxes ('¿Tienen app? Sí/No').", score: 1, type: "Purista Técnico (Pierde negocio)" },
       { id: 'C', text: "Contratar Agencia Mobile: Gastas $150k en una agencia para hacer la app nativa. Quemas budget y creas un codebase que tu equipo no sabe mantener. Deuda técnica futura masiva.", score: 3, type: "Caro y Riesgoso" }
     ],
     explanation: "A veces el requisito de negocio es 'estar en el Store', no 'ser nativo'. Un wrapper (A) resuelve el problema comercial rápido aprovechando el skill actual del equipo. Defender PWA (B) es técnicamente correcto pero comercialmente suicida en Enterprise."
@@ -34,9 +34,9 @@ export const mobile_questions = [
     scenario: "Analytics muestra que solo el 3% del tráfico viene de tablets. El diseño actual se rompe visualmente en iPad landscape (1024x768). QA lo reporta como 'bug crítico P0' bloqueando el release. Arreglarlo tomaría 1 día de desarrollo. El deployment está programado para mañana.",
     question: "¿Cómo priorizas este issue?",
     options: [
-      { id: 'A', text: "Arreglo Inmediato: Demoras el release 1 día. 'Funcionar correctamente en todos los dispositivos' es parte de la calidad básica del producto. 3% sigue siendo miles de usuarios.", score: 2, type: "Perfeccionista (Mal ROI)" },
+      { id: 'A', text: "Arreglo Inmediato: Demoras el release 1 día. 'Funcionar correctamente en todos los dispositivos' es parte de la calidad básica del producto. 3% sigue siendo miles de usuarios.", score: 1, type: "Perfeccionista (Mal ROI)" },
       { id: 'B', text: "Análisis de Valor: Segmentas ese 3% en analytics: Si son clientes Enterprise de alto valor, se arregla antes del release. Si es tráfico casual, se backlogea como P3 post-launch.", score: 5, type: "Lead (Value-Based Priority)" },
-      { id: 'C', text: "Ship y Monitorea: Lanzas mañana según plan. Solo arreglas el tablet bug si empiezan a llegar quejas explícitas via soporte o impacta métricas clave de conversión.", score: 4, type: "Reactivo (Velocidad)" }
+      { id: 'C', text: "Ship y Monitorea: Lanzas mañana según plan. Solo arreglas el tablet bug si empiezan a llegar quejas explícitas via soporte o impacta métricas clave de conversión.", score: 3, type: "Reactivo (Velocidad)" }
     ],
     explanation: "No todos los bugs son iguales. El % de tráfico no cuenta toda la historia: ¿quién es ese 3%? Si son CFOs revisando dashboards en iPad, es crítico. Si es bounce traffic aleatorio, no justifica demora. La opción B prioriza por impacto en negocio (B)."
   },
@@ -48,7 +48,7 @@ export const mobile_questions = [
     question: "¿Cómo defiendes la usabilidad sin sacrificar la elegancia?",
     options: [
       { id: 'A', text: "Diseño Dual: Mantienes el swipe para power users, pero agregas una acción visible (menú de 3 puntos) para el resto. La discoverability es prioritaria sobre el minimalismo.", score: 5, type: "Lead (Inclusivo)" },
-      { id: 'B', text: "Onboarding Tutorial: Agregas un overlay explicativo la primera vez. La data dice que los usuarios cierran estos tutoriales sin leer, por lo que el problema de usabilidad persiste.", score: 2, type: "Parche débil" },
+      { id: 'B', text: "Onboarding Tutorial: Agregas un overlay explicativo la primera vez. La data dice que los usuarios cierran estos tutoriales sin leer, por lo que el problema de usabilidad persiste.", score: 1, type: "Parche débil" },
       { id: 'C', text: "Aceptar el Botón Grande: Sacrificas espacio en pantalla y estética por claridad bruta. Funciona para archivar, pero degrada la experiencia de lectura y consumo de contenido.", score: 3, type: "Funcional pero tosco" }
     ],
     explanation: "Los gestos son invisibles. La solución no es elegir entre 'bonito' (swipe) o 'claro' (botón), sino ofrecer ambos caminos (A). Los usuarios expertos swipen, los nuevos clickean. Nadie se queda bloqueado."
@@ -61,8 +61,8 @@ export const mobile_questions = [
     question: "¿Qué sacrificas: estética o accesibilidad?",
     options: [
       { id: 'A', text: "Ajustar los grises para cumplir el contraste mínimo, aunque se vean menos sutiles y más duros.", score: 5, type: "Lead (Accesibilidad no negociable)" },
-      { id: 'B', text: "Mantener la estética actual y agregar un 'High Contrast Mode' opcional en Settings para usuarios que lo necesiten.", score: 4, type: "Compromiso (Fragmenta la experiencia)" },
-      { id: 'C', text: "Mantener el diseño actual. WCAG AA es una guía, no una ley (a menos que estés en gobierno/educación).", score: 0, type: "Irresponsable (Riesgo legal)" }
+      { id: 'B', text: "Mantener la estética actual y agregar un 'High Contrast Mode' opcional en Settings para usuarios que lo necesiten.", score: 3, type: "Compromiso (Fragmenta la experiencia)" },
+      { id: 'C', text: "Mantener el diseño actual. WCAG AA es una guía, no una ley (a menos que estés en gobierno/educación).", score: -1, type: "Irresponsable (Riesgo legal)" }
     ],
     explanation: "La accesibilidad no es opcional ni cosmética. Un 'modo especial' (B) estigmatiza. La opción A integra la inclusión como estándar, no como feature."
   },
@@ -77,7 +77,7 @@ export const mobile_questions = [
     options: [
       { id: 'A', text: "Optimización Colaborativa: Te sientas con él a simplificar la animación (CSS vs JS). Buscas el 80% del impacto visual con el 20% del costo de CPU. Respetas la restricción técnica.", score: 5, type: "Lead (Performance es UX)" },
       { id: 'B', text: "Insistir en la Calidad: Argumentas que la animación es differentiador de brand y que la mayoría de users tienen hardware reciente. Solicitas metrics de distribución de dispositivos antes de comprometer.", score: 1, type: "Design-first approach" },
-      { id: 'C', text: "Eliminar la Animación: Priorizas shipping rápido y score perfecto de Lighthouse. Removes la animación completamente para evitar debate técnico prolongado.", score: 2, type: "Pragmático conservador" }
+      { id: 'C', text: "Eliminar la Animación: Priorizas shipping rápido y score perfecto de Lighthouse. Removes la animación completamente para evitar debate técnico prolongado.", score: 1, type: "Pragmático conservador" }
     ],
     explanation: "Performance ES User Experience. Si tu animación laguea el teléfono, es mala UX. Un Lead no pelea contra la métrica, colabora para optimizar la implementación (A) o simplificar el diseño."
   },
@@ -90,7 +90,7 @@ export const mobile_questions = [
     options: [
       { id: 'A', text: "Aceptas hacerlo: Lo tomas para mantener buena relación con Product. Total, son solo 2 días, aunque sabes que esto sienta un precedente peligroso para el futuro.", score: 1, type: "Complaciente (Mata el Sprint)" },
       { id: 'B', text: "Visibilidad del Iceberg: Le muestras el breakdown (diseño, estados de error, casos edge, handoff, QA). Le ofreces meterlo al siguiente sprint o quitar algo del actual.", score: 5, type: "Lead (Educador de Proceso)" },
-      { id: 'C', text: "Te niegas rotundamente: 'Mid-sprint changes' están prohibidos por proceso Agile. Cierras la discusión citando el manual de Scrum sin dar alternativas.", score: 4, type: "Dogmático (Inflexible)" }
+      { id: 'C', text: "Te niegas rotundamente: 'Mid-sprint changes' están prohibidos por proceso Agile. Cierras la discusión citando el manual de Scrum sin dar alternativas.", score: 3, type: "Dogmático (Inflexible)" }
     ],
     explanation: "Decir solo 'no' (C) crea fricción. La opción B hace visible el trabajo oculto y empodera al PM para tomar decisiones informadas de trade-offs."
   },
@@ -101,9 +101,9 @@ export const mobile_questions = [
     scenario: "Es jueves 5 PM. QA bloquea el release del Checkout porque el botón de 'Pagar' tiene un contraste de 2.9:1 (WCAG pide 3:1). Legal advierte que es un riesgo de compliance. Product dice: 'Comprometimos este release para la campaña de marketing que sale mañana a las 9 AM. Retrasar nos cuesta la inversión en ads'.",
     question: "¿Qué decisión tomas bajo presión de campaña vs compliance?",
     options: [
-      { id: 'A', text: "Ship It & Fix Monday: Autorizas el release asumiendo el riesgo por 48 horas. Creas ticket P0 para arreglar el lunes a primera hora. Priorizas la campaña de marketing ya pagada.", score: 4, type: "Pragmático (Riesgo calculado)" },
+      { id: 'A', text: "Ship It & Fix Monday: Autorizas el release asumiendo el riesgo por 48 horas. Creas ticket P0 para arreglar el lunes a primera hora. Priorizas la campaña de marketing ya pagada.", score: 3, type: "Pragmático (Riesgo calculado)" },
       { id: 'B', text: "Hotfix Inmediato: Te quedas con un dev a arreglar el color hexadecimal ahora mismo, aunque signifique salir tarde. Es un cambio de 1 línea de código. Pides a QA un smoke test rápido solo de ese botón. Proteges compliance y campaña.", score: 5, type: "Lead (Ownership de Calidad)" },
-      { id: 'C', text: "Bloquear Release: Mantienes el standard de compliance sin excepciones. Comunicas a Marketing que deben coordinar timelines con QA cycles para futuras campañas.", score: 2, type: "Compliance-first" }
+      { id: 'C', text: "Bloquear Release: Mantienes el standard de compliance sin excepciones. Comunicas a Marketing que deben coordinar timelines con QA cycles para futuras campañas.", score: 1, type: "Compliance-first" }
     ],
     explanation: "Un contraste de 2.9:1 es un fallo técnico menor pero legalmente real. Cancelar una campaña (C) es desproporcionado. Ignorarlo (A) es riesgoso. Un Lead resuelve el problema pequeño (cambiar un hex code toma 5 min) en el momento (B) para habilitar al negocio sin bajar el estándar."
   },
@@ -116,7 +116,7 @@ export const mobile_questions = [
     options: [
       { id: 'A', text: "Entregar Pantallas + Disclaimer: Entregas el UI y clarif icas que Backend owns la lógica de cálculo. Confías en que el Tech Lead tiene expertise financiero necesario para implementación correcta.", score: 1, type: "Handoff tradicional" },
       { id: 'B', text: "Pairing con Tech Lead: En lugar de documentar 2 días, te sientas 3 horas con el Tech Lead a escribir los 'Test Cases'. Aseguras entendimiento lógico antes de codear.", score: 5, type: "Lead (Colaboración de Alto Valor)" },
-      { id: 'C', text: "Retrasar el Sprint: Bloqueas el handoff hasta que termines el documento de 20 páginas de especificación. El equipo se queda sin trabajo 2 días. 'La calidad toma tiempo'.", score: 2, type: "Cuello de Botella" }
+      { id: 'C', text: "Documentación Completa: Bloqueas el handoff hasta que termines el documento completo de especificación. Priorizas la calidad y precisión de la documentación sobre la velocidad de entrega.", score: 1, type: "Documentación Completa" }
     ],
     explanation: "En dominios de alto riesgo (Fintech, Salud), la ambigüedad es inaceptable. Documentar solo (C) es lento. Lavarse las manos (A) es negligente. Pairing para definir Test Cases (B) es la forma más rápida y segura de transferir lógica compleja."
   },
@@ -131,7 +131,7 @@ export const mobile_questions = [
     options: [
       { id: 'A', text: "Espejo Completo: Explicar que RTL invierte no solo texto, sino la dirección del tiempo (flechas), la jerarquía visual y la posición de iconos. Requiere soporte de CSS lógico.", score: 5, type: "Lead (Cultural Awareness)" },
       { id: 'B', text: "Solo Texto: Aceptar traducir solo textos y dejar la UI alineada a la izquierda. 'Se entenderá igual'. Es una experiencia de usuario rota para nativos.", score: 1, type: "Ignorante" },
-      { id: 'C', text: "CSS Patch: Intentar forzar `text-align: right` manualmente en cada componente. Es insostenible y propenso a errores.", score: 2, type: "Parche Técnico" }
+      { id: 'C', text: "Ajuste Manual: Aplicar `text-align: right` manualmente en cada componente. Solución rápida que permite cumplir con el requisito sin cambios arquitectónicos mayores.", score: 1, type: "Ajuste Manual" }
     ],
     explanation: "RTL no es traducción, es localización. La dirección de lectura afecta toda la cognición espacial de la interfaz. Un Lead educa sobre la complejidad técnica (CSS Logical Properties) y cultural (A)."
   },
@@ -155,9 +155,9 @@ export const mobile_questions = [
     scenario: "Estás diseñando una app para técnicos de campo que trabajan en sótanos sin señal. Necesitan editar datos offline. El problema es la sincronización: ¿Qué pasa si dos técnicos editan lo mismo offline?",
     question: "¿Cómo diseñas la resolución de conflictos?",
     options: [
-      { id: 'A', text: "Last Write Wins: El último que sincroniza sobrescribe al anterior automáticamente. Es fácil de programar pero puede borrar datos válidos sin aviso.", score: 2, type: "Riesgoso (Pérdida de datos)" },
+      { id: 'A', text: "Last Write Wins: El último que sincroniza sobrescribe al anterior automáticamente. Es fácil de programar pero puede borrar datos válidos sin aviso.", score: 1, type: "Riesgoso (Pérdida de datos)" },
       { id: 'B', text: "UI de Conflicto: Detectar el conflicto al reconectar y mostrar al usuario ambas versiones (la suya y la del servidor) para que decida cuál guardar.", score: 5, type: "Lead (Transparencia y Control)" },
-      { id: 'C', text: "Bloqueo Offline: Prohibir editar si no hay conexión. Elimina el conflicto pero hace la app inútil para el caso de uso principal.", score: 0, type: "Inútil" }
+      { id: 'C', text: "Prevención de Conflictos: Prohibir editar si no hay conexión. Elimina el riesgo de conflictos de sincronización y garantiza integridad de datos. Requiere conexión constante para operar.", score: -1, type: "Prevención Estricta" }
     ],
     explanation: "En apps profesionales offline-first, la integridad de los datos es crítica. 'Last Write Wins' es peligroso. La UI debe empoderar al usuario para resolver la discrepancia (B)."
   },
@@ -169,7 +169,7 @@ export const mobile_questions = [
     question: "¿Qué estándar aplicas?",
     options: [
       { id: 'A', text: "Regla 44px/48px: Aumentar el área táctil mínima a 44pt (iOS) o 48dp (Android), aunque el icono visual sea más pequeño (usando padding transparente).", score: 5, type: "Lead (Estándar de Plataforma)" },
-      { id: 'B', text: "Zoom UI: Decirle al usuario que haga zoom si no puede tocarlo. Transfieres la carga de la accesibilidad al usuario.", score: 0, type: "Excluyente" },
+      { id: 'B', text: "Zoom UI: Decirle al usuario que haga zoom si no puede tocarlo. Transfieres la carga de la accesibilidad al usuario.", score: -1, type: "Excluyente" },
       { id: 'C', text: "Rediseño Espacial: Separar los botones visualmente. Ayuda, pero si el target sigue siendo pequeño, no resuelve el problema raíz.", score: 3, type: "Parcial" }
     ],
     explanation: "Los estándares de Apple y Google existen por biomecánica, no capricho. Un área táctil invisible (padding) resuelve la usabilidad sin necesariamente cambiar la estética visual (A)."
@@ -195,7 +195,7 @@ export const mobile_questions = [
     question: "¿Cómo alcanzas performance budget sin romper features críticas?",
     options: [
       { id: 'A', text: "SDK Audit ROI: Evalúas cada MB de SDK vs su valor real. Mantienes Crashlytics + 1 analytics tool, removes el resto. 28MB menos, funcionalidad core intacta.", score: 5, type: "Lead (ROI-based pruning)" },
-      { id: 'B', text: "Lazy Load Everything: Descargas SDKs on-demand cuando se necesiten. Reduces tamaño inicial pero aumentas latencia en runtime. Users no esperarán 3s para usar analytics.", score: 2, type: "Técnico (Ignora UX real)" },
+      { id: 'B', text: "Lazy Load Everything: Descargas SDKs on-demand cuando se necesiten. Reduces tamaño inicial pero aumentas latencia en runtime. Users no esperarán 3s para usar analytics.", score: 1, type: "Técnico (Ignora UX real)" },
       { id: 'C', text: "Timeline Pushback: Negocias 2 sprints extra para refactor perfecto. Timing correcto, pero PM pierde confianza en tu ability to deliver under pressure.", score: 3, type: "Conservador (Pierde momentum)" }
     ],
     explanation: "Lazy loading (B) traslada el problema de startup a runtime - users siguen esperando. Pedir más tiempo (C) es honesto pero erosiona confianza cuando todos están under pressure. SDK audit (A) es brutal pero necesario: la mayoría de SDKs son legacy de experimentos pasados que ya no justifican su peso."
@@ -220,9 +220,9 @@ export const mobile_questions = [
     scenario: "PM quiere 'offline mode' para cerrar deal Enterprise ($400K). Ingeniería estima 4 meses (sync conflicts, data consistency, cache invalidation). El cliente necesita demo funcional en 6 semanas para board approval.",
     question: "¿Cómo balanceas promesa de venta vs realidad técnica?",
     options: [
-      { id: 'A', text: "Fake Offline (Optimistic UI): Simulas que funciona offline cacheando last state. Funciona para demo pero explota en production con conflictos reales de sync.", score: 2, type: "Demo-driven (Deuda técnica masiva)" },
+      { id: 'A', text: "Fake Offline (Optimistic UI): Simulas que funciona offline cacheando last state. Funciona para demo pero explota en production con conflictos reales de sync.", score: 1, type: "Demo-driven (Deuda técnica masiva)" },
       { id: 'B', text: "Scoped Offline (Read-Only): Implementas offline viewing de data crítica en 3 semanas. Escritura requiere conexión. Cumples 80% del caso de uso Enterprise sin 4 meses de complejidad.", score: 5, type: "Lead (Pragmatic scoping)" },
-      { id: 'C', text: "Enterprise Custom Build: Vendes como Professional Service ($80K, 4 meses). No contamina roadmap core pero requiere capital político con CPO para aprobar services model.", score: 4, type: "Services (Clean pero requiere buy-in)" }
+      { id: 'C', text: "Enterprise Custom Build: Vendes como Professional Service ($80K, 4 meses). No contamina roadmap core pero requiere capital político con CPO para aprobar services model.", score: 3, type: "Services (Clean pero requiere buy-in)" }
     ],
     explanation: "Fake offline (A) es trampa que explota en real use - conflictos de sync son problema hard, no falta de tiempo. Professional service (C) es limpio pero startups raramente tienen services org. Scoped offline read-only (B) cumple el job-to-be-done real (ver data on plane) sin construir Google Docs offline sync."
   },
@@ -248,7 +248,7 @@ export const mobile_questions = [
     options: [
       { id: 'A', text: "Progressive Onboarding: Eliminas todo onboarding upfront. Users entran directo, aprenden con tooltips contextuales on-demand. GDPR en primera interacción relevante, promo opt-in post-first-value.", score: 5, type: "Lead (Zero friction onboarding)" },
       { id: 'B', text: "Reduce a 3 Screens Core: Cortas a valor esencial solamente. GDPR y promo van después. Mejora a ~40% completion pero sigue siendo fricción upfront vs progressive.", score: 3, type: "Mejora incremental (No resuelve raíz)" },
-      { id: 'C', text: "Gamify Onboarding: Agregas 'progress bar' y 'skip' button. Maquillas el problema sin eliminar las 7 screens. Drop-off mejora marginalmente a 25%.", score: 2, type: "Lipstick on pig" }
+      { id: 'C', text: "Gamify Onboarding: Agregas 'progress bar' y 'skip' button. Maquillas el problema sin eliminar las 7 screens. Drop-off mejora marginalmente a 25%.", score: 1, type: "Lipstick on pig" }
     ],
     explanation: "Gamification (C) es parche cosmético cuando el problema es que users no quieren 7 screens. Reducir a 3 (B) es mejor pero todavía pregunta 'qué quieres lograr' antes de dejar usar el producto. Progressive (A) es contraintuitivo pero funciona: Slack/Notion te dejan entrar sin tutorial, aprendes haciendo. GDPR se puede mostrar en first data access."
   },

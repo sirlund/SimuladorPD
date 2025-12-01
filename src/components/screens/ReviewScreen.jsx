@@ -159,54 +159,162 @@ export const ReviewScreen = ({
               if (!answerData) return null;
 
               const isPerfect = answerData.score === 5;
-              const isGood = answerData.score === 2;
-              const borderColor = isPerfect ? 'border-green-500' : (isGood ? 'border-yellow-400' : 'border-red-500');
-              const bgColor = isPerfect ? 'bg-green-50/30' : (isGood ? 'bg-yellow-50/30' : 'bg-red-50/30');
+              const isIntermediate = answerData.score === 3;
+              const isBadButWorks = answerData.score === 1;
+              const isNegative = answerData.score === -1;
+
+              // Determinar colores según el nuevo sistema
+              let borderColor, bgColor;
+              if (isPerfect) {
+                borderColor = 'border-green-500';
+                bgColor = 'bg-green-50/30';
+              } else if (isIntermediate) {
+                borderColor = 'border-yellow-400';
+                bgColor = 'bg-yellow-50/30';
+              } else if (isBadButWorks) {
+                borderColor = 'border-orange-400';
+                bgColor = 'bg-orange-50/30';
+              } else { // isNegative
+                borderColor = 'border-red-500';
+                bgColor = 'bg-red-50/30';
+              }
 
               return (
                 <div key={q.id} className={`bg-white rounded-xl p-8 shadow-sm border-l-8 ${borderColor} ${bgColor}`}>
                   {/* Header */}
                   <div className="flex justify-between items-start mb-6">
                     <div className="flex-1 pr-4">
-                      <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1 block">
-                        Escenario #{index + 1}
-                      </span>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                          Escenario #{index + 1}
+                        </span>
+                        <span className="text-xs font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
+                          {q.displayId}
+                        </span>
+                        <span className="text-[10px] font-mono text-slate-400 bg-slate-50 px-2 py-0.5 rounded border border-slate-200">
+                          {q.id}
+                        </span>
+                      </div>
                       <h4 className="font-bold text-slate-900 text-lg leading-snug">
                         {q.scenario}
                       </h4>
                     </div>
-                    <span className={`font-bold px-4 py-2 rounded-lg text-sm whitespace-nowrap ${isPerfect ? 'bg-green-100 text-green-800' : (isGood ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800')}`}>
-                      +{answerData.score} pts
+                    <span className={`font-bold px-4 py-2 rounded-lg text-sm whitespace-nowrap ${isPerfect ? 'bg-green-100 text-green-800' :
+                        isIntermediate ? 'bg-yellow-100 text-yellow-800' :
+                          isBadButWorks ? 'bg-orange-100 text-orange-800' :
+                            'bg-red-100 text-red-800'
+                      }`}>
+                      {answerData.score > 0 ? '+' : ''}{answerData.score} pts
                     </span>
                   </div>
 
-                  {/* Analysis */}
-                  <div className="grid md:grid-cols-2 gap-6 mt-6">
-                    {/* Your Decision */}
-                    <div className={`p-5 rounded-lg border ${isPerfect ? 'bg-green-50 border-green-200' : 'bg-white border-slate-200'}`}>
-                      <div className="text-xs font-bold uppercase mb-2 opacity-60 flex items-center gap-1">
-                        Tu Decisión ({answerData.selectedType})
-                      </div>
-                      <p className="font-medium text-slate-800 leading-relaxed">
-                        {answerData.selectedText}
-                      </p>
-                    </div>
+                  {/* Analysis by Rows */}
+                  <div className="space-y-4 mt-6">
+                    {q.options.map((option, optIdx) => {
+                      const isSelected = option.id === answerData.selectedId;
+                      const optionScore = option.score;
+                      const isOptionPerfect = optionScore === 5;
+                      const isOptionIntermediate = optionScore === 3;
+                      const isOptionBad = optionScore === 1;
+                      const isOptionNegative = optionScore === -1;
 
-                    {/* Best Option & Explanation */}
-                    <div className="p-5 bg-indigo-50 border border-indigo-100 rounded-lg">
-                      {!isPerfect && (
-                        <div className="mb-4 pb-4 border-b border-indigo-200/50">
-                          <div className="text-xs font-bold text-indigo-600 uppercase mb-2">
-                            Mejor Opción ({answerData.bestOption.type})
+                      // Colores según score para alternativa
+                      let optionBorderColor, optionBgColor, optionTextColor;
+                      if (isOptionPerfect) {
+                        optionBorderColor = 'border-green-400';
+                        optionBgColor = 'bg-green-50';
+                        optionTextColor = 'text-green-800';
+                      } else if (isOptionIntermediate) {
+                        optionBorderColor = 'border-yellow-400';
+                        optionBgColor = 'bg-yellow-50';
+                        optionTextColor = 'text-yellow-800';
+                      } else if (isOptionBad) {
+                        optionBorderColor = 'border-orange-400';
+                        optionBgColor = 'bg-orange-50';
+                        optionTextColor = 'text-orange-800';
+                      } else {
+                        optionBorderColor = 'border-red-400';
+                        optionBgColor = 'bg-red-50';
+                        optionTextColor = 'text-red-800';
+                      }
+
+                      // Texto de análisis
+                      let analysisText;
+                      if (isOptionPerfect) {
+                        analysisText = "Esta es la mejor opción. Demuestra liderazgo estratégico y balance entre negocio, equipo y calidad.";
+                      } else if (isOptionIntermediate) {
+                        analysisText = "Opción intermedia. Funcional pero no óptima. Puede tener trade-offs menores o no ser la solución más estratégica.";
+                      } else if (isOptionBad) {
+                        analysisText = "Opción problemática. Resuelve el problema inmediato pero con costos significativos o consecuencias negativas a futuro.";
+                      } else {
+                        analysisText = "Opción negativa. Puede dañar el negocio, el equipo o la cultura. Consecuencias severas o destructivas.";
+                      }
+
+                      return (
+                        <div
+                          key={option.id}
+                          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                        >
+                          {/* Alternativa */}
+                          <div
+                            className={`p-4 rounded-lg border-2 transition-all ${isSelected
+                                ? `${optionBorderColor} ${optionBgColor} shadow-md ring-2 ring-offset-2 ${isOptionPerfect ? 'ring-green-300' :
+                                  isOptionIntermediate ? 'ring-yellow-300' :
+                                    isOptionBad ? 'ring-orange-300' :
+                                      'ring-red-300'
+                                }`
+                                : 'border-slate-200 bg-white'
+                              }`}
+                          >
+                            <div className="flex items-start justify-between gap-3 mb-2">
+                              <div className="flex items-center gap-2">
+                                <span className={`font-bold text-sm ${isSelected ? optionTextColor : 'text-slate-500'
+                                  }`}>
+                                  {option.id}
+                                </span>
+                                {isSelected && (
+                                  <span className="text-xs font-bold bg-indigo-600 text-white px-2 py-0.5 rounded">
+                                    TU SELECCIÓN
+                                  </span>
+                                )}
+                              </div>
+                              <span className={`text-xs font-bold px-2 py-1 rounded ${isOptionPerfect ? 'bg-green-100 text-green-800' :
+                                  isOptionIntermediate ? 'bg-yellow-100 text-yellow-800' :
+                                    isOptionBad ? 'bg-orange-100 text-orange-800' :
+                                      'bg-red-100 text-red-800'
+                                }`}>
+                                {optionScore > 0 ? '+' : ''}{optionScore} pts
+                              </span>
+                            </div>
+                            <p className={`text-sm leading-relaxed ${isSelected ? 'font-medium text-slate-900' : 'text-slate-700'
+                              }`}>
+                              {option.text}
+                            </p>
                           </div>
-                          <p className="font-medium text-indigo-900 leading-relaxed">
-                            {answerData.bestOption.text}
-                          </p>
+
+                          {/* Análisis */}
+                          <div className="p-4">
+                            <div className="flex items-center gap-2 mb-2">
+                              <span className="text-xs text-slate-500 italic">{option.type}</span>
+                            </div>
+                            <p className="text-sm leading-relaxed text-slate-600 italic">
+                              {analysisText}
+                            </p>
+                          </div>
                         </div>
-                      )}
-                      <div className="flex gap-3 items-start text-indigo-800 text-sm leading-relaxed">
-                        <Zap className="w-5 h-5 mt-0.5 flex-shrink-0 text-indigo-600" />
-                        <p className="italic font-medium">{q.explanation}</p>
+                      );
+                    })}
+
+                    {/* Contexto General */}
+                    <div className="mt-6 p-4 bg-indigo-50 border border-indigo-100 rounded-lg">
+                      <div className="flex gap-2 items-start text-indigo-800 text-sm leading-relaxed">
+                        <Zap className="w-4 h-4 mt-0.5 flex-shrink-0 text-indigo-600" />
+                        <div>
+                          <div className="font-bold text-xs uppercase mb-1 text-indigo-600">
+                            Contexto General
+                          </div>
+                          <p className="italic">{q.explanation}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
