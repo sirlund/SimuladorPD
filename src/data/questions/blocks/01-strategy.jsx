@@ -26,7 +26,7 @@ export const strategy_questions = [
       { id: 'B', text: "Protección del Talento: Negociar con el CEO una semana de 'cooldown' dedicada a documentar aprendizajes del proyecto cancelado y realizar una transición estructurada. El equipo necesita procesar el cambio para mantener la motivación a largo plazo.", score: 3, type: "Protector (Empático)" },
       { id: 'C', text: "Cierre con Dignidad: Organizas una sesión de 'Retrospectiva de Aprendizaje' el lunes donde el equipo presenta al CEO qué descubrieron en Cobranza Automática que podría aplicarse a futuro, validando su trabajo antes de pivotar.", score: 3, type: "Cultural (Demora)" }
     ],
-    explanation: "Con 4 meses de runway, cada día cuenta. Un Lead valida las emociones pero actúa con urgencia financiera. Negociar una semana de 'cooldown' suena cuidadoso pero demora la ejecución en un momento crítico. Buscar validación emocional con retrospectivas cuando la supervivencia está en juego es un lujo que no puedes permitir."
+    explanation: "Con un Runway crítico de 4 meses, la velocidad de ejecución es supervivencia. La Gestión de Cambio Radical valida la emoción pero prioriza la solvencia financiera inmediata, actuando como un amortiguador de realidad para el equipo. La Protección del Talento mediante un 'cooldown' es una práctica excelente en tiempos de paz, pero un lujo fatal en tiempos de guerra (Wartime Leadership). Buscar un Cierre con Dignidad mediante retrospectivas prioriza el proceso sobre la urgencia del negocio, arriesgando la viabilidad de la empresa."
   },
   {
     id: 'metrics_vanity_vs_reality',
@@ -39,7 +39,7 @@ export const strategy_questions = [
       { id: 'B', text: "Desmentir en Público: Intervienes en el All-Hands aclarando que el revenue bajó un 8%. 'El tráfico basura no paga sueldos'. Proteges la verdad financiera pero humillas a Marketing públicamente.", score: 1, type: "Tóxico (Verdad sin tacto)" },
       { id: 'C', text: "Silencio Táctico: Dejas que celebren. En tu reporte, te enfocas solo en optimizar el checkout flow. Confías en que Marketing ajustará su targeting basado en sus propias métricas de calidad.", score: 1, type: "Silo funcional" }
     ],
-    explanation: "Un Lead no deja que la empresa crea mentiras, pero tampoco humilla colegas públicamente. Alineación privada con VP y CMO corrige la narrativa de negocio (Revenue > Tráfico) en el foro adecuado (QBR) y con diplomacia previa, transformando el conflicto en aprendizaje compartido."
+    explanation: "El tráfico sin conversión es una Vanity Metric. Tu rol es ser el guardián de la verdad financiera sin destruir capital político. La Alineación Privada permite corregir la narrativa de negocio (Revenue > Tráfico) en el foro adecuado, transformando el conflicto en aprendizaje compartido. Desmentir en Público protege la verdad del dato pero quema puentes relacionales necesarios para futuras colaboraciones. El Silencio Táctico es negligencia estratégica: permite que la empresa tome decisiones de inversión basadas en datos incompletos."
   },
   {
     id: 'sales_custom_demands',
@@ -52,7 +52,7 @@ export const strategy_questions = [
       { id: 'B', text: "Negarse por Principios: 'No hardcodeamos clientes. El sistema es escalable o no lo es'. Riesgo de perder el deal por rigidez técnica.", score: 1, type: "Bloqueador (Falta visión comercial)" },
       { id: 'C', text: "Implementar en Prod: Hardcodeas el branding en producción usando feature flags para ese cliente específico. Sales cierra el deal inmediatamente con demo real vs mockup.", score: 1, type: "Quick win approach" }
     ],
-    explanation: "Ventas necesita cerrar. Ingeniería necesita orden. El hardcode aislado satisface ambos: das la herramienta de venta (el demo visual) pero proteges la integridad del sistema (rama separada/desechable). Un Lead busca el 'Cómo sí', no solo el 'No'."
+    explanation: "Ventas necesita cerrar e Ingeniería necesita orden. El Hardcode Aislado satisface ambos: entrega la herramienta de venta (el demo visual) protegiendo la integridad del sistema mediante una rama desechable (Technical Hygiene). Negarse por principios (Bloqueador) ignora la realidad comercial de que sin ventas no hay producto. Implementar en Prod introduce Deuda Técnica inmediata y sienta un precedente peligroso de personalización insostenible."
   },
   {
     id: 'okr_conflict_dashboard',
@@ -65,7 +65,7 @@ export const strategy_questions = [
       { id: 'B', text: "Workshop de Alineación: 'Diseñemos para el Outcome (Ventas), no el Output (Minutos)'. Proponer métricas de éxito que no requieran vigilancia invasiva.", score: 5, type: "Lead (Outcome-Driven)" },
       { id: 'C', text: "Escalación Burocrática: Elevas el conflicto al CEO pidiendo que arbitre entre los dos VPs. Detienes el trabajo hasta tener una resolución formal por escrito.", score: 1, type: "Burocrático" }
     ],
-    explanation: "Con 8 días para cerrar Q ante el Board, la única jugada es concentración extrema en el OKR. El workshop de alineación enfoca en 'Outcome over Output'. Diseñar obedientemente lo que pide Ventas pierde 24h críticas. Escalar burocráticamente al CEO divide esfuerzo cuando necesitas impacto masivo."
+    explanation: "Con el cierre del Q inminente, la parálisis es el enemigo. El Workshop de Alineación cambia la conversación de 'Output' (minutos rastreados) a 'Outcome' (ventas cerradas), protegiendo la cultura sin bloquear al negocio. La Obediencia Comercial sacrifica principios de producto por presión política. La Escalación Burocrática delega la responsabilidad hacia arriba, mostrando incapacidad de resolución de conflictos a nivel Lead."
   },
 
   // --- BLOQUE 2: SISTEMAS DE DISEÑO, OPS & DEUDA TÉCNICA ---
@@ -80,7 +80,7 @@ export const strategy_questions = [
       { id: 'B', text: "Negarse rotundamente. Hardcodear bloquea Dark Mode y futuros cambios de branding. El costo de refactorizar después es 10x mayor. Te sientas con ellos ahora mismo a configurar los tokens básicos aunque se trabaje hasta las 7 PM.", score: 5, type: "Lead (Visión Sistémica)" },
       { id: 'C', text: "Autorización con Deuda Registrada: Permites el hardcode por la urgencia del demo, pero creas inmediatamente un ticket P0 de 'Refactor CSS' asignado al siguiente sprint con aprobación del PM y CTO.", score: 1, type: "Pragmático (Alto riesgo)" }
     ],
-    explanation: "Con un demo de inversión inminente, la presión es real. Pero un Lead sabe que los tickets de refactor nunca se priorizan. La opción B invierte tiempo ahora para evitar multiplicar el costo después. La A es un parche que al menos mantiene mantenibilidad básica."
+    explanation: "La deuda de diseño tiene interés compuesto. Negarse y configurar tokens invierte unas horas hoy para evitar semanas de refactorización mañana (especialmente ante Dark Mode o Rebranding). El Compromiso Controlado (SCSS variables) es un parche aceptable pero sigue generando deuda semántica. La Autorización con Deuda Registrada es una trampa clásica: los tickets de refactor post-lanzamiento rara vez se priorizan frente a nuevos features."
   },
   {
     id: 'legacy_ui_refactor_strategy',
@@ -93,7 +93,7 @@ export const strategy_questions = [
       { id: 'B', text: "Forward Only + Narrativa: Aplicar nuevo sistema SOLO en features nuevas. Comunicar externamente que es una 'Brand Evolution' gradual. Aceptas la inconsistencia temporal para no frenar delivery ni arriesgar bugs.", score: 3, type: "Pragmático con spin de marketing (Apuesta arriesgada)" },
       { id: 'C', text: "Design Debt Sprint: Presentar business case (NPS = Churn) para pausar features no-críticas por 2 semanas y unificar las top 20 pantallas. Inversión de shock para recuperar confianza rápida.", score: 1, type: "Bold con riesgo político (Promesa difícil de cumplir)" }
     ],
-    explanation: "Los 'Refactor Sprints' dedicados (C) rara vez se aprueban porque no generan revenue visible. La opción B mantiene el problema indefinidamente. La estrategia 'Boy Scout' (A) es la única sostenible: pagas deuda técnica progresivamente sin detener la operación."
+    explanation: "Los sprints dedicados a deuda técnica (Design Debt Sprint) rara vez se aprueban porque no generan revenue visible inmediato. La estrategia 'Boy Scout Rule' es la única sostenible a largo plazo: paga deuda técnica progresivamente como parte del costo de hacer negocios, sin detener la operación. La estrategia Forward Only valida la inconsistencia, confundiendo al usuario y manteniendo la deuda legacy indefinidamente."
   },
   {
     id: 'component_complexity_detach',
@@ -106,7 +106,7 @@ export const strategy_questions = [
       { id: 'B', text: "Especialización de Componentes: Divides 'Card' en 4 componentes especializados (Card-Content, Card-User, Card-Product, Card-Feature) con 30-40 variantes cada uno. Reduces complejidad individual aunque aumentes cantidad de componentes.", score: 3, type: "Fragmentación controlada" },
       { id: 'C', text: "Governance + Training: Estableces code reviews de Figma obligatorios donde rechazas archivos con detach. Organizas capacitación mensual sobre uso correcto del componente. Creas documentación interactiva con ejemplos.", score: 1, type: "Enforcement (No resuelve raíz)" }
     ],
-    explanation: "Cuando 68% hace 'detach', el problema no es el equipo, es el sistema. La C culpa al usuario y genera resentimiento sin resolver la fricción. La B funciona pero fragmenta el sistema. Un Lead reconoce que si algo es difícil de usar, debe rediseñarse: 156 variantes es over-engineering (A). El mejor sistema es el que desaparece."
+    explanation: "Si un componente requiere un manual o fuerza al 'detach', está mal diseñado. El Refactor de Arquitectura ataca la causa raíz (over-engineering) simplificando el uso. La Especialización de Componentes fragmenta el sistema, dificultando el mantenimiento futuro. Intentar solucionar un problema de usabilidad del sistema con Governance + Training es culpar al usuario (los diseñadores) por un fallo de la herramienta."
   },
   {
     id: 'mobile_first_habit_change',
@@ -119,7 +119,7 @@ export const strategy_questions = [
       { id: 'B', text: "Quality Gate: Rechazas cualquier diseño en Review que no presente mobile primero. Sin mobile, no se aprueba nada. Enforcement estricto.", score: 3, type: "Process enforcement con accountability (Autoridad directa)" },
       { id: 'C', text: "Incentivos: Ligas 'Mobile-First' a las evaluaciones de desempeño. Quien adopte mobile recibe mejores proyectos; quien no, queda relegado.", score: 3, type: "Incentive-based con stakes de carrera (Puede generar resentimiento)" }
     ],
-    explanation: "La educación ya falló. El tercer enfoque genera política interna. El segundo enfoque requiere vigilancia constante. El primer enfoque es behavioral design: cambias el entorno para que el comportamiento correcto sea el más fácil. Un Lead diseña sistemas que moldean hábitos."
+    explanation: "La educación pasiva ya falló. El Environment Nudge aplica 'Behavioral Design' al equipo: al cambiar el entorno para que lo correcto sea lo más fácil, moldeas el hábito sin fricción constante. Los Quality Gates funcionan pero requieren vigilancia policial perpetua. Los Incentivos punitivos pueden generar resentimiento y competencia interna tóxica en lugar de colaboración."
   },
 
   // --- BLOQUE 3: LIDERAZGO, CULTURA & PERSONAS ---
@@ -134,7 +134,7 @@ export const strategy_questions = [
       { id: 'B', text: "Aislamiento Estratégico: Lo reasignas a proyectos críticos individuales donde su velocidad es vital, pero lo mantienes alejado de colaboraciones grupales y code reviews. Optimizas su output técnico mientras proteges la dinámica del equipo.", score: 1, type: "Optimización de Recursos" },
       { id: 'C', text: "Performance Improvement Plan: Inicias un PIP de 30 días enfocado exclusivamente en soft skills y comunicación. O cambia su trato o se va, sin importar su output técnico. La cultura del equipo no es negociable.", score: 5, type: "Lead (Guardián de Cultura)" }
     ],
-    explanation: "El costo oculto de un 'Genio Tóxico' es la renuncia de 3-5 profesionales buenos que generan más valor agregado a largo plazo. La opción A solo pospone el problema. La B valida la toxicidad. Un Lead protege la cultura como activo estratégico (C)."
+    explanation: "El costo oculto de un 'Genio Tóxico' es la renuncia de 3-5 profesionales competentes, lo que genera una pérdida neta de valor mayor que su aporte individual. El Performance Improvement Plan (PIP) establece que los 'Soft Skills' son requisitos core del rol, no opcionales. El Aislamiento Estratégico valida implícitamente que el mal comportamiento es aceptable si eres talentoso. La Mediación Activa te convierte en cuello de botella y niñera, impidiendo la autonomía del equipo."
   },
   {
     id: 'mentoria_junior_failure',
@@ -147,7 +147,7 @@ export const strategy_questions = [
       { id: 'B', text: "No. Lo dejas fallar controladamente. Esperas a que salgan los resultados del test de usabilidad o la data real y usas ese momento para enseñarle a analizar y corregir el error.", score: 5, type: "Lead (Maestro)" },
       { id: 'C', text: "Le das una pista sutil ('¿Has pensado en cómo se verá esto en móvil?') esperando que se dé cuenta solo.", score: 3, type: "Coach Pasivo" }
     ],
-    explanation: "Si el error no es catastrófico para el negocio, el aprendizaje vivido vale más que la perfección inmediata. Corregirle todo impide que desarrolle criterio propio."
+    explanation: "El aprendizaje vivido (experiencial) tiene mayor retención que la instrucción teórica. Al Dejar fallar controladamente, permites que el Junior desarrolle criterio propio y aprenda a analizar consecuencias. Corregir el diseño tú mismo (Micro-manager) asegura calidad a corto plazo pero crea dependencia y atrofia el crecimiento del diseñador. Las pistas sutiles (Coach Pasivo) pueden ser ambiguas y no garantizan el aprendizaje del error raíz."
   },
   {
     id: 'burnout_detection_action',
@@ -160,7 +160,7 @@ export const strategy_questions = [
       { id: 'B', text: "Intervención Estructural: Reduces el alcance del dashboard (cortas 2 features), redistribuyes carga y le prohíbes trabajar post-7 PM. Asumes el costo político con el CEO.", score: 5, type: "Lead (Protege talento, asume riesgo)" },
       { id: 'C', text: "Soporte con Recursos: Le asignas un Junior de asistente para tareas operativas y administrativas. Reduces su carga manual permitiendo que se enfoque en las decisiones críticas de alto impacto.", score: 3, type: "Mitigación (No resuelve raíz)" }
     ],
-    explanation: "Los 'héroes' que se queman salvando deadlines renuncian 3-6 meses después, costando más que cualquier lanzamiento. La opción A normaliza la cultura tóxica. La C mitiga síntomas pero no detiene el sobretrabajo. Un Lead protege el activo humano aunque eso signifique negociar scope con stakeholders (B)."
+    explanation: "El 'Hero Mode' no es sostenible ni escalable. La Intervención Estructural protege el activo más caro de la empresa (el talento senior) y fuerza una priorización honesta del alcance (Scope Cutting). Es mejor decepcionar levemente con features que colapsar el equipo antes de la Serie A. El Reconocimiento con Incentivo institucionaliza el burnout como camino al éxito. El Soporte con Recursos ayuda, pero no detiene la presión mental del delivery crítico."
   },
   {
     id: 'hiring_profile_gap_logic',
@@ -173,7 +173,7 @@ export const strategy_questions = [
       { id: 'B', text: "Hire for Gaps: Lo contratas. Priorizas resolver el bloqueo lógico/estructural sobre la uniformidad visual. Tus seniors pueden pulir la UI, pero él trae el conocimiento de banca que falta.", score: 5, type: "Lead (Team building estratégico)" },
       { id: 'C', text: "Freelance Bridge: Contratas un freelance visual fuerte para apoyar en proyectos de alto impacto visual mientras continúas buscando el candidato perfecto full-time. Mantienes la opción abierta.", score: 1, type: "Indeciso (No resuelve gap estructural)" }
     ],
-    explanation: "Contratas para cubrir brechas del equipo, no para clonar lo que ya tienes. El primer enfoque asume que existe el 'unicornio' perfecto y puedes esperar, cuando tu credibilidad con Product se degrada cada sprint. La C es parche temporal costoso. Un equipo de puros Visual Designers fallará en productos B2B complejos. La diversidad de expertise hace al equipo más resiliente (B)."
+    explanation: "Un Lead contrata para cubrir brechas, no para clonar fortalezas existentes. Hire for Gaps inyecta el conocimiento de dominio (Fintech/B2B) que falta para desbloquear la credibilidad con Producto. Hire for Excellence visual ignora que la debilidad actual es lógica, no estética. El Freelance Bridge es un parche temporal que retrasa la solución estructural del equipo y diluye el ownership."
   },
 
   // --- MIGRATED FROM INNOVATION BLOCK ---
@@ -188,7 +188,7 @@ export const strategy_questions = [
       { id: 'B', text: "Modular Rewrite: Migrar pantalla por pantalla, permitiendo coexistencia temporal. Priorizar vistas con más tráfico para validar valor incrementalmente.", score: 5, type: "Lead (Incremental De-Risking)" },
       { id: 'C', text: "Priorizar Features: Si el código actual funciona y es estable, priorizar features nuevas que generen revenue. El refactoring puede esperar hasta que haya capacidad disponible.", score: 3, type: "Priorización de Features" }
     ],
-    explanation: "Los 'Big Bang Rewrites' casi siempre fallan (A). La migración incremental (B) permite entregar valor mientras se moderniza sin apostar todo."
+    explanation: "Los 'Big Bang Rewrites' casi siempre fallan por subestimación de complejidad y fatiga de negocio. El Modular Rewrite permite entregar valor continuo y modernizar el stack progresivamente (Strangler Fig pattern). Apoyar el rewrite completo detiene el revenue y pone en riesgo la viabilidad de la empresa. Priorizar Features ignora que la deuda técnica eventualmente paralizará la velocidad de entrega."
   },
   {
     id: 'design_system_v2_breaking_changes',
@@ -201,7 +201,7 @@ export const strategy_questions = [
       { id: 'B', text: "Versionado Coexistente: Publicar V2 en namespace separado, permitiendo convivencia. Migrar gradualmente por módulos durante 6 meses sin detener el roadmap.", score: 5, type: "Lead (Graceful Migration)" },
       { id: 'C', text: "Fragmentación Táctica: Lanzar solo componentes nuevos en V2. Mantener los viejos sin cambios. Aceptas inconsistencia visual temporal para no bloquear.", score: 1, type: "Fragmentación (Dos sistemas eternos)" }
     ],
-    explanation: "Forzar una migración masiva detiene el negocio. La coexistencia temporal permite evolucionar sin destruir lo que funciona."
+    explanation: "Forzar una migración masiva (Code Freeze) detiene el negocio y rara vez se aprueba. El Versionado Coexistente permite evolucionar el sistema sin destruir lo que funciona, pagando la deuda de migración progresivamente. La Fragmentación Táctica crea dos fuentes de verdad permanentes, aumentando la carga cognitiva y de mantenimiento."
   },
   {
     id: 'production_bug_major_incident',
@@ -214,7 +214,7 @@ export const strategy_questions = [
       { id: 'B', text: "Extreme Ownership: Asumes la responsabilidad. Presentas plan de reversión inmediato (1h), notificación empática a usuarios y auditoría de flujos para mañana.", score: 5, type: "Lead (Liderazgo en Crisis)" },
       { id: 'C', text: "Gestión Centralizada: Canalizar toda la comunicación a través del equipo Legal y PR para asegurar un mensaje unificado y evitar pánico innecesario. El equipo de diseño se enfoca exclusivamente en el fix técnico.", score: -1, type: "Cobarde" }
     ],
-    explanation: "En una crisis grave, quien asume la responsabilidad y ofrece un plan se convierte en el líder. Culpar a otros o esconderse destruye tu carrera. Ownership genera confianza incluso en el error."
+    explanation: "En crisis, la velocidad y la responsabilidad lo son todo. Extreme Ownership desarma a los críticos y enfoca la energía en la remediación inmediata, recuperando la confianza. El Análisis de Proceso es correcto en tiempos de paz, pero en guerra suena a excusa defensiva. La Gestión Centralizada (esconderse detrás de Legal) abdica el liderazgo y daña tu credibilidad ante el equipo técnico."
   },
   {
     id: 'user_backlash_social_media',
@@ -227,7 +227,7 @@ export const strategy_questions = [
       { id: 'B', text: "Corrección y Transparencia: Publicas update reconociendo el error, simplificas la UI y respondes reviews. Recuperas confianza con acción.", score: 5, type: "Lead (Escucha y Actúa)" },
       { id: 'C', text: "Respuesta Defensiva: Publicas comunicado explicando que 'cumplimos con los términos'. Intentas educar al usuario sobre por qué el cambio es correcto.", score: 1, type: "Sordo (Tone-deaf)" }
     ],
-    explanation: "Cuando el rating de la App cae drásticamente, afecta la adquisición futura. Ignorar o defenderse empeora todo. La única salida es corregir el producto y comunicar la corrección."
+    explanation: "Cuando el rating de la App cae drásticamente, afecta el CAC y la adquisición futura (Unit Economics). Corrección y Transparencia es la única vía para detener la hemorragia de confianza. Ignorar el Ruido o dar una Respuesta Defensiva amplifica el conflicto y valida la narrativa negativa del influencer."
   },
   {
     id: 'crisis_investor_demo_failure',
@@ -240,7 +240,7 @@ export const strategy_questions = [
       { id: 'B', text: "Demo en Producción: Usas el ambiente live con usuarios reales y un script tight. Asignas monitoreo en tiempo real. La autenticidad puede ser una ventaja.", score: 5, type: "Lead (Improvisa con Confianza)" },
       { id: 'C', text: "Slides de Backup: Cancelas el demo en vivo y presentas slides con capturas y videos pregrabados. Es seguro y evita errores, pero pierde el impacto emocional.", score: 3, type: "Backup Plan (Menos impacto)" }
     ],
-    explanation: "Mentir a inversionistas es suicida si se descubre. Los slides pierden el impacto del producto vivo. La segunda opción muestra resiliencia operativa y confianza en el producto real."
+    explanation: "Mentir o reprogramar ante inversores es señal de debilidad operativa. Demo en Producción demuestra resiliencia, confianza en el producto real y capacidad de improvisación (señales positivas para un VC). Slides de Backup es una opción segura pero pierde el impacto visceral de un producto funcional. Gestión de Expectativas (reprogramar) puede interpretarse como falta de preparación o problemas ocultos graves."
   },
   {
     id: 'crisis_key_designer_quits',
@@ -253,7 +253,7 @@ export const strategy_questions = [
       { id: 'B', text: "Knowledge Transfer Intensivo: 2 semanas de SOLO documentación, Looms y pair design con el siguiente senior. Nada de features nuevas.", score: 5, type: "Lead (Minimiza Pérdida)" },
       { id: 'C', text: "Contratar Freelance: Buscas un senior externo urgente para que trabaje en paralelo con el que se va y absorba el conocimiento mediante shadowing. Mantienes continuidad durante la transición.", score: 1, type: "Costoso (Curva de aprendizaje)" }
     ],
-    explanation: "Contraatacar con dinero genera resentimiento si cedes bajo presión. La segunda opción maximiza la transferencia de conocimiento estructurado en el tiempo limitado disponible."
+    explanation: "Intentar retener con dinero (Contraoferta) cuando la decisión ya está tomada genera resentimiento y rompe la estructura salarial. El Knowledge Transfer Intensivo asume la pérdida del recurso pero protege el activo intelectual (la documentación y el contexto). Contratar un Freelance de emergencia suele fallar porque la curva de aprendizaje del contexto es mayor a las 2 semanas disponibles."
   },
   {
     id: 'sales_promise_impossible_timeline',
@@ -266,7 +266,7 @@ export const strategy_questions = [
       { id: 'B', text: "Renegociación con el Cliente: Ventas y Product ofrecen plan de entrega por fases (básico en 3 semanas, full en 3 meses). Transparencia > Promesas rotas.", score: 5, type: "Lead (Realismo Profesional)" },
       { id: 'C', text: "Solución No-Code: Usar Zapier/Make para cumplir la promesa funcionalmente mientras construyes la integración real. Permite entregar valor inmediato al cliente mientras se desarrolla la solución permanente.", score: 1, type: "Solución Temporal" }
     ],
-    explanation: "Prometer lo imposible y luego fallar destruye la confianza del cliente Y del equipo. La segunda opción gestiona expectativas con honestidad profesional desde el principio."
+    explanation: "En B2B, la confianza es la moneda de cambio. Aceptar plazos imposibles (Sprint de Choque) genera Deuda de Confianza externa y Burnout interno. La Renegociación con el Cliente transforma un 'No' en un 'Sí, pero estructurado', alineando expectativas con realidad técnica. La Solución No-Code es un riesgo de seguridad y escalabilidad inaceptable para un contrato de esta magnitud."
   },
   {
     id: 'sales_discount_feature_negotiation',
@@ -279,7 +279,7 @@ export const strategy_questions = [
       { id: 'B', text: "Proceso de 'Deal Desk': Comité obligatorio (Product+Eng+Sales) para aprobar customizaciones antes de cerrar contratos. Ventas no puede prometer unilateralmente.", score: 5, type: "Lead (Proceso de Gobernanza)" },
       { id: 'C', text: "Cobro Interno: Construir la feature pero descontar el costo de oportunidad del presupuesto de Ventas. Es una maniobra política que genera fricción sin prevenir.", score: 3, type: "Político (No previene)" }
     ],
-    explanation: "Quejarse después no cambia nada. La segunda opción institucionaliza un proceso donde Product es stakeholder obligatorio en negociaciones que afectan el roadmap."
+    explanation: "Quejarse después no cambia el incentivo sistémico de Ventas. El Proceso de 'Deal Desk' institucionaliza un 'Check & Balance' donde Producto valida la viabilidad antes de la firma. Cumplir y Documentar resuelve el síntoma pero deja la puerta abierta a la repetición. El Cobro Interno crea una guerra civil innecesaria dentro de la organización."
   },
   {
     id: 'stakeholder_ceo_personal_opinion',
@@ -292,7 +292,7 @@ export const strategy_questions = [
       { id: 'B', text: "Fake Door / Beta Test: 'Hagamos un experimento beta y midamos uso'. Usas data para validar (o matar) la idea sin decir 'no' de frente.", score: 5, type: "Lead (Data como Escudo)" },
       { id: 'C', text: "Ensayo de UX: Le envías artículos académicos explicando por qué el chat es mala navegación. Es una respuesta teórica que probablemente será ignorada.", score: 1, type: "Académico" }
     ],
-    explanation: "Pelear opiniones con teoría suele fallar contra ejecutivos emocionados. La segunda opción canaliza la emoción hacia un experimento controlado. Si nadie usa el chat, la data mata la idea por ti."
+    explanation: "Pelear opiniones con teoría (Ensayo de UX) suele fallar contra ejecutivos emocionados. El Fake Door / Beta Test canaliza la emoción hacia un experimento controlado: si nadie usa el chat, la data mata la idea por ti, protegiendo tu relación. Obedecer sin cuestionar abdica tu responsabilidad como guardián de la experiencia del usuario."
   },
   {
     id: 'stakeholder_legal_vs_ux_tension',
@@ -305,7 +305,7 @@ export const strategy_questions = [
       { id: 'B', text: "Workshop de Soluciones: Reúnes a Legal + UX + Product para co-diseñar alternativas (ej: disclaimer colapsado, tooltips) que cumplan ambos objetivos.", score: 5, type: "Lead (Facilitador de Soluciones)" },
       { id: 'C', text: "Workaround Técnico: Mostrar el disclaimer solo en el primer uso y ocultarlo después. Asumes el riesgo de que Legal objete si hay una auditoría estricta.", score: 1, type: "Workaround (Legal puede objetar)" }
     ],
-    explanation: "Legal y UX no son enemigos si colaboran. La segunda opción crea un espacio de problem-solving conjunto en lugar de guerra de trincheras."
+    explanation: "Legal y UX no son enemigos si colaboran desde el principio. El Workshop de Soluciones transforma la demanda en un problema de diseño compartido. El Workaround Técnico arriesga el cumplimiento normativo. Sided with Legal destruye la usabilidad sin intentar encontrar un punto medio, priorizando la cobertura legal sobre el producto."
   },
   {
     id: 'strategy_platform_vs_feature_focus',
@@ -318,7 +318,7 @@ export const strategy_questions = [
       { id: 'B', text: "Product-Market Fit First: Argumentar que antes de ser plataforma, deben dominar su caso de uso core. Las plataformas se construyen DESPUÉS de tener tracción sólida.", score: 5, type: "Lead (Secuenciación Estratégica)" },
       { id: 'C', text: "Enfoque Híbrido: Proponer construir solo las APIs públicas como primer paso, posponiendo el marketplace completo para no diluir los recursos del equipo actual.", score: 1, type: "Compromiso (Diluye el foco igual)" }
     ],
-    explanation: "Muchas startups mueren intentando ser plataforma demasiado pronto. La segunda opción secuencia: primero dominar el vertical, luego expandir la superficie de ataque."
+    explanation: "Muchas startups mueren intentando ser plataforma demasiado pronto (Premature Scaling). Product-Market Fit First secuencia el crecimiento: primero dominar el vertical (profundidad), luego expandir la superficie de ataque (amplitud). Apoyar la visión de plataforma ignora que sin un producto core sólido, no hay ecosistema que construir."
   },
   {
     id: 'strategy_competitor_feature_parity',
@@ -331,7 +331,7 @@ export const strategy_questions = [
       { id: 'B', text: "Copiar las 3-4 features más visibles para actualizar la página de comparación y calmar a Ventas.", score: 1, type: "Defensivo (Feature parity race)" },
       { id: 'C', text: "Ignorar al competidor completamente y seguir tu roadmap original. El foco es más importante que la reacción.", score: 1, type: "Dogmático (Puede ser arriesgado)" }
     ],
-    explanation: "Copiar por pánico te convierte en follower. Ignorar completamente puede ser ingenuo. El enfoque correcto usa data de churn para priorizar racionalmente."
+    explanation: "La paridad de features es una trampa de 'Commodity'. La Auditoría de Churn usa datos reales para validar si la amenaza es real o pánico percibido. Copiar las features te convierte en un seguidor perpetuo sin diferenciación. Ignorar al competidor ciegamente puede ser ingenuo si el mercado realmente está cambiando."
   },
   {
     id: 'designops_figma_file_chaos',
@@ -344,7 +344,7 @@ export const strategy_questions = [
       { id: 'B', text: "Naming + Governance: Crear estructura de carpetas obligatoria y asignar 'File Owners'. Migrar archivos activos gradualmente mientras archivas los legacy.", score: 5, type: "Lead (Sistema Sostenible)" },
       { id: 'C', text: "Contratación Externa: Contratar un Design Ops Manager o freelance dedicado para que se encargue exclusivamente de ordenar y mantener la biblioteca de archivos. Permite al equipo enfocarse en diseño mientras un especialista gestiona la organización.", score: 1, type: "Especialización Externa" }
     ],
-    explanation: "El cleanup masivo nunca pasa. La segunda opción crea un sistema con roles y reglas que previene que el caos vuelva a crecer."
+    explanation: "El orden no se logra con limpiezas masivas (Cleanup Sprint) que paralizan la operación y cuyo efecto dura poco. Se logra con Naming + Governance: sistemas y roles claros que mantienen la higiene día a día. La Contratación Externa delega una responsabilidad cultural del equipo, impidiendo que internalicen la disciplina necesaria."
   },
   {
     id: 'designops_version_control_disaster',
@@ -357,7 +357,7 @@ export const strategy_questions = [
       { id: 'B', text: "Capacitar al equipo en el uso correcto de Version History y hacer recordatorios semanales.", score: 1, type: "Educativo (No previene accidentes)" },
       { id: 'C', text: "Backup Manual: Duplicar manualmente los archivos importantes cada viernes como política de equipo. Proceso simple que no requiere herramientas adicionales ni configuración técnica.", score: 1, type: "Backup Manual" }
     ],
-    explanation: "Confiar en la memoria humana (B, C) falla eventualmente. El enfoque correcto automatiza el backup para que sea imposible perder trabajo sin importar errores humanos."
+    explanation: "Confiar en la memoria humana (Backup Manual o Capacitación) garantiza el fallo futuro ante estrés o error humano. La solución de Lead es sistémica: Auto-backup automatizado que elimina el factor humano de la ecuación de seguridad."
   },
   {
     id: 'arquitectura_monorepo_vs_separate_systems',
@@ -370,7 +370,7 @@ export const strategy_questions = [
       { id: 'B', text: "Design System Core + Extensions: Librería base compartida (primitivos) y permitir que cada producto extienda con componentes específicos.", score: 5, type: "Lead (Shared Foundation)" },
       { id: 'C', text: "Sistema Unificado Completo: Implementar un único Design System monolítico que todos los productos deben adoptar. Garantizas consistencia visual absoluta y brand coherence en toda la plataforma.", score: 3, type: "Rígido (No refleja realidad)" }
     ],
-    explanation: "Sistemas completamente separados duplican trabajo. Un único sistema no reconoce necesidades específicas. La segunda opción balancea consistencia y flexibilidad."
+    explanation: "La arquitectura federada (Core + Extensions) balancea la eficiencia centralizada con la flexibilidad específica de cada producto. Los Silos Independientes perpetúan la deuda de duplicación. El Sistema Unificado Completo crea un cuello de botella rígido que ignora las necesidades únicas de Marketing vs Producto vs Móvil."
   },
   {
     id: 'arquitectura_atomic_design_complexity',
@@ -383,7 +383,7 @@ export const strategy_questions = [
       { id: 'B', text: "Simplificación Pragmática: Colapsar a 2 categorías (Primitives + Components). Si la taxonomía consume más energía que el diseño, está sobrediseñada.", score: 5, type: "Lead (Utilidad > Pureza)" },
       { id: 'C', text: "Anarquía Estructurada: Eliminar la estructura impuesta y permitir que cada squad organice sus componentes como prefiera. Priorizas velocidad sobre consistencia.", score: -1, type: "Caos (Pierde la arquitectura)" }
     ],
-    explanation: "Atomic Design puede ser over-engineering para muchos equipos. La segunda opción reconoce que el sistema debe servir al equipo, no al revés."
+    explanation: "El sistema debe servir al equipo, no al revés. Si la taxonomía genera fricción cognitiva, está sobrediseñada. La Simplificación Pragmática prioriza la utilidad sobre la pureza metodológica. La Re-Educación asume erróneamente que el problema es el usuario, no la herramienta."
   },
   {
     id: 'migracion_forced_upgrade_user_backlash',
@@ -396,7 +396,7 @@ export const strategy_questions = [
       { id: 'B', text: "Feature Parity Roadmap: Escuchar qué features extrañan, evaluar criticidad y comprometerse a reintroducirlos en V2 en 2 meses.", score: 5, type: "Lead (Responsive Migration)" },
       { id: 'C', text: "Acceso Legacy: Ofrecer acceso a la V1 legacy en paralelo para quienes no quieran migrar. Es un parche costoso que duplica el mantenimiento y fragmenta la base de usuarios.", score: 1, type: "Parche (Duplica mantenimiento)" }
     ],
-    explanation: "Forzar sin escuchar aliena a tus usuarios más leales. Mantener V1 es costoso. La segunda opción escucha pain real y construye un plan de mitigación concreto."
+    explanation: "Ignorar el feedback de Power Users (Mantener la posición) acelera el churn de los clientes más valiosos. Mantener Acceso Legacy duplica el costo de ingeniería. El Feature Parity Roadmap valida el dolor del usuario y ofrece un camino de solución dentro de la nueva arquitectura, gestionando la relación sin comprometer la visión técnica."
   },
   {
     id: 'migracion_sunset_product_line',
@@ -409,7 +409,7 @@ export const strategy_questions = [
       { id: 'B', text: "Migration Concierge: Asignar recursos para construir features críticas faltantes y ofrecer onboarding personalizado. Tratas el sunset como retención.", score: 5, type: "Lead (Retención Activa)" },
       { id: 'C', text: "Compensación Monetaria: Ofrecer descuentos agresivos (50%) en el nuevo producto. Intentas comprar la lealtad perdida con ahorro financiero.", score: 1, type: "$$$ (No resuelve el gap de features)" }
     ],
-    explanation: "500 usuarios pequeños pueden incluir clientes de alto valor o advocates. La segunda opción trata el sunset como un problema de retención, no solo como un apagado técnico."
+    explanation: "Un sunset mal manejado crea detractores vocales. Tratarlo como un problema de retención (Migration Concierge) invierte en migrar el valor del cliente, no solo sus datos. El Hard Sunset es eficiente en costos pero destructivo en marca. La Compensación Monetaria es un curita que no resuelve la brecha funcional operativa del cliente."
   },
   {
     id: 'manageup_ceo_designs_features',
@@ -422,7 +422,7 @@ export const strategy_questions = [
       { id: 'B', text: "Validación + Redirección: Agradecer el input y proponer sesión para 'refinar juntos'. Introduces research y patterns sutilmente. Conviertes su impulso en colaboración estructurada.", score: 5, type: "Lead (Diplomatic Judo)" },
       { id: 'C', text: "Obediencia Ciega: Implementar lo que pidió tal cual. Asumes que su visión estratégica justifica romper los estándares de calidad y procesos que tú mismo estableciste.", score: 1, type: "Obediente (Pierde autonomía)" }
     ],
-    explanation: "El enfoque correcto es suicida políticamente. El tercer enfoque normaliza el bypass y destruye tu autoridad. El segundo enfoque es judo político: validas el interés del CEO (no lo humillas), pero canalizas su energía dentro de un proceso correcto. 'Refinar juntos' le da ownership mientras tú introduces rigor de UX."
+    explanation: "La Validación + Redirección es judo político: aprovecha la energía del CEO sin romper la estructura. Le das ownership del 'qué' mientras tú controlas el 'cómo' (calidad). La Confrontación Directa te marca como obstáculo. La Obediencia Ciega destruye la integridad de tu sistema y tu autoridad ante el equipo."
   },
   {
     id: 'manageup_cto_blockchain_pet_project',
@@ -435,7 +435,7 @@ export const strategy_questions = [
       { id: 'B', text: "Validación Rápida: 'Hagamos un Discovery Sprint de 3 días. Si validamos interés, priorizamos'. Usas el proceso de diseño para filtrar malas ideas con data.", score: 5, type: "Lead (Research como filtro)" },
       { id: 'C', text: "Priorización de Roadmap: Explicar que los tickets críticos de checkout tienen mayor impacto en revenue. Proponer evaluar el wallet de NFTs después de resolver los bloqueos actuales.", score: 1, type: "Priorización de Roadmap" }
     ],
-    explanation: "Negarse por ideología es malo. Obedecer ciegamente también. La segunda opción usa las herramientas de diseño (Discovery) para evaluar objetivamente la idea. Si es mala, la data la matará, no tú."
+    explanation: "Decir 'no' por opinión genera conflicto. Usar el proceso de diseño como filtro (Validación Rápida) objetiviza la decisión: si la idea es mala, la data la matará, no tú. Diseñar el Wallet desperdicia recursos en vanidad. La Priorización de Roadmap es lógica pero a menudo ignorada por directivos enfocados en 'innovación' en lugar de optimización."
   },
   {
     id: 'manageup_cfo_design_system_roi',
@@ -448,7 +448,7 @@ export const strategy_questions = [
       { id: 'B', text: "ROI en Velocity: Mostrar data: un componente toma 4h hoy vs 20min con DS. Ahorro de 180h/Q = 1 headcount liberado. El rol se paga solo en eficiencia.", score: 5, type: "Lead (Business Case sólido)" },
       { id: 'C', text: "Benchmark Competitivo: 'Airbnb y Uber tienen este rol'. Argumentar que es estándar de industria y que no tenerlo nos deja atrás en la guerra por el talento.", score: 1, type: "Apelación a autoridad (Débil)" }
     ],
-    explanation: "El enfoque correcto habla un idioma que Engineering ignora. El tercer enfoque es débil. El segundo enfoque habla el idioma del VP: velocity y eficiencia. Mostrar que el rol libera capacidad de feature development convierte el 'gasto' en 'acelerador'."
+    explanation: "Para obtener budget, debes hablar el idioma de quien firma el cheque. El ROI en Velocity traduce 'consistencia' a 'dinero ahorrado y velocidad ganada', métricas que importan a Ingeniería y Finanzas. Hablar de Craft o Benchmarks son argumentos de diseñador para diseñadores, inefectivos en la mesa ejecutiva."
   },
   {
     id: 'manageup_cto_designers_should_code',
@@ -461,7 +461,7 @@ export const strategy_questions = [
       { id: 'B', text: "Reframe de Roles: Explicar que Design Engineers son valiosos, pero no todos deben serlo. 'Specialization > Generalization'. No todos los devs diseñan, no todos los designers codean.", score: 5, type: "Lead (Claridad de roles)" },
       { id: 'C', text: "Modelo Híbrido: Proponer contratar 1 Design Engineer que haga handoff técnico mientras los diseñadores puros se enfocan en research y estrategia. Creas un puente técnico sin forzar a todos.", score: 3, type: "Estructural (Resuelve con hiring)" }
     ],
-    explanation: "El enfoque correcto desvía tiempo de diseñadores a aprender código cuando su valor está en UX/Research. El tercer enfoque es buena pero no responde la pregunta de fondo. El segundo enfoque educa al CTO sobre roles modernos: Design Engineers existen Y son valiosos, pero no todos los diseñadores deben ser híbridos. La especialización permite profundidad."
+    explanation: "La generalización forzada diluye la excelencia. El Reframe de Roles defiende la especialización: el valor del diseñador está en resolver problemas de usuario, no en escribir React. El Upskilling Forzado quita tiempo de Research/UX para perseguir una habilidad secundaria. El Modelo Híbrido es una buena solución estructural a mediano plazo, pero no responde al desafío cultural inmediato del CTO."
   },
   {
     id: 'political_ma_duplicate_teams_layoffs',
@@ -474,7 +474,7 @@ export const strategy_questions = [
       { id: 'B', text: "Proteger a Tu Equipo: Recomendar mantener a tus 6 diseñadores (conocen el sistema) y solo 1 del equipo adquirido. Priorizar continuidad operativa sobre talento potencial.", score: 1, type: "Tribal (Injusto)" },
       { id: 'C', text: "Split Político: Proponer 4 tuyos y 3 de ellos para 'balancear' culturas. Decisión basada en óptica política, no en skills.", score: 3, type: "Diplomático (Evita meritocracia)" }
     ],
-    explanation: "La segunda opción es tribal y crea resentimiento. El tercer enfoque es política pero no optimiza talento. El primer enfoque es la única forma de construir un equipo de alto rendimiento real: evaluar skills objetivamente. Como Lead, tu lealtad es a la calidad del equipo, no solo a tus amigos."
+    explanation: "En fusiones, la lealtad tribal destruye valor. La Meritocracia Ciega asegura que la nueva organización tenga el mejor talento posible, independientemente de su origen. Proteger a Tu Equipo prioriza la comodidad sobre la competencia. El Split Político es una solución diplomática que sacrifica calidad por paz artificial."
   },
   {
     id: 'enterprise_client_custom_request',
@@ -487,7 +487,7 @@ export const strategy_questions = [
       { id: 'B', text: "Strategic Build vs Buy: Si el desarrollo es generalizable (ej: SAP, Oracle), se construye en core. Si es 100% custom, se ofrece como Professional Services con costo adicional ($150K).", score: 5, type: "Lead (ROI-based decision)" },
       { id: 'C', text: "Rechazarlo Por Principio: 'Somos SaaS, no consultora'. Ofreces API abierta para que ellos construyan la integración. Arriesgas perder el cliente más grande por dogma de producto.", score: 3, type: "Purista (Alto riesgo financiero)" }
     ],
-    explanation: "La A convierte el producto en consultora. La C aplica dogma sin considerar que 18% ARR es existencial. Un Lead evalúa: ¿el feature tiene abstracción generalizable? ¿El LTV justifica el costo? Si no, Professional Services monetiza sin contaminar roadmap."
+    explanation: "Cuando un cliente representa riesgo existencial (18% ARR), el dogma de producto debe ceder ante la estrategia comercial. Ofrecerlo como Professional Services monetiza la personalización sin contaminar el roadmap del producto core. Construirlo Inmediatamente convierte a la empresa en una consultora de software a medida. Rechazarlo por Principio es suicidio financiero en B2B."
   },
   {
     id: 'pricing_page_complexity',
@@ -500,7 +500,7 @@ export const strategy_questions = [
       { id: 'B', text: "Good-Better-Best: Reduces a 3 planes solamente, listas solo las 5 diferencias clave visibles, y escondes el resto en un accordion 'Ver comparación completa'. Eliminas la parálisis por exceso de opciones.", score: 5, type: "Lead (Paradox of Choice)" },
       { id: 'C', text: "Social Proof Nudge: Mantienes los 5 planes pero agregas un badge de 'Más Popular' o 'Recomendado para empresas como la tuya' en el tier medio-alto para guiar la decisión con autoridad.", score: 3, type: "Nudge (Mejora parcial)" }
     ],
-    explanation: "60% de bounce es evidencia de parálisis por análisis. El primer enfoque agrega pasos adicionales cuando el problema es exceso de opciones. El tercer enfoque ayuda pero no elimina la complejidad. El segundo enfoque aplica el principio de 'Paradox of Choice': menos opciones con diferencias claras facilitan la decisión (B)."
+    explanation: "La 'Paradoja de la Elección' dicta que más opciones reducen la conversión. La estrategia Good-Better-Best simplifica cognitivamente la decisión al estándar de la industria. Un Plan Finder Quiz agrega fricción antes de mostrar valor. El Social Proof ayuda, pero no resuelve el problema estructural de complejidad."
   },
   {
     id: 'political_founder_conflict_design_caught',
@@ -513,7 +513,7 @@ export const strategy_questions = [
       { id: 'B', text: "Aliarte con uno: Elegir la visión que TÚ crees correcta (ej: B2B) y apostar todo a ella. Es una jugada valiente pero te convierte en enemigo político del otro founder.", score: 1, type: "Valiente (Suicida)" },
       { id: 'C', text: "Forzar Alineación: Proponer 'Strategy Workshop' donde CEO y CTO presenten data. Facilitas la decisión y no diseñas nada hasta que haya una visión unificada.", score: 5, type: "Lead (Lidera hacia arriba)" }
     ],
-    explanation: "La segunda opción es suicida: te conviertes en peón de un founder vs el otro (el que pierde te odiará). El primer enfoque desperdicia recursos del equipo diseñando dos futuros mutuamente excluyentes. El tercer enfoque es liderazgo real: te niegas a diseñar en medio del caos y fuerzas a los founders a alinearse ANTES de pedirte ejecución. Es incómodo pero es tu única jugada de supervivencia."
+    explanation: "Diseñar sin estrategia clara es desperdicio. Forzar Alineación detiene la hemorragia de recursos y obliga a los líderes a liderar. Aliarte con uno te convierte en peón político en una guerra que no puedes ganar. El Diseño Paralelo quema al equipo trabajando en direcciones opuestas, garantizando que el 50% del trabajo se tire a la basura."
   },
   {
     id: 'political_vp_product_fired_interim_no_design',
@@ -526,6 +526,6 @@ export const strategy_questions = [
       { id: 'B', text: "Educar al CFO con ROI: Preparar un business case mostrando cómo el diseño impacta revenue: aumento de conversión por rediseños, reducción de churn por UX, etc. Traducir diseño a lenguaje financiero que el CFO entienda.", score: 5, type: "Lead (Bridge de lenguajes)" },
       { id: 'C', text: "Modo Supervivencia: Acatar las órdenes del CFO (Bootstrap, sales decks) temporalmente mientras el CEO busca VP de Producto permanente. Mantener bajo perfil político hasta que pase la tormenta.", score: 3, type: "Supervivencia (Pierde momentum)" }
     ],
-    explanation: "El enfoque correcto es nuclear: puede funcionar pero quemas puentes con el CFO (quien tiene poder financiero). El tercer enfoque es segura pero aceptas 3-6 meses de retroceso en capacidad de diseño. El segundo enfoque es la jugada inteligente: el CFO respeta ROI y data financiera. Mostrar que 'diseño = revenue' en su lenguaje (CAC, LTV, conversion rate) puede convertirlo de antagonista a aliado. Si hablas su idioma, puede escucharte."
+    explanation: "El CFO ve el diseño como un centro de costos; tu trabajo es reposicionarlo como centro de inversión. Educar con ROI habla su idioma (dinero, riesgo, eficiencia). La Escalación Directa puede ser vista como insubordinación. El Modo Supervivencia degrada la capacidad del equipo y valida la hipótesis del CFO de que el diseño es prescindible."
   },
 ];

@@ -25,7 +25,7 @@ export const mobile_questions = [
       { id: 'B', text: "Defender PWA: Intentas educar al banco sobre las bondades de las Progressive Web Apps. Arriesgas perder el deal porque los bancos compran checkboxes ('¿Tienen app? Sí/No').", score: 1, type: "Purista Técnico (Pierde negocio)" },
       { id: 'C', text: "Contratar Agencia Mobile: Gastas $150k en una agencia para hacer la app nativa. Quemas budget y creas un codebase que tu equipo no sabe mantener. Deuda técnica futura masiva.", score: 3, type: "Caro y Riesgoso" }
     ],
-    explanation: "A veces el requisito de negocio es 'estar en el Store', no 'ser nativo'. Un wrapper (A) resuelve el problema comercial rápido aprovechando el skill actual del equipo. Defender PWA (B) es técnicamente correcto pero comercialmente suicida en Enterprise."
+    explanation: "A veces el requisito de negocio es 'estar en el Store', no 'ser nativo'. Un Wrapper (React Native/Capacitor) resuelve el problema comercial rápido aprovechando el skill actual del equipo. Defender PWA es técnicamente correcto pero comercialmente suicida en Enterprise. Contratar Agencia es caro y genera deuda de mantenimiento externa."
   },
   {
     id: 'tablet_edge_case',
@@ -38,7 +38,7 @@ export const mobile_questions = [
       { id: 'B', text: "Análisis de Valor: Segmentas ese 3% en analytics: Si son clientes Enterprise de alto valor, se arregla antes del release. Si es tráfico casual, se backlogea como P3 post-launch.", score: 5, type: "Lead (Value-Based Priority)" },
       { id: 'C', text: "Ship y Monitorea: Lanzas mañana según plan. Solo arreglas el tablet bug si empiezan a llegar quejas explícitas via soporte o impacta métricas clave de conversión.", score: 3, type: "Reactivo (Velocidad)" }
     ],
-    explanation: "No todos los bugs son iguales. El % de tráfico no cuenta toda la historia: ¿quién es ese 3%? Si son CFOs revisando dashboards en iPad, es crítico. Si es bounce traffic aleatorio, no justifica demora. La opción B prioriza por impacto en negocio."
+    explanation: "No todos los bugs son iguales. El % de tráfico no cuenta toda la historia. El Análisis de Valor prioriza por impacto en el negocio (¿quién es ese 3%?), no solo por volumen. Arreglo Inmediato ignora el ROI del esfuerzo. Ship y Monitorea es reactivo y arriesga frustrar a usuarios de alto valor."
   },
   {
     id: 'gesture_vs_button_mobile',
@@ -51,7 +51,7 @@ export const mobile_questions = [
       { id: 'B', text: "Coach Marks: Agregar un overlay educativo en el primer uso que señale el gesto de 'Swipe' con una animación clara. Aseguras que el usuario descubra la funcionalidad sin alterar la UI permanente.", score: 1, type: "Parche débil" },
       { id: 'C', text: "Visibilidad Total: Sacrificas espacio en pantalla y minimalismo estético a favor de claridad funcional completa. Agregas un botón de acción visible en cada fila para asegurar discoverability al 100%.", score: 3, type: "Funcional pero tosco" }
     ],
-    explanation: "Los gestos son invisibles. La solución no es elegir entre 'bonito' (swipe) o 'claro' (botón), sino ofrecer ambos caminos (A). Los usuarios expertos swipen, los nuevos clickean. Nadie se queda bloqueado."
+    explanation: "Los gestos son invisibles y tienen mala discoverability. La solución inclusiva (Diseño Dual) ofrece ambos caminos: eficiencia para expertos (swipe) y claridad para novatos (menú visible). Coach Marks son parches que los usuarios ignoran. Visibilidad Total sacrifica espacio y estética innecesariamente."
   },
   {
     id: 'dark_mode_accessibility_conflict',
@@ -64,7 +64,7 @@ export const mobile_questions = [
       { id: 'B', text: "Mantener la estética actual y agregar un 'High Contrast Mode' opcional en Settings para usuarios que lo necesiten.", score: 3, type: "Compromiso (Fragmenta la experiencia)" },
       { id: 'C', text: "Mantener el diseño actual. WCAG AA es una guía, no una ley (a menos que estés en gobierno/educación).", score: -1, type: "Irresponsable (Riesgo legal)" }
     ],
-    explanation: "La accesibilidad no es opcional ni cosmética. Un 'modo especial' (B) estigmatiza. La opción A integra la inclusión como estándar, no como feature."
+    explanation: "La accesibilidad no es opcional ni cosmética. Un 'modo especial' de alto contraste estigmatiza. Ajustar los grises integra la inclusión como estándar en el producto base, asegurando legibilidad para todos. Mantener el diseño actual expone a riesgos legales y de usabilidad."
   },
 
   // --- BLOQUE 11: COLABORACIÓN, PROCESO & HANDOFF ---
@@ -79,7 +79,7 @@ export const mobile_questions = [
       { id: 'B', text: "Insistir en la Calidad: Argumentas que la animación es differentiador de brand y que la mayoría de users tienen hardware reciente. Solicitas metrics de distribución de dispositivos antes de comprometer.", score: 1, type: "Design-first approach" },
       { id: 'C', text: "Eliminar la Animación: Priorizas shipping rápido y score perfecto de Lighthouse. Removes la animación completamente para evitar debate técnico prolongado.", score: 1, type: "Pragmático conservador" }
     ],
-    explanation: "Performance ES User Experience. Si tu animación laguea el teléfono, es mala UX. Un Lead no pelea contra la métrica, colabora para optimizar la implementación o simplificar el diseño."
+    explanation: "Performance ES User Experience. Si tu animación laguea el teléfono, es mala UX. Un Lead no pelea contra la métrica, colabora para Optimizar la implementación o simplificar el diseño. Insistir en la Calidad visual a costa del rendimiento es miopía de diseño. Eliminar la Animación es la salida fácil que empobrece el producto."
   },
   {
     id: 'pm_changes_scope_mid_sprint',
@@ -92,7 +92,7 @@ export const mobile_questions = [
       { id: 'B', text: "Visibilidad del Iceberg: Le muestras el breakdown (diseño, estados de error, casos edge, handoff, QA). Le ofreces meterlo al siguiente sprint o quitar algo del actual.", score: 5, type: "Lead (Educador de Proceso)" },
       { id: 'C', text: "Te niegas rotundamente: 'Mid-sprint changes' están prohibidos por proceso Agile. Cierras la discusión citando el manual de Scrum sin dar alternativas.", score: 3, type: "Dogmático (Inflexible)" }
     ],
-    explanation: "Decir solo 'no' (C) crea fricción. La opción B hace visible el trabajo oculto y empodera al PM para tomar decisiones informadas de trade-offs."
+    explanation: "Decir solo 'no' crea fricción. La Visibilidad del Iceberg hace evidente el trabajo oculto y empodera al PM para tomar decisiones informadas de trade-offs. Aceptas hacerlo sienta un precedente peligroso de falta de disciplina. Te niegas rotundamente es dogmático y daña la relación."
   },
   {
     id: 'qa_reject_pixel_perfect',
@@ -105,7 +105,7 @@ export const mobile_questions = [
       { id: 'B', text: "Hotfix Inmediato: Te quedas con un dev a arreglar el color hexadecimal ahora mismo, aunque signifique salir tarde. Es un cambio de 1 línea de código. Pides a QA un smoke test rápido solo de ese botón. Proteges compliance y campaña.", score: 5, type: "Lead (Ownership de Calidad)" },
       { id: 'C', text: "Bloquear Release: Mantienes el standard de compliance sin excepciones. Comunicas a Marketing que deben coordinar timelines con QA cycles para futuras campañas.", score: 1, type: "Compliance-first" }
     ],
-    explanation: "Un contraste de 2.9:1 es un fallo técnico menor pero legalmente real. Cancelar una campaña es desproporcionado. Ignorarlo es riesgoso. Un Lead resuelve el problema pequeño (cambiar un hex code toma 5 min) en el momento para habilitar al negocio sin bajar el estándar."
+    explanation: "Un contraste de 2.9:1 es un fallo técnico menor pero legalmente real. Cancelar una campaña es desproporcionado. Ignorarlo es riesgoso. Un Lead resuelve el problema pequeño (Hotfix Inmediato) en el momento para habilitar al negocio sin bajar el estándar de calidad."
   },
   {
     id: 'documentation_handoff_speed',
@@ -118,7 +118,7 @@ export const mobile_questions = [
       { id: 'B', text: "Pairing con Tech Lead: En lugar de documentar 2 días, te sientas 3 horas con el Tech Lead a escribir los 'Test Cases'. Aseguras entendimiento lógico antes de codear.", score: 5, type: "Lead (Colaboración de Alto Valor)" },
       { id: 'C', text: "Documentación Completa: Bloqueas el handoff hasta que termines el documento completo de especificación. Priorizas la calidad y precisión de la documentación sobre la velocidad de entrega.", score: 1, type: "Documentación Completa" }
     ],
-    explanation: "En dominios de alto riesgo (Fintech, Salud), la ambigüedad es inaceptable. Documentar solo es lento. Lavarse las manos es negligente. Pairing para definir Test Cases es la forma más rápida y segura de transferir lógica compleja."
+    explanation: "En dominios de alto riesgo (Fintech, Salud), la ambigüedad es inaceptable. Pairing con Tech Lead es la forma más rápida y segura de transferir lógica compleja asegurando entendimiento compartido. Documentación Completa es lenta y bloqueante. Entregar Pantallas + Disclaimer es negligencia profesional."
   },
 
   // --- MIGRATED FROM INNOVATION BLOCK ---
@@ -133,7 +133,7 @@ export const mobile_questions = [
       { id: 'B', text: "Solo Texto: Aceptar traducir solo textos y dejar la UI alineada a la izquierda. 'Se entenderá igual'. Es una experiencia de usuario rota para nativos.", score: 1, type: "Ignorante" },
       { id: 'C', text: "Ajuste Manual: Aplicar `text-align: right` manualmente en cada componente. Solución rápida que permite cumplir con el requisito sin cambios arquitectónicos mayores.", score: 1, type: "Ajuste Manual" }
     ],
-    explanation: "RTL no es traducción, es localización. La dirección de lectura afecta toda la cognición espacial de la interfaz. Un Lead educa sobre la complejidad técnica (CSS Logical Properties) y cultural."
+    explanation: "RTL no es traducción, es localización. La dirección de lectura afecta toda la cognición espacial de la interfaz. Un Lead educa sobre la complejidad técnica y cultural, abogando por el Espejo Completo. Solo Texto entrega una experiencia rota. Ajuste Manual es insostenible y propenso a errores."
   },
   {
     id: 'i18n_german_long_words_break_ui',
@@ -146,7 +146,7 @@ export const mobile_questions = [
       { id: 'B', text: "Truncar Texto: Aceptar el 'Speich...'. El usuario adivinará qué dice. Priorizas la estética rígida sobre la legibilidad.", score: 1, type: "Estético Rígido" },
       { id: 'C', text: "Cambiar el Copy: Pedir al traductor que busque una palabra más corta en alemán. A veces funciona, pero no es una solución sistémica.", score: 3, type: "Parche de Contenido" }
     ],
-    explanation: "El diseño internacional debe ser flexible. Asumir longitudes de texto en inglés es un error de novato. La solución sistémica es componentes fluidos."
+    explanation: "El diseño internacional debe ser flexible. Asumir longitudes de texto en inglés es un error de novato. La solución sistémica es Diseño Fluido (auto-layout, wrapping). Truncar Texto prioriza una estética rígida sobre la legibilidad. Cambiar el Copy es un parche que no escala."
   },
   {
     id: 'mobile_offline_mode_sync_conflict',
@@ -159,7 +159,7 @@ export const mobile_questions = [
       { id: 'B', text: "UI de Conflicto: Detectar el conflicto al reconectar y mostrar al usuario ambas versiones (la suya y la del servidor) para que decida cuál guardar.", score: 5, type: "Lead (Transparencia y Control)" },
       { id: 'C', text: "Prevención de Conflictos: Prohibir editar si no hay conexión. Elimina el riesgo de conflictos de sincronización y garantiza integridad de datos. Requiere conexión constante para operar.", score: -1, type: "Prevención Estricta" }
     ],
-    explanation: "En apps profesionales offline-first, la integridad de los datos es crítica. 'Last Write Wins' es peligroso. La UI debe empoderar al usuario para resolver la discrepancia (B)."
+    explanation: "En apps profesionales offline-first, la integridad de los datos es crítica. 'Last Write Wins' es peligroso porque borra trabajo sin aviso. La UI de Conflicto empodera al usuario para resolver la discrepancia de manera transparente. Prevención de Conflictos (bloqueo) elimina la utilidad principal de la app offline."
   },
   {
     id: 'mobile_touch_targets_accessibility',
@@ -172,7 +172,7 @@ export const mobile_questions = [
       { id: 'B', text: "Zoom UI: Decirle al usuario que haga zoom si no puede tocarlo. Transfieres la carga de la accesibilidad al usuario.", score: -1, type: "Excluyente" },
       { id: 'C', text: "Rediseño Espacial: Reorganizar el layout para separar los botones visualmente con mayor spacing. Mejora la experiencia reduciendo errores accidentales mediante mejor distribución espacial.", score: 3, type: "Parcial" }
     ],
-    explanation: "Los estándares de Apple y Google existen por biomecánica, no capricho. Un área táctil invisible (padding) resuelve la usabilidad sin necesariamente cambiar la estética visual."
+    explanation: "Los estándares de Apple y Google existen por biomecánica, no capricho. La Regla 44px/48px (con padding invisible) resuelve la usabilidad sin necesariamente cambiar la estética visual. Zoom UI transfiere la carga al usuario. Rediseño Espacial es una solución parcial que puede no ser suficiente."
   },
   {
     id: 'pwa_vs_native_political_war',
@@ -185,7 +185,7 @@ export const mobile_questions = [
       { id: 'B', text: "Platform-Specific MVP Test: PWA para Android (80% userbase, menos exigente), Native para iOS (20% userbase, crítico). Aprendes con inversión controlada antes de comprometer arquitectura.", score: 5, type: "Lead (Learn before commit)" },
       { id: 'C', text: "Let Engineering Decide: Confías en el criterio técnico del team dado que tienen más contexto de infraestructura. Ofreces support en UX testing una vez que hayan elegido approach.", score: 1, type: "Delegación técnica" }
     ],
-    explanation: "Hybrid es compromiso tibio que no optimiza para ningún caso. Dejar que Engineering decida solo ignora que UX/producto tienen stake crítico en performance y capabilities. Platform-specific test da data real sobre trade-offs antes de bet-the-company decision."
+    explanation: "Platform-Specific MVP Test da data real sobre trade-offs antes de una decisión 'bet-the-company'. Hybrid Approach es un compromiso tibio que no optimiza para ningún caso. Let Engineering Decide ignora que UX y Producto tienen un interés crítico en el rendimiento y las capacidades."
   },
   {
     id: 'mobile_performance_budget_sacrifice',
@@ -198,7 +198,7 @@ export const mobile_questions = [
       { id: 'B', text: "On-Demand Loading: Implementar carga diferida (Lazy Load) para todos los SDKs no críticos. Priorizas el 'Time to Interactive' del dashboard principal y cargas analytics/feature flags en segundo plano.", score: 1, type: "Técnico (Ignora UX real)" },
       { id: 'C', text: "Timeline Extension: Negocias 2 sprints adicionales para refactor perfecto sin comprometer calidad. Priorizas technical excellence y sustainability sobre quick wins inmediatos.", score: 3, type: "Conservador (Pierde momentum)" }
     ],
-    explanation: "Lazy loading traslada el problema de startup a runtime - users siguen esperando. Pedir más tiempo es honesto pero erosiona confianza cuando todos están under pressure. SDK audit es brutal pero necesario: la mayoría de SDKs son legacy de experimentos pasados que ya no justifican su peso."
+    explanation: "Lazy loading traslada el problema de startup a runtime - users siguen esperando. Pedir más tiempo es honesto pero erosiona confianza cuando todos están under pressure. SDK Audit ROI es brutal pero necesario: la mayoría de SDKs son legacy de experimentos pasados que ya no justifican su peso en el bundle."
   },
   {
     id: 'touch_target_accessibility_rebellion',
@@ -211,7 +211,7 @@ export const mobile_questions = [
       { id: 'B', text: "Educación + Enforcement: Muestras ejemplos de Apple/Google usando 44pt elegantemente. Si se niega, lo sacas del proyecto. Accessibility no es negociable.", score: 5, type: "Lead (Principios > Popularidad)" },
       { id: 'C', text: "Invisible Padding: Implementas hit area de 44pt con padding transparente, ícono visible de 32pt. Cumples el standard técnicamente manteniendo la estética deseada por el diseñador.", score: 3, type: "Hack técnico (Funciona pero no enseña)" }
     ],
-    explanation: "Comprometer a 36pt falla el audit y le dice al equipo que acc cessibility es negociable si tienes influencia. Invisible padding funciona pero perpetúa la mentalidad de que accessibility es 'hack' vs diseño fundamental. Un Lead (B) usa esto como teachable moment: accessibility IS good design."
+    explanation: "Comprometer a 36pt falla el audit y le dice al equipo que la accesibilidad es negociable si tienes influencia. Invisible padding funciona pero perpetúa la mentalidad de que accessibility es 'hack'. Un Lead usa Educación + Enforcement como momento de enseñanza: la accesibilidad ES buen diseño."
   },
   {
     id: 'offline_mode_scope_creep',
@@ -224,7 +224,7 @@ export const mobile_questions = [
       { id: 'B', text: "Scoped Offline (Read-Only): Implementas offline viewing de data crítica en 3 semanas. Escritura requiere conexión. Cumples 80% del caso de uso Enterprise sin 4 meses de complejidad.", score: 5, type: "Lead (Pragmatic scoping)" },
       { id: 'C', text: "Enterprise Custom Build: Vendes como Professional Service ($80K, 4 meses). No contamina roadmap core pero requiere capital político con CPO para aprobar services model.", score: 3, type: "Services (Clean pero requiere buy-in)" }
     ],
-    explanation: "Fake offline es trampa que explota en real use - conflictos de sync son problema hard, no falta de tiempo. Professional service es limpio pero startups raramente tienen services org. Scoped offline read-only cumple el job-to-be-done real (ver data on plane) sin construir Google Docs offline sync."
+    explanation: "Fake offline es trampa que explota en uso real. Professional service es limpio pero startups raramente tienen org de servicios. Scoped Offline (Read-Only) cumple el 'Job-to-be-Done' real (ver data en el avión) sin la complejidad masiva de la sincronización bidireccional."
   },
   {
     id: 'cross_platform_design_debt_explosion',
@@ -237,7 +237,7 @@ export const mobile_questions = [
       { id: 'B', text: "Core + Platform Variants: Defines 20 componentes core unificados (buttons, forms, nav) + permites platform-specific flourishes en 20% del UI. Brand coherente, platforms respetadas.", score: 5, type: "Lead (Principled flexibility)" },
       { id: 'C', text: "Force One Design: Impones Material Design en todos lados ('Android tiene más users'). iOS users odian la experiencia, tu iOS designer renuncia.", score: 1, type: "Autoritario (Aliena users y equipo)" }
     ],
-    explanation: "Pure platform fidelity fragmenta la marca cuando user cruza devices. Forcing one design language ignora que iOS users EXPECT iOS patterns. Core + variants es el balance: button styling puede variar (platform), pero placement y IA son consistentes (brand)."
+    explanation: "La fidelidad pura a la plataforma fragmenta la marca. Forzar un solo lenguaje de diseño aliena a los usuarios nativos. Core + Platform Variants es el balance: consistencia en marca y estructura, respeto por las convenciones de interacción de cada sistema operativo."
   },
   {
     id: 'mobile_onboarding_seven_screen_hell',
@@ -250,6 +250,6 @@ export const mobile_questions = [
       { id: 'B', text: "Reduce a 3 Screens Core: Cortas a valor esencial solamente. GDPR y promo van después. Mejora a ~40% completion pero sigue siendo fricción upfront vs progressive.", score: 3, type: "Mejora incremental (No resuelve raíz)" },
       { id: 'C', text: "Progress Motivation: Mantener los pasos necesarios pero agregar una barra de progreso gamificada y micro-recompensas visuales. Motivas al usuario a completar el flujo mediante refuerzo positivo y visibilidad del avance.", score: 1, type: "Lipstick on pig" }
     ],
-    explanation: "Gamification es parche cosmético cuando el problema es que users no quieren 7 screens. Reducir a 3 es mejor pero todavía pregunta 'qué quieres lograr' antes de dejar usar el producto. Progressive (A) es contraintuitivo pero funciona: Slack/Notion te dejan entrar sin tutorial, aprendes haciendo. GDPR se puede mostrar en first data access."
+    explanation: "Gamification es parche cosmético cuando el problema es que los usuarios no quieren 7 pantallas. Reducir a 3 es mejor pero sigue siendo fricción. Progressive Onboarding elimina la barrera inicial y enseña en contexto, reduciendo drásticamente el 'Time-to-Value'."
   },
 ];

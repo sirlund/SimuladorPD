@@ -25,7 +25,7 @@ export const culture_questions = [
       { id: 'B', text: "Rediseñar el Ritual: Cambiar el formato a 'Design Studio' o 'Pairing' donde los Seniors deben CO-CREAR soluciones con los Juniors, no solo juzgar. Cambias su rol de 'Juez' a 'Mentor'. Mides a los Seniors por el crecimiento de sus Juniors.", score: 5, type: "Lead (Cambio Estructural)" },
       { id: 'C', text: "Coaching Individual: Trabajar uno a uno con los Juniors para desarrollar resiliencia y habilidades de comunicación. Enfocarse en su crecimiento personal sin cambiar la dinámica del equipo.", score: 1, type: "Desarrollo Individual" }
     ],
-    explanation: "La cultura de 'Roast' disfraza la toxicidad de excelencia. Prohibir (A) no funciona. La opción B cambia la estructura de incentivos: si el Senior es responsable del output del Junior, su comportamiento cambia de ataque a colaboración."
+    explanation: "La cultura de 'Roast' disfraza la toxicidad de excelencia. Prohibir no funciona. Rediseñar el Ritual (Pairing, Co-creación) cambia la estructura de incentivos: si el Senior es responsable del output del Junior, su comportamiento cambia de ataque a colaboración constructiva."
   },
   {
     id: 'feedback_sandwich_method',
@@ -38,7 +38,7 @@ export const culture_questions = [
       { id: 'B', text: "Claridad Radical con Apoyo: 'Tu rol está en riesgo. Estos son los 3 gaps específicos. Este es el plan de 30 días para cerrarlos. Quiero que te quedes, pero necesito ver X, Y, Z'.", score: 5, type: "Lead (Duro con el problema, suave con la persona)" },
       { id: 'C', text: "Proceso Formal con HR: Involucras a RRHH desde el inicio para asegurar que el PIP siga protocolos corporativos. Mantienes la relación personal separada del proceso de performance.", score: -1, type: "Proceso Formal" },
     ],
-    explanation: "Ser 'amable' ocultando la gravedad de la situación (A) es cruel, porque le niegas la oportunidad de salvar su trabajo. La claridad radical (B) es la verdadera empatía: le das la verdad y las herramientas para mejorar."
+    explanation: "Ser 'amable' ocultando la gravedad de la situación es cruel, porque le niegas a la persona la oportunidad de salvar su trabajo. Claridad Radical es la verdadera empatía: dices la verdad dura porque te importa su crecimiento, no para herir. El método sándwich diluye el mensaje crítico."
   },
   {
     id: 'imposter_syndrome_senior',
@@ -51,7 +51,7 @@ export const culture_questions = [
       { id: 'B', text: "Reframe con ROI: Le muestras el dashboard: 'Tus flows generaron $2.1M. Las ilustraciones ganan likes, tu diseño paga sueldos'. Redefines Seniority como impacto de negocio, no estética.", score: 5, type: "Lead (Reframe con ROI concreto)" },
       { id: 'C', text: "Validación Emocional: 'Todos sentimos síndrome del impostor, eres talentosa'. Empatía pura sin evidencia objetiva que cambie su creencia raíz.", score: 1, type: "Superficial empático (No cambia creencia raíz)" }
     ],
-    explanation: "El primer enfoque valida que 'le falta algo'. La C es amable pero no cambia su creencia. La B ataca la raíz con datos: demuestra que el Seniority real se mide en impacto de negocio ($2.1M), no en estética de Dribbble. Combates el sentimiento de fraude con evidencia irrefutable de valor."
+    explanation: "Validar emocionalmente es amable pero no cambia la creencia raíz. Reframe con ROI ataca la inseguridad con datos: demuestra que el Seniority real se mide en impacto de negocio, no en estética de Dribbble. Combates el sentimiento de fraude con evidencia irrefutable de valor."
   },
   {
     id: 'promotion_readiness_debate',
@@ -64,7 +64,7 @@ export const culture_questions = [
       { id: 'B', text: "Roadmap Acelerado: Rechazas la promoción hoy pero ofreces un plan de 3 meses con objetivos claros de liderazgo. Si cumple, asciende. Pones la responsabilidad en él.", score: 5, type: "Lead (Growth plan acelerado con accountability)" },
       { id: 'C', text: "Aumento sin Título: Le das un aumento salarial por su craft, pero mantienes el título Mid. Intentas retener con dinero sin comprometer la estructura de roles.", score: 3, type: "Parche costoso (No resuelve expectativa ni garantiza retención)" }
     ],
-    explanation: "Promover por miedo crea inflación de títulos. Dar dinero sin título no resuelve la ambición de carrera. El segundo enfoque es justa: roadmap acelerado con criterios claros. Si se va porque no quiere liderar, validaste que no era Senior material."
+    explanation: "Promover por miedo crea inflación de títulos. Dar dinero sin título no resuelve la ambición de carrera. El Roadmap Acelerado es justo: establece criterios claros y pone la responsabilidad del ascenso en el desempeño del empleado, no en el chantaje."
   },
 
   // --- BLOQUE 13
@@ -81,7 +81,7 @@ export const culture_questions = [
       { id: 'B', text: "Elogiar con Cautela: 'Gracias por el esfuerzo, pero descansa'. Validar su sacrificio envía el mensaje de que trabajar extra es la forma de subir.", score: 1, type: "Mensaje Mixto" },
       { id: 'C', text: "Respetar Autonomía: Asumes que es adulto y sabe lo que hace. Mientras entregue el trabajo con calidad, su horario es su responsabilidad personal y no requiere intervención de management.", score: -1, type: "Autonomía del Empleado" }
     ],
-    explanation: "El 'Hero Syndrome' es contagioso y tóxico. Si premias el burnout, estableces un estándar insostenible para todos. Un Lead protege al equipo de sí mismo (A)."
+    explanation: "El 'Hero Syndrome' es contagioso y tóxico. Si premias el burnout, estableces un estándar insostenible para todos. Un Lead protege al equipo de sí mismo, estableciendo límites claros sobre el trabajo fuera de hora para garantizar la sostenibilidad a largo plazo."
   },
   {
     id: 'culture_remote_async_communication',
@@ -94,7 +94,7 @@ export const culture_questions = [
       { id: 'B', text: "Horario Núcleo: Forzar a todos a coincidir 4 horas al día. Resuelve la sincronía pero destruye la flexibilidad del remoto.", score: 3, type: "Híbrido Rígido" },
       { id: 'C', text: "Status Quo: Seguir sufriendo en Zoom. 'Es el precio de trabajar remoto'.", score: 1, type: "Pasivo" }
     ],
-    explanation: "El trabajo remoto eficaz requiere comunicación asíncrona escrita. Intentar replicar la oficina en Zoom quema al equipo. La cultura de escritura democratiza la información."
+    explanation: "El trabajo remoto eficaz requiere comunicación asíncrona escrita. Intentar replicar la oficina en Zoom quema al equipo. La cultura de Escritura > Reuniones democratiza la información y permite que cada uno trabaje en su mejor momento."
   },
   {
     id: 'culture_feedback_sandwich_vs_radical_candor',
@@ -107,7 +107,7 @@ export const culture_questions = [
       { id: 'B', text: "Radical Candor: Desafiar directamente pero importándote personalmente. 'Tu diseño visual no cumple el estándar porque fallan la tipografía y el espaciado. Quiero ayudarte a mejorar esto porque sé que puedes'.", score: 5, type: "Lead (Claro y Humano)" },
       { id: 'C', text: "Coaching Intensivo: Dedicas 2 horas diarias revisando cada diseño del junior para acelerar su curva de aprendizaje en el momento crítico del proyecto. Aseguras calidad inmediata.", score: 1, type: "Micromanagement temporal" }
     ],
-    explanation: "El 'Sándwich' esconde la verdad. Radical Candor (B) es honestidad con empatía: dices la verdad dura porque te importa su crecimiento, no para herir."
+    explanation: "El 'Sándwich' esconde la verdad y confunde al receptor. Radical Candor es honestidad con empatía: dices la verdad dura de manera directa porque te importa el crecimiento de la persona. El Coaching Intensivo puede derivar en micromanagement insostenible."
   },
   {
     id: 'career_manager_vs_ic_track',
@@ -120,7 +120,7 @@ export const culture_questions = [
       { id: 'B', text: "Dual Track: Mostrarle el camino de 'Staff/Principal Designer' (IC Track). Explicar que puede tener impacto y sueldo de liderazgo sin gestionar personas, enfocándose en craft y estrategia técnica.", score: 5, type: "Lead (IC Track Evangelist)" },
       { id: 'C', text: "Evaluación Realista: Explicar que el rol de manager requiere habilidades específicas que no coinciden con su perfil actual. Ser directo sobre las expectativas del rol sin ofrecer alternativa inmediata.", score: 1, type: "Evaluación Directa" }
     ],
-    explanation: "Gestión de personas es una profesión distinta, no un 'ascenso'. Forzar a grandes ICs a ser managers (A) es un error clásico. El Dual Track (B) retiene talento técnico senior."
+    explanation: "Gestión de personas es una profesión distinta, no un 'ascenso'. Forzar a grandes ICs a ser managers es un error clásico que resulta en perder un gran diseñador y ganar un mal gerente. El Dual Track retiene talento técnico senior ofreciendo crecimiento sin gestión de personas."
   },
   {
     id: 'career_imposter_syndrome_senior',
@@ -133,7 +133,7 @@ export const culture_questions = [
       { id: 'B', text: "Vulnerabilidad Estratégica: Admitir lo que no sabes y preguntar. 'No tengo la respuesta ahora, pero investigaré'. La confianza viene de la competencia, no de la omnisciencia.", score: 5, type: "Lead (Growth Mindset)" },
       { id: 'C', text: "Silencio: No hablar en las reuniones para no meter la pata. Te vuelves invisible.", score: 1, type: "Invisible" }
     ],
-    explanation: "El síndrome del impostor se cura con acción y humildad. Nadie lo sabe todo. Admitir ignorancia y comprometerse a aprender genera más respeto que fingir."
+    explanation: "El síndrome del impostor se cura con acción y humildad. Nadie lo sabe todo. Vulnerabilidad Estratégica (admitir ignorancia y comprometerse a aprender) genera más respeto y confianza que fingir conocimiento (Máscara Frágil)."
   },
   {
     id: 'hiring_portfolio_vs_whiteboard_challenge',
@@ -146,7 +146,7 @@ export const culture_questions = [
       { id: 'B', text: "Mantener Whiteboard: 'Necesitamos ver cómo piensan bajo presión'. Favorece a los extrovertidos y buenos oradores, no necesariamente a los buenos diseñadores.", score: 1, type: "Sesgado a Extrovertidos" },
       { id: 'C', text: "Solo Portfolio: Contratar solo viendo trabajos pasados. No garantiza que ellos hicieron todo el trabajo ni evalúa cómo resuelven problemas nuevos.", score: 3, type: "Incompleto" }
     ],
-    explanation: "Los Whiteboard Challenges evalúan performance teatral, no diseño. Un ejercicio asíncrono pagado respeta el tiempo y simula el entorno real de trabajo."
+    explanation: "Los Whiteboard Challenges evalúan performance teatral y manejo de presión, no necesariamente diseño reflexivo. Un Take-Home Exercise Pagado respeta el tiempo del candidato y simula mejor el entorno real de trabajo asíncrono y profundo."
   },
   {
     id: 'hiring_culture_fit_bias',
@@ -159,7 +159,7 @@ export const culture_questions = [
       { id: 'B', text: "Aceptar el rechazo: 'La cultura es sagrada'. Si no hay química con el equipo, la colaboración será difícil. Priorizas la cohesión del equipo sobre la diversidad de perfiles.", score: 1, type: "Cohesión de Equipo" },
       { id: 'C', text: "Forzar la contratación: 'No me importa si les cae mal, es buena'. Impones autoridad pero dañas la dinámica del equipo.", score: 1, type: "Autoritario" }
     ],
-    explanation: "'Culture Fit' suele ser código para 'se parece a nosotros'. Un Lead busca 'Culture Add' (A) para enriquecer el equipo con personalidades y perspectivas diferentes."
+    explanation: "'Culture Fit' suele ser código para sesgo inconsciente ('se parece a nosotros'). Un Lead busca Culture Add: candidatos que enriquezcan al equipo con personalidades, perspectivas y experiencias diferentes, evitando la homogeneidad."
   },
   {
     id: 'freelance_scope_creep_management',
@@ -172,7 +172,7 @@ export const culture_questions = [
       { id: 'B', text: "Change Request Formal: 'Claro, puedo hacerlo. Evaluaré el impacto en tiempo y presupuesto y te envío la cotización del extra'. Profesionalizas el cambio.", score: 5, type: "Lead (Límites Profesionales)" },
       { id: 'C', text: "Quejarse pasivamente: Hacerlo de mala gana y tardar mucho. Dañas la relación y trabajas gratis igual.", score: 1, type: "Pasivo-Agresivo" }
     ],
-    explanation: "El Scope Creep mata agencias. La respuesta profesional no es 'No', es 'Sí, y cuesta X' (B). Si el cambio aporta valor, el cliente pagará. Si no, dejará de pedirlo."
+    explanation: "El Scope Creep mata la rentabilidad de las agencias. La respuesta profesional no es 'No', ni hacerlo gratis. Es el Change Request Formal: 'Sí, puedo hacerlo, y este es el costo/impacto'. Si el cambio aporta valor, el cliente pagará; si no, dejará de pedirlo."
   },
   {
     id: 'freelance_pricing_value_vs_hourly',
@@ -185,7 +185,7 @@ export const culture_questions = [
       { id: 'B', text: "Value-Based Pricing: Cobrar por el valor del activo ($5k - $10k). No vendes horas, vendes una solución de negocio. El cliente sigue ganando mucho y tú capturas valor justo.", score: 5, type: "Lead (Socio de Negocio)" },
       { id: 'C', text: "Inflar horas: Mentir y decir que tomará 50 horas. Es deshonesto y riesgoso.", score: -1, type: "Fraudulento" }
     ],
-    explanation: "Cobrar por hora castiga la experiencia (mientras mejor eres, menos tardas y menos ganas). Value-Based Pricing alinea incentivos: cobras por el resultado, no el esfuerzo."
+    explanation: "Cobrar por hora castiga la experiencia (mientras mejor eres, menos tardas y menos ganas). Value-Based Pricing alinea los incentivos: cobras por el resultado y el valor generado para el cliente, no por el esfuerzo o tiempo invertido."
   },
   {
     id: 'design_critique_toxic_culture',
@@ -198,7 +198,7 @@ export const culture_questions = [
       { id: 'B', text: "Critiques por Nivel: Crear espacios seguros segregados: Sesiones de mentoría para Juniors y 'High-Performance Critiques' para Seniors. Adaptamos el estilo de feedback a la madurez del diseñador.", score: 3, type: "Segregación (Parche temporal)" },
       { id: 'C', text: "Mantener Estándares Altos: Mantienes el estándar alto de critique argumentando que la excelencia requiere feedback directo. El equipo debe desarrollar resiliencia para alcanzar el nivel profesional esperado.", score: -1, type: "Estándares Altos" }
     ],
-    explanation: "Separar sesiones es band-aid que no arregla la raíz: senior designer tóxico sigue infectando cultura. 'Toughen up' (C) garantiza que solo sobreviven los que normalizan abuso. Un Lead (A) reconoce que una cultura sana es más valiosa que un contributor brillante tóxico - cambias o sales."
+    explanation: "Separar sesiones es un parche que no arregla la raíz: un senior tóxico sigue infectando la cultura. Reestructurar Critique Culture ataca el problema de fondo: una cultura sana es más valiosa que un contributor brillante tóxico. O cambias el comportamiento o cambias a la persona."
   },
   {
     id: 'junior_designer_overwhelm_sprint_planning',
@@ -211,6 +211,6 @@ export const culture_questions = [
       { id: 'B', text: "Time Management Workshop: Le enseñas Pomodoro/GTD y técnicas de productividad. Mejoras su eficiencia y organización para manejar múltiples proyectos simultáneos con mayor control.", score: 3, type: "Skill building (Ignora root cause)" },
       { id: 'C', text: "Cultura de Alto Rendimiento: Explicar que en startups todos manejan múltiples proyectos simultáneos. Es parte del crecimiento profesional y la experiencia de trabajar en un ambiente dinámico.", score: 1, type: "Cultura de Alto Rendimiento" }
     ],
-    explanation: "Time management no resuelve que 4 projects simultáneos son objetivamente demasiado para un junior. Normalizar burnout es penny-wise, pound-foolish: reemplazo + onboarding cuesta más que negociar timelines. Un Lead entiende que sustainable velocity requiere load realista."
+    explanation: "Time management no resuelve que la carga sea objetivamente excesiva. Normalizar burnout es ineficiente: el reemplazo y onboarding cuestan más que negociar timelines. Un Lead protege el talento mediante Load Rebalancing, asegurando una velocidad sostenible."
   },
 ];
