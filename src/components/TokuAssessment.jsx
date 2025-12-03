@@ -4,6 +4,7 @@ import { IntroScreen } from './screens/IntroScreen';
 import { QuestionScreen } from './screens/QuestionScreen';
 import { ReviewScreen } from './screens/ReviewScreen';
 import { CampaignCompleteScreen } from './screens/CampaignCompleteScreen';
+import { RoundTransitionScreen } from './screens/RoundTransitionScreen';
 
 /**
  * Componente principal del Assessment
@@ -21,14 +22,19 @@ const TokuAssessment = () => {
     finishAssessment,
     resetCampaign,
     getStats,
-    TOTAL_TIME_SECONDS
+    round,
+    nextRound,
+    ROUND_TIME_SECONDS,
+    allPlayedQuestions
   } = useGameState();
 
   // Custom hook de timer (solo activo durante el test)
   const { timeLeft, resetTimer, formatTime } = useTimer(
-    TOTAL_TIME_SECONDS,
+    ROUND_TIME_SECONDS,
     gameState === 'test',
-    finishAssessment
+    finishAssessment // Si se acaba el tiempo, ¿termina el assessment o la ronda?
+    // TODO: Si se acaba el tiempo de la ronda, debería pasar a la siguiente ronda o terminar si es la última.
+    // Por ahora dejémoslo en finishAssessment, pero idealmente debería ser handleRoundTimeout
   );
 
   // Calcular estadísticas actuales
@@ -37,7 +43,13 @@ const TokuAssessment = () => {
   // Handler para iniciar assessment
   const handleStart = () => {
     startAssessment();
-    resetTimer(TOTAL_TIME_SECONDS);
+    resetTimer(ROUND_TIME_SECONDS);
+  };
+
+  // Handler para siguiente ronda
+  const handleNextRound = () => {
+    nextRound();
+    resetTimer(ROUND_TIME_SECONDS);
   };
 
   // Renderizar la pantalla correspondiente según el estado
@@ -61,6 +73,17 @@ const TokuAssessment = () => {
           timeLeft={timeLeft}
           formatTime={formatTime}
           onAnswer={handleAnswer}
+          round={round}
+          totalRounds={3}
+        />
+      );
+
+    case 'round_transition':
+      return (
+        <RoundTransitionScreen
+          round={round}
+          totalRounds={3}
+          onNextRound={handleNextRound}
         />
       );
 
@@ -69,7 +92,7 @@ const TokuAssessment = () => {
         <ReviewScreen
           stats={stats}
           answers={answers}
-          activeQuestions={activeQuestions}
+          activeQuestions={allPlayedQuestions}
           onContinue={handleStart}
         />
       );

@@ -10,10 +10,12 @@ export const QuestionScreen = ({
   totalQuestions,
   timeLeft,
   formatTime,
-  onAnswer
+  onAnswer,
+  round,
+  totalRounds
 }) => {
   const progress = ((currentIndex) / totalQuestions) * 100;
-  const isUrgent = timeLeft < URGENT_THRESHOLD;
+  const isUrgent = timeLeft < 60; // 1 minuto final - PRESIÓN
 
   return (
     <div className={`flex flex-col items-center min-h-screen font-sans text-slate-800 pt-32 pb-12 transition-colors duration-1000 ${isUrgent ? 'bg-red-50' : 'bg-slate-100'}`}>
@@ -21,15 +23,25 @@ export const QuestionScreen = ({
       <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex flex-col w-1/3">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                Ronda {round} de {totalRounds}
+              </span>
+              {isUrgent && (
+                <span className="text-xs font-bold text-red-600 animate-pulse">
+                  ¡TIEMPO CRÍTICO!
+                </span>
+              )}
+            </div>
             <ProgressBar
               current={currentIndex + 1}
               total={totalQuestions}
-              label="Ronda Actual"
-              color="indigo"
+              label=""
+              color={isUrgent ? "red" : "indigo"}
             />
           </div>
 
-          <Timer timeLeft={timeLeft} formatTime={formatTime} />
+          <Timer timeLeft={timeLeft} formatTime={formatTime} isUrgent={isUrgent} />
         </div>
       </div>
 

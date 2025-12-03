@@ -13,37 +13,73 @@ export const useGameState = () => {
   const [burnedQuestionIds, setBurnedQuestionIds] = useLocalStorage('toku_burned_questions', []);
 
   // Estados del juego
-  const [gameState, setGameState] = useState('intro'); // intro | test | review | campaign_complete
+  const [gameState, setGameState] = useState('intro'); // intro | test | round_transition | review | campaign_complete
+  const [round, setRound] = useState(1);
+  const [roundBatches, setRoundBatches] = useState({}); // { 1: [], 2: [], 3: [] }
   const [activeQuestions, setActiveQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [totalScore, setTotalScore] = useState(0);
   const [maxPossibleScore, setMaxPossibleScore] = useState(0);
 
-  // Iniciar nueva sesión de assessment
+  const ROUND_TIME_SECONDS = 5 * 60; // 5 minutos por ronda
+
+  // Iniciar nueva sesión de assessment (3 rondas)
   const startAssessment = useCallback(() => {
-    // TIER 1.1: getQuestions ya incluye shuffle de opciones por defecto
+    // 1. Obtener todas las preguntas disponibles (no quemadas)
     const fullPool = getQuestions({
-      shuffleOptions: true,    // Rompe el patrón de "B siempre correcta"
-      shuffleQuestions: true   // También mezcla el orden de preguntas
+      shuffleOptions: true,
+      shuffleQuestions: true
     });
 
     const availableQuestions = fullPool.filter(q => !burnedQuestionIds.includes(q.id));
 
-    // Si no hay preguntas disponibles, campaña completa
+    // Si no hay suficientes preguntas para al menos 1 ronda, campaña completa
     if (availableQuestions.length === 0) {
       setGameState('campaign_complete');
       return;
     }
 
-    // Ya no necesitamos shuffle manual - getQuestions lo hace
-    setActiveQuestions(availableQuestions);
+    // 2. Dividir en 3 lotes (Batches)
+    // Intentamos hacer 3 rondas equitativas. Si hay pocas preguntas, se ajusta.
+    const totalAvailable = availableQuestions.length;
+    const batchSize = Math.ceil(totalAvailable / 3);
+
+    const batches = {
+      1: availableQuestions.slice(0, batchSize),
+      2: availableQuestions.slice(batchSize, batchSize * 2),
+      3: availableQuestions.slice(batchSize * 2, batchSize * 3)
+    };
+
+    // Filtrar batches vacíos (por si quedan menos de 3 rondas)
+    const validBatches = {};
+    let validRoundCount = 0;
+    if (batches[1].length > 0) { validBatches[1] = batches[1]; validRoundCount++; }
+    if (batches[2].length > 0) { validBatches[2] = batches[2]; validRoundCount++; }
+    if (batches[3].length > 0) { validBatches[3] = batches[3]; validRoundCount++; }
+
+    setRoundBatches(validBatches);
+    setRound(1);
+    setActiveQuestions(validBatches[1]);
     setCurrentQuestionIndex(0);
     setAnswers({});
     setTotalScore(0);
-    setMaxPossibleScore(0); // Se calculará dinámicamente según preguntas respondidas
+    setMaxPossibleScore(0);
     setGameState('test');
   }, [burnedQuestionIds]);
+
+  // Avanzar a la siguiente ronda
+  const nextRound = useCallback(() => {
+    const nextRoundNum = round + 1;
+    if (roundBatches[nextRoundNum] && roundBatches[nextRoundNum].length > 0) {
+      setRound(nextRoundNum);
+      setActiveQuestions(roundBatches[nextRoundNum]);
+      setCurrentQuestionIndex(0);
+      setGameState('test');
+    } else {
+      finishAssessment();
+    }
+  }, [round, roundBatches]);
 
   // Responder pregunta y avanzar
   const handleAnswer = useCallback((selectedOption) => {
@@ -61,21 +97,28 @@ export const useGameState = () => {
       }
     }));
 
-    // Actualizar score y maxPossibleScore dinámicamente
-    setTotalScore(prev => prev + selectedOption?.score);
-    setMaxPossibleScore(prev => prev + 5); // Cada pregunta vale máximo 5 puntos
+    // Actualizar score
+    setTotalScore(prev => prev + (selectedOption?.score || 0));
+    setMaxPossibleScore(prev => prev + 5);
 
-    // Avanzar o finalizar
+    // Lógica de avance
     if (currentQuestionIndex < activeQuestions.length - 1) {
+      // Siguiente pregunta en la misma ronda
       setCurrentQuestionIndex(prev => prev + 1);
     } else {
-      finishAssessment();
+      // Fin de la ronda actual
+      // Verificamos si hay más rondas
+      const nextRoundNum = round + 1;
+      if (roundBatches[nextRoundNum] && roundBatches[nextRoundNum].length > 0) {
+        setGameState('round_transition');
+      } else {
+        finishAssessment();
+      }
     }
-  }, [activeQuestions, currentQuestionIndex]);
+  }, [activeQuestions, currentQuestionIndex, round, roundBatches]);
 
-  // Finalizar assessment (por tiempo o por completar)
+  // Finalizar assessment
   const finishAssessment = useCallback(() => {
-    // Marcar solo las preguntas RESPONDIDAS como "quemadas"
     setAnswers(currentAnswers => {
       const answeredQuestionIds = Object.keys(currentAnswers);
       setBurnedQuestionIds(prev => [...prev, ...answeredQuestionIds]);
@@ -84,31 +127,35 @@ export const useGameState = () => {
     });
   }, [setBurnedQuestionIds]);
 
-  // Reiniciar toda la campaña
+  // Reiniciar campaña
   const resetCampaign = useCallback(() => {
     setBurnedQuestionIds([]);
     setGameState('intro');
   }, [setBurnedQuestionIds]);
 
-  // Calcular estadísticas
+  // Stats
   const getStats = useCallback(() => {
-    const fullPool = getQuestions({ shuffleOptions: false }); // Sin shuffle para contar
-    const totalQuestions = fullPool.length;
-    const remainingQuestions = totalQuestions - burnedQuestionIds.length;
-    const progressPercent = ((totalQuestions - remainingQuestions) / totalQuestions) * 100;
+    // Total de preguntas en ESTA sesión (sumando todos los batches)
+    let sessionTotalQuestions = 0;
+    Object.values(roundBatches).forEach(batch => sessionTotalQuestions += batch.length);
+
+    // Preguntas respondidas en esta sesión
+    const answeredCount = Object.keys(answers).length;
+
     const scorePercentage = maxPossibleScore > 0 ? Math.round((totalScore / maxPossibleScore) * 100) : 0;
 
     return {
-      totalQuestions,
-      remainingQuestions,
-      progressPercent,
+      totalQuestions: sessionTotalQuestions,
+      questionsAnswered: answeredCount,
       scorePercentage,
       totalScore,
-      maxPossibleScore
+      maxPossibleScore,
+      currentRound: round,
+      totalRounds: Object.keys(roundBatches).length
     };
-  }, [burnedQuestionIds, totalScore, maxPossibleScore]);
+  }, [roundBatches, answers, totalScore, maxPossibleScore, round]);
 
-  // URL Sync: Update URL when question changes
+  // URL Sync
   useEffect(() => {
     if (gameState === 'test' && activeQuestions[currentQuestionIndex]) {
       const currentQ = activeQuestions[currentQuestionIndex];
@@ -118,48 +165,25 @@ export const useGameState = () => {
     }
   }, [gameState, currentQuestionIndex, activeQuestions]);
 
-  // URL Init: Check for ?q=ID on mount
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const questionId = params.get('q');
-
-    if (questionId && gameState === 'intro') {
-      const fullPool = getQuestions({
-        shuffleOptions: true,
-        shuffleQuestions: true
-      });
-
-      const targetIndex = fullPool.findIndex(q => q.displayId.toLowerCase() === questionId.toLowerCase());
-
-      if (targetIndex !== -1) {
-        setActiveQuestions(fullPool);
-        setCurrentQuestionIndex(targetIndex);
-        setAnswers({});
-        setTotalScore(0);
-        setMaxPossibleScore(0);
-        setGameState('test');
-      }
-    }
-  }, []); // Run once on mount
-
   return {
-    // Estado
     gameState,
     activeQuestions,
     currentQuestionIndex,
     answers,
     totalScore,
     maxPossibleScore,
-    burnedQuestionIds,
-
-    // Funciones
+    round,
+    roundBatches,
     startAssessment,
     handleAnswer,
+    nextRound,
     finishAssessment,
     resetCampaign,
     getStats,
-
     // Constantes
-    TOTAL_TIME_SECONDS
+    ROUND_TIME_SECONDS,
+
+    // Helpers
+    allPlayedQuestions: Object.values(roundBatches).flat()
   };
 };
