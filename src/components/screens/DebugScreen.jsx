@@ -1,15 +1,53 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { allQuestions } from '../../data/questions';
 import { ArrowLeft, AlertCircle, CheckCircle, XCircle, MinusCircle, Download } from 'lucide-react';
 
 export default function DebugScreen() {
-    // Use allQuestions directly since it's already the full array
-    const questions = allQuestions;
+    // Define blocks
+    const blocks = [
+        { id: 'STR', name: 'Strategy', icon: '🎯', color: 'blue' },
+        { id: 'RES', name: 'Research', icon: '🔬', color: 'purple' },
+        { id: 'MET', name: 'Metrics', icon: '📊', color: 'green' },
+        { id: 'MOB', name: 'Mobile', icon: '📱', color: 'orange' },
+        { id: 'CUL', name: 'Culture', icon: '👥', color: 'pink' },
+        { id: 'INN', name: 'Innovation', icon: '💡', color: 'indigo' }
+    ];
+
+    const [selectedBlock, setSelectedBlock] = useState('STR');
+
+    // Sort all questions by displayId
+    const sortedQuestions = useMemo(() => {
+        return [...allQuestions].sort((a, b) => {
+            const [prefixA, numA] = a.displayId.split('-');
+            const [prefixB, numB] = b.displayId.split('-');
+
+            const prefixOrder = { 'STR': 1, 'RES': 2, 'MET': 3, 'MOB': 4, 'CUL': 5, 'INN': 6 };
+
+            const prefixDiff = (prefixOrder[prefixA] || 99) - (prefixOrder[prefixB] || 99);
+            if (prefixDiff !== 0) return prefixDiff;
+
+            return parseInt(numA) - parseInt(numB);
+        });
+    }, []);
+
+    // Filter questions by selected block
+    const filteredQuestions = useMemo(() => {
+        return sortedQuestions.filter(q => q.displayId.startsWith(selectedBlock));
+    }, [sortedQuestions, selectedBlock]);
+
+    // Count questions per block
+    const blockCounts = useMemo(() => {
+        const counts = {};
+        blocks.forEach(block => {
+            counts[block.id] = sortedQuestions.filter(q => q.displayId.startsWith(block.id)).length;
+        });
+        return counts;
+    }, [sortedQuestions]);
 
     // Function to export all content to Markdown
     const exportToMarkdown = () => {
         let markdown = '# Simulador Product Lead - Todas las Preguntas\n\n';
-        markdown += `**Total de preguntas:** ${questions.length}\n\n`;
+        markdown += `**Total de preguntas:** ${sortedQuestions.length}\n\n`;
         markdown += `**Generado:** ${new Date().toLocaleDateString('es-ES', {
             year: 'numeric',
             month: 'long',
@@ -19,8 +57,8 @@ export default function DebugScreen() {
         })}\n\n`;
         markdown += '---\n\n';
 
-        questions.forEach((q, index) => {
-            markdown += `## ${index + 1}. ${q.question}\n\n`;
+        sortedQuestions.forEach((q) => {
+            markdown += `## ${q.displayId}. ${q.question}\n\n`;
             markdown += `**ID:** \`${q.id}\`  \n`;
             markdown += `**Categoría:** ${q.category}\n\n`;
 
@@ -43,7 +81,6 @@ export default function DebugScreen() {
             markdown += '---\n\n';
         });
 
-        // Create blob and download
         const blob = new Blob([markdown], { type: 'text/markdown;charset=utf-8' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
@@ -70,97 +107,154 @@ export default function DebugScreen() {
         return <XCircle className="w-4 h-4" />;
     };
 
+    const getBlockColorClass = (color, isActive) => {
+        const colors = {
+            blue: isActive ? 'bg-blue-100 text-blue-700 border-blue-300' : 'hover:bg-blue-50',
+            purple: isActive ? 'bg-purple-100 text-purple-700 border-purple-300' : 'hover:bg-purple-50',
+            green: isActive ? 'bg-green-100 text-green-700 border-green-300' : 'hover:bg-green-50',
+            orange: isActive ? 'bg-orange-100 text-orange-700 border-orange-300' : 'hover:bg-orange-50',
+            pink: isActive ? 'bg-pink-100 text-pink-700 border-pink-300' : 'hover:bg-pink-50',
+            indigo: isActive ? 'bg-indigo-100 text-indigo-700 border-indigo-300' : 'hover:bg-indigo-50'
+        };
+        return colors[color] || colors.blue;
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-            <div className="container mx-auto px-4 py-8 max-w-7xl">
-                {/* Header */}
-                <div className="mb-8">
-                    <a
-                        href="/"
-                        className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-4"
-                    >
-                        <ArrowLeft className="w-4 h-4" />
-                        Volver al simulador
-                    </a>
+            {/* Header - Fixed */}
+            <div className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+                <div className="container mx-auto px-4 py-4 max-w-7xl">
                     <div className="flex items-center justify-between">
-                        <div>
-                            <h1 className="text-4xl font-bold text-slate-900 mb-2">
-                                🛠️ Modo Debug
-                            </h1>
-                            <p className="text-slate-600">
-                                Total de preguntas: <strong>{questions.length}</strong>
-                            </p>
+                        <div className="flex items-center gap-4">
+                            <a
+                                href="/"
+                                className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900"
+                            >
+                                <ArrowLeft className="w-4 h-4" />
+                                Volver
+                            </a>
+                            <div className="h-6 w-px bg-slate-300"></div>
+                            <div>
+                                <h1 className="text-2xl font-bold text-slate-900">
+                                    🛠️ Debug Mode
+                                </h1>
+                            </div>
                         </div>
                         <button
                             onClick={exportToMarkdown}
-                            className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-xl font-medium"
+                            className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg font-medium text-sm"
                         >
-                            <Download className="w-5 h-5" />
-                            Exportar a Markdown
+                            <Download className="w-4 h-4" />
+                            Export
                         </button>
                     </div>
                 </div>
+            </div>
 
-                {/* Questions List */}
-                <div className="space-y-8">
-                    {questions.map((q, index) => (
-                        <div
-                            key={q.id}
-                            className="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden"
-                        >
-                            {/* Question Header */}
-                            <div className="bg-gradient-to-r from-indigo-500 to-purple-500 p-6 text-white">
-                                <div className="flex items-start gap-4">
-                                    <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center text-xl font-bold">
-                                        {index + 1}
-                                    </div>
-                                    <div className="flex-1">
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <span className="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">
-                                                {q.category}
+            {/* Main Content - with top padding to account for fixed header */}
+            <div className="container mx-auto px-4 max-w-7xl pt-24">
+                <div className="flex gap-6 py-6">
+                    {/* Sidebar */}
+                    <div className="w-64 flex-shrink-0">
+                        <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-4 sticky top-6">
+                            <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4">
+                                Bloques
+                            </h2>
+                            <div className="space-y-2">
+                                {blocks.map(block => (
+                                    <button
+                                        key={block.id}
+                                        onClick={() => setSelectedBlock(block.id)}
+                                        className={`w-full text-left px-4 py-3 rounded-lg border-2 transition-all ${selectedBlock === block.id
+                                            ? `${getBlockColorClass(block.color, true)} font-semibold`
+                                            : `border-transparent text-slate-600 ${getBlockColorClass(block.color, false)}`
+                                            }`}
+                                    >
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-xl">{block.icon}</span>
+                                                <span className="font-medium">{block.name}</span>
+                                            </div>
+                                            <span className="text-sm font-bold bg-white/50 px-2 py-0.5 rounded">
+                                                {blockCounts[block.id] || 0}
                                             </span>
-                                            <code className="text-xs bg-white/10 px-2 py-1 rounded font-mono">
-                                                {q.displayId}
-                                            </code>
-                                            <code className="text-xs bg-white/10 px-2 py-1 rounded font-mono">
+                                        </div>
+                                    </button>
+                                ))}
+                            </div>
+                            <div className="mt-6 pt-4 border-t border-slate-200">
+                                <div className="text-xs text-slate-500 text-center">
+                                    <div className="font-semibold mb-1">Total</div>
+                                    <div className="text-2xl font-bold text-slate-700">{sortedQuestions.length}</div>
+                                    <div className="mt-1">preguntas</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Main Panel */}
+                    <div className="flex-1 min-w-0 pb-8">
+                        <div className="mb-4">
+                            <h2 className="text-xl font-bold text-slate-800">
+                                {blocks.find(b => b.id === selectedBlock)?.icon} {blocks.find(b => b.id === selectedBlock)?.name}
+                            </h2>
+                            <p className="text-sm text-slate-600">
+                                Mostrando {filteredQuestions.length} {filteredQuestions.length === 1 ? 'pregunta' : 'preguntas'}
+                            </p>
+                        </div>
+
+                        <div className="space-y-6 pb-8">
+                            {filteredQuestions.map((q) => (
+                                <div
+                                    key={q.id}
+                                    className="bg-white rounded-xl shadow-xl overflow-hidden border-2 border-slate-100"
+                                >
+                                    {/* Question Content - Similar to Quiz */}
+                                    <div className="p-8 md:p-12">
+                                        {/* Category Badge with Icon */}
+                                        <div className="flex items-center gap-3 mb-6">
+                                            <div className="p-3 bg-indigo-50 rounded-lg text-indigo-600 shadow-sm border border-indigo-100">
+                                                {q.icon}
+                                            </div>
+                                            <div className="flex flex-col">
+                                                <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider">
+                                                    {q.displayId}
+                                                </span>
+                                                <span className="text-sm font-bold text-indigo-900 uppercase tracking-wide opacity-80">
+                                                    {q.category}
+                                                </span>
+                                            </div>
+                                            <code className="ml-auto text-xs bg-slate-100 px-2 py-1 rounded font-mono text-slate-500">
                                                 {q.id}
                                             </code>
                                         </div>
-                                        <h2 className="text-2xl font-bold mb-2">{q.scenario}</h2>
-                                    </div>
-                                </div>
-                            </div>
 
-                            {/* Question Content */}
-                            <div className="p-6 space-y-6">
-                                {/* Scenario */}
-                                <div>
-                                    <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-2">
-                                        Pregunta:
-                                    </h3>
-                                    <p className="text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-lg">
-                                        {q.question}
-                                    </p>
-                                </div>
+                                        {/* Scenario */}
+                                        <h2 className="text-xl font-medium text-slate-900 leading-snug mb-8">
+                                            {q.scenario}
+                                        </h2>
 
-                                {/* Options */}
-                                <div>
-                                    <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">
-                                        Opciones ({q.options.length})
-                                    </h3>
-                                    <div className="space-y-3">
-                                        {q.options.map((option) => (
-                                            <div
-                                                key={option.id}
-                                                className={`border-2 rounded-lg p-4 ${getScoreColor(option.score)} border-current`}
-                                            >
-                                                <div className="flex items-start gap-3">
-                                                    <div className="flex-shrink-0 mt-1">
-                                                        {getScoreIcon(option.score)}
+                                        {/* Question */}
+                                        <div className="text-lg font-bold text-indigo-800 border-l-4 border-indigo-600 pl-6 py-4 bg-indigo-50/50 rounded-r-lg shadow-sm mb-8">
+                                            {q.question}
+                                        </div>
+
+                                        {/* Options - Similar to Quiz but with scores visible */}
+                                        <div className="space-y-3">
+                                            {q.options.map((option) => (
+                                                <div
+                                                    key={option.id}
+                                                    className={`w-full p-4 border-2 rounded-xl flex items-start gap-3 shadow-sm ${getScoreColor(option.score)} border-current`}
+                                                >
+                                                    <div className={`flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full font-bold text-xs mt-0.5 ${option.score >= 5 ? 'bg-green-600 text-white' :
+                                                        option.score >= 3 ? 'bg-yellow-500 text-white' :
+                                                            option.score >= 1 ? 'bg-orange-500 text-white' :
+                                                                'bg-red-600 text-white'
+                                                        }`}>
+                                                        {option.id}
                                                     </div>
                                                     <div className="flex-1">
-                                                        <div className="flex items-center gap-2 mb-2">
-                                                            <span className="font-bold text-lg">{option.id}</span>
+                                                        <div className="flex items-center gap-2 mb-1">
                                                             <span className="text-xs font-mono bg-white/50 px-2 py-0.5 rounded">
                                                                 Score: {option.score}
                                                             </span>
@@ -168,35 +262,30 @@ export default function DebugScreen() {
                                                                 {option.type}
                                                             </span>
                                                         </div>
-                                                        <p className="text-sm leading-relaxed">
+                                                        <p className="text-slate-700 font-medium leading-relaxed text-base">
                                                             {option.text}
                                                         </p>
                                                     </div>
                                                 </div>
+                                            ))}
+                                        </div>
+
+                                        {/* Explanation */}
+                                        <div className="mt-8 pt-6 border-t-2 border-slate-100">
+                                            <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wide mb-3 flex items-center gap-2">
+                                                <span>💡</span> Explicación
+                                            </h4>
+                                            <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                                                <p className="text-slate-700 text-sm leading-relaxed">
+                                                    {q.explanation}
+                                                </p>
                                             </div>
-                                        ))}
+                                        </div>
                                     </div>
                                 </div>
-
-                                {/* Explanation */}
-                                <div>
-                                    <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-2">
-                                        Explicación
-                                    </h3>
-                                    <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                                        <p className="text-slate-700 leading-relaxed">
-                                            {q.explanation}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
-
-                {/* Footer */}
-                <div className="mt-8 text-center text-slate-500 text-sm">
-                    <p>Total: {questions.length} preguntas cargadas</p>
+                    </div>
                 </div>
             </div>
         </div>
