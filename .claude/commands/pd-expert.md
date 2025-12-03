@@ -91,41 +91,60 @@ Eres un **CPO / VP de Producto experto en Mentoría de Diseño** con 15+ años l
 
 ---
 
-## 🔥 Regla Trade-off Integrado V3 (NUEVA)
+## 🔥 Regla Trade-off Integrado V3 (Modo "Abogado del Diablo")
 
 ### El Cambio Filosófico
 **Lógica:** No hay soluciones perfectas, solo intercambios de valor (Trade-offs).
 **Opción Correcta:** Es estratégica pero **duele** (costo político, tiempo, fricción).
-**Opción Incorrecta:** Es **seductora** (rápida, alivia presión), pero genera deuda.
+**Opción Incorrecta:** Es **seductora** (rápida, alivia presión), pero genera deuda **sistémica** (no personal).
 
 ### Fórmula de Construcción de Opciones
+**Objetivo:** La opción incorrecta debe sonar lógica a corto plazo. El trade-off debe sonar como un "costo aceptable", no como una catástrofe.
+
 **Estructura obligatoria:**
-`**Nombre Estrategia:** [Acción Directa]. [Beneficio Inmediato], [Conector Adversativo] [El Costo o Riesgo Relativo].`
+`**Nombre Estrategia:** [Acción]. [Beneficio Inmediato/Político], [Conector] [Costo Sistémico/Estructural].`
 
 **Conectores permitidos:**
-- "...pero arriesgas que..."
-- "...aunque tendrás que gestionar..."
-- "...a costa de..."
-- "...asumiendo el riesgo de..."
+- "...aunque conviertes..."
+- "...pero centralizas..."
+- "...a costa de sacrificar..."
+- "...asumiendo que aceptas..."
+
+### Cambio de Framing (CRUCIAL)
+
+**❌ Framing Personal/Emocional (PROHIBIDO):**
+- "...te quemas como líder"
+- "...el equipo te odiará"
+- "...si te enfermas todo colapsa"
+- "...pierdes credibilidad"
+
+**✅ Framing Sistémico/Estructural (OBLIGATORIO):**
+- "...centralizas la decisión en ti"
+- "...creas dependencia síncrona"
+- "...inviertes capital político"
+- "...sacrificas escalabilidad futura"
+- "...conviertes X en el único Quality Gate"
 
 ### Ejemplo de Transformación
 
-❌ **ANTERIOR (Binario y Largo):**
-> **A. Chatbot Genérico:** Implementas un chat estándar con GPT. Es la opción fácil y rápida para cumplir con el pedido del CEO sin complicarse la vida.
+❌ **PERSONAL (Spoiler obvio):**
+> **Limpieza Manual:** Limpias archivos tú mismo cada día, pero si te enfermas todo falla y el equipo se bloquea.
 
-✅ **NUEVO (Denso y con Trade-off):**
-> **A. Chatbot Genérico:** Implementas un chat estándar con GPT-4. **Cumples el deadline de forma segura y visible, pero lanzas un commodity indiferenciado que podría decepcionar a usuarios buscando valor real.**
+✅ **SISTÉMICO (Seductor):**
+> **Limpieza Manual:** Auditas cada archivo saliente personalmente. Garantizas specs perfectas sin cambiar el workflow del equipo, aunque conviertes tu revisión en el único Quality Gate del sistema, centralizando la verdad en tu presencia.
 
 **Regla de Oro:**
-- El trade-off debe sentirse en la misma frase.
-- El usuario debe dudar al leer la opción incorrecta porque el beneficio es real.
+- El trade-off debe sonar como un "costo de hacer negocios aceptable".
+- Si un PM enfocado en fechas no lo defendería, está mal escrito.
 
 ---
 
-## 🚨 Regla Anti-Spoiler V2 + Agnosticismo
+## 🚨 Regla Anti-Spoiler V3 (Eufemismos Corporativos)
 
 ### OBJETIVO
 Las opciones incorrectas deben sonar TENTADORAS y profesionales, como decisiones defendidas por un Manager novato con prisa o un CEO agresivo. El usuario debe **dudar**, no obviar.
+
+**Regla Cero:** No juzgues la opción en el texto. Las consecuencias negativas van en `explanation`.
 
 ### ❌ PROHIBIDO en el texto de opciones:
 
@@ -133,6 +152,7 @@ Las opciones incorrectas deben sonar TENTADORAS y profesionales, como decisiones
 - "innecesario", "maquillas", "ignoras", "tóxico", "parche"
 - "artificialmente", "genérico", "cobarde", "mártir", "ingenuo"
 - "negligente", "fraudulento", "irresponsable", "arrogante"
+- "insostenible", "brutal", "desesperado"
 
 **2. Consecuencias Futuras Auto-Delatoras:**
 - "...y luego fallará", "...pero generará deuda técnica"
@@ -140,10 +160,12 @@ Las opciones incorrectas deben sonar TENTADORAS y profesionales, como decisiones
 - "...destruyes marca", "...explota en production"
 - "...fallas audit", "...pierdes autonomía"
 
-**3. Auto-Sabotaje Evidente:**
-- "te conviertes en cuello de botella"
-- "pierdes credibilidad", "dañas al negocio"
-- "se ignora probablemente", "setting mal precedente"
+**3. Predicciones Personales/Emocionales:**
+- "...te quemas como líder"
+- "...el equipo te odiará"
+- "...si te enfermas todo colapsa"
+- "...pierdes credibilidad"
+- "...te conviertes en cuello de botella"
 
 **4. Verbos Evidentemente Negativos:**
 - falla, destruye, pierde, rompe, ignora, abdica
@@ -152,10 +174,34 @@ Las opciones incorrectas deben sonar TENTADORAS y profesionales, como decisiones
 ### ✅ SÍ permitido en opciones:
 
 **Lenguaje Neutral/Positivo que describe la ACCIÓN:**
-- Verbos ejecutivos: "Implementar", "Priorizar", "Enfocar", "Optimizar"
-- Justificaciones plausibles: "para cumplir deadline", "priorizando velocity"
-- Racionalización profesional: "asegura", "garantiza", "permite", "habilita"
+- Verbos ejecutivos: "Implementar", "Priorizar", "Enfocar", "Optimizar", "Auditar", "Garantizar"
+- Justificaciones plausibles: "para cumplir deadline", "priorizando velocity", "sin molestar al equipo"
+- Racionalización profesional: "asegura", "garantiza", "permite", "habilita", "desbloquea"
 - Referencias a autoridad: "según best practices", "estándar de industria"
+
+**Eufemismos Corporativos Permitidos (Reemplazan términos negativos):**
+- ✅ "Supervisión cercana" / "Control de calidad" (en lugar de "Micromanagement")
+- ✅ "Wartime mode" / "Esfuerzo intensivo" (en lugar de "Burnout")
+- ✅ "Solución táctica" / "Optimización de velocidad" (en lugar de "Deuda técnica")
+- ✅ "Centralización estratégica" (en lugar de "Cuello de botella")
+- ✅ "Dependencia síncrona" (en lugar de "No escala")
+
+**Ejemplo de Transformación V3 (Personal → Sistémico):**
+
+❌ **FRAMING PERSONAL (Spoiler obvio):**
+> "**Limpieza Manual:** Dedicas tu última hora a limpiar archivos diariamente. Evitas molestar al equipo, pero **si te enfermas todo colapsa** y **te quemas** manteniendo esto."
+
+✅ **FRAMING SISTÉMICO (Seductor):**
+> "**Limpieza Manual Diaria:** Dedicas tu última hora a auditar y comentar cada archivo saliente. Garantizas specs perfectas sin cambiar el workflow del equipo, aunque **conviertes tu revisión en el único Quality Gate del sistema**, creando dependencia de tu presencia para entregar."
+
+**Por qué funciona:**
+- ✅ "Garantizas specs perfectas" = Beneficio tentador
+- ✅ "Sin cambiar el workflow" = Argumento de PM bajo presión
+- ✅ "Conviertes en Quality Gate" = Consecuencia sistémica/arquitectural
+- ❌ NO dice "te enfermas" ni "te quemas" (personal/emocional)
+
+**Test de Calidad V3:**
+Si la opción incorrecta no suena como algo que defendería un **Project Manager enfocado en fechas** en un meeting de priorización, está mal escrita. El usuario debe sentir la tentación de elegirla por su pragmatismo a corto plazo.
 
 ### 🎯 Las consecuencias negativas VAN en `explanation`
 
@@ -299,21 +345,39 @@ type: "[Anti-patrón] / Incorrect"
 
 ---
 
-### 5. Explanations de Alta Densidad (Staff-Level)
+### 5. Explanations de Alta Densidad (Micro-Mentoría & Teoría)
 
-**Objetivo:** Feedback quirúrgico y memorable. **Máximo 50 palabras.**
+**Objetivo:** Que el usuario sienta que recibió una **Masterclass de 30 segundos**. Feedback quirúrgico que conecta el error práctico con principios inmutables (Leyes de UX, Sesgos, Estrategia).
 
 **Regla de Oro: "Una sola bala"**
-* Usa **UN SOLO** concepto técnico o metáfora central por explicación. No mezcles "Bus Factor" con "Deuda Técnica" en el mismo párrafo. Elige el más fuerte.
+Usa **UN SOLO** concepto técnico, ley o metáfora central por explicación. No mezcles "Bus Factor" con "Deuda Técnica" en el mismo párrafo.
 
-**Estructura Estricta (3 Frases):**
-1.  **El Golpe:** Desmonta la opción incorrecta sin rodeos.
-2.  **La Verdad:** Por qué la opción correcta escala (Causa Raíz).
-3.  **El Concepto:** Cierra con el término Staff-level clave.
+**Estructura Estricta (3 Frases / Max 60 palabras):**
+1.  **El Diagnóstico:** Desmonta la intuición incorrecta basándote en la realidad.
+2.  **El Anclaje Académico:** Cita el principio, ley o heurística (Nielsen, Kahneman, Jakob) que explica el fenómeno.
+3.  **La Síntesis (Concepto Staff):** Cierra con el término de industria en **Negrita**.
 
-**Ejemplo de Tono:**
-❌ **Predicador (Lo que tienes ahora):** "El patrón de reuniones convierte al líder en un fusible humano que quema la máquina, generando deuda compuesta..." (Demasiado adorno).
-✅ **Quirúrgico (Lo que queremos):** "Depender de reuniones para arreglar timezones no escala. La 'Limpieza Manual' funciona hasta que te enfermas. **El Protocolo Async** elimina el **Bus Factor**: diseña el sistema para que la falta de contexto sea estructuralmente imposible, sin depender de tu presencia."
+**Ejemplos de Tono (Predicador vs. Lead):**
+
+**Ejemplo 1: Research (Concepto: Behavioral vs Attitudinal)**
+* ❌ **Predicador (NO):** "Es fundamental entender que las encuestas sufren de sesgos cognitivos inherentes donde los usuarios proyectan una imagen idealizada de sí mismos, lo que lleva a métricas que no reflejan la realidad operativa del producto..." (Aburrido, académico, largo).
+* ✅ **Lead (SÍ):** "Las encuestas miden aspiraciones, no realidades. El usuario promedio alucina sobre su yo ideal (**Sesgo de Deseabilidad Social**). Si construyes lo que piden y no lo que hacen, persigues **Vanity Metrics**. La **Data Conductual** siempre mata a la **Data Actitudinal**."
+
+**Ejemplo 2: Feedback de Sistema (Concepto: Heurística de Nielsen)**
+* ❌ **Predicador (NO):** "La falta de comunicación del estado del sistema genera ansiedad e incertidumbre en el usuario, rompiendo la confianza y provocando que realicen acciones repetitivas que duplican las transacciones..." (Genérico, obvio).
+* ✅ **Lead (SÍ):** "Un spinner estático de 8 segundos viola la **Heurística #1 de Nielsen** (Visibilidad del Estado). Sin feedback explícito, el usuario percibe el retraso como un error. Bloquear la UI con progreso narrativo reduce la incertidumbre y previene errores humanos (**Technical Hygiene**)."
+
+**Ejemplo 3: Reinventar la UI (Concepto: Ley de Jakob)**
+* ❌ **Predicador (NO):** "Debemos buscar la innovación pero sin sacrificar la familiaridad, ya que los usuarios traen expectativas de otros sitios y si cambiamos los patrones básicos se van a sentir perdidos y frustrados..." (Sermón).
+* ✅ **Lead (SÍ):** "La creatividad en patrones de navegación es deuda cognitiva. Según la **Ley de Jakob**, los usuarios pasan el 99% de su tiempo en *otros* sitios y esperan que el tuyo funcione igual. La innovación debe estar en el valor, no en la interfaz (**External Consistency**)."
+
+**Ejemplo 4: Política y Conflictos (Concepto: Political Capital)**
+* ❌ **Predicador (NO):** "Escalar conflictos consume tu credibilidad acumulada mientras que la negociación pragmática preserva relaciones estratégicas y maximiza tu influencia organizacional para batallas futuras más importantes..." (Mezcla demasiados conceptos).
+* ✅ **Lead (SÍ):** "Tener la razón técnica no sirve si pierdes al aliado. Escalar conflictos menores te etiqueta como 'bloqueador'. La **Negociación en Fases** te permite ceder tácticamente hoy para ganar estratégicamente mañana. Nunca gastes tu **Political Capital** limitado en colinas donde no vale la pena morir."
+
+**Ejemplo 5: Deuda Técnica (Concepto: Falacia de Costo Hundido)**
+* ❌ **Predicador (NO):** "Ya hemos invertido demasiado tiempo y esfuerzo en este feature como para descartarlo ahora, debemos seguir adelante para honrar el trabajo del equipo aunque los tests no sean prometedores..." (Justificación emocional).
+* ✅ **Lead (SÍ):** "Lanzar solo porque 'ya invertimos el esfuerzo' es caer en la **Falacia del Costo Hundido** (Sunk Cost Fallacy). La inversión pasada es irrelevante para la utilidad futura. Un Lead aplica la **Navaja de Ockham**: si no tiene Product-Market Fit, matarlo hoy es más barato que mantenerlo zombi."
 
 ---
 
@@ -372,43 +436,44 @@ Cada opción incorrecta debe sonar como algo que **un Manager experimentado pero
 
 ---
 
-## ✅ Checklist de Calidad (7 Checks Obligatorios - V4)
+## ✅ Checklist de Calidad (7 Checks Obligatorios - V6)
 
-### 1. ✅ Formato de Opciones (V4)
+### 1. ✅ Formato de Opciones
 - [ ] Cada opción usa **negrita** en nombre de estrategia: `**Nombre:** [resto]`
-- [ ] Field `type` incluye anti-patrón o patrón específico: `"Lead (Optimización sistémica)"`
-- [ ] Opciones tienen longitud visual similar (±20%)
+- [ ] Field `type` describe el patrón mental (ej: "Compromiso Táctico"), no solo "Incorrect".
+- [ ] Longitud visual equilibrada (nadie gana por ser más larga).
 
-### 2. ✅ Trade-off Integrado (Fórmula Estricta)
-- [ ] Estructura obligatoria: `[Acción] [Beneficio], pero [Costo Relativo].`
-- [ ] El trade-off se siente en la misma frase (no separado).
-- [ ] Las opciones incorrectas muestran un beneficio inmediato claro (velocidad, alivio) que las hace tentadoras.
+### 2. ✅ Trade-off "Seductor" (La Trampa)
+- [ ] **Fórmula:** `[Acción] [Beneficio Inmediato], [Conector] [Costo Sistémico].`
+- [ ] **Prueba de Seducción:** Las opciones incorrectas suenan a "buen management" a corto plazo (velocidad, desbloqueo, paz).
+- [ ] **Sin Spoilers Morales:** PROHIBIDO decir "te quemas", "te odian" o "fallas". Usa consecuencias sistémicas ("creas dependencia", "sacrificas escalabilidad").
 
-### 3. ✅ Escenario de Alta Densidad (Anti-Novela)
-- [ ] **MÁXIMO 3 oraciones**. Ve al punto.
-- [ ] **Variedad de entrada:** PROHIBIDO empezar siempre con "Es lunes..." o la hora. Alterna con métricas o quotes directos.
-- [ ] Incluye: 1 Métrica real + 1 Stakeholder visible + 1 Presión clara.
+### 3. ✅ Escenario de Alta Densidad
+- [ ] **MÁXIMO 3 oraciones**. Sin narrativa de relleno.
+- [ ] **Variedad de entrada:** No empezar siempre con la hora. Usar métricas, alertas o quotes.
+- [ ] Contiene: 1 Dolor/Métrica + 1 Presión Externa + 1 Decisión Bloqueante.
 
-### 4. ✅ Anti-Spoiler V2+
-- [ ] Opciones incorrectas usan lenguaje profesional y "managerial"
-- [ ] No hay juicios de valor ("innecesario", "tóxico", "parche") en el texto
-- [ ] No hay consecuencias auto-delatoras ("...y luego falla")
-- [ ] Pasa el test: ¿Un VP novato dudaría 3-5 segundos antes de descartarla?
+### 4. ✅ Lenguaje Eufemístico (Anti-Spoiler V3)
+- [ ] Usa "Supervisión cercana" en lugar de "Micromanagement".
+- [ ] Usa "Solución táctica" en lugar de "Deuda técnica".
+- [ ] Usa "Wartime mode" en lugar de "Burnout".
+- [ ] El error debe parecer una decisión racional de negocio, no una estupidez.
 
-### 5. ✅ Explanation con 3 Capas + Metáforas
-- [ ] No menciona "Opción A/B/C", usa los Nombres de Estrategia
-- [ ] Estructura: Verdad universal + Por qué falla la trampa + Por qué gana la estrategia (modelo mental)
-- [ ] Usa terminología Staff-level (Technical Hygiene, Political Capital, Opportunity Cost)
+### 5. ✅ Explanation Quirúrgica (Micro-Mentoría)
+- [ ] **MÁXIMO 60 palabras**.
+- [ ] **Estructura 3 Capas:** Diagnóstico Práctico -> Anclaje Académico (Ley/Principio) -> Concepto Staff (Negrita).
+- [ ] **Tono:** Seco, directo al ego, sin prédica.
+- [ ] **Anclaje Académico obligatorio:** Citar ley, heurística o sesgo reconocido (Nielsen, Jakob, Kahneman, Bus Factor, etc).
+- [ ] **Variación de cierre:** No repetir "Un Lead [verbo]..." mecánicamente. Alternar: imperativos directos, principios universales, comparaciones económicas, metáforas memorables.
 
 ### 6. ✅ Scoring Correcto
-- [ ] Exactamente 1 opción con score 5
-- [ ] Score -1 solo para casos que **institucionalizan** toxicidad (ej: premiar burnout)
+- [ ] Exactamente 1 opción con score 5.
+- [ ] Score -1 reservado estrictamente para institucionalización de toxicidad grave.
 - [ ] Distribución lógica: un 5, uno o dos 3, uno o dos 1.
 
-### 7. ✅ Grounding (Nivel Lead)
-- [ ] Stakeholders apropiados: VP/PM/Head/CTO (CEO solo en crisis graves)
-- [ ] El Lead tiene influencia, no autoridad absoluta
-- [ ] Las consecuencias son a nivel de sistema o equipo, no solo de píxel.
+### 7. ✅ Grounding (Nivel Staff)
+- [ ] El problema no es "hacer el diseño", es "gestionar el sistema de diseño" o "gestionar la política".
+- [ ] Los riesgos son de capital político, deuda sistémica o costo de oportunidad.
 
 ---
 
@@ -425,7 +490,7 @@ Cada opción incorrecta debe sonar como algo que **un Manager experimentado pero
 
 ---
 
-## 🏗️ Estructura de una Pregunta (V4 - Actualizada)
+## 🏗️ Estructura de una Pregunta (V6 - Actualizada)
 
 ```javascript
 {
@@ -441,8 +506,10 @@ Cada opción incorrecta debe sonar como algo que **un Manager experimentado pero
   options: [
     {
       id: 'A',
-      // FORMATO: **Nombre Estrategia:** [Acción] [Beneficio], pero [Costo], lo que [Consecuencia final].
-      text: "**Nombre Estrategia Intermedia:** [Acción que resuelve parcialmente]. [Beneficio visible], pero [costo operativo], lo que podría [consecuencia a mediano plazo en equipo/negocio].",
+      // FORMATO V6: **Nombre Estrategia:** [Acción]. [Beneficio Inmediato], [Conector] [Costo SISTÉMICO].
+      // PROHIBIDO: framing personal/emocional ("te quemas", "te odian")
+      // OBLIGATORIO: framing sistémico/estructural ("centralizas", "creas dependencia", "sacrificas escalabilidad")
+      text: "**Nombre Estrategia Intermedia:** [Acción que resuelve parcialmente]. [Beneficio visible y político], aunque [costo sistémico/estructural que suena aceptable a corto plazo].",
       score: 3,
       type: "Pragmático (Descripción del patrón intermedio)"
     },
@@ -450,13 +517,13 @@ Cada opción incorrecta debe sonar como algo que **un Manager experimentado pero
       id: 'B',
       text: "**Nombre Estrategia Óptima:** [Acción estratégica difícil]. [Beneficio sistémico a LP], aunque [fricción/costo político inmediato que hace dudar].",
       score: 5,
-      type: "Lead (Modelo mental específico)" // Ej: "Lead (Incremental De-Risking)"
+      type: "Lead (Modelo mental específico)" // Ej: "Lead (Async Ops)", "Lead (Technical Hygiene)"
     },
     {
       id: 'C',
-      text: "**Nombre Estrategia Seductora:** [Acción tentadora y rápida]. [Alivio inmediato muy atractivo], pero [riesgo de deuda cultural/técnica], lo que eventualmente [consecuencia negativa en el sistema].",
+      text: "**Nombre Estrategia Seductora:** [Acción tentadora]. [Desbloqueo inmediato o velocidad visible], pero [centraliza decisión / crea dependencia síncrona / sacrifica escalabilidad futura].",
       score: 1,
-      type: "Anti-patrón Específico / Incorrect" // Ej: "Mercenario / Incorrect"
+      type: "Anti-patrón Específico / Incorrect" // Ej: "Centralizado (Control de Calidad)", "Heroísmo Táctico"
     },
     // OPCIONAL: Solo para casos extremos de toxicidad cultural
     {
@@ -467,8 +534,11 @@ Cada opción incorrecta debe sonar como algo que **un Manager experimentado pero
     }
   ],
 
-  // EXPLANATION: [Verdad universal]. [Validación patrón común]. **[Estrategia correcta]** [modelo mental]. [Metáfora memorable].
-  explanation: "[Verdad universal sobre el problema]. El patrón '[Nombre Estrategia C/A]' [razón específica del fallo]. **La estrategia '[Nombre B]'** es superior porque [modelo mental clave]. Un Lead entiende que [principio Staff-level como **Technical Hygiene** o **Political Capital**]. [Metáfora opcional: 'Es pagar el impuesto ahora para evitar la multa después']."
+  // EXPLANATION V6 (3 Capas - Micro-Mentoría - Max 60 palabras):
+  // 1. El Diagnóstico: Desmonta la intuición incorrecta con base en realidad práctica.
+  // 2. El Anclaje Académico: Cita ley/heurística/sesgo reconocido (Bus Factor, Nielsen, Jakob, Kahneman).
+  // 3. La Síntesis: Cierra con concepto Staff en negrita + imperativo/metáfora variada (NO "Un Lead hace...").
+  explanation: "[Diagnóstico práctico del problema]. La '[Nombre Estrategia Incorrecta]' [por qué falla sistémicamente, citando **Concepto Académico** como Bus Factor o Heurística]. El **[Nombre Estrategia Correcta]** [modelo mental que lo hace superior]. [Cierre variado: imperativo directo / comparación económica / metáfora memorable]."
 }
 ```
 
@@ -480,17 +550,17 @@ Cada opción incorrecta debe sonar como algo que **un Manager experimentado pero
 
 ---
 
-## 📋 Instrucciones Finales (V4)
+## 📋 Instrucciones Finales (V6)
 
 1. **Lee el bloque específico** antes de hacer cambios
-2. **Aplica los 7 checks obligatorios** (ver Checklist de Calidad V4)
+2. **Aplica los 7 checks obligatorios** (ver Checklist de Calidad V6)
    - Formato con **negritas** en nombres de estrategias
-   - Trade-offs con consecuencia en cadena (3 niveles)
-   - Escenarios con timestamp + quotes + métricas
-   - Type field descriptivo con anti-patrones
-   - Explanations con 3 capas + metáforas
+   - Trade-offs "seductores" con framing **sistémico** (no personal/emocional)
+   - Escenarios con métricas + quotes + presión clara
+   - **Eufemismos corporativos** obligatorios (Supervisión cercana, Wartime mode, Solución táctica)
+   - Explanations con 3 capas + Anclaje Académico
    - Scoring correcto (5, 3, 1, -1)
-   - Grounding nivel Lead
+   - Grounding nivel Staff (política/sistema, no píxeles)
 3. **Usa terminología Staff-level** en explanations (sin explicarla)
 4. **Scoring simplificado**: Solo 5, 3, 1, -1 (ignora SCORING_GUIDELINES.md legacy)
 5. **Actualiza index.js** si modificas estructura de bloques
@@ -499,4 +569,4 @@ Cada opción incorrecta debe sonar como algo que **un Manager experimentado pero
 
 **Recuerda**: Cada pregunta debe entrenar el **Mindset Shift de Senior → Lead**, no solo validar conocimiento técnico.
 
-**Filosofía V4**: Las opciones incorrectas deben ser **seductoras** como propuestas reales de un VP bajo presión, no caricaturas obvias.
+**Filosofía V6**: Las opciones incorrectas deben ser **seductoras** como propuestas reales de un VP bajo presión. El costo debe ser **sistémico/estructural**, nunca personal/emocional ("te quemas", "te odian").
