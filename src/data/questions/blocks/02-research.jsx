@@ -18,7 +18,7 @@ export const research_questions = [
     id: 'research_ignore_darkmode',
     category: "User Research vs Negocio",
     icon: <Users className="w-6 h-6 text-pink-500" />,
-    scenario: "Hiciste un research cuantitativo (N=500) que dice claramente que a tus usuarios actuales NO les interesa el 'Dark Mode' (solo 12% lo usaría). Sin embargo, el CEO insiste en lanzarlo porque 'la competencia lo tiene' y Ventas reporta que 3 deals Enterprise se frenaron por su ausencia. El feature tomaría 1.5 sprints.",
+    scenario: "Tu research (N=500) muestra que solo el 12% de usuarios actuales usaría Dark Mode. Ventas reporta que 3 deals Enterprise ($900K) se frenaron por ausencia del feature. El CEO ordena: 'La competencia lo tiene, lánzalo en 1.5 sprints'.",
     question: "¿Qué haces con la evidencia?",
     options: [
       { id: 'A', text: "Propones Validación Adicional: Diseñar un test A/B con los prospectos Enterprise específicos que rechazaron el producto para medir si Dark Mode realmente cierra esos deals o es una objeción superficial.", score: 3, type: "Data-Driven (Demora decisión)" },
@@ -31,7 +31,7 @@ export const research_questions = [
     id: 'accessibility_legal_threat_action',
     category: "Accesibilidad & Riesgo Legal",
     icon: <AlertOctagon className="w-6 h-6 text-red-500" />,
-    scenario: "Es martes por la mañana. Llega una carta de abogados de un cliente Enterprise importante (20% de tu ARR) amenazando con lawsuit porque el dashboard no cumple WCAG 2.1 AA (problemas de contraste, navegación por teclado rota, screen readers incompatibles). Legal dice que el riesgo es real - este tipo de demandas suelen prosperar. El equipo está al 100% de capacidad finalizando features comprometidas para fin de trimestre (faltan 3 semanas). Ingeniería estima que arreglar los issues críticos de accesibilidad tomaría 1 sprint completo (2 semanas).",
+    scenario: "Una carta de abogados amenaza lawsuit por incumplimiento WCAG 2.1 AA en tu dashboard. El cliente representa el 20% de tu ARR. Ingeniería estima 1 sprint (2 semanas) para arreglar issues P0, pero el equipo está al 100% cerrando features comprometidas para fin de Q (faltan 3 semanas).",
     question: "¿Cómo respondes a la amenaza legal sabiendo que tienes compromisos activos?",
     options: [
       { id: 'A', text: "Tiger Team: Pausas el roadmap y asignas 3 personas (2 devs + tú) para arreglar issues P0 en 1 sprint. Comunicas el retraso por riesgo legal.", score: 5, type: "Lead (Gestión de riesgo existencial)" },
@@ -44,7 +44,7 @@ export const research_questions = [
     id: 'dark_pattern_retention_ethics',
     category: "Ética de Diseño",
     icon: <Lock className="w-6 h-6 text-slate-700" />,
-    scenario: "La retención cayó. Tu PM propone ocultar el botón de cancelar bajo 3 sub-menús y agregar un teléfono obligatorio para 'reducir el churn artificialmente'. Argumenta que 'todos los competidores lo hacen'.",
+    scenario: "La retención cayó 18% este Q. Tu PM propone ocultar el botón de cancelar bajo 3 sub-menús y agregar teléfono obligatorio. Argumenta: 'Todos los competidores lo hacen y CFO espera recuperar $420K'. Tu designer senior amenaza con no implementarlo.",
     question: "¿Qué respondes al VP de Growth sabiendo que CFO/CEO esperan $420K de retention y designer senior amenaza con no implementar?",
     options: [
       { id: 'A', text: "Obediencia Táctica: Implementas el patrón oscuro temporalmente para salvar el Q, pero documentas tu objeción y agendas un refactor para quitarlo post-deadline.", score: 1, type: "Cómplice" },
@@ -57,7 +57,7 @@ export const research_questions = [
     id: 'guerrilla_testing_speed',
     category: "Validación Ágil",
     icon: <Zap className="w-6 h-6 text-yellow-600" />,
-    scenario: "Jueves 4:30 PM. Deadline de deploy mañana para demo de renovación ($400K). Dudas si el CTA del checkout debe decir 'Confirmar Compra' o 'Proceder al Pago'. En testing interno, 2 de 6 usuarios dudaron. El botón es crítico (78% conversión). No hay tiempo para research formal ni A/B testing. El Tech Lead exige el copy final en 90 minutos. Tu UX Writer está fuera. Benchmarking es inconcluso (Stripe, Salesforce y competidores usan términos distintos).",
+    scenario: "Jueves 4:30 PM. Deploy mañana para demo de renovación ($400K). Dudas si el CTA del checkout debe decir 'Confirmar Compra' o 'Proceder al Pago' (78% conversión en juego). El Tech Lead exige el copy final en 90 minutos. Tu UX Writer está fuera y el benchmarking es inconcluso.",
     question: "¿Cómo decides el copy en 90 minutos con $400K en juego?",
     options: [
       { id: 'A', text: "Benchmarking Contextual: Auditas rápido a 3 competidores B2B directos (no e-commerce). Si hay consenso en flujos de 'pago de facturas', lo adoptas y justificas como 'estándar de industria'. Asumes que ellos validaron.", score: 3, type: "Best practice contextual (Asume que competidores testearon)" },
@@ -72,7 +72,7 @@ export const research_questions = [
     id: 'dev_handoff_war_library',
     category: "Colaboración con Ingeniería",
     icon: <Code className="w-6 h-6 text-blue-500" />,
-    scenario: "Cliente Enterprise exige 'Drag & Drop' para cerrar un deal de $280K. Tech Lead dice que el stack legacy requiere 3 sprints para implementarlo. Tienes 1 sprint. CTO prohíbe refactors complejos hasta el próximo Q.",
+    scenario: "Cliente Enterprise ($280K) exige 'Drag & Drop' para cerrar el deal. El stack legacy requiere 3 sprints según Tech Lead, pero solo tienes 1. El CTO prohíbe refactors complejos hasta Q+1.",
     question: "¿Cómo desbloqueas la situación con cliente esperando, tech debt limitante, y equipo frustrado?",
     options: [
       { id: 'A', text: "Pair Programming Heroico: Te sientas con el dev a intentar hackear una solución en el stack viejo. Arriesgas tu tiempo y rol para salvar el sprint.", score: 3, type: "Heroico técnico (Costo personal alto)" },
@@ -85,7 +85,7 @@ export const research_questions = [
     id: 'copy_late_change_legal',
     category: "Content Strategy",
     icon: <FileText className="w-6 h-6 text-gray-500" />,
-    scenario: "Es miércoles por la tarde. El lanzamiento del nuevo flujo de onboarding está programado para este viernes al mediodía (demo con inversores clave el lunes). El equipo Legal acaba de aprobar los textos pero con cambios obligatorios: ahora cada pantalla tiene un disclaimer de 4-5 líneas (vs el placeholder de 1 línea que habías diseñado) para cumplir regulaciones GDPR + requisitos de consentimiento. El texto completo rompe todo el diseño móvil. Ingeniería dice que rediseñar las 7 pantallas tomaría 1.5-2 días mínimo.",
+    scenario: "Miércoles, 48h antes del launch del onboarding (demo con inversores el lunes). Legal aprueba los textos pero con disclaimers de 4-5 líneas por pantalla (vs 1 línea diseñada) para cumplir GDPR. El texto rompe el diseño móvil. Ingeniería dice que rediseñar las 7 pantallas tomaría 1.5-2 días.",
     question: "¿Cómo resuelves el conflicto sin demorar el lanzamiento ni incumplir Legal?",
     options: [
       { id: 'A', text: "Progressive Disclosure Patterns: Implementas soluciones de UI que acomodan el texto legal sin rediseño masivo: disclaimers colapsados con 'Leer más', tooltips con iconos de info, o modals al hacer click. Mantienes el flujo visual limpio y cumples la norma.", score: 5, type: "Lead (Problem solving de patterns)" },
@@ -98,7 +98,7 @@ export const research_questions = [
     id: 'design_committee_control',
     category: "Gestión de Stakeholders",
     icon: <Users className="w-6 h-6 text-indigo-500" />,
-    scenario: "En una reunión de Design Review con 8 stakeholders (CEO, CFO, Head of Sales, Marketing, Product, 3 VPs), la discusión sobre el rediseño del dashboard se descarrila completamente. Durante 20 minutos están debatiendo si el botón principal debe ser azul o verde basados solo en preferencias personales. El CEO dice 'no me gusta el verde, mi esposa tampoco'. El tiempo de reunión se está acabando y aún quedan 4 pantallas críticas por revisar.",
+    scenario: "Design Review con 8 stakeholders (CEO, CFO, Heads). La discusión del dashboard lleva 20 minutos bloqueada en 'azul vs verde' basada en preferencias personales. El CEO: 'No me gusta el verde, mi esposa tampoco'. Quedan 4 pantallas críticas por revisar y el tiempo se acaba.",
     question: "¿Cómo recuperas el control de la reunión sin al ienar a los executives?",
     options: [
       { id: 'A', text: "Test A/B Rápido: Propones hacer un A/B test de 3 días la próxima semana con usuarios reales para que los datos decidan entre azul y verde, y así satisfacer a todos los stakeholders con evidencia objetiva.", score: 3, type: "Data-driven (Demora decisión)" },
@@ -111,7 +111,7 @@ export const research_questions = [
     id: 'tool_debate_figma_penpot',
     category: "Design Ops & Herramientas",
     icon: <Zap className="w-6 h-6 text-yellow-500" />,
-    scenario: "Dos diseñadores senior proponen formalmente migrar de Figma a Penpot (open source) argumentando: a) Ahorro de $12K anuales en licencias, b) Principios open-source, c) Evitar vendor lock-in. Sin embargo, tienes un Design System maduro con 250+ componentes en Figma y 3 integraciones críticas (Storybook, Zeplin, Dev Mode). El equipo de ingeniería ya está familiarizado con el workflow actual. La migración requeriría reconstruir todo desde cero, estimado en 6-8 semanas de trabajo.",
+    scenario: "Dos diseñadores senior proponen migrar de Figma a Penpot (open source) para ahorrar $12K anuales y evitar vendor lock-in. Tienes un DS maduro con 250+ componentes en Figma y 3 integraciones críticas (Storybook, Dev Mode). La migración requiere reconstruir todo desde cero: 6-8 semanas estimadas.",
     question: "¿Cómo evalúas la decisión de cambiar herramientas?",
     options: [
       { id: 'A', text: "ROI Analysis: Calculas las horas muertas de migración (320-400h) + reconstrucción del DS + re-training del equipo vs el ahorro de licencias. Si el costo total supera $50-60K y paraliza el roadmap 2 meses, no es viable hoy. Propones reevaluar en 12 meses.", score: 5, type: "Lead (Decisión basada en números)" },
@@ -126,7 +126,7 @@ export const research_questions = [
     id: 'remote_sync_handoff',
     category: "Trabajo Remoto",
     icon: <Globe className="w-6 h-6 text-blue-400" />,
-    scenario: "Tu equipo de ingeniería está en Europa (6 horas adelante). El Tech Lead reporta que pierden el 40% de su mañana tratando de adivinar qué pantallas están listas para dev. La velocidad del sprint cayó 15% y el CTO te culpa: 'Tu equipo diseña mientras el mío duerme, y cuando despiertan, no hay specs claras'. Amenaza con imponer 'Daily Sync' obligatorio a las 6 AM tu hora.",
+    scenario: "Ingeniería Europa (6h adelante) pierde el 40% de su mañana adivinando qué pantallas están listas para dev. La velocidad cayó 15%. El CTO te culpa: 'Tu equipo diseña mientras el mío duerme'. Amenaza con Daily Sync obligatorio a las 6 AM tu hora.",
     question: "¿Cómo organizas el archivo para colaboración asíncrona y evitar madrugar?",
     options: [
       { id: 'A', text: "Sync Meeting de Compromiso: Aceptas la reunión de 6 AM dos veces por semana. Es brutal para tu balance, pero calma al CTO y asegura claridad inmediata.", score: 1, type: "Mártir (Insostenible)" },
@@ -139,7 +139,7 @@ export const research_questions = [
     id: 'meeting_overload_protection',
     category: "Productividad",
     icon: <Users className="w-6 h-6 text-purple-400" />,
-    scenario: "Haces una retrospectiva anónima de Q y el 80% del equipo reporta que 'no tienen tiempo para diseñar' porque pasan 5-6 horas diarias en reuniones (Dailies 30min, Planning 2h, Syncs con Product 1h, Syncs con Engineering 1h, Design Reviews 1.5h, All-Hands 30min). El output de diseño ha caído 40% vs el Q anterior. Los PMs argumentan que las reuniones de sync son críticas para 'alignment'. Ingeniería dice que sin los dailies pierden contexto.",
+    scenario: "Retrospectiva anónima: 80% del equipo reporta que pasan 5-6h diarias en reuniones (Dailies, Planning, Syncs, Reviews). El output de diseño cayó 40% vs Q anterior. Los PMs argumentan que las reuniones son 'críticas para alignment'.",
     question: "¿Qué medida estructural implementas para recuperar tiempo de trabajo profundo?",
     options: [
       { id: 'A', text: "No-Meeting Blocks Institucionales: Decretas Martes y Jueves como 'Focus Days' absolutos (no meetings de 9 AM a 5 PM a nivel de  toda la empresa, enforcement en calendarios). Las reuniones críticas se comprimen en Lunes/Miércoles/Viernes. Requiere aprobación de CPO y CTO.", score: 5, type: "Lead (Cambio sistémico, costo político)" },
@@ -152,7 +152,7 @@ export const research_questions = [
     id: 'file_chaos_structure',
     category: "Design Ops",
     icon: <FileText className="w-6 h-6 text-gray-500" />,
-    scenario: "Un desarrollador implementó la versión incorrecta de la Home porque tomó el archivo 'Final_V2' en lugar de 'Final_Real_V3'. Esto costó 1 semana de rework y retrasó el lanzamiento. El VP de Engineering está furioso: 'Si Diseño no puede organizar sus archivos, nosotros no podemos confiar en sus entregas'.",
+    scenario: "Un dev implementó la versión incorrecta de Home (tomó 'Final_V2' en vez de 'Final_Real_V3'). Costó 1 semana de rework. El VP de Engineering: 'Si Diseño no puede organizar sus archivos, nosotros no podemos confiar en sus entregas'.",
     question: "¿Qué solución implementas el día 1 para recuperar confianza?",
     options: [
       { id: 'A', text: "Limpieza Heroica: Te quedas el fin de semana organizando todo el Drive. El lunes anuncias 'todo limpio'. Resuelve el síntoma hoy, pero el caos volverá mañana.", score: 1, type: "Mártir (No escala)" },
@@ -167,7 +167,7 @@ export const research_questions = [
     id: 'gdpr_cookie_consent_ux',
     category: "Compliance & UX",
     icon: <ShieldAlert className="w-6 h-6 text-orange-600" />,
-    scenario: "Legal exige un banner de cookies que bloquee toda la pantalla hasta que el usuario acepte. Sabes que esto aumenta el bounce rate un 40%.",
+    scenario: "Legal exige un banner de cookies que bloquee toda la pantalla hasta que el usuario acepte. Tus tests internos muestran que esto aumenta el bounce rate un 40%. Marketing está preocupado por la conversión.",
     question: "¿Cómo diseñas el consentimiento sin destruir la conversión?",
     options: [
       { id: 'A', text: "Compliance Malicioso: Diseñar el banner más molesto posible para que Legal vea la caída de métricas y reconsidere. Usas el fracaso como argumento.", score: 1, type: "Sabotaje" },
@@ -180,7 +180,7 @@ export const research_questions = [
     id: 'addictive_design_notifications',
     category: "Ética de Diseño",
     icon: <Heart className="w-6 h-6 text-pink-500" />,
-    scenario: "El PM te pide diseñar un sistema de notificaciones 'tipo casino' (sonidos, luces, recompensas variables) para aumentar el DAU (Daily Active Users) en una app para adolescentes. Sabes que esto genera adicción.",
+    scenario: "El PM te pide diseñar notificaciones 'tipo casino' (sonidos, luces, recompensas variables) para aumentar el DAU en una app para adolescentes. Growth espera un 25% más de engagement. Sabes que esto genera adicción.",
     question: "¿Cuál es tu postura ética?",
     options: [
       { id: 'A', text: "Negativa de Conciencia: 'No diseño mecánicas adictivas para menores'. Te niegas rotundamente y escalas el tema a HR o Ethics Committee si existe.", score: 5, type: "Lead (Guardián Ético)" },
@@ -193,7 +193,7 @@ export const research_questions = [
     id: 'data_collection_transparency',
     category: "Privacidad & Trust",
     icon: <Lock className="w-6 h-6 text-slate-700" />,
-    scenario: "Marketing quiere pedir número de teléfono y fecha de nacimiento en el registro 'para futuras campañas'. Esto no es necesario para el producto y aumenta la fricción.",
+    scenario: "Marketing quiere pedir número de teléfono y fecha de nacimiento en el registro 'para futuras campañas'. Tus tests muestran que cada campo adicional reduce conversión un 8%. Esto no es necesario para el producto core.",
     question: "¿Cómo proteges la privacidad del usuario y la conversión?",
     options: [
       { id: 'A', text: "Progressive Profiling: Pedir esos datos solo cuando sean necesarios para una feature específica (ej: regalo de cumpleaños), no en el registro.", score: 5, type: "Lead (Data Minimization)" },
@@ -206,7 +206,7 @@ export const research_questions = [
     id: 'etica_gambling_mechanics_gamification',
     category: "Ética de Diseño",
     icon: <Zap className="w-6 h-6 text-yellow-500" />,
-    scenario: "Tu app de finanzas personales quiere agregar 'Cajas Misteriosas' con premios en efectivo por ahorrar. El equipo legal dice que es legal, pero tú sientes que introduce mecánicas de juego (gambling) en una herramienta de salud financiera.",
+    scenario: "Tu app de finanzas personales quiere agregar 'Cajas Misteriosas' con premios en efectivo por ahorrar. Legal dice que es legal. Growth proyecta +35% de retención. Tú sientes que introduce mecánicas de gambling en una herramienta de salud financiera.",
     question: "¿Cómo abordas el conflicto ético?",
     options: [
       { id: 'A', text: "Rediseño Conductual: Proponer 'Streaks' o 'Badges' de logro en lugar de premios aleatorios. Fomentar el hábito por constancia, no por azar.", score: 5, type: "Lead (Gamificación Positiva)" },
@@ -219,7 +219,7 @@ export const research_questions = [
     id: 'etica_ai_generated_fake_testimonials',
     category: "Ética de Diseño",
     icon: <MessageSquare className="w-6 h-6 text-purple-400" />,
-    scenario: "Marketing generó 50 testimonios de usuarios usando ChatGPT para 'llenar' la landing page de lanzamiento porque aún no tienen clientes reales. Te piden diseñarlos para que parezcan reales (con fotos de stock).",
+    scenario: "Marketing generó 50 testimonios falsos con ChatGPT para la landing de lanzamiento (aún no hay clientes reales). Te piden diseñarlos con fotos de stock para 'agregar credibilidad'. El launch es en 3 días.",
     question: "¿Qué haces ante una solicitud deshonesta?",
     options: [
       { id: 'A', text: "Negativa Absoluta: 'No pondré mi nombre en un diseño que engaña a los usuarios'. Te niegas a diseñar componentes para contenido falso.", score: 5, type: "Lead (Integridad)" },
@@ -232,7 +232,7 @@ export const research_questions = [
     id: 'validacion_prototype_vs_pixel_perfect',
     category: "Validación Ágil",
     icon: <Zap className="w-6 h-6 text-yellow-500" />,
-    scenario: "Tienes 2 días para validar una idea compleja. Tu equipo quiere hacer un prototipo en alta fidelidad 'para que se vea profesional'. Tú sabes que el alta fidelidad distrae a los usuarios con detalles visuales (colores, sombras) en lugar del concepto.",
+    scenario: "Tienes 2 días para validar una idea compleja con usuarios. Tu equipo quiere hacer un prototipo en alta fidelidad 'para que se vea profesional'. Sabes que el alta fidelidad distrae con detalles visuales en lugar del concepto core.",
     question: "¿Cómo diriges la estrategia de prototipado?",
     options: [
       { id: 'A', text: "Baja Fidelidad (Lo-Fi): Forzar el uso de wireframes en blanco y negro (Balsamiq o Figma Lo-Fi). Enfocar el test exclusivamente en flujo y propuesta de valor.", score: 5, type: "Lead (Focus on Value)" },
@@ -245,7 +245,7 @@ export const research_questions = [
     id: 'validacion_research_synthesis_paralysis',
     category: "Validación Ágil",
     icon: <Search className="w-6 h-6 text-blue-500" />,
-    scenario: "Hicieron 20 entrevistas de usuario. El equipo de Research quiere tomarse 2 semanas para transcribir, codificar y sintetizar un reporte perfecto de 50 páginas. El sprint de desarrollo empieza en 3 días.",
+    scenario: "El equipo de Research hizo 20 entrevistas de usuario. Quieren 2 semanas para transcribir, codificar y sintetizar un reporte de 50 páginas. El sprint de desarrollo empieza en 3 días y el PM está bloqueado esperando insights.",
     question: "¿Cómo obtienes insights accionables a tiempo?",
     options: [
       { id: 'A', text: "Debrief Diario: Implementar sesiones de 30 min post-entrevistas donde el equipo comparte 'Top 3 hallazgos' inmediatamente. Construir el backlog con esto, el reporte formal viene después.", score: 5, type: "Lead (Agile Research)" },
@@ -258,7 +258,7 @@ export const research_questions = [
     id: 'legal_algorithmic_bias_gender',
     category: "Edge Cases Legales/Éticos",
     icon: <Scale className="w-6 h-6 text-indigo-600" />,
-    scenario: "Estás diseñando un algoritmo de aprobación de créditos. Data Science te pide incluir 'Código Postal' como variable. Sabes que históricamente esto correlaciona con raza y nivel socioeconómico, introduciendo sesgo (redlining). Legal dice que 'técnicamente no es raza, así que es legal'.",
+    scenario: "Diseñas un algoritmo de aprobación de créditos. Data Science pide incluir 'Código Postal' como variable (mejora precisión del modelo 12%). Sabes que esto correlaciona con raza/nivel socioeconómico (redlining histórico). Legal: 'Técnicamente no es raza, es legal'.",
     question: "¿Qué haces ante un sesgo algorítmico legal pero no ético?",
     options: [
       { id: 'A', text: "Challenge Ético: Presentar evidencia de 'Proxy Bias' a los stakeholders. Proponer excluir variables geográficas para garantizar equidad real, aunque baje un poco la precisión del modelo.", score: 5, type: "Lead (Algorithmic Justice)" },
@@ -271,7 +271,7 @@ export const research_questions = [
     id: 'legal_accessibility_wcag_lawsuit',
     category: "Edge Cases Legales/Éticos",
     icon: <ShieldAlert className="w-6 h-6 text-red-600" />,
-    scenario: "Un competidor fue demandado por no ser accesible. Tu CEO entra en pánico y pide 'Hacer la app accesible para mañana'. Es imposible, requiere auditoría y refactor de meses.",
+    scenario: "Un competidor fue demandado por no cumplir WCAG (settlement de $250K). Tu CEO entra en pánico: 'Hacer la app accesible para mañana'. Es imposible. Requiere auditoría y refactor de meses.",
     question: "¿Cómo gestionas el pánico ejecutivo con realidad técnica?",
     options: [
       { id: 'A', text: "Solución Rápida de Terceros: Instalar un plugin de accesibilidad que promete cumplimiento inmediato con una línea de código. Permite mostrar progreso al CEO hoy mientras se planifica la remediación estructural.", score: 1, type: "Solución Rápida" },
@@ -284,7 +284,7 @@ export const research_questions = [
     id: 'legal_data_sovereignty_gdpr_us_servers',
     category: "Edge Cases Legales/Éticos",
     icon: <Globe className="w-6 h-6 text-blue-500" />,
-    scenario: "Tu empresa (basada en LATAM) quiere expandirse a Europa. Tu arquitectura actual guarda todos los datos en servidores de AWS en Virginia (USA). GDPR prohíbe transferir datos de ciudadanos UE a USA sin protecciones específicas. El CTO dice que migrar servidores es 'muy caro'.",
+    scenario: "Tu empresa (LATAM) quiere expandirse a Europa. Todos los datos están en AWS Virginia (USA). GDPR prohíbe transferir datos de ciudadanos UE a USA sin protecciones específicas. El CTO: 'Migrar servidores es muy caro, diseña la UI mientras nosotros vemos el tema'.",
     question: "¿Cuál es tu rol desde Producto/Diseño en este problema de infraestructura?",
     options: [
       { id: 'A', text: "Alertar el Blocker: Marcar la expansión a Europa como 'Bloqueada por Compliance' en el roadmap. No diseñar ni una pantalla para Europa hasta que Infra resuelva el almacenamiento.", score: 5, type: "Lead (Strategic Blocker)" },
@@ -297,7 +297,7 @@ export const research_questions = [
     id: 'legal_minor_protection_addictive_mechanics',
     category: "Edge Cases Legales/Éticos",
     icon: <Users className="w-6 h-6 text-purple-500" />,
-    scenario: "Descubres que el 15% de tus usuarios son menores de 13 años que mintieron en su fecha de nacimiento. Tu app tiene chat abierto y compras in-app. COPPA y regulaciones locales imponen multas masivas por recolectar datos de menores sin consentimiento parental.",
+    scenario: "Descubres que el 15% de tus usuarios son menores de 13 años (mintieron en su edad). Tu app tiene chat abierto y compras in-app. COPPA impone multas de hasta $43K por menor afectado. Growth dice 'no toques nada'.",
     question: "¿Qué acción inmediata tomas?",
     options: [
       { id: 'A', text: "Purga de Cuentas: Identificar patrones de comportamiento infantil y cerrar esas cuentas preventivamente. Perder usuarios para proteger la empresa.", score: 3, type: "Protección Agresiva" },
@@ -310,7 +310,7 @@ export const research_questions = [
     id: 'user_research_budget_cut_qual_vs_quant',
     category: "User Research",
     icon: <BarChart2 className="w-6 h-6 text-green-600" />,
-    scenario: "El CFO cortó el presupuesto de herramientas de Research (adiós UserTesting, adiós Dovetail). Solo te queda Google Analytics (gratis) y Google Meet. El PM dice: 'Bueno, ahora seremos 100% Data-Driven con Analytics, ya no necesitamos hablar con usuarios'.",
+    scenario: "El CFO cortó el presupuesto de Research (adiós UserTesting, adiós Dovetail). Solo queda Google Analytics y Google Meet. El PM: 'Ahora seremos 100% Data-Driven con Analytics, ya no necesitamos hablar con usuarios'.",
     question: "¿Cómo defiendes el research cualitativo sin presupuesto?",
     options: [
       { id: 'A', text: "Guerrilla Research: Reclutar usuarios gratis (redes sociales, customer support tickets) y usar herramientas gratuitas. Demostrar que el 'Por qué' (Cuali) explica el 'Qué' (Cuanti).", score: 5, type: "Lead (Resourceful)" },
@@ -323,7 +323,7 @@ export const research_questions = [
     id: 'user_research_ceo_demands_speed_vs_quality',
     category: "User Research",
     icon: <Timer className="w-6 h-6 text-red-500" />,
-    scenario: "El CEO quiere lanzar una feature nueva en 2 semanas. Te pide 'saltarte el research esta vez' porque 'yo soy el usuario target y sé que esto funciona'.",
+    scenario: "El CEO quiere lanzar una feature nueva en 2 semanas. Te ordena: 'Sáltate el research esta vez, yo soy el usuario target y sé que esto funciona'. Ya invirtió $80K en desarrollo.",
     question: "¿Cómo gestionas el riesgo de construir lo incorrecto?",
     options: [
       { id: 'A', text: "Research Paralelo (Just-in-Time): Aceptar el deadline pero correr tests de usabilidad rápidos (24h) con prototipos en papel/figma mientras los devs preparan el entorno. Si encuentras un blocker grave, tienes datos para frenar.", score: 5, type: "Lead (Agile Validation)" },
@@ -336,7 +336,7 @@ export const research_questions = [
     id: 'user_research_conflicting_data_survey_vs_usability',
     category: "User Research",
     icon: <Brain className="w-6 h-6 text-purple-500" />,
-    scenario: "En una encuesta (N=1000), el 70% de los usuarios dijo que QUERÍA un 'Dashboard Personalizable'. En tests de usabilidad (N=10), nadie usó la personalización y todos se confundieron con la complejidad extra.",
+    scenario: "Encuesta (N=1000): 70% de usuarios QUIERE 'Dashboard Personalizable'. Tests de usabilidad (N=10): nadie usa la personalización y todos se confunden con la complejidad. Ingeniería estima 3 sprints para construirlo.",
     question: "¿A qué data le crees?",
     options: [
       { id: 'A', text: "Creer a la Encuesta (Lo que dicen): 1000 personas son estadística, 10 son anécdota. Construyes el dashboard.", score: 1, type: "Ingenuo (Self-reported data bias)" },

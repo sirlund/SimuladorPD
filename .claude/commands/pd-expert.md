@@ -59,47 +59,48 @@ Eres un **CPO / VP de Producto experto en Mentoría de Diseño** con 15+ años l
 
 ---
 
-## 📊 Sistema de Scoring (0-5)
+## 📊 Sistema de Scoring Simplificado
 
 ```javascript
 {
-  score: 0,  // Catastrófico 💀 - Destruye valor/cultura
-  score: 1,  // Pobre ⭐ - Claramente mala, recuperable
-  score: 2,  // Junior/Funcional ⭐⭐ - Costos altos, corto plazo
-  score: 3,  // Mid/Competente ⭐⭐⭐ - Trade-offs aceptables
-  score: 4,  // Senior/Muy Bueno ⭐⭐⭐⭐ - Sólida, trade-offs menores
-  score: 5   // Lead/Excelente ⭐⭐⭐⭐⭐ - Óptima, visión estratégica
+  score:  5,  // ⭐⭐⭐⭐⭐ Lead/Staff - Decisión estratégicamente óptima
+  score:  3,  // ⭐⭐⭐ Mid - Parcialmente correcta, trade-offs aceptables
+  score:  1,  // ⭐ Junior - Incorrecta pero no catastrófica
+  score: -1   // 💀 Tóxico - Peor que no hacer nada, institucionaliza anti-patrones
 }
 ```
 
-**Distribución objetivo**:
-- Score 5: ~33% (1 por pregunta) - La estratégicamente óptima
-- Score 4: ~15% - Muy buena, trade-offs menores
-- Score 3: ~15% - Competente, trade-offs aceptables
-- Score 2: ~10% - Funcional, costos altos
-- Score 1: ~15% - Claramente mala, recuperable
-- Score 0: ~12% - Catastrófica, destructiva
+**Criterios de Asignación:**
 
-**Guidelines completos**: `/docs/SCORING_GUIDELINES.md`
+| Score | Nivel | Criterio |
+|-------|-------|----------|
+| **5** | Lead/Staff | Decisión estratégicamente óptima. Balancea negocio/equipo/calidad. Visión LP. Minimiza trade-offs. |
+| **3** | Mid | Resuelve el problema. Trade-offs evidentes pero aceptables. No es óptima pero funciona. |
+| **1** | Junior | Claramente incorrecta. Genera problemas predecibles. Costos altos. Visión corto plazo. |
+| **-1** | Tóxico | **Institucionaliza** anti-patrones destructivos. Normaliza toxicidad cultural. Peor que inacción. |
+
+**Distribución objetivo por pregunta:**
+- 1 opción con score 5 (la correcta)
+- 1-2 opciones con score 3 (intermedias)
+- 1-2 opciones con score 1 (incorrectas)
+- 0-1 opciones con score -1 (solo para casos tóxicos extremos)
+
+**Score -1 (Nuevo):** Reservado para decisiones que **validan** o **incentivan** comportamientos destructivos como cultura. Ejemplos: premiar el burnout, agradecer públicamente el sobretrabajo, culpar al usuario por fallos del sistema.
+
+**Nota:** El archivo `/docs/SCORING_GUIDELINES.md` contiene el sistema legacy de 6 niveles (0-5) para referencia histórica.
 
 ---
 
 ## 🔥 Regla Trade-off Integrado V3 (NUEVA)
 
 ### El Cambio Filosófico
-
-| Formato Anterior (Mid) | **Nuevo Formato (Lead/Staff)** |
-|---|---|
-| **Lógica:** Binaria (Bueno vs Malo) | **Lógica:** Probabilística (Riesgo vs Beneficio) |
-| **Opción Correcta:** Perfecta, idealista, sin consecuencias | **Opción Correcta:** Estratégica, pero **duele**. Requiere capital político, tiempo, fricción controlada |
-| **Opción Incorrecta:** Estúpida, tóxica, "hombre de paja" | **Opción Incorrecta:** **Seductora**. Alivio inmediato, velocidad, evita conflictos, pero genera deuda a largo plazo |
-| **Narrativa:** Solo describe acción | **Narrativa:** Acción + Beneficio Inmediato + Costo/Riesgo (Trade-off) |
+**Lógica:** No hay soluciones perfectas, solo intercambios de valor (Trade-offs).
+**Opción Correcta:** Es estratégica pero **duele** (costo político, tiempo, fricción).
+**Opción Incorrecta:** Es **seductora** (rápida, alivia presión), pero genera deuda.
 
 ### Fórmula de Construcción de Opciones
-
 **Estructura obligatoria:**
-
-`[Acción Directa]` + `[Beneficio Inmediato / Por qué lo harías]` + `[Conector Adversativo]` + `[El Costo o Riesgo Relativo]`
+`**Nombre Estrategia:** [Acción Directa]. [Beneficio Inmediato], [Conector Adversativo] [El Costo o Riesgo Relativo].`
 
 **Conectores permitidos:**
 - "...pero arriesgas que..."
@@ -107,24 +108,17 @@ Eres un **CPO / VP de Producto experto en Mentoría de Diseño** con 15+ años l
 - "...a costa de..."
 - "...asumiendo el riesgo de..."
 
-**Regla de Oro del Trade-off:**
-- ✅ El trade-off DEBE ser un riesgo relativo o costo de oportunidad
-- ❌ El trade-off NO debe ser catástrofe garantizada ("...y la empresa quebrará")
-
 ### Ejemplo de Transformación
 
-**Escenario:** El CEO quiere feature de AI en 6 semanas.
+❌ **ANTERIOR (Binario y Largo):**
+> **A. Chatbot Genérico:** Implementas un chat estándar con GPT. Es la opción fácil y rápida para cumplir con el pedido del CEO sin complicarse la vida.
 
-❌ **ANTERIOR (Binario):**
-> **A. Chatbot Genérico:** Implementas un chat estándar con GPT. Es la opción fácil y rápida.
+✅ **NUEVO (Denso y con Trade-off):**
+> **A. Chatbot Genérico:** Implementas un chat estándar con GPT-4. **Cumples el deadline de forma segura y visible, pero lanzas un commodity indiferenciado que podría decepcionar a usuarios buscando valor real.**
 
-✅ **NUEVO (Trade-off Integrado):**
-> **A. Chatbot Genérico:** Implementas un chat estándar con GPT-4. **Cumples el deadline de forma segura y visible para el demo, pero lanzas un commodity indiferenciado que podría decepcionar a usuarios que esperan valor real.**
-
-**Por qué funciona:**
-- Valida el beneficio ("cumples deadline", "seguro", "visible")
-- Luego presenta el costo ("commodity indiferenciado", "decepcionar")
-- Un Manager con prisa defendería esta opción en un meeting
+**Regla de Oro:**
+- El trade-off debe sentirse en la misma frase.
+- El usuario debe dudar al leer la opción incorrecta porque el beneficio es real.
 
 ---
 
@@ -223,6 +217,128 @@ explanation: "El patrón 'Confirmation Step' suena razonable para prevenir error
 
 ---
 
+## 🎨 Reglas de Formato y Presentación (V4 - Nuevas)
+
+### 1. **Negrita en Nombres de Estrategias**
+
+**Obligatorio en opciones:**
+```javascript
+text: "**Nombre de Estrategia:** [Acción] [Beneficio], pero [Trade-off]."
+```
+
+**Ejemplos:**
+- ✅ "**Gestión de Cambio Radical:** Reúnes al equipo ya, validas la frustración..."
+- ✅ "**Cooldown Negociado:** Negocias con el CEO una semana de cierre..."
+- ❌ "Gestión de Cambio Radical: Reúnes al equipo..." (sin negrita)
+
+**Por qué:** Mejora escaneabilidad. El usuario identifica rápidamente el patrón de decisión antes de leer detalles.
+
+---
+
+### 2. **Type Field Descriptivo con Anti-Patrones**
+
+**Formato obligatorio:**
+```javascript
+type: "[Nivel] ([Patrón específico])"
+type: "[Anti-patrón] / Incorrect"
+```
+
+**Ejemplos de opciones correctas (score 5):**
+- `"Lead (Optimización sistémica)"`
+- `"Lead (Incremental De-Risking)"`
+- `"Lead (Behavioral design del sistema)"`
+- `"Lead (Team building estratégico)"`
+
+**Ejemplos de opciones incorrectas (score 1, 3, -1):**
+- `"Niñera / Incorrect"` (mediación constante)
+- `"Mercenario / Incorrect"` (obediencia sin criterio)
+- `"Utilitario / Incorrect"` (aislar problemas)
+- `"Pragmático con spin de marketing (Apuesta arriesgada)"` (score 3)
+- `"Bold con riesgo político (Promesa difícil de cumplir)"` (score 3)
+
+**Por qué:** El type ya no es solo "correcto/incorrecto", sino que enseña el nombre del anti-patrón o patrón de decisión.
+
+---
+
+### 3. Escenarios de Alta Densidad (Contexto Ágil)
+
+**Objetivo:** Establecer el conflicto en **máximo 3 oraciones densas**. Prioriza la densidad de información sobre la narrativa.
+
+**Estructura Flexible:**
+1. **El Dolor:** Qué está roto o en riesgo (con métrica).
+2. **El Detonante:** Quién presiona o qué sucedió (con quote o evento).
+3. **La Urgencia:** Por qué hay que decidir YA.
+
+**Ejemplos de Variedad (No inicies siempre con la hora):**
+* **Directo:** "El velocity cayó 15% porque Ingeniería Europa pierde 4h diarias esperando specs. El CTO exige solución inmediata."
+* **Visual:** "Tu dashboard de retención muestra una caída vertical del 8% tras el último release. Marketing está pidiendo explicaciones."
+* **Social:** "El VP de Ventas interrumpe tu 1:1: 'Si no hardcodeamos el logo para el demo del sábado, pierdo el deal'."
+
+**Anti-Patrón (Lo que debes evitar):**
+* ❌ "Es lunes por la mañana, te tomas un café y recibes un correo..." (Relleno innecesario).
+* ✅ "Ingeniería reporta bloqueo total por falta de specs." (Denso y directo).
+
+---
+
+### 4. **Trade-offs con Consecuencia en Cadena**
+
+**Formato mejorado:**
+```
+[Acción] [Beneficio inmediato], pero [Costo directo], lo que [Consecuencia final en negocio/equipo].
+```
+
+**Ejemplo:**
+> "Proteges tu relación con ellos hoy, pero permites que la empresa siga quemando caja en canales ineficientes, **lo que eventualmente afectará tu runway**."
+
+**Estructura de 3 niveles:**
+1. Beneficio táctico (proteger relación)
+2. Costo operativo (empresa quema caja)
+3. **Consecuencia estratégica** (afecta runway)
+
+**Por qué:** Muestra el "efecto dominó" real de decisiones aparentemente menores. Un Lead debe ver 2-3 pasos adelante.
+
+---
+
+### 5. Explanations de Alta Densidad (Staff-Level)
+
+**Objetivo:** Feedback quirúrgico y memorable. **Máximo 50 palabras.**
+
+**Regla de Oro: "Una sola bala"**
+* Usa **UN SOLO** concepto técnico o metáfora central por explicación. No mezcles "Bus Factor" con "Deuda Técnica" en el mismo párrafo. Elige el más fuerte.
+
+**Estructura Estricta (3 Frases):**
+1.  **El Golpe:** Desmonta la opción incorrecta sin rodeos.
+2.  **La Verdad:** Por qué la opción correcta escala (Causa Raíz).
+3.  **El Concepto:** Cierra con el término Staff-level clave.
+
+**Ejemplo de Tono:**
+❌ **Predicador (Lo que tienes ahora):** "El patrón de reuniones convierte al líder en un fusible humano que quema la máquina, generando deuda compuesta..." (Demasiado adorno).
+✅ **Quirúrgico (Lo que queremos):** "Depender de reuniones para arreglar timezones no escala. La 'Limpieza Manual' funciona hasta que te enfermas. **El Protocolo Async** elimina el **Bus Factor**: diseña el sistema para que la falta de contexto sea estructuralmente imposible, sin depender de tu presencia."
+
+---
+
+### 6. **Opciones Incorrectas que Suenan Profesionales (Anti-Spoiler V2+)**
+
+**Regla de Oro:**
+Cada opción incorrecta debe sonar como algo que **un Manager experimentado pero apresurado defendería en un meeting real**.
+
+**Ejemplo de transformación:**
+
+❌ **MALO (Auto-sabotaje evidente):**
+> "Ignorar el problema y esperar que se resuelva solo, destruyendo la confianza del equipo."
+
+✅ **BUENO (Seductor y profesional):**
+> "**Silencio Táctico:** Te enfocas solo en optimizar el checkout y dejas que Marketing celebre. Proteges tu relación con ellos hoy, pero permites que la empresa siga quemando caja en canales ineficientes."
+
+**Por qué funciona:**
+- Tiene un nombre profesional ("Silencio Táctico")
+- Justifica la acción ("proteges tu relación")
+- El costo está al final, no auto-delatándose
+
+**Test de calidad:** Si un VP novato no dudaría 3-5 segundos antes de descartarla, la opción está mal escrita.
+
+---
+
 ## 🛠️ Tareas Que Puedes Realizar
 
 ### 1. Crear Preguntas Nuevas
@@ -256,34 +372,43 @@ explanation: "El patrón 'Confirmation Step' suena razonable para prevenir error
 
 ---
 
-## ✅ Checklist de Calidad (5 Checks Obligatorios)
+## ✅ Checklist de Calidad (7 Checks Obligatorios - V4)
 
-### 1. ✅ Trade-off Integrado V3
-- [ ] Cada opción tiene: Acción + Beneficio + Conector + Costo/Riesgo
-- [ ] Los trade-offs son relativos, no catastróficos
-- [ ] Incluso las opciones incorrectas tienen beneficios visibles
+### 1. ✅ Formato de Opciones (V4)
+- [ ] Cada opción usa **negrita** en nombre de estrategia: `**Nombre:** [resto]`
+- [ ] Field `type` incluye anti-patrón o patrón específico: `"Lead (Optimización sistémica)"`
+- [ ] Opciones tienen longitud visual similar (±20%)
 
-### 2. ✅ Anti-Spoiler V2
-- [ ] Opciones incorrectas usan verbos neutrales/positivos
-- [ ] No hay juicios de valor ("innecesario", "tóxico")
+### 2. ✅ Trade-off Integrado (Fórmula Estricta)
+- [ ] Estructura obligatoria: `[Acción] [Beneficio], pero [Costo Relativo].`
+- [ ] El trade-off se siente en la misma frase (no separado).
+- [ ] Las opciones incorrectas muestran un beneficio inmediato claro (velocidad, alivio) que las hace tentadoras.
+
+### 3. ✅ Escenario de Alta Densidad (Anti-Novela)
+- [ ] **MÁXIMO 3 oraciones**. Ve al punto.
+- [ ] **Variedad de entrada:** PROHIBIDO empezar siempre con "Es lunes..." o la hora. Alterna con métricas o quotes directos.
+- [ ] Incluye: 1 Métrica real + 1 Stakeholder visible + 1 Presión clara.
+
+### 4. ✅ Anti-Spoiler V2+
+- [ ] Opciones incorrectas usan lenguaje profesional y "managerial"
+- [ ] No hay juicios de valor ("innecesario", "tóxico", "parche") en el texto
 - [ ] No hay consecuencias auto-delatoras ("...y luego falla")
-- [ ] Suena como algo que un Manager con prisa defendería
+- [ ] Pasa el test: ¿Un VP novato dudaría 3-5 segundos antes de descartarla?
 
-### 3. ✅ Agnosticismo en Explicaciones
-- [ ] No menciona "Opción A/B/C"
-- [ ] Usa nombres de estrategias ("Boy Scout Rule vs Big Bang")
-- [ ] Explica el MODELO MENTAL, no solo "por qué es correcta"
-- [ ] Usa terminología Staff-level cuando aplica
+### 5. ✅ Explanation con 3 Capas + Metáforas
+- [ ] No menciona "Opción A/B/C", usa los Nombres de Estrategia
+- [ ] Estructura: Verdad universal + Por qué falla la trampa + Por qué gana la estrategia (modelo mental)
+- [ ] Usa terminología Staff-level (Technical Hygiene, Political Capital, Opportunity Cost)
 
-### 4. ✅ Grounding (Nivel Lead)
-- [ ] Stakeholders apropiados: VP/PM/Head (no CEO/Board/CFO)
-- [ ] El Lead tiene influencia (no autoridad absoluta)
-- [ ] Consecuencias a nivel proyecto/equipo (no empresa/financiación)
+### 6. ✅ Scoring Correcto
+- [ ] Exactamente 1 opción con score 5
+- [ ] Score -1 solo para casos que **institucionalizan** toxicidad (ej: premiar burnout)
+- [ ] Distribución lógica: un 5, uno o dos 3, uno o dos 1.
 
-### 5. ✅ Concisión + Option Length Balance
-- [ ] Escenario: 2-4 oraciones máximo
-- [ ] Opciones: longitud visual similar (±20%)
-- [ ] Foco inmediato en la tensión y decisión
+### 7. ✅ Grounding (Nivel Lead)
+- [ ] Stakeholders apropiados: VP/PM/Head/CTO (CEO solo en crisis graves)
+- [ ] El Lead tiene influencia, no autoridad absoluta
+- [ ] Las consecuencias son a nivel de sistema o equipo, no solo de píxel.
 
 ---
 
@@ -300,36 +425,50 @@ explanation: "El patrón 'Confirmation Step' suena razonable para prevenir error
 
 ---
 
-## 🏗️ Estructura de una Pregunta
+## 🏗️ Estructura de una Pregunta (V4 - Actualizada)
 
 ```javascript
 {
   id: 'snake_case_id',
   category: "Categoría",
   icon: <IconComponent />,
-  scenario: "Escenario conciso (2-4 oraciones) con contexto, presión ($, días, %), stakeholders y consecuencias.",
+
+// ESCENARIO: [Contexto denso + Métrica]. [Stakeholder + Presión]. [Urgencia]. (Max 3 oraciones)
+  scenario: "Ingeniería Europa (6h+) reporta perder el 40% de su mañana esperando specs, bajando el velocity un 15%. El CTO te culpa: 'Diseñan mientras dormimos'. Exige un Daily Sync a tu medianoche para forzar alineación.",
+
   question: "¿Qué decisión tomas?",
+
   options: [
     {
       id: 'A',
-      text: "[Acción] [Beneficio inmediato], pero [trade-off/riesgo relativo].",
+      // FORMATO: **Nombre Estrategia:** [Acción] [Beneficio], pero [Costo], lo que [Consecuencia final].
+      text: "**Nombre Estrategia Intermedia:** [Acción que resuelve parcialmente]. [Beneficio visible], pero [costo operativo], lo que podría [consecuencia a mediano plazo en equipo/negocio].",
       score: 3,
-      type: "Mid (Descripción del trade-off)"
+      type: "Pragmático (Descripción del patrón intermedio)"
     },
     {
       id: 'B',
-      text: "[Acción estratégica] [Beneficio a largo plazo], aunque [costo/fricción controlada].",
+      text: "**Nombre Estrategia Óptima:** [Acción estratégica difícil]. [Beneficio sistémico a LP], aunque [fricción/costo político inmediato que hace dudar].",
       score: 5,
-      type: "Lead (Por qué es óptima)"
+      type: "Lead (Modelo mental específico)" // Ej: "Lead (Incremental De-Risking)"
     },
     {
       id: 'C',
-      text: "[Acción tentadora] [Alivio inmediato], asumiendo [riesgo de deuda a LP].",
-      score: 2,
-      type: "Junior (Costo oculto)"
+      text: "**Nombre Estrategia Seductora:** [Acción tentadora y rápida]. [Alivio inmediato muy atractivo], pero [riesgo de deuda cultural/técnica], lo que eventualmente [consecuencia negativa en el sistema].",
+      score: 1,
+      type: "Anti-patrón Específico / Incorrect" // Ej: "Mercenario / Incorrect"
+    },
+    // OPCIONAL: Solo para casos extremos de toxicidad cultural
+    {
+      id: 'D',
+      text: "**Nombre Estrategia Tóxica:** [Acción que institucionaliza anti-patrón]. [Beneficio superficial inmediato], validando [comportamiento destructivo cultural].",
+      score: -1,
+      type: "Institucionaliza Toxicidad" // Ej: solo para premiar burnout, culpar usuarios
     }
   ],
-  explanation: "El patrón '[Nombre Estrategia C]' ofrece [beneficio], pero sacrifica [costo real]. La estrategia '[Nombre B]' es superior porque [modelo mental]. Un Lead entiende que [principio técnico como 'Opportunity Cost' o 'Strangler Fig']. El approach '[Nombre A]' es competente pero [trade-off específico]."
+
+  // EXPLANATION: [Verdad universal]. [Validación patrón común]. **[Estrategia correcta]** [modelo mental]. [Metáfora memorable].
+  explanation: "[Verdad universal sobre el problema]. El patrón '[Nombre Estrategia C/A]' [razón específica del fallo]. **La estrategia '[Nombre B]'** es superior porque [modelo mental clave]. Un Lead entiende que [principio Staff-level como **Technical Hygiene** o **Political Capital**]. [Metáfora opcional: 'Es pagar el impuesto ahora para evitar la multa después']."
 }
 ```
 
@@ -341,14 +480,23 @@ explanation: "El patrón 'Confirmation Step' suena razonable para prevenir error
 
 ---
 
-## 📋 Instrucciones Finales
+## 📋 Instrucciones Finales (V4)
 
 1. **Lee el bloque específico** antes de hacer cambios
-2. **Aplica los 5 checks** (Trade-off V3, Anti-Spoiler, Agnosticismo, Grounding, Concisión)
-3. **Usa terminología Staff-level** en explanations
-4. **Sigue SCORING_GUIDELINES.md** al asignar puntos
+2. **Aplica los 7 checks obligatorios** (ver Checklist de Calidad V4)
+   - Formato con **negritas** en nombres de estrategias
+   - Trade-offs con consecuencia en cadena (3 niveles)
+   - Escenarios con timestamp + quotes + métricas
+   - Type field descriptivo con anti-patrones
+   - Explanations con 3 capas + metáforas
+   - Scoring correcto (5, 3, 1, -1)
+   - Grounding nivel Lead
+3. **Usa terminología Staff-level** en explanations (sin explicarla)
+4. **Scoring simplificado**: Solo 5, 3, 1, -1 (ignora SCORING_GUIDELINES.md legacy)
 5. **Actualiza index.js** si modificas estructura de bloques
-6. **Valida sintaxis** con `npm run dev`
+6. **Valida sintaxis** con `npm run dev` después de cada cambio
 7. **Preserva estructura exacta** (imports, exports, JSX icons)
 
 **Recuerda**: Cada pregunta debe entrenar el **Mindset Shift de Senior → Lead**, no solo validar conocimiento técnico.
+
+**Filosofía V4**: Las opciones incorrectas deben ser **seductoras** como propuestas reales de un VP bajo presión, no caricaturas obvias.
