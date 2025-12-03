@@ -1,4 +1,5 @@
 import { RefreshCw, Brain, Zap, Trophy, Target, Flame } from 'lucide-react';
+import { MarkdownText } from '../ui/MarkdownText';
 
 export const ReviewScreen = ({
   stats,
@@ -200,9 +201,9 @@ export const ReviewScreen = ({
                       </h4>
                     </div>
                     <span className={`font-bold px-4 py-2 rounded-lg text-sm whitespace-nowrap ${isPerfect ? 'bg-green-100 text-green-800' :
-                        isIntermediate ? 'bg-yellow-100 text-yellow-800' :
-                          isBadButWorks ? 'bg-orange-100 text-orange-800' :
-                            'bg-red-100 text-red-800'
+                      isIntermediate ? 'bg-yellow-100 text-yellow-800' :
+                        isBadButWorks ? 'bg-orange-100 text-orange-800' :
+                          'bg-red-100 text-red-800'
                       }`}>
                       {answerData.score > 0 ? '+' : ''}{answerData.score} pts
                     </span>
@@ -258,12 +259,12 @@ export const ReviewScreen = ({
                           {/* Alternativa */}
                           <div
                             className={`p-4 rounded-lg border-2 transition-all ${isSelected
-                                ? `${optionBorderColor} ${optionBgColor} shadow-md ring-2 ring-offset-2 ${isOptionPerfect ? 'ring-green-300' :
-                                  isOptionIntermediate ? 'ring-yellow-300' :
-                                    isOptionBad ? 'ring-orange-300' :
-                                      'ring-red-300'
-                                }`
-                                : 'border-slate-200 bg-white'
+                              ? `${optionBorderColor} ${optionBgColor} shadow-md ring-2 ring-offset-2 ${isOptionPerfect ? 'ring-green-300' :
+                                isOptionIntermediate ? 'ring-yellow-300' :
+                                  isOptionBad ? 'ring-orange-300' :
+                                    'ring-red-300'
+                              }`
+                              : 'border-slate-200 bg-white'
                               }`}
                           >
                             <div className="flex items-start justify-between gap-3 mb-2">
@@ -279,17 +280,17 @@ export const ReviewScreen = ({
                                 )}
                               </div>
                               <span className={`text-xs font-bold px-2 py-1 rounded ${isOptionPerfect ? 'bg-green-100 text-green-800' :
-                                  isOptionIntermediate ? 'bg-yellow-100 text-yellow-800' :
-                                    isOptionBad ? 'bg-orange-100 text-orange-800' :
-                                      'bg-red-100 text-red-800'
+                                isOptionIntermediate ? 'bg-yellow-100 text-yellow-800' :
+                                  isOptionBad ? 'bg-orange-100 text-orange-800' :
+                                    'bg-red-100 text-red-800'
                                 }`}>
                                 {optionScore > 0 ? '+' : ''}{optionScore} pts
                               </span>
                             </div>
-                            <p className={`text-sm leading-relaxed ${isSelected ? 'font-medium text-slate-900' : 'text-slate-700'
+                            <MarkdownText className={`text-sm leading-relaxed ${isSelected ? 'font-medium text-slate-900' : 'text-slate-700'
                               }`}>
                               {option.text}
-                            </p>
+                            </MarkdownText>
                           </div>
 
                           {/* Análisis */}
@@ -313,7 +314,7 @@ export const ReviewScreen = ({
                           <div className="font-bold text-xs uppercase mb-1 text-indigo-600">
                             Contexto General
                           </div>
-                          <p className="italic">{q.explanation}</p>
+                          <MarkdownText>{q.explanation}</MarkdownText>
                         </div>
                       </div>
                     </div>

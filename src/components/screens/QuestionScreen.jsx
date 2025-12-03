@@ -1,5 +1,6 @@
 import { ProgressBar } from '../ui/ProgressBar';
 import { Timer } from '../ui/Timer';
+import { MarkdownText } from '../ui/MarkdownText';
 
 const URGENT_THRESHOLD = 150; // 2.5 minutos finales - PRESIÓN EXTREMA 🔥
 
@@ -73,9 +74,9 @@ export const QuestionScreen = ({
                 <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-500 font-bold text-sm group-hover:bg-indigo-600 group-hover:text-white transition-colors border border-slate-200 mt-1">
                   {String.fromCharCode(65 + idx)}
                 </div>
-                <span className="text-slate-700 font-medium group-hover:text-slate-900 pt-1 leading-relaxed text-lg">
+                <MarkdownText className="text-slate-700 font-medium group-hover:text-slate-900 pt-1 leading-relaxed text-lg">
                   {option.text}
-                </span>
+                </MarkdownText>
               </button>
             ))}
           </div>

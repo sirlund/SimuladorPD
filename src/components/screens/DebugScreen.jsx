@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { allQuestions } from '../../data/questions';
 import { ArrowLeft, AlertCircle, CheckCircle, XCircle, MinusCircle, Download } from 'lucide-react';
+import { MarkdownText } from '../ui/MarkdownText';
 
 export default function DebugScreen() {
     // Define blocks
@@ -262,9 +263,9 @@ export default function DebugScreen() {
                                                                 {option.type}
                                                             </span>
                                                         </div>
-                                                        <p className="text-slate-700 font-medium leading-relaxed text-base">
+                                                        <MarkdownText className="text-slate-700 font-medium leading-relaxed text-base">
                                                             {option.text}
-                                                        </p>
+                                                        </MarkdownText>
                                                     </div>
                                                 </div>
                                             ))}
@@ -276,9 +277,9 @@ export default function DebugScreen() {
                                                 <span>💡</span> Explicación
                                             </h4>
                                             <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
-                                                <p className="text-slate-700 text-sm leading-relaxed">
+                                                <MarkdownText className="text-slate-700 leading-relaxed">
                                                     {q.explanation}
-                                                </p>
+                                                </MarkdownText>
                                             </div>
                                         </div>
                                     </div>
