@@ -83,23 +83,33 @@ score: -1  // 💀 Tóxico - Institucionaliza anti-patrones destructivos
 
 ## 3. 🏗️ ANATOMÍA DE UNA PREGUNTA (Orden de Construcción)
 
-### 3.1 El Escenario (El Conflicto)
+### 3.1 El Escenario (El Conflicto) - Regla "Goldilocks"
 
-**Objetivo:** Establecer dolor, presión y urgencia en **máximo 3 oraciones densas**.
+**Objetivo:** Establecer dolor, presión y tensión en **2-4 oraciones** donde cada una tiene propósito claro. Ni telegrama ni novela.
 
-**Fórmula:**
-1. **El Dolor:** Qué está roto + métrica (ej: "velocity cayó 15%")
-2. **La Presión:** Stakeholder + quote/demanda (ej: CTO: "Tu equipo diseña mientras el mío duerme")
-3. **La Urgencia:** Deadline o amenaza (ej: "Exige Daily Sync a las 6 AM")
+**Estructura (cada oración tiene propósito):**
+1. **DOLOR** (con métrica): Qué está roto y cuánto duele
+2. **DETONANTE** (con quote o nombre): Quién presiona y qué dijo/hizo
+3. **TENSIÓN** (el dilema): Por qué NO es obvio qué hacer
+4. **URGENCIA** (opcional): Deadline o consecuencia temporal
+
+**Test de suficiencia:** Si el usuario no puede "sentir" el dilema SIN leer las opciones, el escenario está incompleto.
+
+**Elementos de "color" obligatorios:**
+- ✅ Números concretos: $2.1M, 35%, 20 horas, 3 deadlines
+- ✅ Quotes textuales: "Así aprendí yo", "Es solo mover esto"
+- ✅ Stakeholders nombrados: PM, CTO, HR (no "alguien")
 
 **Reglas:**
-- ❌ NO narrativa: "Es lunes por la mañana, te tomas un café..."
-- ✅ SÍ directo: "Ingeniería Europa pierde 40% de su mañana esperando specs..."
-- ✅ Variar entrada: métricas, quotes directos, alertas (no siempre timestamp)
-- ✅ Incluye: 1 Dolor/Métrica + 1 Presión Externa + 1 Decisión Bloqueante
+- ❌ NO telegrama: "Mid-Level exige promoción. Tiene oferta. Se va."
+- ❌ NO novela: "Es lunes por la mañana, te tomas un café y recibes un correo..."
+- ✅ SÍ tensión: "Si lo promueves, diluyes el título; si no, pierdes tu mejor ejecutor."
 
-**Ejemplo:**
-> "Ingeniería Europa (6h adelante) pierde el 40% de su mañana adivinando qué pantallas están listas para dev. La velocidad cayó 15%. El CTO te culpa: 'Tu equipo diseña mientras el mío duerme'. Amenaza con Daily Sync obligatorio a las 6 AM tu hora."
+**Ejemplo MALO (telegrama sin tensión):**
+> "Mid-Level exige promoción (+$25K). Evita mentoría. Tiene oferta externa."
+
+**Ejemplo BUENO (densidad con tensión explícita):**
+> "Tu Mid-Level con mejor craft exige promoción a Senior (+$25K) amenazando con irse a la competencia. El problema: evita sistemáticamente mentoría y liderazgo, requisitos del rol en tu empresa. Si lo promueves, diluyes el título para todos; si no, pierdes tu mejor ejecutor."
 
 ---
 
@@ -128,9 +138,17 @@ score: -1  // 💀 Tóxico - Institucionaliza anti-patrones destructivos
 ```
 
 **Elementos:**
-- ✅ **Negrita** en nombre de estrategia
+- ✅ **Negrita** en nombre de estrategia (OBLIGATORIO - sin excepción)
 - ✅ `type` field descriptivo: `"Lead (Async Ops)"` / `"Heroísmo Táctico / Incorrect"`
 - ✅ Longitud visual equilibrada (±20%)
+
+**Regla de Negritas en Opciones (CRÍTICA):**
+TODA opción DEBE empezar con `**Nombre de Estrategia:**` en negritas. Sin excepciones.
+
+| ❌ Sin negrita (PROHIBIDO) | ✅ Con negrita (OBLIGATORIO) |
+|---------------------------|------------------------------|
+| "Análisis Forense: Segmentas el churn..." | "**Análisis Forense:** Segmentas el churn..." |
+| "Reversión Preventiva: Coordinas con ingeniería..." | "**Reversión Preventiva:** Coordinas con ingeniería..." |
 
 **Ejemplo:**
 ```javascript
@@ -144,20 +162,36 @@ score: -1  // 💀 Tóxico - Institucionaliza anti-patrones destructivos
 
 ---
 
-#### 3.3.2 Trade-offs Seductores (Modo "Abogado del Diablo")
+#### 3.3.2 Trade-off Asimétrico Inverso (CLAVE)
 
-**Principio:** La opción incorrecta debe sonar lógica a corto plazo. El trade-off debe sonar como un "costo aceptable", no como una catástrofe.
+**Principio Central:** Las opciones incorrectas son tentadoras PORQUE minimizan el riesgo percibido. Las correctas son difíciles PORQUE el costo es real y tangible.
 
-**Fórmula:**
+**Regla:** Mientras MENOR el score, MÁS SUAVIZADO el trade-off.
+
+| Score | Trade-off | Ejemplo de "aunque/pero" |
+|-------|-----------|--------------------------|
+| **5** | **DURO y REAL** - El costo duele, genera duda genuina | "aunque arriesgas perder a tu senior más técnico y enfrentar resistencia activa" |
+| **3** | **MODERADO** - Costo evidente pero aceptable | "aunque es solución temporal que no resuelve la raíz" |
+| **1** | **SUAVIZADO** - Costo suena menor/manejable | "aunque algunos lo perciban diferente", "aunque requiera ajuste posterior" |
+| **-1** | **MÍNIMO/INVISIBLE** - Casi suena win-win | Beneficio sin "aunque" explícito, o costo trivial |
+
+**La trampa psicológica:**
+- Usuario novato lee score -1 y piensa: "Esto suena razonable, no veo el problema"
+- Usuario novato lee score 5 y piensa: "Esto es muy arriesgado, ¿vale la pena?"
+
+**Fórmula por score:**
 ```
-[Acción] [Beneficio Inmediato/Político], [Conector] [Costo Sistémico/Estructural].
+Score 5:  [Acción difícil]. [Beneficio sistémico LP], aunque [costo político/operativo REAL que genera duda].
+Score 3:  [Acción parcial]. [Beneficio visible], aunque [limitación práctica evidente].
+Score 1:  [Acción tentadora]. [Beneficio táctico atractivo], aunque [costo que suena MANEJABLE].
+Score -1: [Acción seductora]. [Beneficio inmediato]. [Sin "aunque" o costo trivial].
 ```
 
-**Conectores permitidos:**
-- "...aunque conviertes..."
-- "...pero centralizas..."
-- "...a costa de sacrificar..."
-- "...asumiendo que aceptas..."
+**Conectores por intensidad:**
+- Score 5: "aunque arriesgas...", "a costa de enfrentar...", "asumiendo el riesgo real de..."
+- Score 3: "aunque no resuelve...", "pero es temporal...", "aunque requiere..."
+- Score 1: "aunque algunos critiquen...", "aunque pueda necesitar ajuste...", "aunque tome tiempo..."
+- Score -1: Sin conector adversativo, o conector trivial ("mientras entregue con calidad")
 
 ---
 
@@ -189,35 +223,58 @@ score: -1  // 💀 Tóxico - Institucionaliza anti-patrones destructivos
 
 ---
 
-#### 3.3.4 Anti-Spoiler (Eufemismos Corporativos)
+#### 3.3.4 Anti-Spoiler V3 (Test del VP)
 
-**Regla Cero:** No juzgues la opción en el texto. Las consecuencias negativas van en `explanation`.
+**Regla Cero:** No juzgues la opción en el texto. Las consecuencias negativas van SOLO en `explanation`.
+
+**Test del VP Novato:**
+> "¿Un VP con 2 años de experiencia bajo presión de tiempo defendería esta opción en un meeting real?"
+> Si la respuesta es NO, la opción se auto-delata.
+
+---
 
 **Palabras PROHIBIDAS en opciones:**
 
-1. **Juicios de Valor:** "innecesario", "maquillas", "tóxico", "parche", "ingenuo", "negligente", "insostenible", "brutal"
-2. **Predicciones Auto-Delatoras:** "...y luego falla", "...pierdes talento", "...destruyes marca"
+1. **Juicios de Valor:** "innecesario", "maquillas", "tóxico", "parche", "ingenuo", "negligente", "gaslighting", "erosiona"
+2. **Predicciones Auto-Delatoras:** "...y luego falla", "...pierdes talento", "...destruyes marca", "...el junior interpreta que...", "...aprenderán que..."
 3. **Emociones Personales:** "te quemas", "te odian", "pierdes credibilidad"
-4. **Verbos Negativos:** falla, destruye, pierde, rompe, ignora, abdica, quema, sabotea
+4. **Verbos Negativos:** falla, destruye, pierde, rompe, ignora, abdica, quema, sabotea, normaliza [algo malo], institucionaliza
 
 **Lenguaje PERMITIDO:**
 
 ✅ Verbos ejecutivos: "Implementar", "Priorizar", "Auditar", "Garantizar", "Optimizar"
 ✅ Justificaciones plausibles: "para cumplir deadline", "priorizando velocity", "sin molestar al equipo"
-✅ Racionalización profesional: "asegura", "garantiza", "desbloquea", "habilita"
+✅ Racionalización profesional: "asegura", "garantiza", "desbloquea", "habilita", "desarrollas resiliencia"
+
+---
+
+**Score -1: La Trampa del "Best Practice"**
+
+Las opciones score -1 deben sonar a **filosofía de gestión moderna y respetable**, no a negligencia o evasión.
+
+| ❌ Suena a evasión (PROHIBIDO) | ✅ Suena a filosofía legítima (OBLIGATORIO) |
+|------------------------------|-------------------------------------------|
+| "Confías en que es adulto y sabe lo que hace" | "Cultura de Ownership: Los mejores talentos prosperan con autonomía total" |
+| "No es tu problema, es su decisión" | "Freedom & Responsibility: Modelo Netflix de autonomía con accountability" |
+| "Dejar que resuelva solo" | "Empowerment: Evitas micromanagement y respetas su criterio profesional" |
+
+**Referentes para score -1:** Debe sonar a algo que Elon Musk, Reed Hastings, o un CEO de YC startup diría. Son principios reales MAL APLICADOS al contexto específico.
+
+---
 
 **Eufemismos Corporativos OBLIGATORIOS:**
 
 | ❌ Término Negativo | ✅ Eufemismo Corporativo |
 |-------------------|------------------------|
 | Micromanagement | "Supervisión cercana" / "Control de calidad" |
-| Burnout | "Wartime mode" / "Esfuerzo intensivo" |
+| Burnout | "Wartime mode" / "Esfuerzo intensivo" / "Alto rendimiento" |
 | Deuda técnica | "Solución táctica" / "Optimización de velocidad" |
 | Cuello de botella | "Centralización estratégica" |
 | No escala | "Dependencia síncrona" |
+| Gaslighting | "Perspectiva de growth" / "Normalizar la experiencia" |
 
-**Test de Calidad:**
-Si la opción incorrecta no suena como algo que defendería un **Project Manager enfocado en fechas** en un meeting de priorización, está mal escrita. El usuario debe sentir la tentación de elegirla por su pragmatismo a corto plazo.
+**Test Final de Calidad:**
+Si la opción incorrecta no suena como algo que defendería un **VP bajo presión** citando Netflix, Amazon, o "best practices de startups", está mal escrita.
 
 ---
 
@@ -226,6 +283,31 @@ Si la opción incorrecta no suena como algo que defendería un **Project Manager
 **Objetivo:** Que el usuario sienta que recibió una **Masterclass de 30 segundos**. Feedback quirúrgico que conecta el error práctico con principios inmutables.
 
 **Límite:** Máximo 60 palabras.
+
+---
+
+#### 3.4.0 Grounding en Escenario (OBLIGATORIO)
+
+**Regla:** La explicación DEBE referenciar elementos del escenario de forma **resumida**, NO copy-paste literal.
+
+**❌ COPY-PASTE LITERAL (PROHIBIDO):**
+```
+"Con 18 violaciones de audit y 47 tickets mensuales de 'Fat Finger Error' (Delete vs Edit), los Touch Targets de 24px causan errores reales..."
+```
+→ Esto es verboso y repite el escenario palabra por palabra.
+
+**✅ REFERENCIA RESUMIDA (OBLIGATORIO):**
+```
+"Cuando los tickets de soporte explotan por un feature invisible, el minimalismo está fallando..."
+```
+→ Resume "127 tickets mensuales" → "tickets explotan". Implica el problema sin repetir literalmente.
+
+| ❌ Copy-paste (PROHIBIDO) | ✅ Resumido (OBLIGATORIO) |
+|----------------------------|--------------------------|
+| "Con $45K por renuncia y HR amenazando Legal, el 'Roast'..." | "Cuando HR amenaza con Legal, el 'Roast' dejó de ser cultura—es riesgo financiero." |
+| "Con 30 días de PIP y $80K en retrasos..." | "Cuando el PIP ya comenzó y hay retrasos acumulados..." |
+
+**Test:** Si la explanation repite métricas exactas del escenario (ej: "47 tickets", "$180K"), está haciendo copy-paste.
 
 ---
 
@@ -239,7 +321,25 @@ Si la opción incorrecta no suena como algo que defendería un **Project Manager
 
 ---
 
-#### 3.4.2 Variación de Cierre (NO "Un Lead hace...")
+#### 3.4.2 Negritas en Explanations (OBLIGATORIO)
+
+TODOS los conceptos académicos/técnicos DEBEN estar en **negrita**. Sin excepciones.
+
+| ❌ Sin negrita (PROHIBIDO) | ✅ Con negrita (OBLIGATORIO) |
+|---------------------------|------------------------------|
+| "...destruye la Psychological Safety (Edmondson)..." | "...destruye la **Psychological Safety** (Edmondson)..." |
+| "...caer en la Falacia del Costo Hundido..." | "...caer en la **Falacia del Costo Hundido**..." |
+| "...es Ruinous Empathy según Kim Scott..." | "...es **Ruinous Empathy** según Kim Scott..." |
+
+**Conceptos que SIEMPRE van en negrita:**
+- Sesgos cognitivos: **Survivorship Bias**, **Sunk Cost Fallacy**, **Affinity Bias**
+- Frameworks: **Radical Candor**, **Psychological Safety**, **Growth Mindset**
+- Principios: **Bus Factor**, **Technical Debt**, **Opportunity Cost**
+- Heurísticas: **Heurística de Nielsen**, **Pareto Principle**, **WIP Limits**
+
+---
+
+#### 3.4.3 Variación de Cierre (NO "Un Lead hace...")
 
 Evitar repetir mecánicamente "Un Lead hace/entiende/implementa...". Alternar entre:
 
@@ -250,63 +350,108 @@ Evitar repetir mecánicamente "Un Lead hace/entiende/implementa...". Alternar en
 
 ---
 
-#### 3.4.3 Ejemplos de Micro-Mentoría
+#### 3.4.3 Dos Patrones de Micro-Mentoría (Variar entre ambos)
 
-**Ejemplo 1: Research (Concepto: Behavioral vs Attitudinal)**
-* ❌ **Predicador (NO):** "Es fundamental entender que las encuestas sufren de sesgos cognitivos inherentes donde los usuarios proyectan una imagen idealizada..." (Aburrido, académico).
-* ✅ **Lead (SÍ):** "Las encuestas miden aspiraciones, no realidades. El usuario promedio alucina sobre su yo ideal (**Sesgo de Deseabilidad Social**). Si construyes lo que piden y no lo que hacen, persigues **Vanity Metrics**. La **Data Conductual** siempre mata a la **Data Actitudinal**."
+Alterna entre estos dos patrones para evitar monotonía:
 
-**Ejemplo 2: Feedback de Sistema (Concepto: Heurística de Nielsen)**
-* ❌ **Predicador (NO):** "La falta de comunicación del estado del sistema genera ansiedad e incertidumbre..." (Genérico, obvio).
-* ✅ **Lead (SÍ):** "Un spinner estático de 8 segundos viola la **Heurística #1 de Nielsen** (Visibilidad del Estado). Sin feedback explícito, el usuario percibe el retraso como un error. Bloquear la UI con progreso narrativo reduce la incertidumbre y previene errores humanos (**Technical Hygiene**)."
+---
 
-**Ejemplo 3: Política y Conflictos (Concepto: Political Capital)**
-* ❌ **Predicador (NO):** "Escalar conflictos consume tu credibilidad acumulada mientras que la negociación pragmática preserva relaciones..." (Mezcla demasiados conceptos).
-* ✅ **Lead (SÍ):** "Tener la razón técnica no sirve si pierdes al aliado. Escalar conflictos menores te etiqueta como 'bloqueador'. La **Negociación en Fases** te permite ceder tácticamente hoy para ganar estratégicamente mañana. Nunca gastes tu **Political Capital** limitado en colinas donde no vale la pena morir."
+**PATRÓN 1 - Análisis Reflexivo (estilo STR-12)**
 
-**Ejemplo 4: Deuda Técnica (Concepto: Falacia de Costo Hundido)**
-* ❌ **Predicador (NO):** "Ya hemos invertido demasiado tiempo y esfuerzo en este feature como para descartarlo ahora..." (Justificación emocional).
-* ✅ **Lead (SÍ):** "Lanzar solo porque 'ya invertimos el esfuerzo' es caer en la **Falacia del Costo Hundido** (Sunk Cost Fallacy). La inversión pasada es irrelevante para la utilidad futura. Aplica la **Navaja de Ockham**: si no tiene Product-Market Fit, matarlo hoy es más barato que mantenerlo zombi."
+Estructura: [Reflexión universal] + [Análisis por alternativa] + [Cierre imperativo]
+
+**Ejemplo - Contratación (Hire for Gaps):**
+```
+Un Lead contrata para cubrir brechas, no para clonar fortalezas existentes. **Hire for Gaps** inyecta el conocimiento de dominio (Fintech/B2B) que falta para desbloquear la credibilidad con Producto. **Hire for Excellence** visual ignora que la debilidad actual es lógica, no estética. El **Freelance Bridge** es un parche temporal que retrasa la solución estructural del equipo y diluye el **ownership**.
+```
+
+**Características:**
+- Empieza con verdad universal ("Un Lead contrata para...")
+- Analiza cada estrategia por nombre (Hire for Gaps, Hire for Excellence, Freelance Bridge)
+- Cierra sin "Un Lead hace..." (evita repetición)
+
+---
+
+**PATRÓN 2 - Quirúrgico (más directo)**
+
+Estructura: [Golpe inicial] + [Análisis por alternativa] + [Imperativo memorable]
+
+**Ejemplo - Touch Targets:**
+```
+Los **Touch Targets** de 44px/48px se basan en biomecánica, no en moda. La **Regla 44px** con padding invisible mantiene estética mientras cumple estándar. **User Empowerment** es filosofía que falla audits. **Rediseño Espacial** a 32px es compromiso tibio. Diseñar para todos no es opcional, es diseño profesional.
+```
+
+**Características:**
+- Golpe inicial contundente ("se basan en biomecánica, no en moda")
+- Análisis super conciso de cada alternativa (1 frase cada una)
+- Cierre con imperativo directo sin mencionar "Un Lead"
+
+---
+
+**Ejemplos adicionales:**
+
+**Ejemplo 1: Research (Concepto: Behavioral vs Attitudinal) - Patrón 2**
+```
+Las encuestas miden aspiraciones, no realidades. El usuario promedio alucina sobre su yo ideal (**Sesgo de Deseabilidad Social**). Si construyes lo que piden y no lo que hacen, persigues **Vanity Metrics**. La **Data Conductual** siempre mata a la **Data Actitudinal**.
+```
+
+**Ejemplo 2: Política (Concepto: Political Capital) - Patrón 1**
+```
+Tener la razón técnica no sirve si pierdes al aliado. Escalar conflictos menores te etiqueta como 'bloqueador'. La **Negociación en Fases** te permite ceder tácticamente hoy para ganar estratégicamente mañana. Nunca gastes tu **Political Capital** limitado en colinas donde no vale la pena morir.
+```
+
+**Ejemplo 3: Deuda Técnica (Concepto: Sunk Cost) - Patrón 2**
+```
+Lanzar solo porque 'ya invertimos' es **Falacia del Costo Hundido**. La inversión pasada es irrelevante para la utilidad futura. Aplica la **Navaja de Ockham**: si no tiene Product-Market Fit, matarlo hoy es más barato que mantenerlo zombi.
+```
 
 ---
 
 ## 4. ✅ CHECKLIST DE CALIDAD (7 Checks Obligatorios)
 
 ### 1. ✅ Formato de Opciones
-- [ ] Cada opción usa **negrita** en nombre de estrategia: `**Nombre:** [resto]`
+- [ ] **NEGRITAS OBLIGATORIAS:** Cada opción EMPIEZA con `**Nombre Estrategia:**` en negritas
 - [ ] Field `type` describe el patrón mental (ej: "Compromiso Táctico"), no solo "Incorrect"
-- [ ] Longitud visual equilibrada (nadie gana por ser más larga)
+- [ ] Longitud visual equilibrada (±15%)
 
-### 2. ✅ Trade-off "Seductor" (La Trampa)
-- [ ] **Fórmula:** `[Acción] [Beneficio Inmediato], [Conector] [Costo Sistémico].`
-- [ ] **Prueba de Seducción:** Las opciones incorrectas suenan a "buen management" a corto plazo (velocidad, desbloqueo, paz)
-- [ ] **Sin Spoilers Morales:** PROHIBIDO decir "te quemas", "te odian" o "fallas". Usa consecuencias sistémicas ("creas dependencia", "sacrificas escalabilidad")
+### 2. ✅ Trade-off Asimétrico Inverso
+- [ ] **Score 5:** Trade-off DURO y REAL que genera duda genuina
+- [ ] **Score 3:** Trade-off MODERADO, costo evidente pero aceptable
+- [ ] **Score 1:** Trade-off SUAVIZADO, costo suena manejable ("aunque algunos critiquen...")
+- [ ] **Score -1:** Trade-off MÍNIMO/INVISIBLE, casi suena win-win
+- [ ] **Regla:** Mientras MENOR el score, MÁS SUAVIZADO el riesgo percibido
 
-### 3. ✅ Escenario de Alta Densidad
-- [ ] **MÁXIMO 3 oraciones**. Sin narrativa de relleno
-- [ ] **Variedad de entrada:** No empezar siempre con la hora. Usar métricas, alertas o quotes
-- [ ] Contiene: 1 Dolor/Métrica + 1 Presión Externa + 1 Decisión Bloqueante
+### 3. ✅ Escenario "Goldilocks" (2-4 oraciones)
+- [ ] **Ni telegrama ni novela:** Entre 2-4 oraciones con propósito claro
+- [ ] **DOLOR** con métrica concreta ($X, X%, X días)
+- [ ] **DETONANTE** con quote o stakeholder nombrado
+- [ ] **TENSIÓN** explícita: Por qué NO es obvio qué hacer
+- [ ] **Test:** ¿El usuario puede "sentir" el dilema SIN leer las opciones?
 
-### 4. ✅ Lenguaje Eufemístico (Anti-Spoiler)
-- [ ] Usa "Supervisión cercana" en lugar de "Micromanagement"
-- [ ] Usa "Solución táctica" en lugar de "Deuda técnica"
-- [ ] Usa "Wartime mode" en lugar de "Burnout"
-- [ ] El error debe parecer una decisión racional de negocio, no una estupidez
+### 4. ✅ Anti-Spoiler V3 (Test del VP)
+- [ ] **Test:** ¿Un VP con 2 años de experiencia defendería esta opción bajo presión?
+- [ ] **Score -1** suena a "best practice" de startup (Netflix, autonomía, ownership), no a evasión
+- [ ] NO hay predicciones auto-delatoras ("el junior interpreta que...", "aprenderán que...")
+- [ ] Consecuencias negativas van SOLO en `explanation`, no en texto de opción
+- [ ] Usa eufemismos corporativos (ver tabla en 3.3.4)
 
 ### 5. ✅ Explanation Quirúrgica (Micro-Mentoría)
 - [ ] **MÁXIMO 60 palabras**
-- [ ] **Estructura 3 Capas:** Diagnóstico Práctico -> Anclaje Académico (Ley/Principio) -> Concepto Staff (Negrita)
+- [ ] **NEGRITAS OBLIGATORIAS:** Todos los conceptos académicos en `**negrita**` (Psychological Safety, Sunk Cost, etc.)
+- [ ] **Grounding en Escenario:** Referencia al menos 1 elemento concreto (métrica, stakeholder, consecuencia)
+- [ ] **Estructura 3 Capas:** Diagnóstico -> Anclaje Académico -> Concepto Staff (Negrita)
 - [ ] **Tono:** Seco, directo al ego, sin prédica
-- [ ] **Anclaje Académico obligatorio:** Citar ley, heurística o sesgo reconocido (Nielsen, Jakob, Kahneman, Bus Factor, etc)
-- [ ] **Variación de cierre:** No repetir "Un Lead [verbo]..." mecánicamente. Alternar: imperativos directos, principios universales, comparaciones económicas, metáforas memorables
+- [ ] **Anclaje Académico obligatorio:** Citar ley, heurística o sesgo reconocido
+- [ ] **Variación de cierre:** No repetir "Un Lead [verbo]..." mecánicamente
+- [ ] **Test de genericidad:** ¿Esta explicación funcionaría en otra pregunta? Si sí, está mal
 
 ### 6. ✅ Scoring Correcto
 - [ ] Exactamente 1 opción con score 5
-- [ ] Score -1 reservado estrictamente para institucionalización de toxicidad grave
-- [ ] Distribución lógica: un 5, uno o dos 3, uno o dos 1
+- [ ] Score -1 solo para principios legítimos MAL APLICADOS (autonomía cuando hay burnout visible)
+- [ ] Distribución: un 5, uno o dos 3, uno o dos 1, máximo un -1
 
 ### 7. ✅ Grounding (Nivel Staff)
-- [ ] El problema no es "hacer el diseño", es "gestionar el sistema de diseño" o "gestionar la política"
+- [ ] El problema es de sistema/política, no de ejecución de diseño
 - [ ] Los riesgos son de capital político, deuda sistémica o costo de oportunidad
 
 ---
@@ -342,11 +487,54 @@ Evitar repetir mecánicamente "Un Lead hace/entiende/implementa...". Alternar en
 
 **Cuándo:** Post-cambios masivos, pre-release, validación de bloque completo.
 
-**Comandos:**
+---
+
+#### 🔴 PROTOCOLO DE AUDIT EXHAUSTIVO (Por defecto)
+
+Cuando el usuario pida **"audita [bloque]"** sin especificar qué revisar, el agente DEBE revisar **TODO** sistemáticamente:
+
+**Paso 1: Grep y lectura del bloque completo**
+
+**Paso 2: Verificar CADA pregunta en estos 4 ejes:**
+
+| Eje | Qué revisar | Grep útil |
+|-----|-------------|-----------|
+| **1. Escenarios** | Goldilocks (DOLOR+DETONANTE+TENSIÓN+URGENCIA), 2-4 oraciones, métricas concretas | `scenario:` |
+| **2. Opciones** | Negritas `**Nombre:**`, Trade-off Integrado, Anti-Spoiler V3, longitud equilibrada | `text:` |
+| **3. Explicaciones** | Negritas en conceptos académicos, Grounding en escenario, max 60 palabras | `explanation:` |
+| **4. Scoring** | Distribución correcta (un 5, 1-2 de 3, 1-2 de 1, max un -1) | `score:` |
+
+**Paso 3: Generar tabla de issues con severidad**
+
+```markdown
+| # | ID | Eje | Issue | Severidad |
+|---|-----|-----|-------|-----------|
+| 1 | pregunta_x | Escenario | Falta Goldilocks (sin métrica) | 🔴 Alta |
+| 2 | pregunta_y | Opciones | Opción B sin negrita | 🟡 Media |
+| 3 | pregunta_z | Explanation | Falta negrita en "Bus Factor" | 🟡 Media |
+```
+
+**Paso 4: Corregir TODOS los issues encontrados**
+
+---
+
+#### Audits Específicos (Solo cuando el usuario lo pide)
+
+Si el usuario especifica un eje concreto, revisar SOLO ese eje:
+
 ```bash
-/pd-expert Audita id:pregunta_x
-/pd-expert Audita 05-culture.jsx: ¿tienen trade-offs integrados? ¿usan terminología Staff?
-/pd-expert Identifica preguntas con option length bias en 02-research.jsx
+/pd-expert Audita las explanations de 01-strategy.jsx   # Solo explanations
+/pd-expert Audita los escenarios de 02-research.jsx     # Solo escenarios
+/pd-expert Audita las opciones de 03-metrics.jsx        # Solo opciones
+```
+
+---
+
+**Comandos generales:**
+```bash
+/pd-expert Audita 01-strategy.jsx              # AUDIT EXHAUSTIVO (los 4 ejes)
+/pd-expert Audita id:pregunta_x                # Pregunta específica, todos los ejes
+/pd-expert Audita 05-culture.jsx: trade-offs   # Solo verifica trade-offs
 ```
 
 ---
@@ -447,6 +635,18 @@ node scripts/audit-duplicates.js
 5. **Actualiza index.js** si modificas estructura de bloques
 6. **Valida sintaxis** con `npm run dev` después de cada cambio
 7. **Preserva estructura exacta** (imports, exports, JSX icons)
+
+### 🔴 REGLA DE AUDIT EXHAUSTIVO
+
+**Cuando el usuario pida "audita X" sin especificar qué revisar:**
+- El agente DEBE revisar los **4 ejes**: Escenarios, Opciones, Explicaciones, Scoring
+- Usar greps sistemáticos: `scenario:`, `text:`, `explanation:`, `score:`
+- Generar tabla de issues con severidad ANTES de corregir
+- Corregir TODOS los issues encontrados
+
+**Solo si el usuario especifica** ("audita las explanations", "revisa los escenarios") se limita a ese eje.
+
+**El formato (negritas, estructura, grounding) NUNCA se omite en un audit.**
 
 **Filosofía Central:** Las opciones incorrectas deben ser **seductoras** como propuestas reales de un VP bajo presión. El costo debe ser **sistémico/estructural**, nunca personal/emocional ("te quemas", "te odian").
 
