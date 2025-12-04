@@ -1,8 +1,7 @@
 import { ProgressBar } from '../ui/ProgressBar';
 import { Timer } from '../ui/Timer';
 import { MarkdownText } from '../ui/MarkdownText';
-
-const URGENT_THRESHOLD = 150; // 2.5 minutos finales - PRESIÓN EXTREMA 🔥
+import { URGENT_THRESHOLD } from '../../utils/constants';
 
 export const QuestionScreen = ({
   question,

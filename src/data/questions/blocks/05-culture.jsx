@@ -1,12 +1,7 @@
 import React from 'react';
 import {
-  Timer, AlertTriangle, CheckCircle, XCircle, ArrowRight,
-  BarChart2, ShieldAlert, Users, Layers, Brain, Zap,
-  Search, MessageSquare, Briefcase, FileText, Globe,
-  Lock, Heart, RefreshCw, Target, Code, Play, Star,
-  Smartphone, Coffee, AlertOctagon, Trophy, RotateCcw,
-  TrendingUp, Shield, Scale, Bug, DollarSign, Languages,
-  Palette, Wifi
+  Users, Brain, MessageSquare, Briefcase, Heart,
+  Target, TrendingUp, DollarSign, Wifi
 } from 'lucide-react';
 
 /**

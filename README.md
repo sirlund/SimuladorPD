@@ -1,16 +1,17 @@
-# 🎯 Product Lead Sim - Assessment de Liderazgo
+# 🎯 SimuladorPD - Assessment de Liderazgo en Product Design
 
-Simulador interactivo de evaluación para Product Leads. Una aplicación de assessment con 96 escenarios realistas de liderazgo, gestión de equipos, estrategia de producto y toma de decisiones difíciles bajo presión.
+Simulador interactivo de evaluación para Product Design Leaders. Una aplicación de assessment con 130 escenarios realistas de liderazgo, gestión de equipos, estrategia de producto y toma de decisiones difíciles bajo presión.
 
 ## 🚀 Características
 
-- ✅ **96 Escenarios Complejos**: Preguntas basadas en situaciones reales de liderazgo (startup y enterprise)
-- ⏱️ **Brutal Mode**: 7 minutos para responder tantas preguntas como puedas
-- 🏆 **Sistema de Niveles**: 5 niveles de seniority basados en puntos y precisión
-- 💾 **Persistencia de Campaña**: Progreso guardado en localStorage
+- ✅ **130 Escenarios Complejos**: Preguntas basadas en situaciones reales de liderazgo (startup y enterprise)
+- 🔄 **Sistema de Rondas**: 3 rondas de 5 minutos cada una
+- 🏆 **Scoring de 4 Niveles**: Lead (5), Mid (3), Junior (1), Tóxico (-1)
+- 💾 **Persistencia de Campaña**: Progreso guardado en localStorage - las preguntas no se repiten
 - 🎨 **UI/UX Profesional**: Diseñado con Tailwind CSS
-- 📊 **Scoring Numérico**: Puntos totales, precisión y feedback detallado
+- 📊 **Análisis Detallado**: Puntos totales, precisión y feedback por pregunta
 - 🏗️ **Arquitectura Modular**: Hooks personalizados y componentes reutilizables
+- 📚 **6 Bloques Temáticos**: Strategy, Research, Metrics, Mobile, Culture, Innovation
 
 ## 🛠️ Stack Tecnológico
 
@@ -41,22 +42,38 @@ npm run preview
 ```
 src/
 ├── components/
-│   ├── TokuAssessment.jsx          # Componente principal
-│   ├── screens/                     # Pantallas del juego
+│   ├── PDAssessment.jsx            # Componente principal
+│   ├── screens/                     # Pantallas del juego (6)
 │   │   ├── IntroScreen.jsx
 │   │   ├── QuestionScreen.jsx
+│   │   ├── RoundTransitionScreen.jsx
 │   │   ├── ReviewScreen.jsx
 │   │   └── CampaignCompleteScreen.jsx
+│   ├── game/                        # Componentes de juego
+│   │   ├── OptionButton.jsx
+│   │   ├── QuestionCard.jsx
+│   │   └── ScoreBreakdown.jsx
 │   └── ui/                          # Componentes reutilizables
 │       ├── ProgressBar.jsx
-│       └── Timer.jsx
+│       ├── Timer.jsx
+│       └── MarkdownText.jsx
 ├── hooks/                           # Custom hooks
 │   ├── useGameState.js             # Lógica del juego
 │   ├── useTimer.js                 # Lógica del timer
 │   └── useLocalStorage.js          # Persistencia
 ├── data/
-│   └── questionPool.js             # Banco de preguntas
-├── utils/                           # Utilidades
+│   └── questions/                   # Sistema de preguntas
+│       ├── blocks/                  # 6 bloques temáticos (130 preguntas)
+│       │   ├── 01-strategy.jsx     # 36 preguntas
+│       │   ├── 02-research.jsx     # 24 preguntas
+│       │   ├── 03-metrics.jsx      # 18 preguntas
+│       │   ├── 04-mobile.jsx       # 18 preguntas
+│       │   ├── 05-culture.jsx      # 16 preguntas
+│       │   └── 06-innovation.jsx   # 18 preguntas
+│       ├── index.js                 # Agregador de bloques
+│       └── getQuestions.js          # API de acceso
+├── utils/
+│   └── constants.js                 # Constantes globales
 ├── App.jsx
 ├── main.jsx
 └── index.css
@@ -64,20 +81,35 @@ src/
 
 ## 🎮 Cómo Funciona
 
-1. **Intro**: Pantalla de bienvenida con progreso de campaña
-2. **Test**: Responde tantas preguntas como puedas en 7 minutos - BRUTAL MODE 🔥
-3. **Review**: Análisis detallado con puntuación numérica, precisión y nivel alcanzado
-4. **Campaña**: Las preguntas usadas se "queman" y no se repiten
+### Flujo del Assessment
 
-## 🏅 Sistema de Niveles
+1. **Intro**: Pantalla de bienvenida con progreso de campaña (preguntas restantes)
+2. **Ronda 1**: 5 minutos para responder el primer batch de preguntas
+3. **Transición**: Pantalla de transición entre rondas
+4. **Ronda 2-3**: Continúan con nuevos batches de preguntas
+5. **Review**: Análisis detallado con puntuación, precisión y feedback por pregunta
+6. **Campaña**: Las preguntas usadas se "queman" y no se repiten hasta completar las 130
 
-Tu nivel se determina por **precisión + cantidad de preguntas respondidas**:
+### Estados del Juego
 
-- **Head of Design**: 90%+ precisión, 15+ preguntas
-- **Lead Designer**: 80%+ precisión, 12+ preguntas
-- **Senior Designer**: 65%+ precisión, 10+ preguntas
-- **Mid-Level Designer**: 50%+ precisión, 8+ preguntas
-- **Diseñador en Crecimiento**: < 50% precisión
+- `intro` - Pantalla inicial
+- `test` - Assessment activo
+- `round_transition` - Transición entre rondas
+- `review` - Revisión de respuestas
+- `campaign_complete` - Todas las preguntas completadas
+
+## 🏅 Sistema de Scoring
+
+Cada opción tiene un score que refleja la calidad de la decisión:
+
+- **Score 5 (Lead)**: Decisión estratégica óptima, balancea negocio, equipo y calidad
+- **Score 3 (Mid)**: Decisión competente, trade-offs aceptables pero subóptima
+- **Score 1 (Junior)**: Decisión subóptima, genera deuda técnica o cultural
+- **Score -1 (Tóxico)**: Anti-pattern peligroso, filosofía destructiva
+
+**Evaluación**: Tu score final se calcula como `(totalScore / maxPossibleScore) * 100`
+
+Ver [docs/SCORING_GUIDELINES.md](docs/SCORING_GUIDELINES.md) para más detalles.
 
 ## 🧪 Características Técnicas
 
@@ -89,14 +121,24 @@ Tu nivel se determina por **precisión + cantidad de preguntas respondidas**:
 
 ## 📝 Configuración
 
-Puedes modificar la configuración en `src/hooks/useGameState.js`:
+### Constantes del Timer
 
-```javascript
-const TOTAL_TIME_SECONDS = 7 * 60; // 7 minutos BRUTAL MODE 🔥
-const URGENT_THRESHOLD = 150; // 2.5 minutos finales - PRESIÓN EXTREMA
-```
+Puedes modificar las constantes en:
+- `src/hooks/useGameState.js` - `ROUND_TIME_SECONDS = 5 * 60` (5 minutos por ronda)
+- `src/utils/constants.js` - `URGENT_THRESHOLD = 150` (alerta visual a 2.5 minutos)
 
-**Nota**: Ya no hay límite de preguntas por sesión. El juego termina cuando se acaba el tiempo.
+### Sistema de Rondas
+
+El assessment se divide automáticamente en **3 rondas** con las preguntas disponibles distribuidas equitativamente. Si quedan menos preguntas que rondas, el sistema se ajusta automáticamente.
+
+## 📚 Documentación
+
+Para documentación completa del proyecto, consulta:
+
+- **[docs/README.md](docs/README.md)** - Índice de documentación
+- **[docs/SCORING_GUIDELINES.md](docs/SCORING_GUIDELINES.md)** - Sistema de scoring detallado
+- **[docs/QUESTION_WORKFLOW.md](docs/QUESTION_WORKFLOW.md)** - Cómo crear/modificar preguntas
+- **[docs/AUDIT_LOG.md](docs/AUDIT_LOG.md)** - Historial de cambios y auditorías
 
 ## 🎨 Personalización
 

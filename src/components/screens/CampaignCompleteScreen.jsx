@@ -1,6 +1,6 @@
 import { Trophy, RotateCcw } from 'lucide-react';
 
-export const CampaignCompleteScreen = ({ onReset }) => {
+export const CampaignCompleteScreen = ({ stats, onReset }) => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-indigo-900 p-6 font-sans text-white text-center">
       <Trophy className="w-24 h-24 text-yellow-400 mb-6 animate-bounce" />
@@ -10,7 +10,7 @@ export const CampaignCompleteScreen = ({ onReset }) => {
       </h1>
 
       <p className="text-xl opacity-90 max-w-lg mb-4">
-        Has respondido todas las <strong>96 preguntas</strong> del simulador.
+        Has respondido todas las <strong>{stats.totalQuestions} preguntas</strong> del simulador.
       </p>
 
       <p className="text-lg opacity-80 max-w-lg mb-8">

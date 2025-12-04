@@ -1,4 +1,4 @@
-# Scoring Guidelines - Sistema de 6 Niveles
+# Scoring Guidelines - Sistema de 4 Niveles
 
 ## Filosofía General
 
@@ -7,6 +7,19 @@ El scoring debe reflejar la **calidad de la decisión** considerando:
 2. Impacto en el equipo/cultura
 3. Sostenibilidad a largo plazo
 4. Trade-offs y consecuencias
+
+---
+
+## Sistema Actual
+
+El simulador utiliza un sistema de **4 niveles** con los siguientes scores:
+
+```
+-1 → Tóxico (Anti-pattern peligroso)
+ 1 → Junior (Decisión subóptima)
+ 3 → Mid (Decisión competente)
+ 5 → Lead (Decisión excelente)
+```
 
 ---
 
@@ -25,25 +38,13 @@ El scoring debe reflejar la **calidad de la decisión** considerando:
 - Gestionar cambio radical con transparencia y empatía
 - Estrategia de Boy Scout para deuda técnica
 - Migration Concierge en sunset de producto
+- Alineación privada pre-QBR para evitar guerra política
 
----
-
-### Score 4: Senior/Muy Bueno ⭐⭐⭐⭐
-
-**Criterios**:
-- ✅ Decisión sólida y profesional
-- ✅ Trade-offs menores y predecibles
-- ⚠️ Podría ser ligeramente mejor pero es muy buena
-- ✅ No genera problemas futuros significativos
-
-**Ejemplos**:
-- Hacer hardcode aislado para deal de $1M
-- Aplicar Boy Scout rule incrementalmente
-- Proteger al equipo con negociación de cooldown
-
-**¿Cuándo usar?**:
-- La respuesta es correcta pero hay una ligeramente mejor (score 5)
-- Solución pragmática sin costos ocultos importantes
+**Características**:
+- Anticipa consecuencias de segundo orden
+- Protege al equipo sin ignorar la realidad del negocio
+- Genera alineamiento entre stakeholders
+- Es sostenible y escalable
 
 ---
 
@@ -56,21 +57,28 @@ El scoring debe reflejar la **calidad de la decisión** considerando:
 - ⚠️ No es la decisión óptima pero funciona
 
 **Ejemplos**:
-- Dar 20% del tiempo para proyectos secundarios
+- Negociar cooldown de una semana tras pivote urgente
+- Presentar métricas de conversión sin contexto político
 - Soluciones diplomáticas que retrasan decisiones
-- Parches que funcionan pero no son escalables
+- Proteger al equipo sin considerar el runway crítico
+
+**Características**:
+- Funciona pero tiene costos de oportunidad
+- Puede generar problemas predecibles a futuro
+- Es reactiva en lugar de estratégica
+- Trade-off entre velocidad y perfección
 
 **¿Cuándo usar?**:
 - La respuesta "sirve" pero no es la mejor
 - Hay consecuencias manejables
-- Trade-off entre velocidad y perfección
+- Prioriza una dimensión sobre las demás (ej: moral vs urgencia)
 
 ---
 
-### Score 2: Junior/Funcional ⭐⭐
+### Score 1: Junior/Subóptimo ⭐
 
 **Criterios**:
-- ⚠️ Resuelve el problema inmediato
+- ⚠️ Resuelve el problema inmediato superficialmente
 - ❌ Costos o consecuencias negativas importantes
 - ❌ Genera deuda técnica o cultural significativa
 - ❌ Visión de corto plazo sin estrategia
@@ -78,114 +86,186 @@ El scoring debe reflejar la **calidad de la decisión** considerando:
 **Ejemplos**:
 - Permitir hardcode con "ticket de refactor"
 - Soluciones superficiales (pizzas para burnout)
-- Contratar freelance en lugar de resolver el gap real
-
-**¿Cuándo usar?**:
-- La respuesta "funciona" pero tiene costos altos
-- Genera problemas predecibles a futuro
-- Es reactiva en lugar de estratégica
-
----
-
-### Score 1: Pobre ⭐
-
-**Criterios**:
-- ❌ Decisión claramente mala
-- ❌ Genera más problemas de los que resuelve
-- ❌ Impacto negativo en equipo o negocio
-- ⚠️ Recuperable pero costoso
-
-**Ejemplos**:
-- Bloquear deal de $1M por purismo
-- Ignorar burnout del equipo
+- Silencio táctico que permite quemar caja en canales ineficientes
 - Buscar "unicornio" perfecto en lugar de balancear equipo
 
+**Características**:
+- Parches que no resuelven la raíz del problema
+- Genera más trabajo futuro
+- Daña credibilidad o relaciones
+- Ignora impacto sistémico
+
 **¿Cuándo usar?**:
-- La decisión es claramente incorrecta
-- Daña relaciones o cultura
-- Pero NO es catastrófica (eso es score 0)
+- La decisión funciona en superficie pero falla estratégicamente
+- Crea deuda técnica, cultural o política
+- Es ingenua sobre las dinámicas organizacionales
 
 ---
 
-### Score 0: Catastrófico 💀
+### Score -1: Tóxico/Anti-pattern 💀
 
 **Criterios**:
-- ❌❌ Destruye valor, relaciones o cultura
-- ❌❌ Consecuencias severas e irreversibles
-- ❌❌ Muestra ignorancia o arrogancia extrema
-- ❌❌ Puede llevar a despidos, renuncias masivas o fracaso del producto
+- ❌❌ Refleja filosofía startup popular pero destructiva
+- ❌❌ Suena razonable pero genera consecuencias graves
+- ❌❌ Puede llevar a fracaso de producto, renuncias o despidos
+- ⚠️ Debe ser **sutilmente incorrecto** (Anti-Spoiler V3)
 
 **Ejemplos**:
-- "Los usuarios se acostumbrarán" ignorando feedback
-- Agradecer públicamente el sobretrabajo (valida toxicidad)
-- Culpar al usuario por mal diseño del sistema
+- "El usuario siempre tiene la razón" → Ignora conocimiento experto de diseño
+- "Fail fast, iterate faster" → Justifica lanzar cualquier cosa sin rigor
+- "Move fast and break things" → Ignora deuda técnica hasta colapso
+- "No es nuestro usuario ideal" → Bias de confirmación que ignora feedback valioso
+
+**Características de Anti-Spoiler V3**:
+- Suena como filosofía legítima de startup
+- Es defendible en LinkedIn/Twitter
+- Tiene un kernel de verdad distorsionado
+- NO es obviamente malo como "despedir a todos"
 
 **¿Cuándo usar?**:
-- La decisión es destructiva
-- Consecuencias irreversibles o muy graves
-- Refleja anti-patterns fundamentales de liderazgo
+- La opción refleja un anti-pattern común en la industria
+- Suena bien pero tiene consecuencias destructivas
+- Es una trampa para quien no tiene experiencia
+- Máximo **1 opción score -1 por pregunta**
+
+**Regla Anti-Spoiler V3**:
+> Si un PM Junior podría defender la opción en una reunión, es buen score -1.
+> Si nadie la defendería ("despedir al equipo"), es demasiado obvio.
 
 ---
 
-## Proceso de Reasignación
+## Distribución por Pregunta
 
-### Para opciones con score 2 actual:
+### Estructura típica (3-4 opciones por pregunta):
 
-1. **Pregunta**: ¿Cuán cerca está de la solución óptima?
-   - Muy cerca → Score 4
-   - Moderadamente lejos → Score 3
-   - Lejos, con costos altos → Score 2
+**Opción A** (Score variable):
+- Puede ser 5, 3, 1 o -1 según la pregunta
+- Lo importante es que haya variedad
 
-2. **Pregunta**: ¿Genera deuda técnica/cultural significativa?
-   - No → Score 4
-   - Algo, pero manejable → Score 3
-   - Sí, importante → Score 2
+**Opción B** (Score variable):
+- Complementa a las otras opciones
+- Crea dilemas realistas
 
-3. **Pregunta**: ¿Es estratégica o táctica?
-   - Estratégica (largo plazo) → Score 4
-   - Táctica sólida → Score 3
-   - Puramente reactiva → Score 2
+**Opción C** (Score variable):
+- No siempre es la peor
+- A veces es score 3 o 1
 
-### Para opciones con score 0 actual:
+**Opción D** (Opcional):
+- Algunas preguntas tienen 4 opciones
+- Aumenta la dificultad
 
-1. **Pregunta**: ¿Es recuperable el error?
-   - Difícil pero posible → Score 1
-   - Casi imposible, destructivo → Score 0
+### Reglas de distribución:
 
-2. **Pregunta**: ¿Qué tan graves son las consecuencias?
-   - Malas pero no catastróficas → Score 1
-   - Catastróficas (despidos, renuncias, fracaso) → Score 0
+1. **Exactamente 1 opción con score 5 por pregunta** (la mejor decisión)
+2. **Máximo 1 opción con score -1 por pregunta** (el anti-pattern)
+3. **El resto distribuido en scores 1 y 3** (decisiones subóptimas o competentes)
 
-3. **Pregunta**: ¿Refleja ignorancia o mala ejecución?
-   - Mala ejecución → Score 1
-   - Ignorancia/arrogancia fundamental → Score 0
+### Ejemplos de distribuciones válidas:
+
+```
+Pregunta 1: [5, 3, 3]       → Una excelente, dos competentes
+Pregunta 2: [5, 3, 1, -1]   → Excelente, competente, junior, tóxico
+Pregunta 3: [5, 1, 1]       → Una excelente, dos juniors
+Pregunta 4: [5, 3, 1]       → Excelente, competente, junior
+```
 
 ---
 
-## Distribución Objetivo
+## Distribución Global del Pool
 
-Después de reasignar, la distribución debería verse aproximadamente así:
+### Objetivo aproximado para las 130 preguntas:
 
 ```
-Score 5: ~33% (96 opciones) - 1 por pregunta
-Score 4: ~15% (40-50 opciones)
-Score 3: ~15% (40-50 opciones)
-Score 2: ~10% (25-30 opciones)
-Score 1: ~15% (40-50 opciones)
-Score 0: ~12% (30-40 opciones)
+Score  5: ~130 opciones  (1 por pregunta - obligatorio)
+Score  3: ~ 80 opciones  (~0-2 por pregunta)
+Score  1: ~ 60 opciones  (~0-2 por pregunta)
+Score -1: ~ 40 opciones  (~0-1 por pregunta - máximo 1)
 ```
 
-> No es necesario que sea exacto, pero evita concentrar todo en un solo nivel.
+**Total**: ~310-350 opciones totales para 130 preguntas (promedio 2.5-3 opciones/pregunta)
 
 ---
 
 ## Checklist de Validación
 
-Antes de finalizar la reasignación, verifica:
+Antes de finalizar una pregunta, verifica:
 
 - [ ] Cada pregunta tiene exactamente 1 opción con score 5
-- [ ] No hay scores fuera del rango 0-5
-- [ ] La distribución es razonable (no todo en 2-3 niveles)
+- [ ] Máximo 1 opción con score -1 por pregunta
+- [ ] No hay scores fuera del sistema (-1, 1, 3, 5)
 - [ ] Los scores hacen sentido en contexto del escenario
-- [ ] Las opciones score 4 son claramente mejores que las score 3
-- [ ] Las opciones score 0 son realmente catastróficas
+- [ ] Las opciones score -1 cumplen Anti-Spoiler V3 (sutilmente incorrectas)
+- [ ] La distribución de la pregunta crea un dilema real (no es obvia la respuesta)
+
+---
+
+## Proceso de Scoring para Nueva Pregunta
+
+### Paso 1: Identificar la mejor decisión
+- Esta será score 5
+- Debe balancear negocio, equipo y calidad
+
+### Paso 2: Crear alternativas competentes
+- Scores 3: Decisiones que funcionan pero tienen trade-offs
+- Deben ser defendibles pero subóptimas
+
+### Paso 3: Crear alternativas juniors
+- Scores 1: Decisiones superficiales o ingenuas
+- Resuelven el problema inmediato pero crean deuda
+
+### Paso 4: (Opcional) Crear anti-pattern
+- Score -1: Filosofía startup popular pero destructiva
+- Debe sonar razonable (Anti-Spoiler V3)
+- Solo si hay un anti-pattern claro en el escenario
+
+### Paso 5: Validar balance
+- ¿La mejor opción (5) es claramente superior?
+- ¿Las opciones intermedias (3) son defendibles?
+- ¿Las opciones junior (1) son obviamente peores?
+- ¿El anti-pattern (-1) suena legítimo pero es destructivo?
+
+---
+
+## Ejemplos Completos
+
+### Ejemplo 1: Pivote Estratégico Urgente
+
+**Escenario**: CEO cancela feature tras 3 semanas de trabajo. Runway de 4 meses.
+
+**Opciones**:
+- **Score 5**: Gestión de Cambio Radical - Valida frustración pero actúa inmediato
+- **Score 3**: Cooldown Negociado - Protege moral pero consume runway valioso
+- **Score 3**: Retrospectiva de Aprendizaje - Da cierre pero diluye urgencia
+- **Score -1**: (No incluida en este ejemplo)
+
+### Ejemplo 2: Métricas Vanity vs Reality
+
+**Escenario**: Marketing celebra +200% tráfico pero conversión cayó -15%.
+
+**Opciones**:
+- **Score 5**: Alineación Privada - Controla narrativa pre-QBR
+- **Score 3**: Reporte Crudo - Integridad técnica pero sin contexto
+- **Score 1**: Silencio Táctico - Protege relación pero permite quemar caja
+- **Score -1**: (No incluida en este ejemplo)
+
+### Ejemplo 3: Con Anti-Pattern
+
+**Escenario**: Usuario experto critica nueva UI con argumentos técnicos sólidos.
+
+**Opciones**:
+- **Score 5**: Research Empático - Valida expertise, hace discovery profundo
+- **Score 3**: User Testing - Prueba con más usuarios antes de decidir
+- **Score 1**: Buscar Confirmación - Solo testea con usuarios que validen hipótesis
+- **Score -1**: "El Usuario Siempre Tiene Razón" - Ignora contexto de edge case power user
+
+---
+
+## Notas de Migración
+
+Este documento reemplaza el sistema anterior de 6 niveles (0-5) con el sistema actual de 4 niveles (-1, 1, 3, 5) que está implementado en el código.
+
+**Cambios principales**:
+- Eliminados scores 0, 2, 4 (no se usan en el código)
+- Score -1 introducido para anti-patterns con regla Anti-Spoiler V3
+- Énfasis en distribución: 1 score 5 obligatorio, máximo 1 score -1 opcional
+- Clarificación de que score -1 debe ser sutilmente incorrecto, no obviamente malo

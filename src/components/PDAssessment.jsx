@@ -10,7 +10,7 @@ import { RoundTransitionScreen } from './screens/RoundTransitionScreen';
  * Componente principal del Assessment
  * Orquesta toda la lógica del juego usando hooks personalizados
  */
-const TokuAssessment = () => {
+const PDAssessment = () => {
   // Custom hook de gestión de estado del juego
   const {
     gameState,
@@ -100,6 +100,7 @@ const TokuAssessment = () => {
     case 'campaign_complete':
       return (
         <CampaignCompleteScreen
+          stats={stats}
           onReset={resetCampaign}
         />
       );
@@ -109,4 +110,4 @@ const TokuAssessment = () => {
   }
 };
 
-export default TokuAssessment;
+export default PDAssessment;

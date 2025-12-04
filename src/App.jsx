@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import TokuAssessment from './components/TokuAssessment';
+import PDAssessment from './components/PDAssessment';
 import DebugScreen from './components/screens/DebugScreen';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<TokuAssessment />} />
+        <Route path="/" element={<PDAssessment />} />
         <Route path="/debug" element={<DebugScreen />} />
       </Routes>
     </Router>

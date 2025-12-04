@@ -2,15 +2,13 @@ import { useState, useCallback, useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 import { getQuestions } from '../data/getQuestions';
 
-const TOTAL_TIME_SECONDS = 12 * 60; // 12 minutos BRUTAL MODE 🔥
-
 /**
  * Hook personalizado para manejar todo el estado del juego
  * @returns {Object} - Estado y funciones del juego
  */
 export const useGameState = () => {
   // Persistencia de campaña en localStorage
-  const [burnedQuestionIds, setBurnedQuestionIds] = useLocalStorage('toku_burned_questions', []);
+  const [burnedQuestionIds, setBurnedQuestionIds] = useLocalStorage('pd_burned_questions', []);
 
   // Estados del juego
   const [gameState, setGameState] = useState('intro'); // intro | test | round_transition | review | campaign_complete
@@ -142,10 +140,20 @@ export const useGameState = () => {
     // Preguntas respondidas en esta sesión
     const answeredCount = Object.keys(answers).length;
 
+    // Total de preguntas en toda la campaña (burned + disponibles)
+    const fullPool = getQuestions({ shuffleOptions: false, shuffleQuestions: false });
+    const totalCampaignQuestions = fullPool.length;
+    const remainingQuestions = totalCampaignQuestions - burnedQuestionIds.length;
+    const progressPercent = totalCampaignQuestions > 0
+      ? Math.round((burnedQuestionIds.length / totalCampaignQuestions) * 100)
+      : 0;
+
     const scorePercentage = maxPossibleScore > 0 ? Math.round((totalScore / maxPossibleScore) * 100) : 0;
 
     return {
-      totalQuestions: sessionTotalQuestions,
+      totalQuestions: totalCampaignQuestions,
+      remainingQuestions,
+      progressPercent,
       questionsAnswered: answeredCount,
       scorePercentage,
       totalScore,
@@ -153,7 +161,7 @@ export const useGameState = () => {
       currentRound: round,
       totalRounds: Object.keys(roundBatches).length
     };
-  }, [roundBatches, answers, totalScore, maxPossibleScore, round]);
+  }, [roundBatches, answers, totalScore, maxPossibleScore, round, burnedQuestionIds]);
 
   // URL Sync
   useEffect(() => {
