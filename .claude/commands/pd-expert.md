@@ -166,32 +166,163 @@ TODA opción DEBE empezar con `**Nombre de Estrategia:**` en negritas. Sin excep
 
 **Principio Central:** Las opciones incorrectas son tentadoras PORQUE minimizan el riesgo percibido. Las correctas son difíciles PORQUE el costo es real y tangible.
 
-**Regla:** Mientras MENOR el score, MÁS SUAVIZADO el trade-off.
+**🚨 REGLA DE ORO (NUNCA VIOLAR):**
+> **Mientras MENOR el score, MÁS SUAVIZADO el trade-off.**
+>
+> Score 1 debe sonar MÁS fácil/seguro que Score 5.
+> Score -1 debe sonar casi sin riesgo.
 
-| Score | Trade-off | Ejemplo de "aunque/pero" |
-|-------|-----------|--------------------------|
-| **5** | **DURO y REAL** - El costo duele, genera duda genuina | "aunque arriesgas perder a tu senior más técnico y enfrentar resistencia activa" |
-| **3** | **MODERADO** - Costo evidente pero aceptable | "aunque es solución temporal que no resuelve la raíz" |
-| **1** | **SUAVIZADO** - Costo suena menor/manejable | "aunque algunos lo perciban diferente", "aunque requiera ajuste posterior" |
-| **-1** | **MÍNIMO/INVISIBLE** - Casi suena win-win | Beneficio sin "aunque" explícito, o costo trivial |
+---
 
-**La trampa psicológica:**
-- Usuario novato lee score -1 y piensa: "Esto suena razonable, no veo el problema"
-- Usuario novato lee score 5 y piensa: "Esto es muy arriesgado, ¿vale la pena?"
+### ⚠️ ERROR COMÚN (PROHIBIDO):
 
-**Fórmula por score:**
+**❌ INCORRECTO - Aplicar solo Anti-Spoiler sin graduar intensidad:**
+```javascript
+// Score 1 con trade-off DURO (ERROR!)
+"...aunque inviertes medio año sin entregar features nuevas al negocio"
+→ Problema: Este trade-off es demasiado FUERTE para score 1
+→ Debería ser score 5 con ese nivel de costo
 ```
-Score 5:  [Acción difícil]. [Beneficio sistémico LP], aunque [costo político/operativo REAL que genera duda].
+
+**✅ CORRECTO - Aplicar Anti-Spoiler + Graduar intensidad:**
+```javascript
+// Score 1 con trade-off SUAVIZADO (CORRECTO)
+"...aunque requiere pausar features nuevas temporalmente"
+→ "temporalmente" SUAVIZA el costo
+→ Suena manejable, no catastrófico
+```
+
+---
+
+### Tabla de Intensidad por Score
+
+| Score | Trade-off | Ejemplo de "aunque/pero" | Sensación del usuario |
+|-------|-----------|--------------------------|----------------------|
+| **5** | **DURO y REAL** - El costo duele, genera duda genuina | "aunque arriesgas perder a tu senior más técnico y enfrentar resistencia activa del equipo" | "Uff, esto es arriesgado... ¿vale la pena?" |
+| **3** | **MODERADO** - Costo evidente pero aceptable | "aunque es solución temporal que no resuelve la raíz del problema" | "Ok, tiene limitaciones pero es razonable" |
+| **1** | **SUAVIZADO** - Costo suena menor/manejable | "aunque algunos lo perciban diferente", "aunque requiera ajuste posterior", "aunque tome tiempo inicial" | "Parece fácil, el costo es manejable" |
+| **-1** | **MÍNIMO/INVISIBLE** - Casi suena win-win | Beneficio sin "aunque" explícito, o costo trivial ("mientras mantengas calidad") | "No veo el problema, suena perfecto" |
+
+---
+
+### 🎯 Test de Calibración (OBLIGATORIO)
+
+Después de escribir cada opción, pregúntate:
+
+**Para Score 5:**
+> "¿Un diseñador leería esto y pensaría: 'Esto es arriesgado, no estoy seguro si vale la pena'?"
+> Si la respuesta es NO → El trade-off no es suficientemente DURO
+
+**Para Score 1:**
+> "¿Un diseñador leería esto y pensaría: 'Parece fácil, el costo es manejable'?"
+> Si la respuesta es NO → El trade-off es demasiado FUERTE, necesita suavizarse
+
+**Para Score -1:**
+> "¿Un diseñador leería esto y pensaría: 'No veo el problema, suena como una buena práctica'?"
+> Si la respuesta es NO → El trade-off es demasiado evidente, necesita ocultarse
+
+---
+
+### Fórmula por Score (con ejemplos reales)
+
+```
+Score 5:  [Acción difícil]. [Beneficio sistémico LP], aunque [costo político/operativo REAL].
+
+Ejemplo: "Aplicar PIP de 30 días enfocado en soft skills. Proteges la salud del equipo,
+aunque arriesgas perder a tu mejor recurso técnico durante un ciclo crítico de desarrollo."
+→ Costo DURO: "perder tu mejor recurso técnico"
+
+---
+
 Score 3:  [Acción parcial]. [Beneficio visible], aunque [limitación práctica evidente].
-Score 1:  [Acción tentadora]. [Beneficio táctico atractivo], aunque [costo que suena MANEJABLE].
+
+Ejemplo: "Proponer enfoque híbrido que combine ambos. Entregas un compromiso político,
+aunque sigues diluyendo el foco del equipo entre mantener el core y construir plataforma."
+→ Costo MODERADO: "diluye el foco"
+
+---
+
+Score 1:  [Acción tentadora]. [Beneficio táctico atractivo], aunque [costo SUAVIZADO].
+
+Ejemplo: "Pausar el roadmap para modernizar a React. Construyes base técnica escalable,
+aunque requiere pausar features nuevas temporalmente."
+→ Costo SUAVIZADO: "temporalmente" (suena manejable)
+
+---
+
 Score -1: [Acción seductora]. [Beneficio inmediato]. [Sin "aunque" o costo trivial].
+
+Ejemplo: "Implementar 'Viernes de Code' obligatorios donde todos aprenden React.
+Desarrollas skills técnicas del equipo mientras mantienes el delivery semanal."
+→ Sin "aunque" o costo invisible ("mientras mantienes delivery")
 ```
 
-**Conectores por intensidad:**
-- Score 5: "aunque arriesgas...", "a costa de enfrentar...", "asumiendo el riesgo real de..."
-- Score 3: "aunque no resuelve...", "pero es temporal...", "aunque requiere..."
-- Score 1: "aunque algunos critiquen...", "aunque pueda necesitar ajuste...", "aunque tome tiempo..."
-- Score -1: Sin conector adversativo, o conector trivial ("mientras entregue con calidad")
+---
+
+### Conectores por Intensidad (GRADUAR SIEMPRE)
+
+**Score 5 (DURO):**
+- "aunque arriesgas...", "a costa de enfrentar...", "asumiendo el riesgo real de..."
+- "aunque tendrás que...", "aunque aceptas el riesgo de..."
+
+**Score 3 (MODERADO):**
+- "aunque no resuelve...", "pero es temporal...", "aunque requiere...", "aunque es limitado..."
+
+**Score 1 (SUAVIZADO):**
+- "aunque algunos critiquen...", "aunque pueda necesitar ajuste...", "aunque tome tiempo inicial..."
+- "aunque requiera coordinación...", "aunque sea gradual..."
+
+**Score -1 (INVISIBLE):**
+- Sin conector adversativo
+- O conector trivial: "mientras entregue calidad", "siempre que...", "con disciplina..."
+
+---
+
+### 🔴 CHECKLIST ANTI-ERROR
+
+Antes de finalizar un audit, verifica:
+
+- [ ] **Score 5**: ¿El trade-off genera DUDA genuina? ¿Suena arriesgado?
+- [ ] **Score 3**: ¿El trade-off es evidente pero aceptable?
+- [ ] **Score 1**: ¿El trade-off suena MANEJABLE/MENOR? ¿NO asusta?
+- [ ] **Score -1**: ¿El trade-off es casi INVISIBLE? ¿Suena win-win?
+- [ ] **Gradación**: ¿Score 1 suena MÁS fácil que Score 5? (Si no, INVERTISTE la lógica)
+
+---
+
+### ❌ Ejemplos de VIOLACIONES comunes
+
+**VIOLACIÓN 1: Score 1 con trade-off de Score 5**
+```javascript
+// ❌ MAL (score 1 pero costo DURO)
+{
+  score: 1,
+  text: "...aunque inviertes 6 meses sin revenue y arriesgas la cancelación del proyecto"
+}
+→ Este trade-off es DEMASIADO DURO para score 1
+
+// ✅ BIEN (score 1 con costo SUAVIZADO)
+{
+  score: 1,
+  text: "...aunque requiere pausar features temporalmente"
+}
+```
+
+**VIOLACIÓN 2: Score 5 con trade-off suavizado**
+```javascript
+// ❌ MAL (score 5 pero costo SUAVE)
+{
+  score: 5,
+  text: "...aunque algunos puedan percibirlo diferente"
+}
+→ Este trade-off es DEMASIADO SUAVE para score 5
+
+// ✅ BIEN (score 5 con costo DURO)
+{
+  score: 5,
+  text: "...aunque arriesgas perder a tu senior más técnico y enfrentar resistencia del equipo"
+}
+```
 
 ---
 
@@ -414,12 +545,15 @@ Lanzar solo porque 'ya invertimos' es **Falacia del Costo Hundido**. La inversi�
 - [ ] Field `type` describe el patrón mental (ej: "Compromiso Táctico"), no solo "Incorrect"
 - [ ] Longitud visual equilibrada (±15%)
 
-### 2. ✅ Trade-off Asimétrico Inverso
-- [ ] **Score 5:** Trade-off DURO y REAL que genera duda genuina
-- [ ] **Score 3:** Trade-off MODERADO, costo evidente pero aceptable
-- [ ] **Score 1:** Trade-off SUAVIZADO, costo suena manejable ("aunque algunos critiquen...")
-- [ ] **Score -1:** Trade-off MÍNIMO/INVISIBLE, casi suena win-win
-- [ ] **Regla:** Mientras MENOR el score, MÁS SUAVIZADO el riesgo percibido
+### 2. ✅ Trade-off Asimétrico Inverso (CRÍTICO - NO OMITIR)
+- [ ] **🚨 REGLA DE ORO:** Score 1 debe sonar MÁS fácil/seguro que Score 5 (si no, la lógica está INVERTIDA)
+- [ ] **Score 5:** Trade-off DURO y REAL que genera duda genuina ("arriesgas perder...", "enfrentar resistencia...")
+- [ ] **Score 3:** Trade-off MODERADO, costo evidente pero aceptable ("no resuelve la raíz", "es temporal")
+- [ ] **Score 1:** Trade-off SUAVIZADO, costo suena manejable ("aunque algunos critiquen", "requiera ajuste", "tome tiempo inicial")
+- [ ] **Score -1:** Trade-off MÍNIMO/INVISIBLE, casi suena win-win (sin "aunque" o costo trivial)
+- [ ] **Test de Calibración:** Leer score 1 y preguntarse "¿Suena fácil y manejable?" (debe ser SÍ)
+- [ ] **Test de Calibración:** Leer score 5 y preguntarse "¿Genera duda genuina?" (debe ser SÍ)
+- [ ] **Anti-patrón:** NO aplicar solo Anti-Spoiler sin graduar intensidad del trade-off
 
 ### 3. ✅ Escenario "Goldilocks" (2-4 oraciones)
 - [ ] **Ni telegrama ni novela:** Entre 2-4 oraciones con propósito claro
@@ -652,6 +786,131 @@ node scripts/audit-duplicates.js
 
 ---
 
+## 8. 🚨 RED FLAGS - Detección Rápida de Errores
+
+### 🔴 Red Flag #1: Trade-off Invertido
+**Síntoma:** Score 1 suena más arriesgado que Score 5
+
+**Cómo detectar:**
+```javascript
+// ❌ INVERTIDO (Score 1 con costo DURO)
+{ score: 1, text: "...aunque arriesgas perder 18% del ARR y cancelación del contrato" }
+
+// ❌ INVERTIDO (Score 5 con costo SUAVE)
+{ score: 5, text: "...aunque requiera algo de coordinación inicial" }
+```
+
+**Test rápido:** Lee ambas opciones. Si score 1 te asusta más que score 5, **LA LÓGICA ESTÁ INVERTIDA**.
+
+---
+
+### 🔴 Red Flag #2: Anti-Spoiler sin Graduar
+**Síntoma:** Eliminaste predicciones de desastre pero dejaste el trade-off igual de FUERTE
+
+**Ejemplo:**
+```javascript
+// ❌ ANTES
+{ score: 1, text: "...puede cancelar el proyecto a mitad de camino" }
+
+// ❌ DESPUÉS (Aplicaste Anti-Spoiler pero NO suavizaste)
+{ score: 1, text: "...aunque inviertes 6 meses sin revenue nuevo" }
+→ Problema: Sigue siendo DEMASIADO DURO para score 1
+
+// ✅ CORRECTO (Anti-Spoiler + Suavizado)
+{ score: 1, text: "...aunque requiere pausar features temporalmente" }
+→ "temporalmente" SUAVIZA el costo
+```
+
+**Test rápido:** Después de aplicar Anti-Spoiler, pregúntate: "¿Este trade-off suena fácil/manejable?" Si NO → Necesita más suavizado.
+
+---
+
+### 🔴 Red Flag #3: Score -1 con Costo Evidente
+**Síntoma:** La opción score -1 tiene un "aunque..." con costo real
+
+**Ejemplo:**
+```javascript
+// ❌ MAL (Score -1 con costo evidente)
+{
+  score: -1,
+  text: "Autonomía total para el equipo. Evitas micromanagement,
+  aunque arriesgas que el burnout pase desapercibido."
+}
+→ El costo es demasiado evidente
+
+// ✅ BIEN (Score -1 con costo invisible)
+{
+  score: -1,
+  text: "Autonomía total para el equipo. Freedom & Responsibility:
+  Los mejores talentos prosperan con ownership descentralizado."
+}
+→ Sin "aunque", suena a filosofía legítima
+```
+
+**Test rápido:** Si score -1 tiene un "aunque..." con consecuencia real → Necesita ocultarse o eliminarse.
+
+---
+
+### 🔴 Red Flag #4: Framing Personal en lugar de Sistémico
+**Síntoma:** Uso de "te quemas", "te odian", "pierdes credibilidad"
+
+**Ejemplo:**
+```javascript
+// ❌ PERSONAL (Auto-delata)
+"...te conviertes en cuello de botella y el equipo te odiará"
+
+// ✅ SISTÉMICO (Seductor)
+"...conviertes tu revisión en el único Quality Gate del sistema"
+```
+
+**Test rápido:** Busca pronombres de segunda persona ("te", "tu") seguidos de consecuencias emocionales.
+
+---
+
+### 🔴 Red Flag #5: Predicciones de Desastre (Anti-Spoiler)
+**Síntoma:** Uso de "...y luego falla", "...pierdes talento", "...el junior interpreta que..."
+
+**Palabras prohibidas:**
+- "puede cancelar"
+- "arriesgas que [persona] perciba/interprete"
+- "el equipo aprenderá que..."
+- "destruye marca"
+- "pierdes credibilidad"
+
+**Test rápido:** Grep por "puede", "arriesgas que", "interpreta", "aprende" → Si predice comportamiento futuro de terceros, VIOLA Anti-Spoiler.
+
+---
+
+### 🔴 Red Flag #6: Explanation Genérica
+**Síntoma:** La explicación NO referencia ningún elemento del escenario
+
+**Ejemplo:**
+```javascript
+// ❌ GENÉRICA (podría usarse en cualquier pregunta)
+"Un Lead entiende que la data es más importante que la opinión."
+
+// ✅ GROUNDED (referencia al escenario específico)
+"Cuando el pipeline cae 23% y el cierre pasó de 18 a 32 días, vigilancia
+no es lo mismo que accountability..."
+```
+
+**Test rápido:** Copia la explanation y pregúntate: "¿Esta explicación funcionaría en otra pregunta?" Si SÍ → Falta grounding.
+
+---
+
+### ✅ Checklist Rápido de Audit (30 segundos)
+
+Para cada pregunta auditada, verifica en este orden:
+
+1. **[ ] Trade-offs graduados**: Score 1 suena más fácil que Score 5
+2. **[ ] Anti-Spoiler**: No hay predicciones de desastre en opciones
+3. **[ ] Framing sistémico**: No hay "te quemas", "te odian", etc.
+4. **[ ] Score -1 seductor**: Casi sin "aunque" o costo trivial
+5. **[ ] Explanation grounded**: Referencia al menos 1 elemento del escenario
+6. **[ ] Negritas**: Opciones tienen `**Nombre:**` y explanations tienen conceptos en `**negrita**`
+
+---
+
 ## APÉNDICE: EJEMPLOS DE MICRO-MENTORÍA
 
 ### Ejemplo Completo: Trabajo Remoto (RES-09)
@@ -699,5 +958,25 @@ node scripts/audit-duplicates.js
 ---
 
 ## 🎯 Tarea a Realizar
+
+**ANTES DE EMPEZAR - LEER ESTO:**
+
+1. **Si el usuario pide "audita [bloque]":**
+   - SIEMPRE verificar los 7 checks obligatorios (no omitir ninguno)
+   - ESPECIAL ATENCIÓN a **Trade-off Asimétrico Inverso** (Check #2)
+   - Usar el **Checklist Rápido de Audit** (30 segundos por pregunta)
+   - Buscar **Red Flags** primero (detección rápida de errores)
+
+2. **Test obligatorio al finalizar:**
+   - Leer una opción score 1 y preguntarse: "¿Suena fácil y manejable?"
+   - Leer una opción score 5 y preguntarse: "¿Genera duda genuina?"
+   - Si las respuestas no son claras → **LA LÓGICA ESTÁ INVERTIDA**
+
+3. **Errores críticos a evitar:**
+   - ❌ Aplicar solo Anti-Spoiler sin graduar intensidad del trade-off
+   - ❌ Dejar score 1 con trade-off DURO de score 5
+   - ❌ Usar framing personal ("te quemas") en lugar de sistémico
+
+---
 
 {{user_input}}

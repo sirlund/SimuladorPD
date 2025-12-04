@@ -4,6 +4,70 @@ Registro cronológico de auditorías y mejoras aplicadas al proyecto SimuladorPD
 
 ---
 
+## 2025-12-04: Refuerzo de Agente pd-expert - Trade-off Asimétrico Inverso
+
+### Contexto
+Detección de fallo crítico en auditoría de 01-strategy.jsx: el agente aplicó **Anti-Spoiler V3** (eliminó predicciones de desastre) pero **NO aplicó Trade-off Asimétrico Inverso** (graduar intensidad del trade-off según score).
+
+**Problema identificado:**
+- Opciones score 1 quedaron con trade-offs DUROS de score 5
+- Ejemplo: "aunque inviertes medio año sin entregar features" (score 1) → Este costo es demasiado FUERTE para score 1, debería ser score 5
+
+**Regla violada:**
+> **Mientras MENOR el score, MÁS SUAVIZADO el trade-off.**
+> Score 1 debe sonar MÁS fácil/seguro que Score 5.
+
+### Cambios Realizados
+
+**Archivo modificado:** `.claude/commands/pd-expert.md`
+
+**Sección 3.3.2 - Trade-off Asimétrico Inverso:**
+- ✅ Agregada **🚨 REGLA DE ORO** destacada con ejemplos de error común
+- ✅ Nueva sección **⚠️ ERROR COMÚN (PROHIBIDO)** con ejemplos ANTES/DESPUÉS
+- ✅ **Tabla de Intensidad por Score** expandida con columna "Sensación del usuario"
+- ✅ **Test de Calibración (OBLIGATORIO)** con preguntas específicas por score
+- ✅ **Fórmula por Score** con ejemplos reales de cada nivel
+- ✅ **Conectores por Intensidad** categorizados por score
+- ✅ **🔴 CHECKLIST ANTI-ERROR** con verificaciones obligatorias
+- ✅ **❌ Ejemplos de VIOLACIONES comunes** con casos reales
+
+**Sección 4 - Checklist de Calidad:**
+- ✅ Check #2 reforzado con **CRÍTICO - NO OMITIR**
+- ✅ Agregados Tests de Calibración obligatorios
+- ✅ Agregado anti-patrón: "NO aplicar solo Anti-Spoiler sin graduar intensidad"
+
+**Nueva Sección 8 - 🚨 RED FLAGS:**
+- ✅ Red Flag #1: Trade-off Invertido (score 1 más arriesgado que score 5)
+- ✅ Red Flag #2: Anti-Spoiler sin Graduar (eliminar predicción sin suavizar costo)
+- ✅ Red Flag #3: Score -1 con Costo Evidente
+- ✅ Red Flag #4: Framing Personal en lugar de Sistémico
+- ✅ Red Flag #5: Predicciones de Desastre (Anti-Spoiler)
+- ✅ Red Flag #6: Explanation Genérica
+- ✅ **Checklist Rápido de Audit** (30 segundos por pregunta)
+
+**Sección Final - Tarea a Realizar:**
+- ✅ Instrucciones ANTES DE EMPEZAR con test obligatorio
+- ✅ Lista de errores críticos a evitar
+- ✅ Verificación explícita de gradación de trade-offs
+
+### Impacto
+
+**Prevención de errores:**
+- El agente ahora tiene ejemplos explícitos de errores comunes con ANTES/DESPUÉS
+- Checklist de 6 red flags para detección rápida
+- Test de calibración obligatorio: "¿Score 1 suena más fácil que Score 5?"
+
+**Mejora en calidad:**
+- Las opciones score 1/-1 ahora serán **seductoras** con costos SUAVIZADOS
+- Las opciones score 5 tendrán trade-offs DUROS que generen duda genuina
+- Aplicación correcta de Anti-Spoiler + Gradación de intensidad
+
+**Siguiente paso:**
+- Re-auditar 01-strategy.jsx aplicando AMBAS reglas correctamente
+- Corregir opciones con trade-offs invertidos
+
+---
+
 ## 2025-12-04: Rename TokuAssessment → PDAssessment
 
 ### Contexto
