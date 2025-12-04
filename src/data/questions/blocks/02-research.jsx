@@ -129,11 +129,11 @@ export const research_questions = [
     scenario: "Ingeniería Europa (6h adelante) pierde el 40% de su mañana adivinando qué pantallas están listas para dev. La velocidad cayó 15%. El CTO te culpa: 'Tu equipo diseña mientras el mío duerme'. Amenaza con Daily Sync obligatorio a las 6 AM tu hora.",
     question: "¿Cómo organizas el archivo para colaboración asíncrona y evitar madrugar?",
     options: [
-      { id: 'A', text: "Sync Meeting de Compromiso: Aceptas la reunión de 6 AM dos veces por semana. Es brutal para tu balance, pero calma al CTO y asegura claridad inmediata.", score: 1, type: "Mártir (Insostenible)" },
-      { id: 'B', text: "Protocolo Async: Implementas 'Ready for Dev' con Loom obligatorio. Si no hay video explicando el ticket, no pasa a desarrollo. Elimina ambigüedad sin reuniones.", score: 5, type: "Lead (Async Ops)" },
-      { id: 'C', text: "Limpieza Diaria: Dedicas tu última hora a limpiar archivos y dejar notas. Es manual y depende de tu disciplina diaria, pero evita cambiar el proceso de los devs.", score: 3, type: "Parche (No escala)" }
+      { id: 'A', text: "**Sync Meeting de Compromiso:** Aceptas la reunión de 6 AM dos veces por semana temporalmente hasta estabilizar la velocidad. Desbloqueas el conflicto político y técnico inmediatamente, aunque conviertes la sincronización en una dependencia de tiempo real que limita la autonomía futura.", score: 3, type: "Compromiso (Heroísmo Táctico)" },
+      { id: 'B', text: "**Protocolo Async:** Implementas 'Ready for Dev' con Loom obligatorio explicando cada ticket. Eliminas la ambigüedad estructuralmente sin reuniones, aunque impones una carga administrativa extra a los diseñadores que ralentizará el output visual inicial.", score: 5, type: "Lead (Async Ops)" },
+      { id: 'C', text: "**Limpieza Manual Diaria:** Dedicas tu última hora a auditar y comentar cada archivo saliente. Garantizas specs perfectas sin cambiar el workflow del equipo, pero centralizas la 'Verdad' en tu revisión personal, creando un cuello de botella en el flujo de entrega.", score: 1, type: "Centralizado (Control de Calidad)" }
     ],
-    explanation: "El trabajo remoto asíncrono requiere protocolos estrictos, no más reuniones. El Protocolo Async (Loom + Handoff explícito) escala la comunicación y elimina la ambigüedad. Aceptar el Sync Meeting es una solución parche que quema al líder. La Limpieza Diaria depende de la disciplina individual y es propensa a errores humanos."
+    explanation: "Las zonas horarias no se arreglan madrugando, se diseñan. El 'Sync de Compromiso' es insostenible y la 'Limpieza Manual' crea un **Bus Factor** de 1. El **Protocolo Async** aplica **Technical Hygiene**: diseña el sistema para que la falta de contexto sea estructuralmente imposible. Tu trabajo es diseñar la máquina, no ser el engranaje que falta."
   },
   {
     id: 'meeting_overload_protection',
