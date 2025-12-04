@@ -625,30 +625,116 @@ Lanzar solo porque 'ya invertimos' es **Falacia del Costo Hundido**. La inversi�
 
 #### 🔴 PROTOCOLO DE AUDIT EXHAUSTIVO (Por defecto)
 
-Cuando el usuario pida **"audita [bloque]"** sin especificar qué revisar, el agente DEBE revisar **TODO** sistemáticamente:
+Cuando el usuario pida **"audita [bloque]"** sin especificar qué revisar, el agente DEBE revisar **TODO** sistemáticamente.
 
-**Paso 1: Grep y lectura del bloque completo**
+---
 
-**Paso 2: Verificar CADA pregunta en estos 4 ejes:**
+### 🎯 OPCIÓN A: AUDIT POR PREGUNTA (DEFAULT - Recomendado)
 
-| Eje | Qué revisar | Grep útil |
-|-----|-------------|-----------|
-| **1. Escenarios** | Goldilocks (DOLOR+DETONANTE+TENSIÓN+URGENCIA), 2-4 oraciones, métricas concretas | `scenario:` |
-| **2. Opciones** | Negritas `**Nombre:**`, Trade-off Integrado, Anti-Spoiler V3, longitud equilibrada | `text:` |
-| **3. Explicaciones** | Negritas en conceptos académicos, Grounding en escenario, max 60 palabras | `explanation:` |
-| **4. Scoring** | Distribución correcta (un 5, 1-2 de 3, 1-2 de 1, max un -1) | `score:` |
+**Cuándo usar:** Audit completo de calidad, detección de issues de coherencia interna.
 
-**Paso 3: Generar tabla de issues con severidad**
+**Por qué es mejor:**
+- ✅ Contexto completo de cada pregunta en memoria
+- ✅ Fácil verificar **Grounding** (explanation referencia escenario)
+- ✅ Fácil verificar **Trade-off Asimétrico Inverso** (comparar opciones score 1 vs 5 de la misma pregunta)
+- ✅ Más natural para coherencia interna
 
-```markdown
-| # | ID | Eje | Issue | Severidad |
-|---|-----|-----|-------|-----------|
-| 1 | pregunta_x | Escenario | Falta Goldilocks (sin métrica) | 🔴 Alta |
-| 2 | pregunta_y | Opciones | Opción B sin negrita | 🟡 Media |
-| 3 | pregunta_z | Explanation | Falta negrita en "Bus Factor" | 🟡 Media |
+**Proceso:**
+
+**Paso 1:** Leer bloque completo
+
+**Paso 2:** Para CADA pregunta, verificar en este orden:
+
+```
+Pregunta 1 (id: pregunta_x):
+  ✅ 1. Escenario: ¿Goldilocks? ¿DOLOR+DETONANTE+TENSIÓN? ¿Métricas concretas?
+  ✅ 2. Opciones:
+      - ¿Negritas en **Nombre Estrategia:**?
+      - ¿Trade-off graduado por score? (Score 1 SUAVIZADO, Score 5 DURO)
+      - ¿Anti-Spoiler V3? (sin predicciones de desastre)
+      - Test: ¿Score 1 suena MÁS fácil que Score 5?
+  ✅ 3. Explanation:
+      - ¿Negritas en conceptos académicos?
+      - ¿Grounding en escenario? (referencia al menos 1 elemento)
+      - ¿Max 60 palabras?
+  ✅ 4. Scoring: ¿Distribución correcta? (un 5, 1-2 de 3, 1-2 de 1, max un -1)
+
+Pregunta 2 (id: pregunta_y):
+  ✅ 1. Escenario...
+  ✅ 2. Opciones...
+  ...
 ```
 
-**Paso 4: Corregir TODOS los issues encontrados**
+**Paso 3:** Generar tabla de issues con severidad
+
+```markdown
+| # | ID Pregunta | Eje | Issue | Severidad |
+|---|-------------|-----|-------|-----------|
+| 1 | pregunta_x | Opciones | Trade-off invertido: Score 1 más DURO que Score 5 | 🔴 Alta |
+| 2 | pregunta_x | Explanation | Falta negrita en "Bus Factor" | 🟡 Media |
+| 3 | pregunta_y | Escenario | Falta métrica concreta | 🔴 Alta |
+| 4 | pregunta_z | Opciones | Opción B sin negrita en **Nombre:** | 🟡 Media |
+```
+
+**Paso 4:** Corregir TODOS los issues encontrados
+
+---
+
+### 🔍 OPCIÓN B: AUDIT POR EJE (Alternativa - Sistemático)
+
+**Cuándo usar:** Detección de patrones repetidos, limpieza masiva de formato.
+
+**Por qué puede ser útil:**
+- ✅ Enfoque especializado por eje
+- ✅ Más fácil identificar patrones repetidos (ej: todas las explanations sin negritas)
+- ✅ Más sistemático para greps masivos
+
+**Proceso:**
+
+**Paso 1:** Leer bloque completo
+
+**Paso 2:** Auditar por eje (todos a la vez):
+
+```
+EJE 1 - Escenarios (TODAS las preguntas):
+  ✅ Grep `scenario:` en todo el bloque
+  ✅ Verificar Goldilocks, métricas, tensión
+  ✅ Listar issues de escenarios
+
+EJE 2 - Opciones (TODAS las preguntas):
+  ✅ Grep `text:` en todo el bloque
+  ✅ Verificar negritas, trade-offs graduados, Anti-Spoiler
+  ✅ Listar issues de opciones
+
+EJE 3 - Explanations (TODAS las preguntas):
+  ✅ Grep `explanation:` en todo el bloque
+  ✅ Verificar negritas, grounding, límite 60 palabras
+  ✅ Listar issues de explanations
+
+EJE 4 - Scoring (TODAS las preguntas):
+  ✅ Grep `score:` en todo el bloque
+  ✅ Verificar distribución correcta
+  ✅ Listar issues de scoring
+```
+
+**Paso 3:** Generar tabla de issues (igual que Opción A)
+
+**Paso 4:** Corregir TODOS los issues encontrados
+
+---
+
+### 📋 CUÁL USAR (Guía de Decisión)
+
+**USA OPCIÓN A (Por Pregunta) cuando:**
+- ✅ Usuario pidió "audita [bloque]" sin especificar (DEFAULT)
+- ✅ Necesitas verificar coherencia interna de cada pregunta
+- ✅ Necesitas verificar Trade-off Asimétrico Inverso (comparar scores)
+- ✅ Necesitas verificar Grounding (explanation ↔ escenario)
+
+**USA OPCIÓN B (Por Eje) cuando:**
+- ✅ Usuario pidió explícitamente "enfoque sistemático"
+- ✅ Detectaste un patrón repetido (ej: "todas las opciones sin negrita")
+- ✅ Necesitas limpieza masiva de formato
 
 ---
 

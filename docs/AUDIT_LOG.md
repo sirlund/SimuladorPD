@@ -50,6 +50,16 @@ Detección de fallo crítico en auditoría de 01-strategy.jsx: el agente aplicó
 - ✅ Lista de errores críticos a evitar
 - ✅ Verificación explícita de gradación de trade-offs
 
+**Sección 5.3 - Protocolo de Audit:**
+- ✅ **OPCIÓN A: Audit Por Pregunta (DEFAULT)** - Recomendado para coherencia interna
+  - Contexto completo de cada pregunta en memoria
+  - Fácil verificar Grounding y Trade-off Asimétrico Inverso
+  - Proceso explícito: Escenario → Opciones → Explanation → Scoring (por pregunta)
+- ✅ **OPCIÓN B: Audit Por Eje (Alternativa)** - Para enfoques sistemáticos
+  - Todos los escenarios → Todas las opciones → Todas las explanations → Scoring
+  - Útil para detectar patrones repetidos
+- ✅ Guía de decisión clara sobre cuándo usar cada opción
+
 ### Impacto
 
 **Prevención de errores:**
