@@ -12,268 +12,286 @@ export const metrics_questions = [
   // --- BLOQUE 7: CRISIS DE PRODUCTO & PRESIÓN DE ROADMAP ---
   {
     id: 'churn_spike_investigation',
+    displayId: 'MET-01',
     category: "Gestión de Crisis & Liderazgo",
     icon: <AlertTriangle className="w-6 h-6 text-red-600" />,
-    scenario: "El dashboard de analytics muestra un churn del 40% en los últimos 7 días (normal es 8%), equivalente a $280K en ARR perdido. El equipo de Customer Success culpa al rediseño del flujo de pago que lanzaste hace 2 semanas. El VP de Engineering ya preparó un rollback, pero tu PM argumenta: 'Si revertimos sin evidencia, admitimos fracaso públicamente ante el Board'. El CEO te convoca a una reunión de emergencia en 2 horas donde tendrás que defender o sacrificar tu decisión de diseño.",
-    question: "¿Cuál es tu primer movimiento en las próximas 2 horas?",
+    scenario: "Alerta Roja: Churn del 40% en los últimos 7 días ($280K ARR en riesgo). CS culpa a tu rediseño del pago. Engineering ya tiene el dedo en el botón de 'Revertir'. Tu PM dice que revertir es admitir derrota. El CEO te convoca a una reunión de emergencia en 2 horas para explicar qué pasó.",
+    question: "¿Cuál es tu primer movimiento antes de entrar a esa sala?",
     options: [
-      { id: 'A', text: "**Reversión Preventiva:** Coordinas con ingeniería para revertir inmediatamente el diseño nuevo y volver al flujo anterior mientras investigas en paralelo qué causó el spike. Detener la hemorragia es prioridad, aunque arriesgas revertir un cambio inocente y perder credibilidad si el problema real era externo (pasarela de pago, fraude, etc.).", score: 3, type: "Reactivo (Puede ser prematuro)" },
-      { id: 'B', text: "**Análisis Forense Urgente:** Segmentas el churn por cohorte (usuarios nuevos vs antiguos), flujo usado (nuevo vs legacy), fuente de tráfico y analizas heat maps + session recordings para identificar el punto exacto de fricción antes de la reunión, aunque arriesgas llegar con hipótesis en lugar de una solución definitiva si el análisis no es concluyente en 2 horas.", score: 5, type: "Lead (Data-First)" },
-      { id: 'C', text: "**War Room Inmediato:** Convocas a todos los stakeholders (CS, Product, Eng, Data) a una sala para generar hipótesis colaborativas y dividir las investigaciones entre el equipo, aunque arriesgas perder tiempo valioso en discusiones sin datos concretos cuando solo tienes 2 horas antes de enfrentar al CEO.", score: 3, type: "Comité de Crisis (Ruido)" }
+      { id: 'A', text: "**Protocolo de Reversión:** Ejecutas el rollback inmediato para detener la hemorragia. En situaciones de pérdida financiera aguda, la prioridad es estabilizar el sistema a un estado conocido y seguro antes de diagnosticar la causa raíz.", score: 3, type: "Reactivo (Puede ser prematuro)" },
+      { id: 'B', text: "**Triangulación Forense:** Segmentas el churn por cohorte y fuente de tráfico antes de tocar el código. Buscas descartar variables externas (pasarela caída, fraude, marketing) para llegar a la reunión con un diagnóstico basado en evidencia, no en pánico.", score: 5, type: "Lead (Data-First)" },
+      { id: 'C', text: "**War Room de Stakeholders:** Convocas a CS, Product, Eng y Data a una sala de guerra inmediata. Centralizas la comunicación y generas hipótesis colaborativas para asegurar que todas las áreas estén alineadas en la respuesta.", score: 1, type: "Comité de Crisis (Ruido)" }
     ],
-    explanation: "Con $280K en ARR perdido y el CEO esperando en 2 horas, revertir sin evidencia puede ser prematuro si el problema no es el diseño (podría ser un bug de pasarela, cambio de precio, o tráfico de mala calidad). El **Análisis Forense Urgente** te permite llegar a la reunión con datos concretos sobre el churn del 40%, transformando el pánico en un plan de acción informado. El **War Room** sin datos previos suele generar ruido y caos."
+    explanation: "Revertir sin evidencia es pánico, no estrategia (podría ser un bug de pasarela o fraude). El **War Room** sin datos previos genera ruido. La **Triangulación Forense** transforma el caos en un plan de acción informado. Con $280K en juego, necesitas el diagnóstico correcto, no el más rápido."
   },
   {
     id: 'competitor_feature_launch',
+    displayId: 'MET-02',
     category: "Estrategia Competitiva",
     icon: <Trophy className="w-6 h-6 text-yellow-600" />,
-    scenario: "Tu competidor lanzó 'Reportes AI' y el VP de Ventas está en pánico tras perder 3 deals ($340K). Exige clonarlo en 1 sprint para 'salvar el Q'. Sin embargo, tu research confirma que la queja #1 de los clientes actuales es la lentitud de los reportes, no la falta de AI. Engineering estima que clonar tomaría 8 semanas, paralizando la optimización de velocidad.",
-    question: "¿Cómo respondes al VP de Ventas ante presión competitiva vs. evidencia de usuario?",
+    scenario: "Competidor lanzó 'Reportes AI'. Perdiste 3 deals ($340K). Ventas exige clonarlo en 1 sprint. Tu research dice que la queja #1 actual es 'lentitud', no 'falta de AI'. Engineering dice que clonar toma 8 semanas.",
+    question: "¿Cómo respondes a la presión competitiva?",
     options: [
-      { id: 'A', text: "**Market-Driven Velocity:** Pivotar todo el equipo a clonar 'Reportes AI' inmediatamente. En mercados competitivos, quien shippea primero gana - los mejores equipos de Silicon Valley priorizan velocidad de respuesta sobre research perfecto. Los usuarios actuales entienden que la innovación requiere experimentación.", score: -1, type: "Feature Factory" },
-      { id: 'B', text: "**Diagnóstico de Deals:** Entrevistar hoy mismo a esos 3 clientes. ¿Realmente querían 'AI' o solo necesitaban exportar data? Resuelves el problema de fondo, no la solución, aunque arriesgas perder momentum competitivo si resulta que el mercado genuinamente valoraba la capacidad de AI y tardas 8 semanas en responder.", score: 5, type: "Lead (Estratégico)" },
-      { id: 'C', text: "**Contra-oferta Táctica:** Lanzar 'Export to Excel' rápido y vender nuestra velocidad como ventaja competitiva. 'Ellos tienen AI lenta, nosotros reportes instantáneos', aunque arriesgas que el mercado perciba esto como feature inferior si la narrativa de AI ya se instaló en la industria.", score: 3, type: "Pragmático" }
+      { id: 'A', text: "**Fast-Follow Strategy:** Pivotas al equipo para clonar la feature de AI inmediatamente. En mercados 'Winner-takes-all', neutralizar la ventaja competitiva del rival es crítico para proteger el pipeline de ventas a corto plazo.", score: -1, type: "Feature Factory" },
+      { id: 'B', text: "**Auditoría de Pérdida:** Entrevistas hoy a los 3 clientes perdidos para entender el 'Job-to-be-Done'. Validas si querían 'AI' o simplemente 'Data accesible'. Resuelves el problema raíz del cliente, no la solución de moda del competidor.", score: 5, type: "Lead (Estratégico)" },
+      { id: 'C', text: "**Posicionamiento Diferenciado:** Doblas la apuesta en 'Velocidad' y lanzas una campaña de 'Reportes Instantáneos'. Re-enmarcas la narrativa del mercado hacia tu fortaleza actual en lugar de competir en la debilidad.", score: 3, type: "Pragmático" }
     ],
-    explanation: "Con $340K en deals perdidos y presión de Ventas, copiar por pánico es amateur. El **Diagnóstico de Deals** frena la histeria para entender el **Job-to-be-Done** real detrás de esos 3 clientes. A menudo, el cliente pide 'AI' (la solución de moda) pero necesita 'Excel' o 'Velocidad' (el problema real). Construir lo que piden sin validar el problema convierte al equipo en una **Feature Factory**."
+    explanation: "Copiar por pánico convierte al equipo en una **Feature Factory**. A menudo, el cliente pide 'AI' (solución) pero necesita 'Velocidad' (problema). La **Auditoría de Pérdida** frena la histeria para validar el problema real. **Posicionamiento Diferenciado** es válido, pero arriesgado si la narrativa de mercado ya cambió irreversiblemente."
   },
   {
     id: 'investor_demo_cosmetics',
+    displayId: 'MET-03',
     category: "Gestión de Stakeholders",
     icon: <Star className="w-6 h-6 text-purple-500" />,
-    scenario: "Pitch de Series A en 4 días con Sequoia ($8M target valuation). El CEO te pide 'embellecer el dashboard para la demo': gráficos más 'wow', animaciones, colores vibrantes, data que se vea impresionante. El producto real tiene 2,400 usuarios activos pero es visualmente austero (diseño enterprise conservador). Él argumenta: 'Los VCs invierten en visión, no en el presente - necesitamos mostrar potencial'. Tu designer estima 40 horas para una versión 'demo mode' completamente custom. Tu CTO advierte: 'Si Sequoia pide acceso durante Due Diligence y ven código demo fake, nos descalifican instantáneamente'. Tienes que decidir hoy para que el designer pueda ejecutar.",
-    question: "¿Qué nivel de 'polish aspiracional' permites sin cruzar línea ética?",
+    scenario: "Pitch Series A con Sequoia ($8M). CEO pide 'embellecer el dashboard' (fake data, animaciones) porque el producto real es austero. CTO advierte: 'Si ven código fake en Due Diligence, nos matan'.",
+    question: "¿Qué nivel de 'polish' permites?",
     options: [
-      { id: 'A', text: "**Demo Mode Producido:** Diseñas versión 'demo' con UI pulida, animaciones, datos ficticios hermosos que nunca se usará en producción. Es lo que hacen todos - los VCs lo entienden. Separas claramente 'vision' de 'realidad actual', aunque arriesgas que Sequoia descubra el código demo durante Due Diligence y perciba esto como deshonestidad fundacional que destruya el deal de $8M.", score: 1, type: "Teatro (Deuda ética)" },
-      { id: 'B', text: "**Polish del Roadmap Q Actual:** Mejoras SOLO features que están ya comprometidas en roadmap de Q2-Q3 (con designs WIP). La demo muestra dirección real del producto, no un espejismo. Es aspiracional pero honest-to-roadmap.", score: 5, type: "Lead (Honestidad aspiracional)" },
-      { id: 'C', text: "**Pureza Absoluta:** Te niegas a 'maquillar' nada. Lo que ven los inversores debe ser EXACTAMENTE lo que usan los clientes hoy, pixel por pixel. La honestidad radical es tu principio, aunque arriesgas que el pitch se vea poco inspirador comparado con competidores que muestran visión aspiracional y Sequoia descarte la oportunidad por falta de ambición visual.", score: 1, type: "Purista (Pierde momentum de pitch)" }
+      { id: 'A', text: "**Visionary Demo Mode:** Creas una versión separada 'North Star' con UI pulida y data ficticia perfecta. Los inversores compran la visión de futuro, no el estado actual. Es una práctica estándar para comunicar el potencial del producto.", score: 1, type: "Teatro (Deuda ética)" },
+      { id: 'B', text: "**Roadmap Acceleration:** Pules visualmente SOLO las features que ya están comprometidas en el roadmap de Q2. La demo muestra una versión aspiracional pero honesta de hacia dónde va el producto real en el corto plazo.", score: 5, type: "Lead (Honestidad aspiracional)" },
+      { id: 'C', text: "**Radical Transparency:** Muestras el producto exactamente como es hoy. La honestidad construye confianza a largo plazo y evitas cualquier riesgo de que el Due Diligence técnico revele discrepancias.", score: 1, type: "Purista (Pierde momentum)" }
     ],
-    explanation: "Con Sequoia en 4 días y $8M en juego, una demo de inversión vende el futuro próximo, no solo el presente. El **Polish del Roadmap Actual** balancea la visión con la integridad de ejecución mostrando features ya comprometidas. Crear un **Demo Mode Producido** (vaporware) genera una deuda de expectativas que explotará cuando el CTO advierte que Sequoia verá el código demo durante **Due Diligence**. La **Pureza Absoluta** falla en inspirar sobre el potencial del producto."
+    explanation: "Una demo de inversión vende el futuro próximo. **Visionary Demo Mode** es vaporware que explota en el Due Diligence. **Radical Transparency** no inspira. **Roadmap Acceleration** balancea la venta de visión con la integridad de ejecución: es aspiracional, pero técnicamente honesto."
   },
   {
     id: 'technical_debt_explosion',
+    displayId: 'MET-04',
     category: "Arquitectura de Sistemas",
     icon: <AlertOctagon className="w-6 h-6 text-orange-600" />,
-    scenario: "La velocidad del equipo cayó 40% en los últimos 2 sprints (de 32 story points/sprint a 19). Tu Tech Lead principal midió que el 68% del tiempo se consume en hotfixes y workarounds por deuda técnica acumulada. Engineering exige un 'Refactor Sprint' de 2 semanas sin features nuevas para sanear el código legacy. El VP de Product argumenta: 'Imposible parar - tenemos demo con cliente enterprise ($420K deal) en 3 semanas y necesitamos el SSO funcionando'. Tu Engineering Manager amenaza: 'Si no refactoreamos ya, renuncio y me llevo a 2 seniors conmigo'. Board meeting es mañana.",
-    question: "¿Qué estrategia de balance deuda/delivery propones al Board AHORA con amenaza de renuncia de engineers?",
+    scenario: "Velocidad cayó 40% por deuda técnica. Engineering Manager amenaza con renunciar si no hay un 'Refactor Sprint' de 2 semanas. Tienes demo con cliente enterprise ($420K) en 3 semanas que necesita SSO.",
+    question: "¿Qué estrategia propones al Board?",
     options: [
-      { id: 'A', text: "**Velocity Through Adversity:** Seguir shippeando features aunque sea lento. Los mejores equipos de startup operan bajo constraints - la deuda técnica es normal en crecimiento acelerado. El revenue de nuevas features compensará la ineficiencia operativa y después refactoreamos con más recursos.", score: -1, type: "Miope" },
-      { id: 'B', text: "**Tax de Deuda:** Acordar dedicar 20% de cada sprint a refactor progresivo. Evitas el parón total traumático pero pagas la deuda constantemente, aunque arriesgas no llegar al demo de SSO en 3 semanas si la capacidad reducida (de 19 a ~15 points efectivos) retrasa features críticas.", score: 5, type: "Lead (Sostenible)" },
-      { id: 'C', text: "**Parón Total:** Apoyar detener el roadmap 2 semanas. Argumentas que es mejor sufrir un retraso corto ahora que sangrar eficiencia por meses, aunque arriesgas perder el deal de $420K si el demo con cliente enterprise se retrasa y que el Board cuestione tu capacidad de delivery bajo presión.", score: 3, type: "Drástico" }
+      { id: 'A', text: "**Growth Mindset:** Mantienes el roadmap de features. La deuda técnica es señal de crecimiento. El revenue del nuevo deal ($420K) permitirá contratar más ingenieros para arreglar el código después.", score: -1, type: "Miope" },
+      { id: 'B', text: "**Tech Debt Tax (20%):** Institucionalizas una cuota del 20% de capacidad por sprint para refactor continuo. Evitas el parón total traumático y pagas la deuda progresivamente mientras avanzas hacia el demo.", score: 5, type: "Lead (Sostenible)" },
+      { id: 'C', text: "**Strategic Pause:** Autorizas el parón de 2 semanas. Es mejor asumir un retraso corto ahora y sanear la base, que operar con una velocidad degradada permanentemente que pone en riesgo todo el año.", score: 3, type: "Drástico" }
     ],
-    explanation: "Con velocidad cayendo 40% (de 32 a 19 story points) y amenaza de renuncia del Engineering Manager, ignorar deuda degrada velocidad permanentemente. Parar 2 semanas arriesga el demo de $420K en 3 semanas. El **Tax de Deuda** del 20% paga deuda constantemente sin trauma, manteniendo delivery y moral del equipo. Es sostenible a largo plazo aunque requiere sacrificar algo de capacidad inmediata."
+    explanation: "Ignorar la deuda con velocidad cayendo 40% es negligencia. Parar totalmente arriesga el deal de $420K. El **Tech Debt Tax** es la única solución sostenible: paga intereses de la deuda sin detener la maquinaria de ingresos. Mantiene al equipo de ingeniería motivado y al negocio funcionando."
   },
 
   // --- BLOQUE 8: DATA, MÉTRICAS & EXPERIMENTACIÓN ---
   {
     id: 'ab_test_interpretation_bias',
+    displayId: 'MET-05',
     category: "Data-Driven Design",
     icon: <BarChart2 className="w-6 h-6 text-green-600" />,
-    scenario: "Tu A/B test del nuevo Home corrió 3 semanas con 12,000 usuarios y el resultado es p-value de 0.23 (necesitas <0.05 para significancia). La conversión subió de 3.2% a 3.4%, pero el intervalo de confianza incluye resultados negativos. Tu PM te escribe en Slack: 'El CFO ya prometió $1.8M de revenue incremental al Board basado en este lanzamiento - TENEMOS que encontrar algo positivo. ¿Qué tal si reportamos el 8% de mejora en tiempo de engagement? Esa métrica sí es significativa'. El lanzamiento está programado para el lunes. Data Science advierte: 'Cherry-picking métricas secundarias destruye la credibilidad del proceso de experimentación a largo plazo'.",
-    question: "¿Qué recomendación das sobre el launch del lunes?",
+    scenario: "A/B Test inconcluso (p-value 0.23). Conversión plana. PM quiere lanzar igual porque 'engagement subió 8%' y CFO ya prometió revenue al Board. Data Science dice que es cherry-picking.",
+    question: "¿Qué recomendación das sobre el launch?",
     options: [
-      { id: 'A', text: "**Apoyar el lanzamiento:** 'Done is better than perfect'. Argumentas que el 8% de mejora, aunque no significativo, es mejor que nada, aunque arriesgas contaminar el producto con cambios sin valor probado y erosionar la cultura de experimentación rigurosa del equipo.", score: 1, type: "Complaciente" },
-      { id: 'B', text: "**Defensa de la Data:** 'El test falló. Si lanzamos, ensuciamos el producto sin valor probado. Iteremos la hipótesis y testeemos de nuevo', aunque arriesgas enfrentar la presión política del CFO que ya prometió $1.8M al Board basado en este lanzamiento y necesitas capital para mantener tu posición.", score: 5, type: "Lead (Integridad de Data)" },
-      { id: 'C', text: "**Lanzamiento Vigilado:** Lanzar pero monitorear de cerca por 48h. Si la conversión baja, haces rollback inmediato. Asumes el riesgo, aunque arriesgas que 48 horas de tráfico negativo contaminen tu funnel y que el CFO use este precedente para presionar futuros lanzamientos sin validación.", score: 3, type: "Riesgoso" }
+      { id: 'A', text: "**Business Pragmatism:** Apoyas el lanzamiento basándote en la métrica secundaria positiva. 'Done is better than perfect', y el costo de no lanzar (decepcionar al Board) supera el riesgo de un impacto neutro en conversión.", score: 1, type: "Complaciente" },
+      { id: 'B', text: "**Integridad Estadística:** Recomiendas no lanzar. Si el test falló en su métrica primaria, el cambio es ruido. Iterar la hipótesis protege la calidad del producto y la credibilidad del equipo de datos a largo plazo.", score: 5, type: "Lead (Integridad de Data)" },
+      { id: 'C', text: "**Lanzamiento Monitoreado:** Lanzas con un rollback automático si la conversión cae en 48h. Asumes el riesgo controlado para cumplir con la expectativa política del CFO, usando producción como el test final.", score: 3, type: "Riesgoso" }
     ],
-    explanation: "Con $1.8M prometidos al Board y el lanzamiento del lunes, lanzar un test inconcluso compromete la credibilidad del proceso de experimentación. **Lanzamiento Vigilado** es riesgoso sin evidencia de mejora. Un Lead defiende la integridad de datos (**Defensa de la Data**): si el test falló y el PM quiere hacer **cherry-picking** de métricas secundarias, iteremos la hipótesis. La credibilidad científica es más valiosa que un lanzamiento apresurado."
+    explanation: "Hacer **Cherry-picking** de métricas secundarias para justificar un fracaso destruye la cultura de experimentación. **Business Pragmatism** llena el producto de basura. Un Lead defiende la **Integridad Estadística**: si no mueve la aguja, no entra al core. La credibilidad ante el Board se gana con la verdad, no con humo."
   },
   {
     id: 'vanity_metric_viral_growth',
+    displayId: 'MET-06',
     category: "Métricas de Producto",
     icon: <Zap className="w-6 h-6 text-yellow-500" />,
-    scenario: "Un hack viral (TikTok trending sound con tu logo) trajo 50,000 usuarios nuevos en 7 días. Los inversores celebran el crecimiento 'explosivo' en el Board call del viernes. Sin embargo, tu análisis cohort muestra que la retención día-30 es del 0.5% (vs 38% promedio histórico). El CAC de estos usuarios virales fue $0, pero el LTV proyectado es $0.12 (costo de servidor excede valor). Tu CMO argumenta: 'Este momentum viral puede ayudarnos a cerrar Series B - los VCs aman growth curves así'. Tienes que presentar métricas de producto en el Board meeting de mañana.",
-    question: "¿Cómo evalúas el verdadero ROI del feature ante el equipo ejecutivo con data contradictoria?",
+    scenario: "Hack viral en TikTok trajo 50k usuarios. Inversores celebran. Tu data muestra retención día-30 del 0.5% (vs 38% normal). LTV es negativo. CMO quiere usar esto para levantar Series B.",
+    question: "¿Cómo evalúas el ROI ante el equipo ejecutivo?",
     options: [
-      { id: 'A', text: "**Celebrar con ellos:** El crecimiento ayuda a levantar capital. Asumes que la retención se puede arreglar después con emails y notificaciones, aunque arriesgas que el Board tome decisiones estratégicas basadas en métricas engañosas y que la Serie B se caiga cuando los VCs descubran la retención de 0.5% durante Due Diligence.", score: 1, type: "Vanity" },
-      { id: 'B', text: "**Reality Check:** Mostrar el gráfico de retención al CEO. 'Estamos llenando un balde agujereado. Pautemos el viral y arreglemos el onboarding ya', aunque arriesgas ser percibido como aguafiestas que mata el momentum de fundraising y que el CMO te culpe si la Serie B tarda más en cerrarse.", score: 5, type: "Lead (Honestidad Radical)" },
-      { id: 'C', text: "**Rediseño Reactivo:** Detener todo para rediseñar el producto y adaptarlo a estos nuevos usuarios, asumiendo que son el nuevo target, aunque arriesgas pivotar tu estrategia de producto completa basado en una cohorte viral de 0.5% retención que puede no representar tu ICP real.", score: 1, type: "Reactivo" }
+      { id: 'A', text: "**Capitalize Momentum:** Celebras el crecimiento y apoyas la narrativa de 'Viral Growth' para la Series B. El problema de retención se puede resolver post-funding con más recursos y mejores herramientas de engagement.", score: 1, type: "Vanity" },
+      { id: 'B', text: "**Leaky Bucket Reality:** Muestras el gráfico de retención al CEO en privado. 'Estamos llenando un balde con agujeros'. Recomiendas pausar el pautaje viral y enfocar recursos en arreglar la activación inmediatamente.", score: 5, type: "Lead (Honestidad Radical)" },
+      { id: 'C', text: "**Pivot Reactivo:** Propones rediseñar el onboarding para adaptarse a este nuevo perfil de usuario viral. Si llegaron 50k personas, hay un Product-Market Fit potencial que debemos explorar adaptando el producto.", score: 1, type: "Reactivo" }
     ],
-    explanation: "Con 50K usuarios nuevos pero retención de 0.5% (vs 38% histórico), crecimiento sin retención significa llenar un balde agujereado. Un Lead muestra el funnel completo en el Board meeting de mañana (**Reality Check**) para reorientar la estrategia hacia la retención. Celebrar **Vanity Metrics** distorsiona la realidad del negocio y puede colapsar la Serie B durante **Due Diligence**. El **Rediseño Reactivo** es costoso y prematuro sin entender la causa del abandono."
+    explanation: "Crecimiento sin retención es vanidad. Celebrar **Vanity Metrics** puede destruir la Series B durante el Due Diligence. El **Leaky Bucket Reality** reorienta la estrategia hacia lo único que importa: **Unit Economics**. Pivotar por tráfico de baja calidad (**Pivot Reactivo**) es desenfocarse del ICP real."
   },
   {
     id: 'sample_size_impatience',
+    displayId: 'MET-07',
     category: "Validación Ágil",
     icon: <Timer className="w-6 h-6 text-blue-500" />,
-    scenario: "Lanzas un A/B test un lunes para optimizar el flujo de checkout. El miércoles, la variante B está ganando por 12% en conversión (de 18% a 20.16%) pero el tamaño de muestra es de solo 300 usuarios (necesitas 2,000 para significancia estadística del 95%). El PM te presiona: 'Si esperamos 2 semanas más, perdemos $40K en revenue potencial - shippea ya'. Tu Data Scientist advierte: 'Con 300 usuarios, el intervalo de confianza es tan amplio que podría ser un falso positivo'. El CEO pregunta: '¿Cuándo lanzamos la mejora?'",
+    scenario: "A/B Test gana por 12% pero con muestra pequeña (300 usuarios vs 2000 necesarios). PM presiona: 'Si esperamos, perdemos $40K'. CEO pregunta cuándo lanzamos.",
     question: "¿Cedes a la presión o esperas?",
     options: [
-      { id: 'A', text: "**Esperar Significancia:** Mantienes el test activo 2 semanas más hasta llegar al 95% de confianza. La integridad de los datos es innegociable, aunque arriesgas perder $40K en revenue potencial según el PM y que el CEO perciba tu proceso como 'análisis parálisis' que frena velocity.", score: 3, type: "Científico (Lento)" },
-      { id: 'B', text: "**Decisión Bayesiana:** Si la ganancia es enorme (+12%) y el riesgo de error bajo, shippeas early con monitoreo intensivo post-launch, aunque arriesgas que sea un falso positivo y contamines el checkout con un cambio que empeora conversión cuando escale a toda la base.", score: 5, type: "Lead (Risk-Reward)" },
-      { id: 'C', text: "**Execution Velocity Culture:** Shippeas inmediatamente sin cuestionarlo. En startups de alto crecimiento, velocity supera rigor científico - los mejores equipos confían en la intuición de producto y corrigen rápido si hay problemas. Amazon shippea con 80% de confianza, no 95%.", score: -1, type: "Cómplice de mala ciencia" }
+      { id: 'A', text: "**Rigor Científico:** Esperas las 2 semanas necesarias. Lanzar sin significancia estadística es apostar, no optimizar. Proteges al producto de falsos positivos que podrían degradar la experiencia a largo plazo.", score: 3, type: "Científico (Lento)" },
+      { id: 'B', text: "**Decisión Bayesiana (Risk/Reward):** Lanzas anticipadamente con monitoreo. Con un lift del 12% y un costo de espera de $40K, la probabilidad de que la variante B sea ganadora justifica el riesgo de error estadístico.", score: 5, type: "Lead (Risk-Reward)" },
+      { id: 'C', text: "**Velocity Culture:** Lanzas inmediatamente. En startups, la velocidad de aprendizaje supera a la perfección académica. Confías en la señal inicial fuerte y corriges después si es necesario.", score: -1, type: "Cómplice de mala ciencia" }
     ],
-    explanation: "Con el PM presionando por $40K en revenue potencial y solo 300 usuarios (necesitas 2,000), la significancia estadística es importante, pero en startups la velocidad de aprendizaje a veces vale más que la perfección científica. La clave es evaluar el riesgo de equivocarse con un 12% de mejora. La **Decisión Bayesiana** balancea riesgo-recompensa. **Esperar Significancia** puede ser demasiado lento. Obediencia Ciega renuncia al rigor analítico."
+    explanation: "En startups, el tiempo tiene costo. Esperar la perfección estadística (**Rigor Científico**) puede costar más que el riesgo de error. La **Decisión Bayesiana** evalúa el costo de oportunidad: un 12% de lift es una señal fuerte. **Velocity Culture** ciega ignora el riesgo de falsos positivos."
   },
   {
     id: 'retention_vs_acquisition_focus',
+    displayId: 'MET-08',
     category: "Estrategia de Producto",
     icon: <Target className="w-6 h-6 text-red-500" />,
-    scenario: "Series B cerrada hace 3 meses ($15M). Board exige 3x growth de usuarios para Series C en 9 meses. Growth Team tiene $180K/mes en paid acquisition generando 8,500 sign-ups mensuales. Tu análisis cohort muestra: 62% abandona en Día 7 sin activarse, pero el 38% que se activa tiene excelente LTV ($840 anual). VP de Growth argumenta: 'Necesitamos volumen para el pitch - podemos optimizar retención después de levantar C'. CFO apoya porque los números de adquisición se ven bien en el board deck. Tienes reunión de Q Planning mañana.",
-    question: "¿Qué estrategia de balance adquisición/retención defiendes para los próximos 90 días?",
+    scenario: "Board exige 3x growth. Tienes $180K/mes en ads, pero 62% de usuarios abandonan en Día 7. VP Growth quiere más volumen. CFO apoya.",
+    question: "¿Qué estrategia defiendes para el Q?",
     options: [
-      { id: 'A', text: "**70/30 Split Parallel:** Mantener $125K/mes en adquisición (reducción 30% controlada) y reasignar $55K + 1 designer + 1 PM a Sprint Intensivo de Activación (rediseñar onboarding, first-run experience, aha moment). Riesgo político: Growth se siente atacado. Upside: Si mejoras activación 62%→75% en 60 días, cada nuevo usuario vale 40% más.", score: 5, type: "Lead (Calculated rebalance)" },
-      { id: 'B', text: "**Acquisition Freeze de 4 Semanas:** Presentas 'Leaky Bucket' memo al CEO proponiendo pausar TODA adquisición paid por 1 mes para focus 100% en retención. Argumentas que llenar balde roto quema dinero. Propones medir impacto en activación antes de reactivar spend. Riesgo: Board ve caída de sign-ups en Q y entra en pánico. Delays en Series C podrían costar runway.", score: 1, type: "Bold pero arriesgado políticamente" },
-      { id: 'C', text: "**Growth-Led con Retention Insights:** Propones AUMENTAR adquisición a $220K/mes pero con targeting más preciso basado en perfil de los usuarios que SÍ se activan (industria, company size, use case). Usas data de cohorte exitosa para mejorar CAC efficiency. Dejas onboarding como está - el producto ya funciona para quienes lo entienden. Prioridad: volumen para narrativa de Series C.", score: 3, type: "Growth-focused con optimización" }
+      { id: 'A', text: "**Rebalanceo de Cartera (70/30):** Reduces el spend de ads un 30% y reasignas ese presupuesto a un squad de Activación. Optimizas el 'bucket' antes de abrir más el grifo, mejorando el LTV/CAC ratio global.", score: 5, type: "Lead (Calculated rebalance)" },
+      { id: 'B', text: "**Freeze & Fix:** Pausas toda la adquisición pagada por 4 semanas. 'No tiene sentido quemar dinero en un producto que no retiene'. Fuerzas a la organización a resolver el problema de producto con urgencia máxima.", score: 1, type: "Bold pero arriesgado" },
+      { id: 'C', text: "**Growth-Led Optimization:** Mantienes el volumen de adquisición alto para cumplir la meta de 'Top of Funnel' del Board, pero refinas el targeting de los anuncios para atraer usuarios más calificados.", score: 3, type: "Growth-focused" }
     ],
-    explanation: "Con presión de Board para Series C, pausar adquisición es arriesgado políticamente. Acelerar sin optimizar desperdicia inversión. El balance calculado (**70/30 Split**) mejora **unit economics** sin detener crecimiento: reduce spend 30% y dedica recursos a mejorar activación, haciendo cada usuario más valioso."
+    explanation: "Pausar adquisición (**Freeze & Fix**) asusta al Board. Seguir igual (**Growth-Led**) quema caja. El **Rebalanceo de Cartera** demuestra madurez financiera: inviertes en **Unit Economics** (activación) sin detener el motor de crecimiento, preparando el terreno para escalar eficientemente."
   },
 
   // --- BLOQUE 9: DISEÑO DE FLUJOS & INTERACCIÓN ---
   {
     id: 'onboarding_length_debate',
+    displayId: 'MET-09',
     category: "Onboarding & Activación",
     icon: <Play className="w-6 h-6 text-green-500" />,
-    scenario: "Marketing prometió en los ads 'Configuración en 2 minutos', pero el PM insiste en un onboarding de 7 pasos obligatorios para 'educar al usuario'. La data muestra 70% de abandono en el paso 3. El CAC es $200 y estás quemando dinero. El PM dice: 'Si quitamos pasos, no entenderán el valor y harán churn después'.",
-    question: "¿Cuál es tu contra-propuesta estratégica para salvar el funnel?",
+    scenario: "Onboarding de 7 pasos tiene 70% de abandono. PM insiste en mantenerlo para 'educar'. CAC es $200.",
+    question: "¿Cuál es tu contra-propuesta estratégica?",
     options: [
-      { id: 'A', text: "**Onboarding Progresivo (Just-in-Time):** Reduces a 2 pasos (Setup crítico) y mueves la educación al contexto de uso real con tooltips activados por acción. 'Enséñame cuando lo necesite, no antes'. Reduces Time-to-Value drásticamente.", score: 5, type: "Lead (Time-to-Value)" },
-      { id: 'B', text: "**Botón 'Skip' Prominente:** Mantienes los 7 pasos pero permites saltar. Es un compromiso político que calma al PM pero sigue mostrando fricción inicial. Muchos usuarios saltarán sin aprender nada.", score: 3, type: "Parche (Compromiso débil)" },
-      { id: 'C', text: "**Gamificación del Onboarding:** Agregas barra de progreso y celebraciones (confeti) en cada paso para hacerlo 'menos aburrido'. Maquillas el problema de longitud con UI.", score: 1, type: "Lipstick on a pig" }
+      { id: 'A', text: "**Onboarding Progresivo:** Reduces el setup inicial a lo mínimo viable (2 pasos) y mueves la educación a tooltips contextuales dentro de la app. Reduces la barrera de entrada y enseñas en el momento de necesidad.", score: 5, type: "Lead (Time-to-Value)" },
+      { id: 'B', text: "**Opción de Salida (Skip):** Mantienes el flujo educativo del PM pero agregas un botón 'Saltar' visible. Ofreces flexibilidad al usuario avanzado sin sacrificar la visión educativa del producto.", score: 3, type: "Parche (Compromiso débil)" },
+      { id: 'C', text: "**Engagement UI:** Agregas elementos de gamificación (barra de progreso, micro-celebraciones) para hacer los 7 pasos más tolerables. Mejoras la experiencia percibida sin recortar el contenido educativo.", score: 1, type: "Lipstick on a pig" }
     ],
-    explanation: "70% de abandono con **CAC** alto es una emergencia financiera. La educación no sirve si el usuario se va antes de entrar. El **Onboarding Progresivo** prioriza el **Aha Moment** y mueve la educación al momento donde es relevante. Gamificación y Botón Skip son parches que no resuelven la fricción estructural."
+    explanation: "70% de abandono es una emergencia. La educación no sirve si el usuario se va. **Onboarding Progresivo** prioriza el **Time-to-Value**. **Opción de Salida** es un parche. **Engagement UI** maquilla un problema estructural de fricción excesiva."
   },
   {
     id: 'error_message_user_blame',
+    displayId: 'MET-10',
     category: "UX Writing & Errores",
     icon: <AlertTriangle className="w-6 h-6 text-red-500" />,
-    scenario: "Los tickets de soporte aumentaron 40% esta semana ($5k costo extra). La causa: mensajes de error técnicos como 'Error 403: Token Invalid' en el login. Los usuarios creen que su cuenta fue borrada y llaman en pánico. Ingeniería dice que 'no hay tiempo para mapear todos los errores' y que el usuario debería saber reintentar.",
-    question: "¿Cómo intervienes para detener la hemorragia de soporte?",
+    scenario: "Soporte explotó (+40% tickets) por errores técnicos tipo 'Error 403'. Ingeniería no tiene tiempo para mapear todos.",
+    question: "¿Cómo detienes la hemorragia de soporte?",
     options: [
-      { id: 'A', text: "**Reescritura Cosmética:** Cambias todos los textos a '¡Ups! Algo salió mal' con una ilustración amigable. Es menos técnico, pero igual de inútil para el usuario.", score: 1, type: "Genérico (Poco útil)" },
-      { id: 'B', text: "**Mapeo Pareto (Top 5):** Identificas los 5 errores más frecuentes (80% del volumen) y diseñas mensajes con ACCIÓN clara. Ignoras los edge cases por ahora.", score: 5, type: "Lead (Pareto Principle)" },
-      { id: 'C', text: "**Self-Service:** Agregas un link '¿Problemas?' debajo del error que lleva a una wiki técnica con soluciones comunes. Empoderas al usuario para resolver problemas de forma autónoma.", score: 1, type: "Self-Service" }
+      { id: 'A', text: "**Humanización Genérica:** Reescribes los mensajes por defecto a algo amigable como '¡Ups! Algo salió mal'. Eliminas el lenguaje técnico intimidante inmediatamente con esfuerzo mínimo de desarrollo.", score: 1, type: "Genérico (Poco útil)" },
+      { id: 'B', text: "**Enfoque Pareto (80/20):** Identificas el Top 5 de errores más frecuentes y reescribes SOLO esos con instrucciones de solución claras. Resuelves el 80% del volumen de tickets con el 20% del esfuerzo.", score: 5, type: "Lead (Pareto Principle)" },
+      { id: 'C', text: "**Wiki Link:** Agregas un enlace de 'Ayuda' en todos los mensajes de error que lleva a la base de conocimientos. Empoderas al usuario para investigar su problema sin contactar a soporte.", score: 1, type: "Self-Service débil" }
     ],
-    explanation: "Cuando los errores cuestan dinero, la prioridad es la resolución autónoma. Mensajes genéricos no resuelven. **Mapeo Pareto** aplica el **Pareto Principle** (80/20) para eliminar la gran mayoría del dolor con un esfuerzo focalizado en los errores más frecuentes."
+    explanation: "Mensajes genéricos (**Humanización**) no resuelven el problema del usuario. **Wiki Link** añade fricción cognitiva. El **Enfoque Pareto** es la respuesta de liderazgo: asignación eficiente de recursos limitados para máximo impacto en negocio (reducción de tickets)."
   },
   {
     id: 'loading_spinner_anxiety',
+    displayId: 'MET-11',
     category: "Micro-interacciones",
     icon: <RefreshCw className="w-6 h-6 text-blue-400" />,
-    scenario: "El proceso de 'Procesar Pago' toma 8 segundos por validación anti-fraude del banco. Esta semana explotó el problema: 150 cargos duplicados ($23K en devoluciones), el equipo de Finance gastó 40 horas procesando refunds, y Visa envió carta formal amenazando con subir tu interchange fee si los chargebacks superan el 1% (actualmente estás en 0.8%). Tu PM de Payments te escribe alarmado: 'El CFO está furioso - necesitamos una solución para HOY, no podemos esperar a que Backend optimice el tiempo de respuesta'. El problema: usuarios ven un spinner estático, asumen que se colgó, y hacen click 3-4 veces en 'Pagar'.",
-    question: "¿Cómo arreglas esto hoy mismo sin poder acelerar el backend?",
+    scenario: "Pagos tardan 8s. Usuarios hacen doble click pensando que se colgó -> 150 cargos duplicados. Visa amenaza subir fees. CFO furioso. Backend no puede optimizar hoy.",
+    question: "¿Cómo arreglas esto hoy desde Frontend/UX?",
     options: [
-      { id: 'A', text: "**Bloqueo de UI + Feedback:** Deshabilitas el botón tras el primer click y cambias el texto a 'Procesando...'. Gestionas la ansiedad con narrativa.", score: 5, type: "Lead (Perceived Performance)" },
-      { id: 'B', text: "**Spinner más Grande:** Haces el spinner más visible y agregas texto 'No cierres esta ventana'. Confías en que el usuario lea y obedezca.", score: 1, type: "Débil (No previene error)" },
-      { id: 'C', text: "**Confirmation Step:** Implementar un modal de confirmación '¿Confirmar pago de $X?' previo al envío. Reduces errores accidentales y aseguras la intención del usuario antes de procesar.", score: 1, type: "Fricción incorrecta" }
+      { id: 'A', text: "**Gestión de Estado (UI Lock):** Deshabilitas el botón inmediatamente tras el primer click y cambias el label a 'Procesando...'. Previenes físicamente el error humano y gestionas la ansiedad con feedback visual claro.", score: 5, type: "Lead (Perceived Performance)" },
+      { id: 'B', text: "**Visibilidad de Carga:** Aumentas el tamaño y contraste del spinner de carga. Aseguras que el usuario vea claramente que el sistema está trabajando para disuadir clicks adicionales.", score: 1, type: "Débil (No previene error)" },
+      { id: 'C', text: "**Modal de Confirmación:** Agregas un paso previo de '¿Estás seguro?' antes de procesar. Añades una capa de fricción intencional para asegurar la intencionalidad del usuario.", score: 1, type: "Fricción incorrecta" }
     ],
-    explanation: "Con 150 cargos duplicados ($23K en devoluciones), Visa amenazando subir fees, y el CFO exigiendo solución HOY, el problema no es solo la espera de 8 segundos - es el error catastrófico del doble cargo. El **Bloqueo de UI + Feedback** impide físicamente el error (botón deshabilitado) y gestiona la ansiedad con narrativa ('Procesando...'). **Spinner más Grande** es cosmético y no previene clicks múltiples. **Confirmation Step** agrega fricción en el momento equivocado - el usuario ya decidió pagar."
+    explanation: "El problema no es la espera, es el error financiero (doble cargo). **Visibilidad de Carga** confía en el usuario. **Modal de Confirmación** añade fricción innecesaria. **Gestión de Estado** (deshabilitar botón) es la solución de **Technical Hygiene** que hace el error imposible."
   },
   {
     id: 'infinite_scroll_vs_pagination',
+    displayId: 'MET-12',
     category: "Patrones de Interacción",
     icon: <ArrowRight className="w-6 h-6 text-indigo-500" />,
-    scenario: "Marketing lanzó una campaña viral y el tráfico explotó. Pero el CFO está furioso: no puede auditar las transacciones de Q3 porque el 'Infinite Scroll' que implementaste hace imposible encontrar registros específicos de hace 3 meses. 'O me das paginación para el lunes o no puedo cerrar los libros contables'. Marketing dice que la paginación 'se ve vieja'.",
-    question: "¿Qué patrón eliges ante un bloqueo legal/financiero?",
+    scenario: "CFO no puede cerrar libros contables porque el 'Infinite Scroll' hace imposible auditar transacciones antiguas. Exige paginación. Marketing dice que se ve 'viejo'.",
+    question: "¿Qué patrón eliges ante bloqueo financiero?",
     options: [
-      { id: 'A', text: "**Paginación Inmediata:** Reviertes a paginación estándar. La necesidad del CFO (auditoría legal) supera cualquier preferencia estética de Marketing. La funcionalidad crítica es innegociable.", score: 5, type: "Lead (Funcionalidad > Estética)" },
-      { id: 'B', text: "**Infinite Scroll con Filtros Avanzados:** Mantienes el scroll pero agregas filtros potentes por fecha/monto. Resuelve la búsqueda del CFO sin sacrificar la UX moderna. (Toma más tiempo de dev, riesgo de no llegar al lunes).", score: 3, type: "Idealista (Riesgo de deadline)" },
-      { id: 'C', text: "**External Audit Tool:** Habilitar una exportación robusta a Excel/CSV para auditorías. Las herramientas de hoja de cálculo son más potentes para la tarea del CFO que cualquier UI que podamos construir.", score: 1, type: "Arrogante" }
+      { id: 'A', text: "**Paginación Funcional:** Reviertes a paginación estándar inmediatamente. Entiendes que en herramientas financieras, la 'auditabilidad' y 'encontrabilidad' son requisitos funcionales superiores a la estética de navegación.", score: 5, type: "Lead (Funcionalidad > Estética)" },
+      { id: 'B', text: "**Hybrid Scroll:** Mantienes el scroll infinito pero agregas filtros avanzados de fecha. Intentas preservar la experiencia moderna solucionando la necesidad de búsqueda del CFO por otra vía.", score: 3, type: "Idealista (Riesgo de deadline)" },
+      { id: 'C', text: "**Data Export:** Priorizas construir un 'Exportar a Excel' robusto. Asumes que la auditoría profunda debe hacerse fuera de la plataforma, manteniendo la UI del producto limpia y moderna.", score: 1, type: "Arrogante" }
     ],
-    explanation: "En herramientas B2B/Financieras, la 'encontrabilidad' y auditoría son requisitos funcionales, no opcionales. **Infinite Scroll** rompe la navegación profunda. Ante un bloqueo de cierre contable, la **Paginación Inmediata** es la solución robusta y rápida. Export to CSV delega el problema al usuario fuera de la plataforma."
+    explanation: "Si el CFO no puede cerrar el mes, el negocio para. **Infinite Scroll** es pésimo para tareas de búsqueda específica. **Data Export** es un workaround. La **Paginación Funcional** prioriza la utilidad del negocio sobre la vanidad de diseño en contextos B2B."
   },
-
-  // --- MIGRATED FROM INNOVATION BLOCK ---
   {
     id: 'growth_dark_patterns_subscription',
+    displayId: 'MET-13',
     category: "Growth Hacking vs Ética",
     icon: <DollarSign className="w-6 h-6 text-green-600" />,
-    scenario: "El churn mensual explotó a 18% (vs 6% histórico), quemando $95K MRR/mes. El Head of Growth te pide diseñar un flujo de cancelación de suscripción que requiera llamar por teléfono para darse de baja (Roach Motel), argumentando: 'Nuestra competencia lo usa y reduce el churn un 80% - es la industria estándar en SaaS'. Legal advierte: 'Esto viola la FTC Restore Online Shoppers Confidence Act - multa de hasta $43K por violación'. El CFO te presiona: 'Si no detenemos el churn, nos quedamos sin runway en 9 meses'. Tienes reunión de roadmap mañana.",
-    question: "¿Cómo respondes a esta táctica agresiva?",
+    scenario: "El churn subió al 18% y el runway peligra. Growth propone implementar un 'Roach Motel' (cancelación solo por teléfono). Legal advierte sobre multas de la FTC, pero el CFO presiona: 'Si no bajamos el churn este mes, no llegamos a Q4'.",
+    question: "¿Cómo respondes a la táctica agresiva?",
     options: [
-      { id: 'A', text: "**Negarse y Proponer Alternativa:** 'No diseñaré trampas'. Proponer un flujo digital con una oferta de retención (descuento) antes de cancelar. Retener por valor, no por secuestro, aunque arriesgas que la retención ética no detenga los $95K MRR/mes de churn lo suficientemente rápido y el CFO te culpe por la crisis de runway.", score: 5, type: "Lead (Retención Ética)" },
-      { id: 'B', text: "**User Retention Best Practices:** 'El negocio manda'. Si la competencia lo usa y reduce el churn 80%, es una práctica estándar de industria validada. Los usuarios que realmente quieren irse encontrarán la forma - esto solo filtra cancelaciones impulsivas que después se arrepienten. Cumples con el KPI para salvar el runway.", score: -1, type: "Mercenario" },
-      { id: 'C', text: "**Fricción Digital:** Negociar no usar el teléfono, pero poner 5 pantallas de confirmación y encuesta obligatoria. Es un punto medio molesto pero digital, aunque arriesgas que esto siga siendo percibido como dark pattern por usuarios y dañe el NPS mientras Legal todavía podría cuestionar si cumple con normativas de cancelación fácil.", score: 1, type: "Cómplice 'Light'" }
+      { id: 'A', text: "**Retención por Valor:** Rechazas el Dark Pattern y propones un flujo digital con ofertas de retención personalizadas (downgrade/pausa). Buscas convencer al usuario de quedarse aportando valor, no secuestrándolo.", score: 5, type: "Lead (Retención Ética)" },
+      { id: 'B', text: "**Standard de Industria:** Aceptas la táctica argumentando que la supervivencia de la empresa es prioritaria. Si los competidores lo hacen, es un riesgo calculado aceptable para estabilizar las finanzas.", score: -1, type: "Mercenario" },
+      { id: 'C', text: "**Fricción Digital:** Negocias no usar teléfono, pero agregas encuestas obligatorias y múltiples pantallas de confirmación. Buscas un punto medio que dificulte la salida sin cruzar la línea de la ilegalidad explícita.", score: 1, type: "Cómplice 'Light'" }
     ],
-    explanation: "Con **churn** de 18% quemando $95K MRR/mes y runway de 9 meses, el **Roach Motel** es ilegal según Legal (FTC Act, multa $43K/violación) y destruye la marca. La **Retención Ética** intenta convencer al usuario de quedarse aportando valor, no obligarlo mediante fricción. Diseñar el **Dark Pattern** o aceptar **Fricción Digital** compromete la integridad del diseñador y la confianza en la marca."
+    explanation: "El **Roach Motel** es ilegal (FTC) y tóxico. **Standard de Industria** no es defensa legal. **Fricción Digital** daña el NPS. **Retención por Valor** ataca la causa raíz del churn sin crear pasivos legales o de marca."
   },
   {
     id: 'growth_virality_vs_privacy',
+    displayId: 'MET-14',
     category: "Growth Hacking vs Ética",
     icon: <Users className="w-6 h-6 text-purple-500" />,
-    scenario: "El crecimiento orgánico se estancó en +280 usuarios/mes (necesitas 1,500 para el target de Board). Growth quiere una feature que acceda a la agenda de contactos del usuario y envíe invitaciones automáticas por SMS a todos sus amigos para ganar '$10 en créditos gratis'. Proyectan un K-factor de 1.8 (viralidad explosiva). Sin embargo, Legal advierte: 'Esto viola TCPA - multas de $500-$1,500 por SMS no solicitado'. Un usuario en beta testing reportó: 'Envió 340 SMS sin querer y sus contactos lo bloquearon pensando que era spam'. El VP de Growth argumenta: 'LinkedIn e Uber crecieron así en 2011 - es lo que funciona'. Tienes meeting de roadmap Q2 mañana.",
-    question: "¿Cómo gestionas este request viral?",
+    scenario: "Growth quiere acceder a contactos y enviar SMS masivos automáticos ('Contact Scraping'). Proyectan viralidad, pero viola TCPA (multas) y es spam.",
+    question: "¿Cómo gestionas el request viral?",
     options: [
-      { id: 'A', text: "**Proven Growth Playbook:** Diseñarlo tal cual. La viralidad es clave para crecer y 'todos lo hacen' (Uber, LinkedIn en 2012 crecieron así). El K-factor de 1.8 puede resolver el target de Board. Los usuarios que quieren los $10 en créditos entienden el trade-off de compartir sus contactos.", score: -1, type: "Spammer" },
-      { id: 'B', text: "**Invite Consciente:** Diseñar un selector de contactos donde el usuario ELIGE a quién invitar uno por uno. Menos viralidad explosiva, pero cero riesgo de reputación/spam, aunque arriesgas que el K-factor caiga de 1.8 a 0.4 y no llegues al target de 1,500 usuarios/mes que el Board exige.", score: 5, type: "Lead (Viralidad Sana)" },
-      { id: 'C', text: "**Select All Default:** Pre-seleccionar todos los contactos y dejar que el usuario desmarque. Es un Dark Pattern clásico que genera accidentes, aunque arriesgas el caso del usuario beta que envió 340 SMS sin querer y la multa de TCPA ($500-$1,500 por SMS no solicitado).", score: 1, type: "Dark Pattern" }
+      { id: 'A', text: "**Viralidad Consciente:** Diseñas un selector donde el usuario elige explícitamente a quién invitar uno a uno. Sacrificas el coeficiente viral explosivo (K-factor) a cambio de calidad de usuarios y seguridad legal absoluta.", score: 5, type: "Lead (Viralidad Sana)" },
+      { id: 'B', text: "**Growth Playbook:** Ejecutas la estrategia tal cual. Argumentas que la viralidad agresiva es necesaria en etapa temprana y que los términos y condiciones cubren la responsabilidad legal de la empresa.", score: -1, type: "Spammer" },
+      { id: 'C', text: "**Opt-Out Default:** Pre-seleccionas todos los contactos pero permites desmarcar. Utilizas un patrón de diseño que favorece el volumen de envíos manteniendo una capa técnica de consentimiento del usuario.", score: 1, type: "Dark Pattern" }
     ],
-    explanation: "Con crecimiento estancado en +280 usuarios/mes (necesitas 1,500) y **K-factor** proyectado de 1.8, el 'Contact Scraping & Spam' es una práctica odiada que quema la reputación y viola TCPA (multa $500-$1,500 por SMS). El caso del usuario que envió 340 SMS sin querer ilustra el riesgo. La **Viralidad Sana** (**Invite Consciente**) se basa en que el usuario recomiende genuinamente a personas específicas, generando un crecimiento más lento pero de mayor calidad y retención."
+    explanation: "El 'Contact Scraping' es **Spam** y riesgo legal (TCPA). **Growth Playbook** ignora el daño de marca. **Opt-Out Default** es un Dark Pattern propenso a errores. **Viralidad Consciente** genera crecimiento sostenible y usuarios de mayor calidad (LTV)."
   },
   {
     id: 'growth_ab_test_ethical_boundary',
+    displayId: 'MET-15',
     category: "Growth Hacking vs Ética",
     icon: <TrendingUp className="w-6 h-6 text-blue-500" />,
-    scenario: "El ARPU promedio es $42/mes, pero Growth descubrió que usuarios de iPhone tienen CAC 30% más bajo ($140 vs $200) y datos de Stripe muestran que usuarios de dispositivos premium pagan más en otras apps. Growth quiere correr un A/B test mostrando $59/mes a usuarios de iPhone (vs $42 base) para ver si pagan más. Proyectan +$180K MRR anual si funciona. Sin embargo, un leak interno de Uber sobre 'price discrimination by device' generó backlash masivo en 2015. Tu CPO advierte: 'Si esto se filtra en Reddit, nos crucifican'. Legal dice: 'Técnicamente legal, pero reputacionalmente riesgoso'. El CFO presiona: 'Necesitamos revenue para el Q'. Testing toma 1 semana implementar.",
-    question: "¿Cuál es tu límite ético en experimentación?",
+    scenario: "Growth quiere cobrar más a usuarios de iPhone (Price Discrimination). Proyectan +$180K/año. Legal dice 'técnicamente legal', pero riesgo de backlash es alto.",
+    question: "¿Cuál es tu límite ético?",
     options: [
-      { id: 'A', text: "**Bloquear el Test:** 'La discriminación de precios oculta es anti-ética y daña la confianza'. Proponer testear diferentes paquetes de valor, no precios arbitrarios por dispositivo, aunque arriesgas perder los $180K MRR anuales proyectados y que el CFO te perciba como obstáculo para revenue en un Q crítico.", score: 5, type: "Lead (Fairness)" },
-      { id: 'B', text: "**Value-Based Pricing Optimization:** 'Es solo un experimento'. Usuarios de iPhone claramente tienen mayor willingness-to-pay (CAC 30% más bajo). El pricing dinámico es estándar en industria (Uber, Amazon, airlines). Si funciona, el negocio gana $180K MRR para reinvertir en producto. Legal confirmó que es técnicamente legal.", score: -1, type: "Amoral" },
-      { id: 'C', text: "**Segmentación Geográfica:** Sugerir hacerlo por país en lugar de dispositivo. Sigue siendo discriminación de precios pero 'se ve menos feo', aunque arriesgas que esto siga siendo percibido como injusto si dos usuarios en la misma ciudad ven precios diferentes y lo descubren en redes sociales.", score: 1, type: "Racionalización" }
+      { id: 'A', text: "**Principio de Equidad:** Bloqueas el test. Explicas que la discriminación de precios oculta destruye la confianza del consumidor. Propones testear 'Paquetes Premium' transparentes en lugar de precios arbitrarios por dispositivo.", score: 5, type: "Lead (Fairness)" },
+      { id: 'B', text: "**Optimización de Margen:** Apruebas el experimento. Si los datos demuestran que el usuario de iPhone tiene mayor disposición a pagar, es responsabilidad del negocio capturar ese valor excedente para financiar el crecimiento.", score: -1, type: "Amoral" },
+      { id: 'C', text: "**Segmentación Regional:** Sugieres probar precios diferentes por geografía en lugar de dispositivo. Buscas una forma de discriminación de precios que sea socialmente más aceptada para mitigar el riesgo de PR.", score: 1, type: "Racionalización" }
     ],
-    explanation: "Con $180K MRR proyectados pero riesgo de backlash como el leak de Uber en 2015, la discriminación de precios oculta basada en dispositivo es percibida como injusta y depredadora. Un Lead protege la relación a largo plazo con el cliente bloqueando prácticas abusivas (**Bloquear el Test**), proponiendo testear paquetes de valor diferentes. Correr el Test prioriza el margen sobre la ética arriesgando crisis de reputación si se filtra. **Segmentación Geográfica** es una racionalización que mantiene el problema de fondo."
+    explanation: "La discriminación oculta por dispositivo se percibe como estafa. **Optimización de Margen** ignora el riesgo de reputación (Caso Uber). **Segmentación Regional** es un parche. **Principio de Equidad** protege el activo más valioso: la confianza del cliente."
   },
   {
     id: 'data_driven_design_paralysis',
+    displayId: 'MET-16',
     category: "Data-Driven Design",
     icon: <BarChart2 className="w-6 h-6 text-green-600" />,
-    scenario: "El equipo lleva 4 días discutiendo el color del botón CTA principal (azul vs verde). El PM dice: 'Hagamos un A/B test para decidir'. Calculas que con el tráfico actual (850 conversions/mes), ese test tardará 3 meses en alcanzar significancia estadística del 95%. El lanzamiento del feature completo está bloqueado esperando esta decisión, retrasando $28K en revenue proyectado. El Designer argumenta: 'Verde tiene mejor contraste según WCAG'. El CMO prefiere azul por 'brand consistency'. El CEO pregunta en Slack: '¿Por qué seguimos sin lanzar esto?'. Tienes standup en 2 horas.",
+    scenario: "Equipo lleva 4 días discutiendo 'Azul vs Verde'. Quieren A/B test, pero tardaría 3 meses por bajo tráfico. CEO pregunta por qué no lanzan.",
     question: "¿Cómo desbloqueas la decisión?",
     options: [
-      { id: 'A', text: "**Decisión Ejecutiva (Experiencia):** 'No tenemos tráfico para testear micro-optimizaciones. Usemos el estándar de la industria y avancemos'. Priorizas velocidad sobre falsa certeza, aunque arriesgas que el PM y el CMO sientan que su input fue ignorado y que la decisión arbitraria genere resentimiento en el equipo.", score: 5, type: "Lead (Pragmatismo Estadístico)" },
-      { id: 'B', text: "**Lanzar el Test igual:** Dejar el test corriendo 3 meses. Bloqueas el código y recursos por una decisión trivial, aunque arriesgas retrasar el lanzamiento y perder $28K en revenue proyectado mientras el CEO pregunta por qué no avanzan.", score: 1, type: "Burocracia de Data" },
-      { id: 'C', text: "**Test Cualitativo:** Probar con 5 usuarios en un pasillo. No es estadísticamente válido para conversión, pero desbloquea la discusión, aunque arriesgas que la muestra de 5 usuarios no sea representativa y que después alguien cuestione la decisión pidiendo 'datos reales'.", score: 3, type: "Validación 'Light'" }
+      { id: 'A', text: "**Decisión Ejecutiva:** Tomas la decisión basada en estándares de industria y avanzas. Reconoces que el costo de oportunidad del retraso supera cualquier ganancia marginal de optimizar el color del botón.", score: 5, type: "Lead (Pragmatismo Estadístico)" },
+      { id: 'B', text: "**Rigor Experimental:** Insistes en lanzar el test aunque tarde. Estableces el precedente de que ninguna decisión de diseño se toma sin validación de datos, independientemente de la presión de tiempo.", score: 1, type: "Burocracia de Data" },
+      { id: 'C', text: "**Validación de Pasillo:** Haces un test de preferencia rápido con 5 colegas. Usas feedback cualitativo interno para justificar la decisión y desbloquear el lanzamiento.", score: 3, type: "Validación 'Light'" }
     ],
-    explanation: "Con 4 días bloqueados discutiendo color y un test que tardaría 3 meses (850 conversions/mes), retrasando $28K en revenue proyectado, el **Data-Driven** mal entendido paraliza. Si no tienes volumen suficiente, la intuición experta o estándares (**Decisión Ejecutiva**) son más eficientes que tests eternos. **Lanzar el Test** bloquea recursos en una decisión trivial. **Test Cualitativo** no ofrece validez estadística para conversión."
+    explanation: "Sin tráfico, el A/B testing es **Parálisis por Análisis**. **Rigor Experimental** aquí es desperdicio. **Validación de Pasillo** es sesgada. La **Decisión Ejecutiva** entiende que la velocidad de ejecución vale más que la certeza en decisiones reversibles de bajo impacto."
   },
   {
     id: 'data_vanity_metrics_trap',
+    displayId: 'MET-17',
     category: "Data-Driven Design",
     icon: <Target className="w-6 h-6 text-red-500" />,
-    scenario: "El equipo celebra que los 'Page Views' subieron 200% (de 45K a 135K/semana) tras un rediseño del blog que agregó 'artículos relacionados' automáticos. Growth presenta esto como 'éxito masivo' en el All-Hands del viernes. Sin embargo, tu análisis muestra que 'Time on Page' bajó de 2m 40s a 18 segundos y la conversión de blog→trial cayó de 2.8% a 0.9%. El diseño nuevo es clickbait: títulos sensacionalistas y módulos 'relacionados' que generan bouncing infinito sin valor. El VP de Marketing ya reportó el '200% growth' al Board. Inversores felicitan al equipo en Twitter. Tienes 1-on-1 con el CEO mañana donde revisarán métricas de producto.",
-    question: "¿Cómo comunicas esta 'mala noticia' en medio de la celebración?",
+    scenario: "Page Views subieron 200% por clickbait, pero conversión cayó a 0.9%. Marketing celebra 'éxito masivo'. Tienes 1-on-1 con CEO.",
+    question: "¿Cómo comunicas la realidad?",
     options: [
-      { id: 'A', text: "**Aguafiestas con Data:** Presentar el análisis completo mostrando que son 'Vanity Metrics'. 'Tenemos más tráfico basura, pero menos negocio'. Reorientar al equipo a métricas de valor, aunque arriesgas avergonzar al VP de Marketing que ya reportó el '200% growth' al Board y a inversores, generando conflicto político interno.", score: 5, type: "Lead (Truth Teller)" },
-      { id: 'B', text: "**Observación Pasiva:** Dejar que celebren el éxito de Page Views. Si el management está satisfecho con estas métricas, no es necesario crear fricción innecesaria, aunque arriesgas que el Board tome decisiones estratégicas basadas en métricas engañosas y que el CEO invierta más en tácticas de clickbait que destruyen conversión.", score: 1, type: "Observación Pasiva" },
-      { id: 'C', text: "**Engagement-First Strategy:** Doblar la apuesta en las tácticas de diseño que están generando tráfico. Si el Page View creció 200%, el interés existe - los mejores equipos de growth optimizan para engagement primero y monetizan después. El funnel se puede arreglar más adelante cuando tengamos más volumen.", score: -1, type: "Mercenario" }
+      { id: 'A', text: "**Contexto de Negocio:** Presentas el análisis completo: 'Tenemos más tráfico, pero menos clientes'. Reorientas la conversación desde el volumen (Vanity) hacia la calidad y conversión (Value), protegiendo al CEO de tomar decisiones basadas en espejismos.", score: 5, type: "Lead (Truth Teller)" },
+      { id: 'B', text: "**Diplomacia Pasiva:** Dejas que Marketing celebre su victoria de tráfico. Te enfocas en presentar tus propias métricas de producto por separado, evitando un conflicto directo sobre la interpretación de los datos.", score: 1, type: "Observación Pasiva" },
+      { id: 'C', text: "**Optimización de Engagement:** Propones mejorar los artículos clickbait para intentar retener ese tráfico. Asumes que el volumen es positivo y tratas de arreglar el funnel 'aguas abajo'.", score: -1, type: "Mercenario" }
     ],
-    explanation: "Con Page Views +200% (de 45K a 135K) pero conversión blog→trial cayendo de 2.8% a 0.9% y Time on Page de 2m 40s a 18s, las **Vanity Metrics** mienten. Un Lead se enfoca en métricas de negocio reales (Conversión, Retención) aunque sea impopular al principio (**Aguafiestas con Data**), especialmente cuando el VP de Marketing ya reportó el '200% growth' al Board. **Observación Pasiva** permite que la organización se autoengañe. Maximizar Engagement profundiza el problema de calidad del tráfico clickbait."
+    explanation: "Un Lead es guardián de la verdad. **Diplomacia Pasiva** permite que la empresa se estrelle. **Optimización de Engagement** valida el clickbait. **Contexto de Negocio** expone las **Vanity Metrics** para asegurar que la estrategia se base en valor real."
   },
   {
     id: 'freemium_upgrade_friction',
+    displayId: 'MET-18',
     category: "Monetización & UX",
     icon: <Lock className="w-6 h-6 text-slate-700" />,
-    scenario: "El tier gratuito genera pérdidas de $52K/mes y el runway es de solo 7 meses. Growth propone 'upgrade prompts' agresivos cada 5 clicks. Product advierte que esto desplomará el NPS, pero el Board argumenta que 'morir adorados por usuarios que no pagan' no es una opción.",
-    question: "¿Qué estrategia de monetización propones sabiendo que NPS caerá pero runway es crítico?",
+    scenario: "Plan Free pierde dinero. Runway crítico. Growth quiere prompts agresivos cada 5 clicks. Product teme por el NPS.",
+    question: "¿Qué estrategia propones?",
     options: [
-      { id: 'A', text: "**Ajuste de Límites:** Reduces la capacidad del plan Free (proyectos/storage) para forzar upgrade natural. Es menos intrusivo, pero el impacto en revenue tardará 3 meses en notarse.", score: 1, type: "Idealista optimista (Demasiado lento para runway de 7 meses)" },
-      { id: 'B', text: "**Upselling Contextual:** Implementas prompts solo cuando el usuario choca con un límite real. Es fricción justificada por valor. Corres un A/B test para validar que la conversión compense la caída de NPS.", score: 5, type: "Lead (Fricción con propósito + data)" },
-      { id: 'C', text: "**Monetización Agresiva:** Implementas la propuesta de Growth (prompts cada 5 clicks) con justificación de que el runway crítico requiere acción inmediata. Documentas el trade-off entre NPS y supervivencia para revisión posterior.", score: 3, type: "Monetización Agresiva" }
+      { id: 'A', text: "**Upsell Contextual:** Implementas triggers de upgrade únicamente cuando el usuario intenta usar una feature avanzada o alcanza un límite. Justificas la fricción con valor inmediato, maximizando conversión sin destruir la experiencia general.", score: 5, type: "Lead (Fricción con propósito)" },
+      { id: 'B', text: "**Reducción de Capacidad:** Recortas silenciosamente los límites del plan gratuito (menos storage/proyectos). Esperas que la limitación natural fuerce el upgrade sin necesidad de invadir la interfaz con anuncios.", score: 1, type: "Idealista (Lento)" },
+      { id: 'C', text: "**Monetización de Supervivencia:** Aceptas la estrategia agresiva de Growth temporalmente. Documentas el impacto esperado en NPS pero priorizas la inyección de cash flow necesaria para no cerrar la empresa.", score: 3, type: "Monetización Agresiva" }
     ],
-    explanation: "El **Upselling Contextual** es el balance de Lead: introduce fricción educativa validada con datos en el momento de necesidad. **Ajuste de Límites** es demasiado lento para un runway crítico. **Monetización Agresiva** sacrifica la marca por pánico, destruyendo el funnel a largo plazo."
+    explanation: "**Reducción de Capacidad** es demasiado lento para una crisis. **Monetización de Supervivencia** quema la marca. **Upsell Contextual** es el balance: pide dinero cuando el usuario percibe el valor, convirtiendo la fricción en una transacción lógica."
   },
   {
     id: 'seo_vs_ux_url_structure',
+    displayId: 'MET-19',
     category: "SEO vs Experiencia",
     icon: <Globe className="w-6 h-6 text-blue-400" />,
-    scenario: "Marketing comparte estudio que muestra que tus competidores ranquean 3x mejor en Google porque usan URLs descriptivas con keywords (/financial-dashboard-analytics vs tu actual /dashboard). Proponen cambiar TODAS las URLs del producto (40+ pantallas) para SEO. Ingeniería advierte que hay 12K links compartidos en Slack/Notion/emails de clientes enterprise que se romperían. Customer Success reporta que muchos clientes tienen bookmarks internos.",
-    question: "¿Cómo priorizas entre ganancia de SEO vs experiencia de usuarios activos?",
+    scenario: "Marketing quiere cambiar todas las URLs para SEO. Engineering dice que romperá 12K links externos. CS advierte sobre bookmarks rotos.",
+    question: "¿Cómo priorizas?",
     options: [
-      { id: 'A', text: "**Priorizar SEO Inmediatamente:** El tráfico orgánico nuevo vale más que la inconveniencia temporal de usuarios actuales. Cambias las URLs, comunicas por email y asumes que se adaptarán.", score: 1, type: "Growth-first (Rompe confianza)" },
-      { id: 'B', text: "**Migration Strategy con Redirects 301:** Cambias las URLs pero implementas redirects permanentes que mantienen compatibilidad con links antiguos. Monitoreas analytics por 30 días para validar que no hay caída de engagement antes de commitear.", score: 5, type: "Lead (No-downside migration)" },
-      { id: 'C', text: "**Rechazar Cambio Completamente:** Las URLs son parte de la UX establecida, parte de muscle memory de usuarios. El SEO se puede mejorar con meta tags, contenido, backlinks - no sacrificas UX por ranking.", score: 3, type: "Conservador (Pierde oportunidad)" }
+      { id: 'A', text: "**Estrategia de Migración (301):** Autorizas el cambio de URLs pero condicionas el lanzamiento a la implementación de redirects 301 permanentes. Aseguras el beneficio de SEO futuro sin romper la experiencia de los usuarios pasados.", score: 5, type: "Lead (No-downside)" },
+      { id: 'B', text: "**Growth First:** Priorizas el cambio de URLs inmediato. Entiendes que el tráfico orgánico nuevo es el futuro de la empresa y que los usuarios actuales eventualmente actualizarán sus marcadores.", score: 1, type: "Growth-first (Rompe confianza)" },
+      { id: 'C', text: "**Defensa de UX:** Bloqueas el cambio. Argumentas que romper 12K enlaces externos degrada la confianza en la plataforma y que el SEO debe lograrse mediante contenido, no reestructuración técnica.", score: 3, type: "Conservador (Pierde oportunidad)" }
     ],
-    explanation: "Cambiar URLs sin strategy rompe bookmarks, links compartidos y confianza. Los **Redirects 301** permiten evolucionar la estructura sin destruir el acceso, logrando un 'win-win'. **Priorizar SEO Inmediatamente** sacrifica la experiencia actual por tráfico futuro incierto. **Rechazar Cambio** pierde la oportunidad de crecimiento orgánico."
+    explanation: "No es SEO vs UX, es ejecución competente. **Growth First** rompe la experiencia. **Defensa de UX** pierde oportunidad de crecimiento. **Estrategia de Migración (301)** es la solución técnica estándar que captura valor (SEO) sin destruir valor (UX)."
   },
   {
     id: 'analytics_platform_cost_explosion',
+    displayId: 'MET-20',
     category: "Data-Driven Design",
     icon: <BarChart2 className="w-6 h-6 text-green-600" />,
-    scenario: "Tu plan de Segment/Amplitude cuesta $15K/mes y Amplitude notificó que subirá a $45K/mes el próximo Q por volumen de eventos (pasaste de 12M a 48M events/mes). El CFO exige en email urgente: 'Corta el plan a la mitad o migra a solución más barata - $45K/mes es insostenible con nuestro burn rate'. Sin embargo, Data Science depende de estos eventos para sus modelos de ML de churn prediction (que salvaron $340K en retención el Q pasado). Tu Analytics Manager advierte: 'Si cortamos tracking, perdemos visibilidad de 60% del user journey - volamos a ciegas'. PostHog self-hosted costaría $8K/mes pero requiere 2 meses de migración. Tienes reunión de presupuesto Q2 mañana donde debes presentar plan de acción.",
-    question: "¿Cómo resuelves la crisis de costo sin destruir analytics?",
+    scenario: "Costo de Amplitude sube de $15K a $45K. CFO exige cortar. Data Science necesita la data para predecir churn.",
+    question: "¿Cómo resuelves el costo sin perder inteligencia?",
     options: [
-      { id: 'A', text: "**Reducir Tracking 50%:** Auditas todos los events y eliminas tracking de features con <5% adoption y experiments concluidos. Priorizas budget compliance manteniendo core user journey metrics, aunque arriesgas perder señales tempranas de features emergentes y que Data Science no pueda predecir churn sin los eventos secundarios que eliminaste.", score: 1, type: "Budget-first approach" },
-      { id: 'B', text: "**Event Sampling Strategy:** Trackeas 100% de conversions críticas, 20% de pageviews, 5% de hover/scroll events. Reduces volumen 60% manteniendo calidad de insights donde importa, aunque arriesgas que el sampling introduzca ruido en análisis de baja frecuencia y que algunos A/B tests tarden más en alcanzar significancia.", score: 5, type: "Lead (Sampling inteligente)" },
-      { id: 'C', text: "**Migrar a PostHog Self-Hosted:** 2 meses de migración, $8K setup inicial, ownership total. Riesgo de perder data histórica en transición y 2 meses sin analytics confiables, aunque arriesgas que durante esos 2 meses de migración pierdas visibilidad crítica del producto y que el modelo de ML de churn prediction (que salvó $340K el Q pasado) deje de funcionar.", score: 3, type: "Build vs Buy (Alto switching cost)" }
+      { id: 'A', text: "**Estrategia de Muestreo (Sampling):** Reduces el volumen de eventos trackeando solo el 100% de conversiones críticas y un muestreo estadístico (20%) del resto. Mantienes la inteligencia direccional reduciendo la factura drásticamente.", score: 5, type: "Lead (Sampling inteligente)" },
+      { id: 'B', text: "**Limpieza de Eventos:** Eliminas el tracking de todas las features secundarias y experimentos pasados. Te quedas solo con el 'Core User Journey' para cumplir el presupuesto, sacrificando visibilidad periférica.", score: 1, type: "Budget-first approach" },
+      { id: 'C', text: "**Migración Self-Hosted:** Inicias migración a una solución open-source propia (PostHog). Inviertes ingeniería para eliminar el costo de licencia a largo plazo, asumiendo el riesgo operativo de mantener la infraestructura.", score: 3, type: "Build vs Buy (Alto switching cost)" }
     ],
-    explanation: "Con costo subiendo de $15K a $45K/mes (volumen de 12M a 48M events/mes) y Data Science dependiendo de estos eventos para ML de **churn prediction** ($340K salvados el Q pasado), cortar tracking ciegamente puede eliminar señales tempranas de **churn**. Migrar plataformas a PostHog es costoso y riesgoso durante la transición (2 meses sin analytics confiables). **Event Sampling Strategy** es la jugada inteligente: reduce el costo 60% manteniendo la significancia estadística de los eventos críticos."
-  },
+    explanation: "Cortar data a ciegas (**Limpieza**) ciega al equipo. Migrar (**Self-Hosted**) tiene costos ocultos de mantenimiento enormes. **Estrategia de Muestreo** es la solución de escala: Google y Facebook no trackean cada click de cada usuario; usan inferencia estadística para mantener costos viables."
+  }
 ];

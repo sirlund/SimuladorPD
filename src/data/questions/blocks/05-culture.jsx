@@ -11,201 +11,186 @@ export const culture_questions = [
   // --- BLOQUE 12: CULTURA, FEEDBACK & MENTORÍA ---
   {
     id: 'critique_session_dominance',
+    displayId: 'CUL-01',
     category: "Team Dynamics",
     icon: <Users className="w-6 h-6 text-purple-400" />,
-    scenario: "Dos Juniors renunciaron este mes citando 'ambiente tóxico' en los Design Critiques (costo de reemplazo: $45K cada uno). Tus Seniors los llaman 'Roasts' y defienden el estilo: 'Así se mantiene la vara alta'. HR te advierte: 'Si hay otra renuncia, escalamos a Legal'. El problema: son tus mejores performers individuales y amenazan con irse si 'suavizas los estándares'.",
-    question: "¿Cómo intervienes sin perder a tus estrellas técnicas?",
+    scenario: "Dos Juniors renunciaron este mes citando 'ambiente tóxico' en los Design Critiques. Tus Seniors defienden su estilo agresivo como 'rigor necesario'. HR te advierte que la próxima renuncia escalará a Legal. El problema: esos Seniors son tus mejores ejecutores técnicos y el producto depende de ellos.",
+    question: "¿Cómo intervienes para salvar la cultura sin perder el talento técnico?",
     options: [
-      { id: 'A', text: "**Política de Feedback Positivo:** Instaurar regla de 'solo feedback constructivo tipo sándwich'. Reduces tensión inmediatamente y HR queda satisfecho con la acción visible.", score: 1, type: "Rule-Based (No cambia incentivos)" },
-      { id: 'B', text: "**Rediseñar el Ritual:** Cambiar el formato a 'Design Studio' donde los Seniors deben CO-CREAR soluciones con Juniors. Cambias su rol de 'Juez' a 'Mentor' y mides a Seniors por el crecimiento de sus mentees, aunque arriesgas perder a tu contributor más técnico si rechaza el nuevo modelo y ejecuta su amenaza de irse.", score: 5, type: "Lead (Cambio Estructural de Incentivos)" },
-      { id: 'C', text: "**Coaching de Resiliencia:** Trabajar 1:1 con los Juniors para desarrollar 'piel gruesa' y habilidades de comunicación asertiva. Inviertes en su desarrollo profesional mientras se adaptan al equipo.", score: 1, type: "Treat Symptom (Victim-focused)" }
+      { id: 'A', text: "**Reglas de Civilidad:** Instauras un protocolo de 'Feedback Constructivo' obligatorio. Reduces la tensión superficial inmediatamente y satisfaces el requerimiento de HR con una política visible, aunque no cambias la dinámica de poder subyacente.", score: 1, type: "Rule-Based (No cambia incentivos)" },
+      { id: 'B', text: "**Cambio de Formato (Co-Creation):** Reemplazas el 'Critique' (Juzgar) por 'Design Studio' (Co-crear). Cambias el rol del Senior de 'Juez' a 'Colaborador', alineando incentivos hacia la solución compartida en lugar de la crítica individual.", score: 5, type: "Lead (Cambio Estructural de Incentivos)" },
+      { id: 'C', text: "**Resilience Training:** Ofreces coaching 1:1 a los Juniors para desarrollar 'piel gruesa'. Inviertes en su crecimiento profesional para que puedan navegar entornos de alta exigencia, asumiendo que el rigor es inamovible.", score: 1, type: "Treat Symptom (Victim-focused)" }
     ],
-    explanation: "Cuando HR amenaza con Legal por renuncias, el 'Roast' dejó de ser cultura—es riesgo financiero. La **Psychological Safety** (Edmondson) no se arregla con reglas sino con incentivos: **Rediseñar el Ritual** cambia el rol del Senior de Juez a Mentor automáticamente. Política de Feedback Positivo no cambia incentivos. Coaching de Resiliencia culpa a la víctima."
+    explanation: "Cuando HR amenaza con Legal, el 'Roast' es un pasivo financiero. La **Psychological Safety** no se decreta, se diseña. **Cambio de Formato** altera la dinámica de poder estructuralmente. Reglas de Civilidad son parches. Resilience Training culpa a la víctima."
   },
   {
     id: 'feedback_sandwich_method',
+    displayId: 'CUL-02',
     category: "Mentoría & Crecimiento",
     icon: <Heart className="w-6 h-6 text-pink-500" />,
-    scenario: "Tu diseñador Mid-Level más querido por el equipo ha fallado 3 deadlines consecutivos (el último costó $80K en retrasos de desarrollo). HR exige un PIP formal: si no mejora en 30 días, lo despides. El equipo adora su actitud y energía positiva. Tienes 1:1 con él mañana y no sabe que su trabajo está en riesgo.",
-    question: "¿Cómo das feedback duro a alguien querido por todos?",
+    scenario: "Tu Mid-Level más querido por el equipo ha fallado 3 deadlines consecutivos, costando $80K en retrasos. HR exige un PIP (Performance Improvement Plan) de 30 días o despido. Él no tiene idea de que su trabajo está en riesgo. Tienes 1:1 mañana.",
+    question: "¿Cómo comunicas la gravedad de la situación?",
     options: [
-      { id: 'A', text: "**Método Sándwich:** 'Eres vital para la cultura... el trabajo técnico necesita mejorar un poco... pero te queremos mucho'. Proteges la relación y mantienes la moral del equipo intacta.", score: 1, type: "Feedback Diluido (Ruinous Empathy)" },
-      { id: 'B', text: "**Claridad Radical con Apoyo:** 'Tu rol está en riesgo. Estos son los 3 gaps específicos. Este es el plan de 30 días para cerrarlos. Quiero que te quedes, pero necesito ver X, Y, Z'. Das la verdad completa con camino claro, aunque arriesgas dañar permanentemente la relación y que se cierre emocionalmente en lugar de mejorar.", score: 5, type: "Lead (Radical Candor)" },
-      { id: 'C', text: "**Proceso Formal con HR:** Involucras a RRHH desde el inicio para asegurar que el PIP siga protocolos corporativos. Te proteges legalmente y sigues el proceso establecido, aunque añades formalidad que puede sentirse distante.", score: 3, type: "HR-First (Correcto pero frío)" },
+      { id: 'A', text: "**Enfoque Balanceado (Sandwich):** Inicias reafirmando su valor cultural, mencionas suavemente los problemas de deadline, y cierras con apoyo incondicional. Proteges su moral y la cohesión del equipo mientras comunicas la necesidad de mejora.", score: 1, type: "Feedback Diluido (Ruinous Empathy)" },
+      { id: 'B', text: "**Claridad Radical:** 'Tu rol está en riesgo. Estos son los 3 gaps específicos. Este es el plan de 30 días. Quiero que te quedes, pero necesito ver resultados ya'. Priorizas la claridad absoluta sobre la comodidad emocional inmediata.", score: 5, type: "Lead (Radical Candor)" },
+      { id: 'C', text: "**Protocolo HR:** Involucras a RRHH desde el inicio para conducir la reunión. Aseguras que el mensaje legal sea entregado con precisión y documentado correctamente, protegiendo a la empresa de riesgos laborales.", score: 3, type: "HR-First (Correcto pero frío)" },
     ],
-    explanation: "Cuando el PIP ya comenzó y hay retrasos acumulados, diluir el mensaje es negligencia disfrazada de amabilidad. **Radical Candor** (Kim Scott): ocultar la gravedad es **Ruinous Empathy**—le niegas la oportunidad de salvar su trabajo. El Método Sándwich entierra el mensaje crítico. Proceso Formal con HR es correcto pero frío. La verdadera empatía es claridad con apoyo."
+    explanation: "Ocultar la gravedad de un PIP es **Ruinous Empathy** (Kim Scott). El Método Sandwich diluye el mensaje y le niega la oportunidad real de salvar su empleo. **Claridad Radical** combina el desafío directo con el cuidado personal ('Quiero que te quedes')."
   },
   {
     id: 'imposter_syndrome_senior',
+    displayId: 'CUL-03',
     category: "People Management",
     icon: <Users className="w-6 h-6 text-indigo-400" />,
-    scenario: "Tu diseñadora Senior (responsable del 35% lift en activación, $2.1M en revenue) está en crisis tras ver el portfolio del nuevo hire (ilustraciones con premios Awwwards). Te envía mensaje: 'Solo hago wireframes, no soy creativa. Quizás debería buscar otro rol.' El CEO pregunta por flight risks en 2 horas y ella es tu única Senior con dominio del producto core.",
-    question: "¿Cómo generas cambio real de perspectiva antes del meeting con el CEO?",
+    scenario: "Tu Senior (responsable de $2.1M en revenue) se siente impostora tras ver el portfolio visual de un nuevo hire. Te dice: 'Solo hago wireframes, no soy creativa'. CEO pregunta por flight risks.",
+    question: "¿Cómo cambias su perspectiva?",
     options: [
-      { id: 'A', text: "**Upskilling Reactivo:** Le pagas un curso de After Effects ($1,200) para 'llenar sus gaps'. Demuestras inversión tangible en su desarrollo y le das herramientas nuevas que puede aplicar inmediatamente.", score: 1, type: "Skill Gap Focus (Refuerza creencia)" },
-      { id: 'B', text: "**Reframe con ROI:** Le muestras el dashboard: 'Tus flows generaron $2.1M en activación. Las ilustraciones ganan likes, tu diseño paga sueldos'. Redefines Seniority como impacto de negocio con evidencia, aunque arriesgas que interprete el mensaje como 'solo vales por métricas' y se sienta aún más reducida a números.", score: 5, type: "Lead (Evidence-Based Reframe)" },
-      { id: 'C', text: "**Validación Emocional:** 'Todos sentimos síndrome del impostor, eres talentosa'. Ofreces empatía inmediata y normalizas la experiencia compartida.", score: 1, type: "Empathy-Only (Sin evidencia)" }
+      { id: 'A', text: "**Capacitación Visual:** Le ofreces un curso avanzado de UI/Motion ($1,200). Demuestras inversión en su desarrollo y le das herramientas concretas para cerrar la brecha de habilidades que ella percibe.", score: 1, type: "Skill Gap Focus (Refuerza creencia)" },
+      { id: 'B', text: "**Reframe de Impacto:** Le muestras la data: 'Tus flows generaron $2.1M. Las ilustraciones ganan likes, tu diseño paga sueldos'. Redefines el éxito del rol Senior basándote en impacto de negocio, no en estética.", score: 5, type: "Lead (Evidence-Based Reframe)" },
+      { id: 'C', text: "**Validación Empática:** 'Todos sentimos síndrome del impostor, eres muy valiosa'. Ofreces soporte emocional inmediato y normalizas sus sentimientos para reducir su ansiedad.", score: 1, type: "Empathy-Only (Sin evidencia)" }
     ],
-    explanation: "El síndrome del impostor no se cura con cursos ni empatía, se cura con evidencia. **Reframe con ROI** ($2.1M en activación) demuestra que Seniority se mide en **Business Impact**, no en likes de Dribbble. Upskilling Reactivo refuerza la creencia de inferioridad. Validación Emocional no ataca la creencia raíz. Los datos cambian perspectivas; los halagos no."
+    explanation: "El síndrome del impostor se combate con evidencia, no con halagos. **Reframe de Impacto** demuestra objetivamente su valor ($2.1M). Capacitación Visual valida su inseguridad. Validación Empática es un analgésico temporal. Seniority = **Business Impact**."
   },
   {
     id: 'promotion_readiness_debate',
+    displayId: 'CUL-04',
     category: "Career Growth",
     icon: <TrendingUp className="w-6 h-6 text-green-500" />,
-    scenario: "Tu Mid-Level con mejor craft exige promoción a Senior (+$25K) amenazando con irse a la competencia mañana. El problema: evita sistemáticamente mentoría y liderazgo, requisitos del rol Senior en tu empresa. Si lo promueves, diluyes el título para todos; si no, pierdes tu mejor ejecutor y el proyecto Q1 se retrasa 6 semanas.",
-    question: "¿Cómo balanceas retención vs. integridad del leveling?",
+    scenario: "Mid-Level con craft excelente exige promoción a Senior o se va mañana. Evita mentoría y liderazgo (requisitos de Senior). Perderlo retrasa Q1 6 semanas.",
+    question: "¿Cómo balanceas retención vs leveling?",
     options: [
-      { id: 'A', text: "**Promoción Preventiva:** Lo asciendes para retenerlo. Conservas su output técnico inmediatamente y evitas el costo de reemplazo y retraso del proyecto.", score: 1, type: "Counter-Offer Promotion (Title Inflation)" },
-      { id: 'B', text: "**Roadmap Acelerado:** Rechazas la promoción hoy pero ofreces un plan de 3 meses con objetivos claros de liderazgo. Si cumple, asciende. Estableces criterios justos con accountability, aunque arriesgas que se vaya mañana con la oferta competidora y pierdas tanto el talento como el proyecto Q1.", score: 5, type: "Lead (Growth Plan con Accountability)" },
-      { id: 'C', text: "**Aumento sin Título:** Le das un aumento salarial (+$15K) por su craft excelente, manteniendo el título Mid. Reconoces su valor con compensación sin alterar la estructura de roles, aunque no resuelve su ambición de título.", score: 3, type: "Compensation Band-Aid (Compra tiempo)" }
+      { id: 'A', text: "**Promoción de Retención:** Lo asciendes. El costo de reemplazarlo y retrasar el proyecto Q1 supera el riesgo de diluir el título temporalmente. Priorizas la continuidad del negocio.", score: 1, type: "Counter-Offer Promotion (Title Inflation)" },
+      { id: 'B', text: "**Plan de Crecimiento Acelerado:** Rechazas la promoción hoy pero ofreces un plan de 3 meses con hitos de liderazgo claros. Si cumple, asciende. Pones la responsabilidad de demostrar nivel en sus manos.", score: 5, type: "Lead (Growth Plan con Accountability)" },
+      { id: 'C', text: "**Ajuste Salarial:** Le das un aumento significativo por 'Excelencia Técnica' manteniendo el título Mid. Reconoces su valor de mercado sin comprometer la estructura de seniority del equipo.", score: 3, type: "Compensation Band-Aid (Compra tiempo)" }
     ],
-    explanation: "Promover por amenaza enseña al equipo que Counter-Offers aceleran promociones. El **Roadmap Acelerado** (3 meses con objetivos claros) pone responsabilidad en demostrar liderazgo, no en tener oferta externa. Promoción Preventiva salva Q1 hoy pero mata el **Leveling Framework** mañana. Aumento sin Título es parche temporal. La integridad del leveling > retención inmediata."
+    explanation: "Promover bajo amenaza sin cumplir requisitos rompe la integridad del **Career Ladder**. **Plan de Crecimiento** ofrece un camino justo. Promoción de Retención enseña que el chantaje funciona. Ajuste Salarial es un parche temporal."
   },
 
-  // --- BLOQUE 13
-
-  // --- MIGRATED FROM INNOVATION BLOCK ---
+  // --- BLOQUE 13: GESTIÓN DE TALENTO & FREELANCE ---
   {
     id: 'culture_burnout_hero_syndrome',
+    displayId: 'CUL-05',
     category: "Bienestar del Equipo",
     icon: <Heart className="w-6 h-6 text-pink-500" />,
-    scenario: "Tu junior trabaja hasta las 10pm diario 'para impresionar' (lleva 3 semanas así). El equipo lo elogia públicamente: 'Qué pasión, ojalá todos fueran así'. Pero está ojeroso, cometiendo errores básicos, y el código que entrega requiere 2x más revisión que antes. El PM te pide 'más gente con esa actitud'.",
-    question: "¿Cómo intervienes como Lead?",
+    scenario: "Junior trabaja hasta las 10pm diario. Equipo lo elogia. Calidad de código baja por fatiga. PM pide 'más gente con esa actitud'.",
+    question: "¿Cómo intervienes?",
     options: [
-      { id: 'A', text: "**Intervención Sistémica:** Hablar con él y establecer límites de horario. Explicar públicamente al equipo que el overtime sostenido es fallo de planificación, no 'pasión'. Proteges la sostenibilidad del equipo, aunque arriesgas que te perciban como 'anti-hustle' y el PM cuestione tu compromiso con los deadlines.", score: 5, type: "Lead (Sustainable Pace)" },
-      { id: 'B', text: "**Reconocimiento Cauteloso:** 'Gracias por el esfuerzo extra, pero asegúrate de descansar'. Reconoces su dedicación sin parecer ingrato y muestras que te importa su bienestar.", score: 1, type: "Mixed Signal (Valida overtime)" },
-      { id: 'C', text: "**Ownership Culture:** Los mejores talentos de Silicon Valley prosperan con autonomía total sobre su tiempo y trabajo. Modelo Netflix de Freedom & Responsibility: confías en que gestionará su propio balance porque es un profesional adulto.", score: -1, type: "Laissez-faire (Institucionaliza burnout)" }
+      { id: 'A', text: "**Límites Sistémicos:** Estableces horas core y explicas públicamente que el overtime sostenido es un fallo de planificación, no una virtud. Proteges la sostenibilidad del equipo a largo plazo desafiando la narrativa del 'Héroe'.", score: 5, type: "Lead (Sustainable Pace)" },
+      { id: 'B', text: "**Reconocimiento Balanceado:** Agradeces el esfuerzo en privado pero le sugieres descansar. Validas su compromiso mientras intentas mitigar el riesgo de burnout con consejos suaves.", score: 1, type: "Mixed Signal (Valida overtime)" },
+      { id: 'C', text: "**Cultura de Autonomía:** Confías en que es un adulto profesional gestionando su tiempo. Si entrega resultados, no micro-gestionas sus horarios. El alto rendimiento a veces requiere sprints intensos.", score: -1, type: "Laissez-faire (Institucionaliza burnout)" }
     ],
-    explanation: "Cuando el overtime requiere 2x más revisión que antes, ya destruyó la productividad. El **Hero Syndrome** es contagioso: si el PM pide 'más gente así', todo el equipo competirá en horas, no en output. **Intervención Sistémica** establece límites de horario y explica públicamente que overtime sostenido es fallo de planificación. Reconocimiento Cauteloso valida el overtime. Ownership Culture institucionaliza burnout."
+    explanation: "El **Hero Syndrome** es contagioso y tóxico. Cuando la calidad baja, el overtime es contraproducente. **Límites Sistémicos** redefinen cultura: trabajar más horas es ineficiencia, no pasión. Reconocimiento Balanceado envía señales mixtas. Cultura de Autonomía abdica responsabilidad."
   },
   {
     id: 'culture_remote_async_communication',
+    displayId: 'CUL-06',
     category: "Trabajo Remoto",
     icon: <Wifi className="w-6 h-6 text-blue-400" />,
-    scenario: "Equipo distribuido en 4 zonas horarias (SF, Madrid, Singapore, Sydney). Los Zoom calls matan la productividad: velocity cayó 20% y tu Senior en Singapore renunció citando 'calls a las 11pm'. El CTO te culpa: 'Tu equipo diseña mientras el mío duerme'. Amenaza con Daily Sync obligatorio a las 6 AM tu hora.",
-    question: "¿Cómo migras a una cultura Async sin madrugar?",
+    scenario: "El equipo está distribuido en 4 zonas horarias. La productividad cayó 20% y un Senior en Singapur renunció por tener reuniones a las 11 PM. El CTO te culpa por la falta de alineación y sugiere un 'Daily Sync' obligatorio a las 6 AM tu hora.",
+    question: "¿Cómo resuelves la coordinación global sin quemar al equipo?",
     options: [
-      { id: 'A', text: "**Async-First Protocol:** Implementar política de 'No Meeting sin Agenda escrita'. Decisiones por Docs/Notion, feedback por Loom, sincrónico solo para social/brainstorming. Democratizas la información, aunque arriesgas que el CTO interprete 'menos meetings' como 'menos alineación' y escale su frustración.", score: 5, type: "Lead (Async-First Culture)" },
-      { id: 'B', text: "**Horario Núcleo Forzado:** Establecer 4 horas de overlap obligatorio (10 AM - 2 PM PT). Garantizas sincronía inmediata y satisfaces al CTO, aunque alguien siempre trabaja en horas subóptimas.", score: 3, type: "Core Hours (Trade-off de flexibilidad)" },
-      { id: 'C', text: "**Mantener Zoom Calls:** Seguir con reuniones sincrónicas adaptándose a la mayoría. 'Es el precio de trabajar remoto global'. Mantienes el formato familiar que el CTO espera.", score: 1, type: "Status Quo (Evita cambio)" }
+      { id: 'A', text: "**Async-First Mandate:** Implementas política de 'No Meeting sin Agenda'. Decisiones por escrito, feedback por Loom. Sincrónico solo para social. Democratizas la información y respetas los husos horarios, eliminando la dependencia de estar online al mismo tiempo.", score: 5, type: "Lead (Async-First Culture)" },
+      { id: 'B', text: "**Core Hours:** Estableces 3 horas de coincidencia obligatoria para todos. Garantizas un bloque de colaboración en tiempo real diario, aunque aceptas que alguien siempre tendrá que madrugar o trasnochar.", score: 3, type: "Core Hours (Trade-off de flexibilidad)" },
+      { id: 'C', text: "**Meeting Optimization:** Reduces la duración de las reuniones y rotas los horarios semanalmente para compartir el dolor. Mantienes la cultura de sincronización oral que la empresa valora, haciéndola más 'justa'.", score: 1, type: "Status Quo (Evita cambio)" }
     ],
-    explanation: "Cuando velocity cae 20% y un Senior renuncia por calls nocturnos, el Zoom ya cobró su precio. **Async-First Protocol** (decisiones por docs, feedback por Loom) democratiza información y habilita **Deep Work** en cada zona horaria. Horario Núcleo Forzado garantiza overlap pero alguien siempre trabaja en horas subóptimas. Mantener Zoom Calls perpetúa el status quo. **GitLab Handbook** es la guía."
-  },
-  {
-    id: 'culture_feedback_sandwich_vs_radical_candor',
-    category: "Mentoría & Crecimiento",
-    icon: <MessageSquare className="w-6 h-6 text-purple-500" />,
-    scenario: "Tu diseñador Mid-Level se esfuerza genuinamente pero no llega a la calidad visual esperada. Su último entregable requirió 3 rondas de revisión (6 horas extra de tu tiempo). El PM pregunta: '¿Cuándo va a poder entregar sin tu supervisión?' Tienes 1:1 con él en 30 minutos.",
-    question: "¿Qué método de feedback usas?",
-    options: [
-      { id: 'A', text: "**Sándwich de Feedback:** Usas el método clásico de iniciar con algo positivo ('Tu puntualidad es excelente'), luego la crítica sobre tipografía/espaciado, y cierras con otro elogio. Suavizas el impacto emocional y proteges la relación.", score: 1, type: "Feedback Sandwich (Signal-to-Noise)" },
-      { id: 'B', text: "**Radical Candor:** 'Tu diseño visual no cumple el estándar porque fallan la tipografía y el espaciado. Quiero ayudarte a mejorar esto porque sé que puedes'. Das verdad clara con apoyo genuino, aunque arriesgas que se cierre defensivamente y la relación se vuelva tensa justo cuando más colaboración necesitas.", score: 5, type: "Lead (Care Personally + Challenge Directly)" },
-      { id: 'C', text: "**Coaching Hands-On:** Dedicas 2 horas diarias revisando cada diseño para acelerar su curva de aprendizaje. Aseguras calidad inmediata del output y demuestras compromiso con su desarrollo.", score: 1, type: "High-Touch Mentoring (No escala)" }
-    ],
-    explanation: "Cuando 3 rondas de revisión consumen 6 horas y el PM pregunta 'cuándo será independiente', ya no es problema de feedback—es problema de claridad. **Radical Candor** (Kim Scott): 'Care Personally + Challenge Directly' demuestra que te importa su growth. Sándwich de Feedback entierra el mensaje crítico. Coaching Hands-On no escala."
+    explanation: "El trabajo global requiere cambio de sistema, no de horario. **Async-First Mandate** habilita **Deep Work** y democratiza decisiones. Core Hours sigue forzando horarios incómodos. La escritura es la herramienta principal del trabajo remoto escalable."
   },
   {
     id: 'career_manager_vs_ic_track',
+    displayId: 'CUL-07',
     category: "Mentoría & Crecimiento",
     icon: <TrendingUp className="w-6 h-6 text-green-600" />,
-    scenario: "Tu mejor Senior quiere ser Manager 'para ganar más y tener impacto'. Odia las reuniones y pierde paciencia visiblemente con juniors en cada 1:1. Cuando le preguntas qué le entusiasma del rol, responde: 'El título y el sueldo'. Tiene oferta de Manager en otra empresa.",
+    scenario: "Tu mejor Senior quiere ser Manager por 'título y dinero'. Odia reuniones y mentoring. Tiene oferta externa de Manager.",
     question: "¿Cómo orientas su carrera?",
     options: [
-      { id: 'A', text: "**Growth Through Challenge:** Los mejores managers de Google, Meta y Amazon aprendieron el rol haciéndolo. La gestión es un craft que se desarrolla con práctica, y el talento técnico senior suele adaptarse rápidamente a nuevos desafíos.", score: -1, type: "Peter Principle (Pierde IC, gana mal manager)" },
-      { id: 'B', text: "**IC Track (Staff/Principal):** Mostrarle el camino de 'Staff/Principal Designer'. Puede tener impacto y sueldo de liderazgo sin gestionar personas, enfocándose en craft y estrategia técnica. Retienes talento con growth path claro, aunque arriesgas que no acepte 'menos poder percibido' y se vaya a la otra oferta.", score: 5, type: "Lead (Dual Track Career)" },
-      { id: 'C', text: "**Feedback Directo sobre Gaps:** Explicar que el rol de manager requiere habilidades específicas (paciencia con juniors, gusto por 1:1s) que no coinciden con su perfil actual. Das feedback honesto y transparente.", score: 1, type: "Honest Without Path (Dead-end feedback)" }
+      { id: 'A', text: "**Oportunidad de Liderazgo:** Lo promueves a Manager a prueba. Muchas habilidades de liderazgo se aprenden en el rol, y retener su talento en la organización es prioritario para evitar brain drain.", score: -1, type: "Peter Principle (Pierde IC, gana mal manager)" },
+      { id: 'B', text: "**IC Track (Staff Designer):** Le muestras el camino de Contribuidor Individual de alto nivel (Staff/Principal) con compensación equivalente a Manager. Le permites crecer en impacto y sueldo sin obligarlo a gestionar personas.", score: 5, type: "Lead (Dual Track Career)" },
+      { id: 'C', text: "**Reality Check:** Le das feedback honesto sobre sus gaps de soft skills. Le explicas que sería infeliz como Manager dada su aversión a las reuniones, aunque esto pueda empujarlo a tomar la oferta externa.", score: 1, type: "Honest Without Path (Dead-end feedback)" }
     ],
-    explanation: "Odiar reuniones, perder paciencia en 1:1s y solo querer 'título y sueldo' es receta para el **Peter Principle** (Laurence J. Peter). El **IC Track** (Staff/Principal) le da impacto y sueldo sin gestionar personas que no quiere desarrollar. Growth Through Challenge sacrifica un gran IC para ganar un mal manager. Feedback Directo sobre Gaps es honesto pero sin path alternativo."
+    explanation: "Promover a alguien que odia el mentoring crea managers tóxicos (**Peter Principle**). **IC Track** ofrece prestigio y dinero alineado con sus fortalezas. Oportunidad de Liderazgo sacrifica un gran IC para ganar un pésimo manager. Reality Check es honesto pero incompleto sin alternativa."
   },
   {
     id: 'career_imposter_syndrome_senior',
+    displayId: 'CUL-08',
     category: "Mentoría & Crecimiento",
     icon: <Brain className="w-6 h-6 text-indigo-500" />,
-    scenario: "Primera semana como Lead. En la reunión con VPs sientes que no sabes nada y que descubrirán que eres un fraude. El CTO te pregunta directamente: '¿Cuál es tu opinión sobre el roadmap de Q2? Estamos esperando perspectiva de diseño'. Todos te miran. No conoces el contexto completo.",
-    question: "¿Cómo gestionas tu psicología interna?",
+    scenario: "Primera semana como Lead. CTO te pide opinión sobre roadmap. No tienes contexto y sientes pánico.",
+    question: "¿Cómo gestionas la situación?",
     options: [
-      { id: 'A', text: "**Proyectar Confianza Total:** Hablar con autoridad y nunca admitir dudas. 'Fake it till you make it'. Proyectas la imagen de liderazgo que esperan y evitas mostrar inexperiencia.", score: 1, type: "Confidence Theater (Máscara frágil)" },
-      { id: 'B', text: "**Vulnerabilidad Estratégica:** 'No tengo la respuesta ahora porque estoy en mi primera semana, pero investigaré y vuelvo con propuesta en 48 horas'. Construyes credibilidad basada en honestidad y follow-through, aunque arriesgas que el CTO interprete 'no sé' como 'no estás preparado para este rol'.", score: 5, type: "Lead (Growth Mindset)" },
-      { id: 'C', text: "**Modo Observador:** No hablar en las reuniones hasta entender bien el terreno. Evitas exponerte a errores públicos y usas el tiempo para absorber contexto.", score: 1, type: "Silent Observer (Invisible)" }
+      { id: 'A', text: "**Executive Presence:** Respondes con confianza basándote en tu experiencia general e intuición. Proyectas seguridad y liderazgo desde el día 1, evitando mostrar debilidad o desconocimiento.", score: 1, type: "Confidence Theater (Máscara frágil)" },
+      { id: 'B', text: "**Vulnerabilidad Estratégica:** 'No tengo el contexto suficiente hoy, pero lo analizaré y traeré una propuesta en 48h'. Construyes confianza basada en la honestidad y el cumplimiento de promesas, no en la omnisciencia.", score: 5, type: "Lead (Growth Mindset)" },
+      { id: 'C', text: "**Escucha Activa:** Devuelves la pregunta al equipo para entender sus perspectivas antes de opinar. Utilizas la facilitación para navegar la reunión sin comprometer tu opinión prematuramente.", score: 3, type: "Facilitador (Seguro)" }
     ],
-    explanation: "En tu primera semana cuando todos esperan opinión que no tienes, 'fake it' colapsa con la primera pregunta profunda. **Vulnerabilidad Estratégica** ('No sé, pero vuelvo en 48h con propuesta') demuestra **Growth Mindset** (Dweck): la confianza viene de follow-through, no de omnisciencia. Proyectar Confianza Total es máscara frágil. Modo Observador te vuelve invisible."
+    explanation: "Fingir saber destruye credibilidad. **Vulnerabilidad Estratégica** demuestra **Seniority**: saber lo que no sabes y tener un plan para resolverlo. Executive Presence vacío es fácil de detectar. Escucha Activa es segura pero pasiva."
   },
   {
     id: 'hiring_portfolio_vs_whiteboard_challenge',
+    displayId: 'CUL-09',
     category: "Gestión de Talento",
     icon: <Users className="w-6 h-6 text-purple-600" />,
-    scenario: "El 40% de candidatos rechaza ofertas citando 'proceso de entrevista estresante'. El Whiteboard Challenge en vivo pone nerviosos a todos y tu última contratación estrella admitió que casi declina por el formato. Recruiting presiona: 'Estamos perdiendo talento ante competidores con procesos más amigables'.",
-    question: "¿Qué cambio implementas para evaluar mejor?",
+    scenario: "40% de candidatos rechaza ofertas por 'proceso estresante'. El Whiteboard en vivo es el cuello de botella.",
+    question: "¿Qué cambio implementas?",
     options: [
-      { id: 'A', text: "**Take-Home Exercise Pagado:** Dar un problema pequeño y realista para hacer en casa (4h), pagando $400-600 por el tiempo. Evalúa craft y pensamiento sin presión de escenario, aunque requiere aprobar presupuesto adicional con Finance y algunos candidatos senior pueden rechazarlo citando falta de tiempo.", score: 5, type: "Lead (Work Sample Test)" },
-      { id: 'B', text: "**Whiteboard en Vivo:** 'Necesitamos ver cómo piensan bajo presión real'. Evalúas pensamiento en tiempo real sin costo adicional y ves cómo comunican.", score: 1, type: "Live Performance (Extroversion Bias)" },
-      { id: 'C', text: "**Portfolio Review Profundo:** Contratar basándose en trabajos pasados con entrevista de case study. Agilizas el proceso significativamente y reduces fricción para el candidato, aunque dependes de que el portfolio represente fielmente su contribución.", score: 3, type: "Portfolio-Only (Rápido pero incompleto)" }
+      { id: 'A', text: "**Take-Home Pagado:** Reemplazas la sesión en vivo por un ejercicio asíncrono remunerado. Evalúas la calidad real del trabajo en condiciones realistas, respetando el tiempo del candidato y reduciendo la ansiedad de performance.", score: 5, type: "Lead (Work Sample Test)" },
+      { id: 'B', text: "**Live Problem Solving:** Mantienes el whiteboard pero enfatizas que 'no hay respuestas incorrectas'. Necesitas ver cómo piensan bajo presión, que es una realidad del trabajo diario en la empresa.", score: 1, type: "Live Performance (Extroversion Bias)" },
+      { id: 'C', text: "**Deep Portfolio Review:** Eliminas el ejercicio práctico y profundizas en entrevistas de casos pasados. Aceleras el proceso y mejoras la experiencia del candidato basándote en su historial probado.", score: 3, type: "Portfolio-Only (Rápido pero incompleto)" }
     ],
-    explanation: "Cuando 40% de candidatos rechaza ofertas por 'proceso estresante', el formato está costando talento. Los **Work Sample Tests** (Laszlo Bock, Google) predicen mejor desempeño porque simulan **Deep Work** asíncrono, no **Performance Anxiety**. **Take-Home Exercise Pagado** respeta tiempo y elimina **Extroversion Bias**. Whiteboard en Vivo maximiza ansiedad. Portfolio Review Profundo es rápido pero incompleto."
+    explanation: "El Whiteboard evalúa performance, no craft. **Take-Home Pagado** es un **Work Sample Test** (alta validez predictiva) que respeta al candidato. Live Problem Solving tiene sesgo de extroversión. Portfolio Review depende de la narrativa, no de la ejecución actual."
   },
   {
     id: 'hiring_culture_fit_bias',
+    displayId: 'CUL-10',
     category: "Gestión de Talento",
     icon: <Target className="w-6 h-6 text-red-500" />,
-    scenario: "El equipo rechazó a una candidata técnicamente brillante (10/10 en craft): 'No hubo click, es muy seria, no es Culture Fit'. No se rió de los chistes en la entrevista. Tu equipo actual es 100% hombres extrovertidos. HR te pregunta: '¿Vamos con el segundo candidato entonces?' El segundo es técnicamente 6/10 pero 'encajó perfecto'.",
+    scenario: "Equipo rechaza candidata técnica 10/10 por 'ser muy seria, no es Culture Fit'. Equipo actual es 100% hombres extrovertidos.",
     question: "¿Cómo desafías este feedback?",
     options: [
-      { id: 'A', text: "**Culture Add > Culture Fit:** Explicar que buscar 'Fit' puede generar homogeneidad. Buscar 'Culture Add': ¿Qué perspectiva nueva trae? La seriedad puede ser balance necesario. Introduces diversidad cognitiva, aunque arriesgas que el equipo sienta que invalidas su criterio y la integración inicial sea fría.", score: 5, type: "Lead (Cognitive Diversity)" },
-      { id: 'B', text: "**Respetar el Veto del Equipo:** 'La cultura es sagrada, si no hay química la colaboración será difícil'. Priorizas cohesión y armonía del grupo existente, validando el criterio colectivo del equipo.", score: 1, type: "Team Veto (Affinity Bias)" },
-      { id: 'C', text: "**Override Ejecutivo:** 'Es la mejor candidata técnicamente, la contrato'. Priorizas excelencia técnica sobre consenso y aseguras el mejor talento disponible, aunque el equipo siente que su input no importó.", score: 1, type: "Unilateral Hire (Daña buy-in)" }
+      { id: 'A', text: "**Culture Add Framework:** Re-enmarcas la decisión: 'No buscamos clones, buscamos lo que nos falta'. Argumentas que su seriedad aporta el balance y foco necesario al equipo. Priorizas la diversidad cognitiva sobre la comodidad social.", score: 5, type: "Lead (Cognitive Diversity)" },
+      { id: 'B', text: "**Team Consensus:** Respetas la decisión del equipo. La cohesión social es crítica para la velocidad de un startup y forzar una contratación impopular dañará el ambiente laboral a largo plazo.", score: 1, type: "Team Veto (Affinity Bias)" },
+      { id: 'C', text: "**Technical Override:** Ejerces tu poder de veto y la contratas por sus habilidades duras. Dejas claro que la excelencia técnica es la prioridad número uno, confiando en que el equipo se adaptará.", score: 1, type: "Unilateral Hire (Daña buy-in)" }
     ],
-    explanation: "Cuando el 10/10 técnico es rechazado por 'no es Culture Fit' y el 6/10 'encajó perfecto', es **Affinity Bias** disfrazado. **Culture Add > Culture Fit**: ¿qué perspectiva nueva trae? Equipos homogéneos caen en **Groupthink**. Respetar el Veto del Equipo perpetúa homogeneidad. Override Ejecutivo daña buy-in. La diversidad cognitiva mejora decisiones."
+    explanation: "Rechazar por 'no reírse de chistes' es **Affinity Bias**. **Culture Add** busca complementar, no replicar. Team Consensus en equipos homogéneos genera **Groupthink**. Technical Override impone pero no educa. La diversidad mejora la toma de decisiones."
   },
   {
     id: 'freelance_scope_creep_management',
+    displayId: 'CUL-11',
     category: "Freelance & Agency Work",
     icon: <Briefcase className="w-6 h-6 text-orange-600" />,
-    scenario: "Cliente aprobó el alcance hace 2 semanas pero ahora pide 'cambios pequeños' que ya suman 20 horas extra no facturadas. Su mensaje: 'Es solo mover esto, debería ser rápido'. Tu margen en este proyecto pasó de 40% a 5%. Es un cliente que representa el 30% de tu revenue anual.",
-    question: "¿Cómo proteges tu rentabilidad sin perder la cuenta?",
+    scenario: "Cliente pide 'cambios pequeños' post-aprobación. Margen cayó de 40% a 5%. Cliente es 30% de tu revenue.",
+    question: "¿Cómo proteges tu rentabilidad?",
     options: [
-      { id: 'A', text: "**Absorber como Goodwill:** 'Es solo 1 hora y el cliente tiene presupuesto apretado'. Inviertes en la relación a largo plazo y demuestras flexibilidad como partner estratégico.", score: 1, type: "Relationship Investment (Sin límites)" },
-      { id: 'B', text: "**Change Request Formal:** 'Claro, puedo hacerlo. Evaluaré el impacto en tiempo y presupuesto y te envío la cotización'. Profesionalizas el cambio con límites claros, aunque arriesgas que el cliente se frustre ('¿ahora me cobras todo?') y reconsidere renovar el contrato anual.", score: 5, type: "Lead (Change Control Process)" },
-      { id: 'C', text: "**Hacerlo con Delay:** Aceptar pero priorizar otros proyectos, entregando tarde para 'enviar mensaje' sobre la carga extra. Evitas confrontación directa mientras proteges tu tiempo.", score: 1, type: "Passive Resistance (Indirecto)" }
+      { id: 'A', text: "**Inversión Relacional:** Absorbes los cambios como costo de marketing para mantener feliz a tu cliente principal. Priorizas la retención de la cuenta grande sobre la rentabilidad de este proyecto específico.", score: 1, type: "Relationship Investment (Sin límites)" },
+      { id: 'B', text: "**Change Order Process:** 'Feliz de hacerlo. Aquí está el impacto en presupuesto y cronograma para tu aprobación'. Profesionalizas la solicitud poniendo precio al cambio, lo que a menudo hace que el cliente reconsidere la necesidad.", score: 5, type: "Lead (Change Control Process)" },
+      { id: 'C', text: "**Slow-Walk Execution:** Aceptas los cambios pero los despriorizas en la cola de trabajo. Utilizas el tiempo de entrega como palanca de negociación pasiva para desincentivar futuras solicitudes fuera de alcance.", score: 1, type: "Passive Resistance (Indirecto)" }
     ],
-    explanation: "Cuando el margen cae de 40% a 5% por 'cambios pequeños', **Scope Creep** está matando rentabilidad. El **Change Request Formal** ('Puedo hacerlo, esta es la cotización') profesionaliza el cambio con límites claros. Absorber como Goodwill crea precedente sin límites. Hacerlo con Delay es resistencia pasiva. Los límites claros protegen la relación, no la dañan."
+    explanation: "**Scope Creep** mata agencias. **Change Order Process** establece límites profesionales: todo cambio tiene costo. Inversión Relacional entrena al cliente a pedir gratis. Slow-Walk daña la confianza."
   },
   {
     id: 'freelance_pricing_value_vs_hourly',
+    displayId: 'CUL-12',
     category: "Freelance & Agency Work",
     icon: <DollarSign className="w-6 h-6 text-green-600" />,
-    scenario: "Cliente pide landing page que generará $100k en ventas (proyección validada por su equipo de marketing). Te pregunta: '¿Cuál es tu tarifa por hora?' Sabes que te tomará 5 horas porque eres experto con 10 años de experiencia. Tu tarifa normal es $100/hora.",
+    scenario: "Landing page generará $100k en ventas. Te toma 5 horas hacerla. Tarifa normal $100/hora. Cliente pide cotización.",
     question: "¿Cómo cotizas?",
     options: [
-      { id: 'A', text: "**Tarifa por Hora:** Cobrar $100/hora x 5 horas = $500. Modelo estándar basado en tiempo invertido, transparente y fácil de justificar para el cliente.", score: 1, type: "Hourly Rate (Penaliza experiencia)" },
-      { id: 'B', text: "**Value-Based Pricing:** Cobrar $5k-$10k por el valor del activo. No vendes horas, vendes una solución de negocio que genera $100k (ROI 10x-20x para el cliente), aunque arriesgas que te diga 'eso es demasiado para una landing' y busque alternativas más baratas.", score: 5, type: "Lead (Outcome-Based Pricing)" },
-      { id: 'C', text: "**Optimización de Estimación:** Estimar 50 horas ($5,000) considerando revisiones, gestión de proyecto, y comunicación. El cliente obtiene precio justo por el servicio completo y tú capturas valor real del proyecto.", score: -1, type: "Dishonest Estimate (Fraude de horas)" }
+      { id: 'A', text: "**Cost-Plus Pricing:** Calculas tus horas (5) x tarifa ($100) = $500. Es un modelo transparente, ético y fácil de defender ante cualquier auditoría de procurement.", score: 1, type: "Hourly Rate (Penaliza experiencia)" },
+      { id: 'B', text: "**Value-Based Pricing:** Cotizas $5,000-$10,000 (5-10% del valor generado). El cliente compra un activo que genera $100k, no tu tiempo. Tu experiencia de 10 años permite hacerlo en 5 horas, y eso tiene un premium.", score: 5, type: "Lead (Outcome-Based Pricing)" },
+      { id: 'C', text: "**Value Estimation:** Estimas 50 horas para cubrir gestión, revisiones e imprevistos, totalizando $5,000. Llegas al precio de mercado utilizando el modelo de horas estándar para que encaje en el sistema del cliente.", score: -1, type: "Dishonest Estimate (Fraude de horas)" }
     ],
-    explanation: "Cuando una landing genera $100K proyectados pero solo te toma 5 horas de ejecución, cobrar por hora penaliza tu expertise. **Value-Based Pricing** (Blair Enns): cobras por el **Business Outcome** ($5-10K = 5-10% del valor), no por el esfuerzo. Tarifa por Hora recompensa ineficiencia. Optimización de Estimación es fraude. El cliente obtiene ROI 10-20x de todas formas."
-  },
-  {
-    id: 'design_critique_toxic_culture',
-    category: "Team Dynamics",
-    icon: <Users className="w-6 h-6 text-purple-600" />,
-    scenario: "Retention de juniors cayó 40% este Q (3 renuncias en 90 días). Los critiques son 'roast sessions'. Tu Senior estrella defiende: 'Así aprendí yo, si no aguantas crítica no sirves'. HR te advierte: 'El próximo exit interview que mencione toxicidad escala a Legal'. El problema: este Senior es tu mejor performer y tiene el 60% del conocimiento institucional del producto.",
-    question: "¿Cómo intervienes?",
-    options: [
-      { id: 'A', text: "**Reestructurar Critique Culture:** Implementas 'I like, I wish, What if' framework obligatorio. Senior resiste pero le das 30 días para adaptarse o salir del equipo. Proteges la cultura, aunque arriesgas perder a tu contributor más técnico, 60% del conocimiento institucional, y enfrentar meses de recovery si ejecuta su amenaza de irse.", score: 5, type: "Lead (Cultura > Talento individual)" },
-      { id: 'B', text: "**Critiques Segmentados:** Crear espacios diferenciados: Sesiones de mentoría para Juniors y 'High-Bar Critiques' para Seniors. Adaptas el formato a la madurez del diseñador y reduces tensión inmediata, aunque el problema se contiene sin resolverse.", score: 3, type: "Segmentation (Parche temporal)" },
-      { id: 'C', text: "**Cultura de Excelencia:** Los equipos de élite de IDEO, Apple y Pixar son famosos por su feedback directo sin filtros. Estándares altos forjan diseñadores de clase mundial. La verdadera mentoría es preparar talento para la realidad competitiva del mercado.", score: -1, type: "High Standards Defense (Normaliza toxicidad)" }
-    ],
-    explanation: "Cuando retention cae 40% y HR amenaza Legal, el dilema es real. Pero **The No Asshole Rule** (Sutton) es clara: cultura sana > contributor brillante tóxico. **Reestructurar Critique Culture** ('I like, I wish, What if' framework) da 30 días para adaptarse o salir. Critiques Segmentados es parche temporal. Cultura de Excelencia normaliza toxicidad. Cambias el comportamiento o cambias a la persona."
+    explanation: "Cobrar por hora castiga tu eficiencia. **Value-Based Pricing** alinea tu incentivo con el éxito del cliente ($100K). Cost-Plus deja dinero en la mesa. Value Estimation es inflar horas (fraude)."
   },
   {
     id: 'junior_designer_overwhelm_sprint_planning',
+    displayId: 'CUL-13',
     category: "Mentoría & Crecimiento",
     icon: <TrendingUp className="w-6 h-6 text-green-600" />,
-    scenario: "Tu Junior con 4 proyectos en paralelo te envía mensaje: 'No duermo, todo es urgente, no sé priorizar. Si esto sigue así, renuncio esta semana.' El PM responde a tu mensaje: 'Todos estamos así, es startup life. Necesito sus deliverables o perdemos el cliente.' El Junior es talento que quieres retener y el cliente representa $500K ARR.",
+    scenario: "Junior con 4 proyectos amenaza renunciar por burnout. PM dice: 'Es startup life, necesito los deliverables'.",
     question: "¿Qué haces?",
     options: [
-      { id: 'A', text: "**Load Rebalancing + Mentoring:** Reasignas 2 proyectos a otros inmediatamente, enseñas priorización en tiempo real con los 2 que quedan. Proteges al junior con acción concreta, aunque enfrentas conflicto con PM que perderá velocity, el cliente puede notar cambios, y necesitas capacidad en el equipo para redistribuir.", score: 5, type: "Lead (Sustainable Velocity)" },
-      { id: 'B', text: "**Productivity Coaching:** Le enseñas Pomodoro/GTD y técnicas de productividad para que gestione mejor las 4 tareas paralelas. Ofreces upskilling tangible sin alterar el roadmap ni confrontar al PM, aunque la carga sigue siendo la misma.", score: 3, type: "Skill Building (Trata síntoma)" },
-      { id: 'C', text: "**Normalizar Startup Life:** Explicar que en startups todos manejan múltiples proyectos simultáneos. 'Es parte del crecimiento profesional'. Evitas confrontación con PM y mantienes velocity del equipo.", score: 1, type: "Normalize Overload (Gaslighting)" }
+      { id: 'A', text: "**Priorización Ruthless:** Intervienes y reasignas 2 proyectos inmediatamente. Le enseñas a negociar alcance en los 2 restantes. Asumes el conflicto con el PM para proteger el activo humano a largo plazo.", score: 5, type: "Lead (Sustainable Velocity)" },
+      { id: 'B', text: "**Time Management Coaching:** Le enseñas técnicas de bloqueo de tiempo y priorización (Eisenhower Matrix). Le das herramientas para manejar la carga actual de manera más eficiente sin alterar el roadmap.", score: 3, type: "Skill Building (Trata síntoma)" },
+      { id: 'C', text: "**Expectation Setting:** Le explicas que la resiliencia es clave en esta etapa. Validas sus sentimientos pero refuerzas que entregar bajo presión es la habilidad que lo llevará al siguiente nivel.", score: 1, type: "Normalize Overload (Gaslighting)" }
     ],
-    explanation: "Cuando un Junior amenaza con renunciar esta semana por sobrecarga, no es problema de Pomodoro. El **Context Switching Cost** destruye productividad real. **Load Rebalancing** (reasignar 2 proyectos, mentoring en tiempo real) protege sostenibilidad. Productivity Coaching trata síntomas. Normalizar Startup Life es gaslighting. **WIP Limits** de 2 proyectos máximo aseguran **Sustainable Velocity**."
-  },
+    explanation: "El **Context Switching** de 4 proyectos mata a un Junior. Coaching de tiempo es inútil si la carga es irreal. **Priorización Ruthless** defiende la sostenibilidad. Normalizar el burnout es liderazgo fallido."
+  }
 ];
