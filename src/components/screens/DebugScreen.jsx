@@ -132,12 +132,19 @@ export default function DebugScreen() {
                                 className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900"
                             >
                                 <ArrowLeft className="w-4 h-4" />
-                                Volver
+                                Home
+                            </a>
+                            <div className="h-6 w-px bg-slate-300"></div>
+                            <a
+                                href="/debug/screens"
+                                className="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-800 font-medium"
+                            >
+                                🎮 Screen Previews
                             </a>
                             <div className="h-6 w-px bg-slate-300"></div>
                             <div>
                                 <h1 className="text-2xl font-bold text-slate-900">
-                                    🛠️ Debug Mode
+                                    🛠️ Questions Browser
                                 </h1>
                             </div>
                         </div>
