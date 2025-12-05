@@ -125,6 +125,18 @@ export const useGameState = () => {
     });
   }, [setBurnedQuestionIds]);
 
+  // Manejar timeout de ronda (cuando el timer llega a 0)
+  const handleRoundTimeout = useCallback(() => {
+    const nextRoundNum = round + 1;
+    if (roundBatches[nextRoundNum] && roundBatches[nextRoundNum].length > 0) {
+      // Hay más rondas, ir a transición
+      setGameState('round_transition');
+    } else {
+      // Es la última ronda, finalizar assessment
+      finishAssessment();
+    }
+  }, [round, roundBatches, finishAssessment]);
+
   // Reiniciar campaña
   const resetCampaign = useCallback(() => {
     setBurnedQuestionIds([]);
@@ -186,6 +198,7 @@ export const useGameState = () => {
     handleAnswer,
     nextRound,
     finishAssessment,
+    handleRoundTimeout,
     resetCampaign,
     getStats,
     // Constantes

@@ -19,7 +19,7 @@ const PDAssessment = () => {
     answers,
     startAssessment,
     handleAnswer,
-    finishAssessment,
+    handleRoundTimeout,
     resetCampaign,
     getStats,
     round,
@@ -29,12 +29,11 @@ const PDAssessment = () => {
   } = useGameState();
 
   // Custom hook de timer (solo activo durante el test)
+  // Cuando el timer llega a 0, handleRoundTimeout verifica si hay más rondas
   const { timeLeft, resetTimer, formatTime } = useTimer(
     ROUND_TIME_SECONDS,
     gameState === 'test',
-    finishAssessment // Si se acaba el tiempo, ¿termina el assessment o la ronda?
-    // TODO: Si se acaba el tiempo de la ronda, debería pasar a la siguiente ronda o terminar si es la última.
-    // Por ahora dejémoslo en finishAssessment, pero idealmente debería ser handleRoundTimeout
+    handleRoundTimeout
   );
 
   // Calcular estadísticas actuales
