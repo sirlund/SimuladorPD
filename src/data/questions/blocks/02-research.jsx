@@ -159,7 +159,7 @@ export const research_questions = [
     displayId: 'RES-11',
     category: "Ética de Diseño",
     icon: <Heart className="w-6 h-6 text-pink-500" />,
-    scenario: "PM pide notificaciones 'tipo casino' (luces, sonidos variables) para app de adolescentes. Esperan +25% engagement. Sabes que crea adicción.",
+    scenario: "El Head de Growth presenta en el All-Hands: 'Queremos implementar notificaciones con Variable Rewards (luces, sonidos aleatorios) como TikTok. Proyectamos +25% engagement y $400K en ad revenue'. El problema: tu app educativa tiene 2 millones de usuarios, el 65% son menores de 16 años. Conoces la literatura sobre diseño adictivo y el riesgo de regulación COPPA. El PM te presiona: 'Es solo gamificación, no seas dramático'.",
     question: "¿Cuál es tu postura ética?",
     options: [
       { id: 'A', text: "**Objeción de Conciencia:** Te niegas a diseñar mecánicas de **Variable Rewards** (Skinner Box) dirigidas a menores. Escalas el riesgo reputacional y legal (COPPA) a la dirección. Estableces un límite profesional claro sobre la manipulación de usuarios vulnerables.", score: 5, type: "Lead (Guardián Ético)" },
@@ -201,7 +201,7 @@ export const research_questions = [
     displayId: 'RES-14',
     category: "Ética de Diseño",
     icon: <MessageSquare className="w-6 h-6 text-purple-400" />,
-    scenario: "Marketing generó 50 testimonios falsos con AI para el launch. Te piden diseñarlos con fotos de stock.",
+    scenario: "A 48 horas del launch de tu nuevo producto ($150K en paid media comprometido), Marketing te envía un Figma con 50 'testimonios de clientes' para la landing page. Investigas y descubres que todos fueron generados con ChatGPT - ninguno es real. El CMO te escribe: 'Usa fotos de stock con nombres genéricos, nadie se fija. Necesitamos social proof para la conversión'. Legal no ha revisado esto y el CEO no está enterado.",
     question: "¿Qué haces ante una solicitud deshonesta?",
     options: [
       { id: 'A', text: "**Integridad Radical:** Te niegas a diseñar componentes para contenido fabricado. Explicas que la **Fraudulent Misrepresentation** (testimonios falsos) destruye la confianza en la marca irreversiblemente y viola normativas de publicidad.", score: 5, type: "Lead (Integridad)" },
@@ -299,7 +299,7 @@ export const research_questions = [
     displayId: 'RES-21',
     category: "User Research",
     icon: <Timer className="w-6 h-6 text-red-500" />,
-    scenario: "CEO ordena lanzar feature sin research: 'Yo soy el usuario, sé que funciona'. $80K invertidos.",
+    scenario: "El CEO entra a tu oficina con un wireframe dibujado en servilleta: 'Esto es el Modo Offline que necesitamos. Lo quiero en producción en 3 semanas'. Ya hay $80K invertidos en desarrollo basándose en su diseño. Cuando preguntas por la validación con usuarios, responde: 'Llevo 20 años en esta industria, yo SOY el usuario. No perdamos tiempo en entrevistas'. Tu instinto te dice que hay problemas de usabilidad, pero el tren ya salió de la estación.",
     question: "¿Cómo gestionas el riesgo?",
     options: [
       { id: 'A', text: "**Research Paralelo (Lean):** Aceptas el deadline pero corres tests rápidos en paralelo al desarrollo. Si encuentras un fallo catastrófico, tienes data para frenar. Inyectas validación sin detener el tren político del CEO.", score: 5, type: "Lead (Agile Validation)" },

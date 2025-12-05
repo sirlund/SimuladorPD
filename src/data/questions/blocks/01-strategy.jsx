@@ -158,7 +158,7 @@ export const strategy_questions = [
     displayId: 'STR-11',
     category: "Bienestar del Equipo",
     icon: <AlertTriangle className="w-6 h-6 text-orange-500" />,
-    scenario: "A 10 días de un Investor Demo crítico (Serie A), tu Senior envía PRs a las 2 AM. En el standup admite no dormir. El CEO pregunta: '¿Llegamos?'. El equipo depende de ese componente crítico.",
+    scenario: "A 10 días del Investor Demo que define tu Serie A ($3M en juego), tu Senior Designer envía PRs a las 2 AM por tercera noche consecutiva. En el standup de hoy admite: 'No duermo bien, pero puedo aguantar'. El componente que lidera (el Dashboard de Analytics) representa el 40% del demo y el equipo depende completamente de él para el handoff final. El CEO te pregunta en privado: '¿Llegamos o necesito llamar a una agencia?'.",
     question: "¿Cómo intervienes con un deadline inamovible y burnout inminente?",
     options: [
       { id: 'A', text: "**Incentivo de Impacto:** Ofreces un bono spot y reconocimiento público por el 'esfuerzo heroico' en la recta final. Motivas al diseñador validando que su sacrificio es visible y será recompensado monetariamente.", score: -1, type: "Incentivo / Incorrect" },
@@ -536,7 +536,7 @@ export const strategy_questions = [
     displayId: 'STR-38',
     category: "Crisis Política Organizacional",
     icon: <Shield className="w-6 h-6 text-orange-700" />,
-    scenario: "CEO y CTO peleados: uno quiere B2B, el otro B2C. Te piden diseños opuestos. El equipo está paralizado.",
+    scenario: "El CEO y el CTO llevan 3 semanas en guerra fría: el CEO quiere pivotar a B2B Enterprise ('El dinero real está en contratos de $100K'), mientras el CTO defiende B2C ('Tenemos 50K usuarios, no los abandonemos'). Ambos te han pedido diseños para sus respectivas visiones, y tu equipo de 4 diseñadores está paralizado sin saber qué priorizar. El último sprint se perdió en reuniones de alineación que terminaron en gritos. El runway es de 6 meses y cada semana sin dirección clara quema $40K.",
     question: "¿Cómo navegas el conflicto de founders?",
     options: [
       { id: 'A', text: "**Parallel Prototyping:** Divides recursos para explorar ambas visiones. Generas tangibles para que la discusión sea sobre prototipos reales y no sobre ideas abstractas.", score: 3, type: "Neutral (Desperdicia recursos)" },

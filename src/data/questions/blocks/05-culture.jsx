@@ -56,7 +56,7 @@ export const culture_questions = [
     displayId: 'CUL-04',
     category: "Career Growth",
     icon: <TrendingUp className="w-6 h-6 text-green-500" />,
-    scenario: "Mid-Level con craft excelente exige promoción a Senior o se va mañana. Evita mentoría y liderazgo (requisitos de Senior). Perderlo retrasa Q1 6 semanas.",
+    scenario: "Tu Mid-Level Designer más productivo (responsable del 35% del output del equipo) entra a tu 1:1 con un ultimátum: 'Quiero el título de Senior para fin de mes o acepto la oferta que tengo de Spotify'. El problema: tu Career Ladder exige demostrar mentoría y liderazgo para el nivel Senior, y él ha rechazado sistemáticamente mentorear juniors ('prefiero diseñar'). Perderlo retrasa el roadmap de Q1 unas 6 semanas y no tienes pipeline de reemplazo.",
     question: "¿Cómo balanceas retención vs leveling?",
     options: [
       { id: 'A', text: "**Promoción de Retención:** Lo asciendes. El costo de reemplazarlo y retrasar el proyecto Q1 supera el riesgo de diluir el título temporalmente. Priorizas la continuidad del negocio.", score: 1, type: "Counter-Offer Promotion (Title Inflation)" },
@@ -72,7 +72,7 @@ export const culture_questions = [
     displayId: 'CUL-05',
     category: "Bienestar del Equipo",
     icon: <Heart className="w-6 h-6 text-pink-500" />,
-    scenario: "Junior trabaja hasta las 10pm diario. Equipo lo elogia. Calidad de código baja por fatiga. PM pide 'más gente con esa actitud'.",
+    scenario: "Tu Junior Designer de 24 años viene trabajando hasta las 10pm todos los días desde hace 3 semanas. En el canal de Slack, los compañeros lo elogian: 'Qué crack, siempre disponible'. El problema: su último entregable tenía errores básicos de alineación que normalmente no comete, y en el standup de hoy se notaba agotado. El PM te escribe en privado: 'Ojalá tuviéramos más gente con esa actitud, ¿podemos reconocerlo públicamente en el All-Hands?'.",
     question: "¿Cómo intervienes?",
     options: [
       { id: 'A', text: "**Límites Sistémicos:** Estableces horas core y explicas públicamente que el overtime sostenido es un fallo de planificación, no una virtud. Proteges la sostenibilidad del equipo a largo plazo desafiando la narrativa del 'Héroe'.", score: 5, type: "Lead (Sustainable Pace)" },
@@ -100,7 +100,7 @@ export const culture_questions = [
     displayId: 'CUL-07',
     category: "Mentoría & Crecimiento",
     icon: <TrendingUp className="w-6 h-6 text-green-600" />,
-    scenario: "Tu mejor Senior quiere ser Manager por 'título y dinero'. Odia reuniones y mentoring. Tiene oferta externa de Manager.",
+    scenario: "Tu Senior Designer más talentoso (8 años de experiencia, revenue atribuido de $1.8M) te confiesa en el 1:1: 'Quiero ser Design Manager. Necesito el título para mi carrera y el salario de manager ($40K más)'. El problema: en cada oportunidad de mentorear lo has visto evitarlo ('los juniors me interrumpen'), odia las reuniones de alineación ('son pérdida de tiempo') y vive para diseñar. Te muestra una oferta de Manager en otra empresa que expira en 10 días.",
     question: "¿Cómo orientas su carrera?",
     options: [
       { id: 'A', text: "**Oportunidad de Liderazgo:** Lo promueves a Manager a prueba. Muchas habilidades de liderazgo se aprenden en el rol, y retener su talento en la organización es prioritario para evitar brain drain.", score: -1, type: "Peter Principle (Pierde IC, gana mal manager)" },
@@ -114,7 +114,7 @@ export const culture_questions = [
     displayId: 'CUL-08',
     category: "Mentoría & Crecimiento",
     icon: <Brain className="w-6 h-6 text-indigo-500" />,
-    scenario: "Primera semana como Lead. CTO te pide opinión sobre roadmap. No tienes contexto y sientes pánico.",
+    scenario: "Es tu quinta día como nuevo Design Lead. En la reunión de liderazgo, el CTO te pone en el spotlight: 'Necesito tu perspectiva de diseño sobre el roadmap de Q2. ¿Deberíamos priorizar el rediseño del Dashboard o el nuevo flujo de Onboarding?'. Todos te miran esperando una respuesta informada. El problema: aún no has tenido tiempo de revisar la documentación del producto, no conoces las métricas actuales, y sientes pánico de decir algo incorrecto en tu primera semana.",
     question: "¿Cómo gestionas la situación?",
     options: [
       { id: 'A', text: "**Executive Presence:** Respondes con confianza basándote en tu experiencia general e intuición. Proyectas seguridad y liderazgo desde el día 1, evitando mostrar debilidad o desconocimiento.", score: 1, type: "Confidence Theater (Máscara frágil)" },
@@ -128,7 +128,7 @@ export const culture_questions = [
     displayId: 'CUL-09',
     category: "Gestión de Talento",
     icon: <Users className="w-6 h-6 text-purple-600" />,
-    scenario: "40% de candidatos rechaza ofertas por 'proceso estresante'. El Whiteboard en vivo es el cuello de botella.",
+    scenario: "El reporte de recruiting es alarmante: el 40% de los candidatos que pasan a la etapa final rechazan la oferta. En las encuestas de salida, el patrón es claro: 'El ejercicio de whiteboard en vivo fue demasiado estresante', 'Me sentí juzgado en lugar de evaluado'. Tu proceso actual incluye una sesión de 90 minutos donde el candidato debe resolver un problema de diseño frente a 3 evaluadores. El Head de People te presiona: 'Estamos perdiendo talento por culpa del proceso de diseño'.",
     question: "¿Qué cambio implementas?",
     options: [
       { id: 'A', text: "**Take-Home Pagado:** Reemplazas la sesión en vivo por un ejercicio asíncrono remunerado. Evalúas la calidad real del trabajo en condiciones realistas, respetando el tiempo del candidato y reduciendo la ansiedad de performance.", score: 5, type: "Lead (Work Sample Test)" },
@@ -156,7 +156,7 @@ export const culture_questions = [
     displayId: 'CUL-11',
     category: "Freelance & Agency Work",
     icon: <Briefcase className="w-6 h-6 text-orange-600" />,
-    scenario: "Cliente pide 'cambios pequeños' post-aprobación. Margen cayó de 40% a 5%. Cliente es 30% de tu revenue.",
+    scenario: "Tu cliente más grande (30% de tu revenue anual como freelance, $72K) tiene un patrón tóxico: cada vez que apruebas un milestone, aparecen 'cambios pequeños' que no estaban en el scope. El proyecto de branding que cotizaste con margen del 40% ahora está en 5% después de 47 'ajustes menores'. Te escribe: 'Una última cosa - ¿puedes hacer 3 versiones más del logo? Es que al CEO no le convence ninguna'. Sabes que perder este cliente impacta tus finanzas, pero también que estás trabajando gratis.",
     question: "¿Cómo proteges tu rentabilidad?",
     options: [
       { id: 'A', text: "**Inversión Relacional:** Absorbes los cambios como costo de marketing para mantener feliz a tu cliente principal. Priorizas la retención de la cuenta grande sobre la rentabilidad de este proyecto específico.", score: 1, type: "Relationship Investment (Sin límites)" },
@@ -170,7 +170,7 @@ export const culture_questions = [
     displayId: 'CUL-12',
     category: "Freelance & Agency Work",
     icon: <DollarSign className="w-6 h-6 text-green-600" />,
-    scenario: "Landing page generará $100k en ventas. Te toma 5 horas hacerla. Tarifa normal $100/hora. Cliente pide cotización.",
+    scenario: "Un cliente de e-commerce te contacta para diseñar una landing page de Black Friday. En la llamada de discovery revela: 'El año pasado esta campaña generó $100K en ventas con una landing mediocre. Esperamos superar eso'. Tú sabes que con tu experiencia de 10 años puedes entregarla en 5 horas. Tu tarifa normal es $100/hora ($500 total). El cliente te pide una cotización formal y menciona: 'Tengo otras 2 propuestas, pero me gusta más tu portfolio'.",
     question: "¿Cómo cotizas?",
     options: [
       { id: 'A', text: "**Cost-Plus Pricing:** Calculas tus horas (5) x tarifa ($100) = $500. Es un modelo transparente, ético y fácil de defender ante cualquier auditoría de procurement.", score: 1, type: "Hourly Rate (Penaliza experiencia)" },
@@ -184,7 +184,7 @@ export const culture_questions = [
     displayId: 'CUL-13',
     category: "Mentoría & Crecimiento",
     icon: <TrendingUp className="w-6 h-6 text-green-600" />,
-    scenario: "Junior con 4 proyectos amenaza renunciar por burnout. PM dice: 'Es startup life, necesito los deliverables'.",
+    scenario: "Tu Junior Designer (6 meses en la empresa, primera experiencia laboral) te pide un 1:1 urgente. Está al borde de las lágrimas: 'Tengo 4 proyectos simultáneos, no puedo más. Si esto no cambia, necesito renunciar'. Revisas su carga y confirmas: 4 PMs diferentes le asignaron trabajo sin coordinarse, sumando 60 horas de trabajo estimado para una semana de 40 horas. Cuando planteas el problema al PM principal, te responde: 'Bienvenido a startup life. Necesito esos deliverables para el viernes'.",
     question: "¿Qué haces?",
     options: [
       { id: 'A', text: "**Priorización Ruthless:** Intervienes y reasignas 2 proyectos inmediatamente. Le enseñas a negociar alcance en los 2 restantes. Asumes el conflicto con el PM para proteger el activo humano a largo plazo.", score: 5, type: "Lead (Sustainable Velocity)" },

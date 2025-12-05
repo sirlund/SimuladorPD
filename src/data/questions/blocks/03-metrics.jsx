@@ -115,7 +115,7 @@ export const metrics_questions = [
     displayId: 'MET-08',
     category: "Estrategia de Producto",
     icon: <Target className="w-6 h-6 text-red-500" />,
-    scenario: "Board exige 3x growth. Tienes $180K/mes en ads, pero 62% de usuarios abandonan en Día 7. VP Growth quiere más volumen. CFO apoya.",
+    scenario: "El Board exige triplicar usuarios activos este año. Estás gastando $180K/mes en ads pagados, pero el 62% de los usuarios nuevos abandona antes del Día 7—estás llenando un balde con agujeros. El VP de Growth quiere duplicar el presupuesto de ads: 'Más volumen resuelve todo'. El CFO apoya porque los números de 'nuevos registros' se ven bien en el deck de inversores.",
     question: "¿Qué estrategia defiendes para el Q?",
     options: [
       { id: 'A', text: "**Rebalanceo de Cartera (70/30):** Reduces el spend de ads un 30% y reasignas ese presupuesto a un squad de Activación. Optimizas el 'bucket' antes de abrir más el grifo, mejorando el LTV/CAC ratio global.", score: 5, type: "Lead (Calculated rebalance)" },
@@ -131,7 +131,7 @@ export const metrics_questions = [
     displayId: 'MET-09',
     category: "Onboarding & Activación",
     icon: <Play className="w-6 h-6 text-green-500" />,
-    scenario: "Onboarding de 7 pasos tiene 70% de abandono. PM insiste en mantenerlo para 'educar'. CAC es $200.",
+    scenario: "Tu onboarding de 7 pasos tiene 70% de abandono en el paso 3, quemando $200 de CAC por usuario perdido. El PM insiste en mantenerlo porque 'sin educación, los usuarios no entienden el valor'. Pero tu data muestra que los pocos que llegan al final tienen el mismo churn que los que abandonan—la 'educación' no está correlacionada con retención.",
     question: "¿Cuál es tu contra-propuesta estratégica?",
     options: [
       { id: 'A', text: "**Onboarding Progresivo:** Reduces el setup inicial a lo mínimo viable (2 pasos) y mueves la educación a tooltips contextuales dentro de la app. Reduces la barrera de entrada y enseñas en el momento de necesidad.", score: 5, type: "Lead (Time-to-Value)" },
@@ -145,7 +145,7 @@ export const metrics_questions = [
     displayId: 'MET-10',
     category: "UX Writing & Errores",
     icon: <AlertTriangle className="w-6 h-6 text-red-500" />,
-    scenario: "Soporte explotó (+40% tickets) por errores técnicos tipo 'Error 403'. Ingeniería no tiene tiempo para mapear todos.",
+    scenario: "Los tickets de soporte explotaron 40% este mes, todos variantes de 'Error 403' y 'Something went wrong'. El Head de CS te confronta: 'Mi equipo pasa 6 horas diarias explicando errores que tu UI no explica'. Ingeniería dice que mapear los 47 códigos de error del backend tomaría un sprint completo que no tienen.",
     question: "¿Cómo detienes la hemorragia de soporte?",
     options: [
       { id: 'A', text: "**Humanización Genérica:** Reescribes los mensajes por defecto a algo amigable como '¡Ups! Algo salió mal'. Eliminas el lenguaje técnico intimidante inmediatamente con esfuerzo mínimo de desarrollo.", score: 1, type: "Genérico (Poco útil)" },
@@ -201,7 +201,7 @@ export const metrics_questions = [
     displayId: 'MET-14',
     category: "Growth Hacking vs Ética",
     icon: <Users className="w-6 h-6 text-purple-500" />,
-    scenario: "Growth quiere acceder a contactos y enviar SMS masivos automáticos ('Contact Scraping'). Proyectan viralidad, pero viola TCPA (multas) y es spam.",
+    scenario: "Growth propone implementar 'Contact Scraping': acceder a la libreta de contactos del usuario y enviar SMS automáticos de invitación a todos. Proyectan K-factor de 1.8 y 50K usuarios en 30 días. Legal advierte que viola TCPA (multas de $500-$1500 por SMS no autorizado). El VP de Growth responde: 'Uber y Airbnb crecieron así. El riesgo legal es costo de hacer negocios'.",
     question: "¿Cómo gestionas el request viral?",
     options: [
       { id: 'A', text: "**Viralidad Consciente:** Diseñas un selector donde el usuario elige explícitamente a quién invitar uno a uno. Sacrificas el coeficiente viral explosivo (K-factor) a cambio de calidad de usuarios y seguridad legal absoluta.", score: 5, type: "Lead (Viralidad Sana)" },
@@ -229,7 +229,7 @@ export const metrics_questions = [
     displayId: 'MET-16',
     category: "Data-Driven Design",
     icon: <BarChart2 className="w-6 h-6 text-green-600" />,
-    scenario: "Equipo lleva 4 días discutiendo 'Azul vs Verde'. Quieren A/B test, pero tardaría 3 meses por bajo tráfico. CEO pregunta por qué no lanzan.",
+    scenario: "Tu equipo lleva 4 días en un debate sobre 'Azul vs Verde' para el botón de CTA principal. El diseñador senior insiste en A/B testing para 'tomar decisiones basadas en data', pero con el tráfico actual tardaría 3 meses en alcanzar significancia estadística. El feature está bloqueando un epic de $80K y el CEO te pregunta en el standup: '¿Por qué no hemos lanzado todavía?'.",
     question: "¿Cómo desbloqueas la decisión?",
     options: [
       { id: 'A', text: "**Decisión Ejecutiva:** Tomas la decisión basada en estándares de industria y avanzas. Reconoces que el costo de oportunidad del retraso supera cualquier ganancia marginal de optimizar el color del botón.", score: 5, type: "Lead (Pragmatismo Estadístico)" },
@@ -243,7 +243,7 @@ export const metrics_questions = [
     displayId: 'MET-17',
     category: "Data-Driven Design",
     icon: <Target className="w-6 h-6 text-red-500" />,
-    scenario: "Page Views subieron 200% por clickbait, pero conversión cayó a 0.9%. Marketing celebra 'éxito masivo'. Tienes 1-on-1 con CEO.",
+    scenario: "Marketing celebra 'éxito histórico': Page Views subieron 200% gracias a una campaña de contenido viral. Pero tu dashboard muestra que la conversión cayó de 3.2% a 0.9%—el tráfico nuevo no compra. El CMO ya incluyó el crecimiento de tráfico en su presentación al Board de mañana. Tienes 1-on-1 con el CEO en 2 horas y sabes que va a preguntar por los números.",
     question: "¿Cómo comunicas la realidad?",
     options: [
       { id: 'A', text: "**Contexto de Negocio:** Presentas el análisis completo: 'Tenemos más tráfico, pero menos clientes'. Reorientas la conversación desde el volumen (Vanity) hacia la calidad y conversión (Value), protegiendo al CEO de tomar decisiones basadas en espejismos.", score: 5, type: "Lead (Truth Teller)" },
@@ -257,7 +257,7 @@ export const metrics_questions = [
     displayId: 'MET-18',
     category: "Monetización & UX",
     icon: <Lock className="w-6 h-6 text-slate-700" />,
-    scenario: "Plan Free pierde dinero. Runway crítico. Growth quiere prompts agresivos cada 5 clicks. Product teme por el NPS.",
+    scenario: "El plan gratuito está quemando $45K/mes en infraestructura sin convertir: solo 0.8% upgradea a Premium. El CFO advierte que el runway cae a 4 meses si no mejora. Growth propone popups de upgrade cada 5 clicks. El Head de Producto te escribe alarmado: 'Si destruimos el NPS, perdemos el word-of-mouth que nos trajo aquí'.",
     question: "¿Qué estrategia propones?",
     options: [
       { id: 'A', text: "**Upsell Contextual:** Implementas triggers de upgrade únicamente cuando el usuario intenta usar una feature avanzada o alcanza un límite. Justificas la fricción con valor inmediato, maximizando conversión sin destruir la experiencia general.", score: 5, type: "Lead (Fricción con propósito)" },
@@ -285,7 +285,7 @@ export const metrics_questions = [
     displayId: 'MET-20',
     category: "Data-Driven Design",
     icon: <BarChart2 className="w-6 h-6 text-green-600" />,
-    scenario: "Costo de Amplitude sube de $15K a $45K. CFO exige cortar. Data Science necesita la data para predecir churn.",
+    scenario: "Amplitude triplicó el precio de renovación: de $15K a $45K anuales. El CFO exige reducir costos de herramientas un 40% este Q. Pero Data Science advierte: 'Sin el historial de eventos de Amplitude, perdemos el modelo predictivo de churn que nos ahorra $200K/año en retención'. Migrar a otra plataforma tomaría 4 meses de ingeniería.",
     question: "¿Cómo resuelves el costo sin perder inteligencia?",
     options: [
       { id: 'A', text: "**Estrategia de Muestreo (Sampling):** Reduces el volumen de eventos trackeando solo el 100% de conversiones críticas y un muestreo estadístico (20%) del resto. Mantienes la inteligencia direccional reduciendo la factura drásticamente.", score: 5, type: "Lead (Sampling inteligente)" },

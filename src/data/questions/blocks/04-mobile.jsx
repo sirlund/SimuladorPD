@@ -41,7 +41,7 @@ export const mobile_questions = [
     displayId: 'MOB-03',
     category: "Interacción Móvil",
     icon: <Zap className="w-6 h-6 text-yellow-500" />,
-    scenario: "40% de tickets de soporte son '¿Cómo archivo?'. Tienes 'swipe left' (estilo iOS). PM exige botón visible. Tú prefieres minimalismo.",
+    scenario: "Tu dashboard de Customer Success muestra una estadística preocupante: el 40% de los tickets de soporte (450 tickets/mes, $15K en costo de atención) son variaciones de '¿Cómo archivo un mensaje?'. La funcionalidad existe via 'swipe left' (estilo iOS Mail), pero claramente los usuarios no la descubren. El PM de producto te escribe frustrado: 'Necesitamos un botón visible, esto está matando nuestro CSAT'. Tú diseñaste la interfaz minimalista y la defiendes estéticamente.",
     question: "¿Cómo defiendes la usabilidad?",
     options: [
       { id: 'A', text: "**Dual Action Design:** Mantienes el swipe para power users y agregas una acción visible (menú contextual) para el resto. Reconoces que la **Discoverability** triunfa sobre el minimalismo cuando los costos de soporte se disparan.", score: 5, type: "Lead (Inclusivo)" },
@@ -55,7 +55,7 @@ export const mobile_questions = [
     displayId: 'MOB-04',
     category: "Accesibilidad & Diseño",
     icon: <Heart className="w-6 h-6 text-pink-500" />,
-    scenario: "Tu Dark Mode ganó premios de diseño, pero falla WCAG AA (contraste 2.8:1). Legal advierte riesgo. Diseñador dice 'subir contraste mata la vibra'.",
+    scenario: "Tu Dark Mode ganó un Webby Award y fue destacado en 'UI of the Day'. Sin embargo, la auditoría de accesibilidad que acaba de completarse revela un problema: el contraste de texto es 2.8:1 (WCAG AA exige 4.5:1 mínimo). Legal te advierte: 'Tenemos un cliente Government que puede demandarnos por incumplimiento ADA'. El diseñador senior que creó el tema te responde frustrado: 'Subir el contraste a 4.5 mata la estética sutil que nos ganó el premio. ¿De verdad vamos a sacrificar la marca por burocracia?'.",
     question: "¿Qué sacrificas?",
     options: [
       { id: 'A', text: "**Compliance Refactor:** Ajustas los colores para cumplir 4.5:1 (WCAG AA). Aceptas que la accesibilidad es un requisito funcional no negociable, incluso si la estética se vuelve 'menos sutil'.", score: 5, type: "Lead (Accesibilidad no negociable)" },
@@ -71,7 +71,7 @@ export const mobile_questions = [
     displayId: 'MOB-05',
     category: "Colaboración con Ingeniería",
     icon: <Code className="w-6 h-6 text-blue-500" />,
-    scenario: "Tech Lead rechaza animación: 'Baja Lighthouse score y TTI sube a 4.8s'. Tú argumentas diferenciación de marca. 34% usuarios son low-end devices.",
+    scenario: "Diseñaste una animación de transición 'signature' para el flujo de checkout que el CMO ama ('Es lo que nos diferencia de la competencia'). El Tech Lead la rechaza en el PR review: 'Esta animación baja nuestro Lighthouse score de 92 a 71 y el TTI sube de 2.1s a 4.8s'. Analytics confirma que el 34% de tus usuarios están en dispositivos low-end (Android Go, móviles de 2GB RAM) donde la animación causa stuttering visible. El deadline de lanzamiento es en 5 días.",
     question: "¿Cómo negocias calidad visual vs performance?",
     options: [
       { id: 'A', text: "**Performance Partnership:** Te sientas con ingeniería a simplificar la implementación (CSS vs JS, reducir capas). Buscas lograr el 80% del impacto visual con el 20% del costo de CPU, respetando el presupuesto de rendimiento.", score: 5, type: "Lead (Performance es UX)" },
@@ -85,7 +85,7 @@ export const mobile_questions = [
     displayId: 'MOB-06',
     category: "Gestión de Roadmap",
     icon: <Target className="w-6 h-6 text-red-500" />,
-    scenario: "Mid-sprint. PM pide 'cambio pequeño' (filtro nuevo). Breakdown real: 2 días (diseño, estados, QA). PM dice: '¿2 días para un dropdown?'.",
+    scenario: "Es miércoles, día 4 de un sprint de 10 días. El PM te escribe por Slack: 'Cambio pequeño: ¿podemos agregar un filtro por fecha en la lista de transacciones? Es solo un dropdown'. Cuando haces el breakdown real, la cuenta es diferente: diseñar 4 estados (vacío, cargando, con data, error), responsive en 3 breakpoints, documentar para handoff, y coordinar QA. Total: 2 días de trabajo. El PM responde incrédulo: '¿2 días para un dropdown? Ventas lo necesita para el demo del viernes'.",
     question: "¿Cómo educas sobre el costo real?",
     options: [
       { id: 'A', text: "**Service Mindset:** Aceptas el cambio para demostrar agilidad y colaboración. Haces el esfuerzo extra para entregarlo sin afectar el resto del sprint, construyendo capital político con Product.", score: 1, type: "Complaciente (Mata el Sprint)" },
@@ -225,7 +225,7 @@ export const mobile_questions = [
     displayId: 'MOB-16',
     category: "Mobile Architecture",
     icon: <Wifi className="w-6 h-6 text-blue-400" />,
-    scenario: "PM quiere 'offline mode' completo (4 meses). Demo en 6 semanas.",
+    scenario: "En el kickoff de proyecto, el PM presenta su visión: 'Necesitamos offline mode completo - lectura, escritura, sincronización automática de conflictos. Como Notion pero para field workers'. Engineering estima 4 meses de desarrollo y $180K de inversión. El problema: el demo con el cliente ancla ($500K deal) está agendado en 6 semanas y no se puede mover. El VP de Ventas presiona: 'Si no mostramos offline, perdemos el deal. Hagan lo que tengan que hacer'.",
     question: "¿Cómo balanceas promesa vs realidad?",
     options: [
       { id: 'A', text: "**Read-Only MVP:** Reduces el alcance a 'Consulta Offline' (solo lectura). Entregas el 80% del valor (acceso a información en campo) en 3 semanas, posponiendo la complejidad de sincronización de escritura para la fase 2.", score: 5, type: "Lead (Pragmatic scoping)" },
@@ -239,7 +239,7 @@ export const mobile_questions = [
     displayId: 'MOB-17',
     category: "Design Ops",
     icon: <Layers className="w-6 h-6 text-indigo-600" />,
-    scenario: "3 apps (iOS, Android, Web) se ven distintas. Mantenimiento 3x. Usuarios confundidos.",
+    scenario: "El Head de Customer Success te muestra un hilo de Twitter viral: un usuario publicó screenshots de tu producto en iOS, Android y Web lado a lado - las 3 interfaces se ven completamente diferentes (colores distintos, iconografía inconsistente, navegación en lugares opuestos). El post tiene 2.3K likes y comentarios burlándose de la 'falta de identidad de marca'. Internamente, el costo de mantener 3 Design Systems separados es de $120K/año en tiempo de diseño duplicado. Los usuarios reportan confusión al cambiar de dispositivo.",
     question: "¿Cómo unificas sin iniciar revuelta?",
     options: [
       { id: 'A', text: "**Unified Core System:** Defines un set de componentes base compartidos (colores, tipo, estructura) pero permites 'sabores' nativos para navegación y controles. Balanceas la eficiencia de marca con la familiaridad de plataforma.", score: 5, type: "Lead (Principled flexibility)" },
@@ -253,7 +253,7 @@ export const mobile_questions = [
     displayId: 'MOB-18',
     category: "Mobile Onboarding",
     icon: <Smartphone className="w-6 h-6 text-blue-400" />,
-    scenario: "Onboarding de 7 pantallas pierde 78% de usuarios. Marketing quiere agregar 2 más.",
+    scenario: "El funnel de analytics es brutal: de cada 100 usuarios que descargan la app, solo 22 llegan al Dashboard. El culpable es el onboarding de 7 pantallas (carrusel explicativo de features). En el standup de Growth, el Head de Marketing propone: 'Agreguemos 2 pantallas más para explicar las nuevas features de AI - los usuarios no las están descubriendo'. Tú miras los datos de abandono por pantalla y ves que el drop-off más fuerte está en las pantallas 3 y 4. Más contenido parece contraproducente, pero Marketing insiste en 'educar mejor'.",
     question: "¿Qué haces con el onboarding?",
     options: [
       { id: 'A', text: "**Just-in-Time Education:** Eliminas el carrusel inicial por completo. Llevas al usuario directo al valor (dashboard) y enseñas las features progresivamente cuando intenta usarlas. Priorizas la activación sobre la explicación.", score: 5, type: "Lead (Zero friction onboarding)" },
