@@ -1,29 +1,70 @@
-import { Trophy, RotateCcw } from 'lucide-react';
+import { Trophy, RotateCcw, Sparkles } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
+import { ThemeToggle } from '../ui/ThemeToggle';
 
 export const CampaignCompleteScreen = ({ stats, onReset }) => {
+  const theme = useTheme();
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-indigo-900 p-6 font-sans text-white text-center">
-      <Trophy className="w-24 h-24 text-yellow-400 mb-6 animate-bounce" />
+    <div className={`flex flex-col items-center justify-center min-h-screen p-6 font-sans ${theme.bg}`}>
+      {/* Theme Toggle */}
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
 
-      <h1 className="text-4xl font-black mb-4">
-        ¡Todas las Preguntas Completadas! 🎉
-      </h1>
+      <div className="max-w-2xl w-full text-center space-y-10">
 
-      <p className="text-xl opacity-90 max-w-lg mb-4">
-        Has respondido todas las <strong>{stats.totalQuestions} preguntas</strong> del simulador.
-      </p>
+        {/* Trophy */}
+        <div className="relative inline-block">
+          <div className={`absolute inset-0 blur-3xl opacity-20 rounded-full animate-pulse ${theme.isDark ? 'bg-yellow-500' : 'bg-yellow-400'}`}></div>
+          <div className={`relative p-8 rounded-2xl border shadow-2xl ${
+            theme.isDark
+              ? 'bg-slate-800 border-slate-700'
+              : 'bg-white border-slate-200'
+          }`}>
+            <Trophy className="w-20 h-20 text-yellow-500" />
+          </div>
+        </div>
 
-      <p className="text-lg opacity-80 max-w-lg mb-8">
-        Dominas los escenarios de gestión de crisis, estrategia de producto, liderazgo de equipos, y toma de decisiones bajo presión.
-      </p>
+        {/* Title */}
+        <div className="space-y-4">
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium ${
+            theme.isDark
+              ? 'bg-yellow-500/10 border border-yellow-500/20 text-yellow-400'
+              : 'bg-yellow-100 border border-yellow-200 text-yellow-700'
+          }`}>
+            <Sparkles className="w-4 h-4" />
+            Campaña Completada
+          </div>
+          <h1 className={`text-4xl md:text-5xl font-black tracking-tight ${theme.text}`}>
+            ¡Todas las Preguntas!
+          </h1>
+          <p className={`text-xl max-w-lg mx-auto leading-relaxed ${theme.textMuted}`}>
+            Has respondido las <span className={`font-bold ${theme.text}`}>{stats.totalQuestions}</span> preguntas del simulador.
+          </p>
+        </div>
 
-      <button
-        onClick={onReset}
-        className="bg-white text-indigo-900 font-bold py-4 px-8 rounded-full text-lg hover:scale-105 transition-transform shadow-xl flex items-center gap-2"
-      >
-        <RotateCcw className="w-5 h-5" />
-        Reiniciar Campaña
-      </button>
+        {/* Stats */}
+        <div className={`rounded-xl p-6 border backdrop-blur-sm ${
+          theme.isDark
+            ? 'bg-slate-800/50 border-slate-700/50'
+            : 'bg-slate-50 border-slate-200'
+        }`}>
+          <p className={`text-sm ${theme.textMuted}`}>
+            Dominas escenarios de gestión de crisis, estrategia de producto, liderazgo de equipos y toma de decisiones bajo presión.
+          </p>
+        </div>
+
+        {/* Action */}
+        <button
+          onClick={onReset}
+          className={`group px-8 py-4 font-bold rounded-xl transition-all hover:scale-105 shadow-lg flex items-center justify-center gap-3 mx-auto ${theme.btnPrimary}`}
+        >
+          <RotateCcw className="w-5 h-5" />
+          Reiniciar Campaña
+        </button>
+
+      </div>
     </div>
   );
 };

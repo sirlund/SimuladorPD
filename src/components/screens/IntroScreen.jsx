@@ -1,79 +1,82 @@
-import { Play, RotateCcw, Target, AlertTriangle, Timer } from 'lucide-react';
-import { ProgressBar } from '../ui/ProgressBar';
+import { Play, RotateCcw, Zap } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
+import { ThemeToggle } from '../ui/ThemeToggle';
 
 export const IntroScreen = ({ stats, onStart, onReset }) => {
   const { totalQuestions, remainingQuestions, progressPercent } = stats;
   const hasStarted = progressPercent > 0;
+  const completed = totalQuestions - remainingQuestions;
+  const theme = useTheme();
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-slate-50 p-6 font-sans text-slate-800">
-      <div className="max-w-3xl w-full bg-white rounded-xl shadow-2xl overflow-hidden border border-slate-200">
-        {/* Header */}
-        <div className="bg-slate-900 p-8 text-white relative">
-          <h1 className="text-3xl font-bold mb-2">Lead Product Designer</h1>
-          <p className="opacity-80 text-lg font-mono">Simulador Brutal Mode v7.0</p>
+    <div className={`flex flex-col items-center justify-center min-h-screen ${theme.bg} p-6 font-sans`}>
+      {/* Theme Toggle - Top Right */}
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
 
-          {/* Progress Bar */}
-          <div className="mt-6 bg-slate-800 rounded-lg p-4 border border-slate-700">
-            <ProgressBar
-              current={totalQuestions - remainingQuestions}
-              total={totalQuestions}
-              label="Progreso de la Campaña"
-              color="green"
-            />
-            <p className="text-xs text-slate-400 mt-2 text-center">
-              {totalQuestions - remainingQuestions} / {totalQuestions} Escenarios Completados
-            </p>
+      <div className="max-w-2xl w-full text-center space-y-10">
+
+        {/* Logo/Title */}
+        <div className="space-y-3">
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium ${
+            theme.isDark
+              ? 'bg-indigo-500/10 border border-indigo-500/20 text-indigo-400'
+              : 'bg-indigo-100 border border-indigo-200 text-indigo-600'
+          }`}>
+            <Zap className="w-4 h-4" />
+            Brutal Mode
           </div>
+          <h1 className={`text-5xl md:text-6xl font-black tracking-tight ${theme.text}`}>
+            Product Lead
+          </h1>
+          <p className={theme.textMuted}>
+            Simulador de Decisiones Estratégicas
+          </p>
         </div>
 
-        {/* Body */}
-        <div className="p-8 space-y-6">
-          <div className="bg-amber-50 border-l-4 border-amber-500 p-4">
-            <h3 className="font-bold text-amber-900 mb-2">Instrucciones de Liderazgo:</h3>
-            <ul className="space-y-3 text-sm text-amber-800">
-              <li className="flex gap-2">
-                <Target className="w-4 h-4 shrink-0" />
-                <div>
-                  <strong>Solo Preguntas Nuevas:</strong> Cada ronda presenta únicamente escenarios que no has visto antes.
-                </div>
-              </li>
-              <li className="flex gap-2">
-                <AlertTriangle className="w-4 h-4 shrink-0" />
-                <div>
-                  <strong>La Trampa Senior:</strong> Las respuestas incorrectas suenan profesionales y sensatas, pero carecen de visión estratégica.
-                </div>
-              </li>
-              <li className="flex gap-2">
-                <Timer className="w-4 h-4 shrink-0" />
-                <div>
-                  <strong>Gestión de Tiempo:</strong> 12 minutos para responder tantas preguntas como puedas. Cada segundo cuenta. BRUTAL MODE 🔥
-                </div>
-              </li>
-            </ul>
+        {/* Progress */}
+        {hasStarted && (
+          <div className={`rounded-xl p-6 border backdrop-blur-sm ${theme.bgCard} ${theme.border}`}>
+            <div className="flex justify-between items-center mb-3">
+              <span className={`text-sm font-medium ${theme.textMuted}`}>Progreso</span>
+              <span className={`text-sm font-bold ${theme.text}`}>{completed} / {totalQuestions}</span>
+            </div>
+            <div className={`h-2 rounded-full overflow-hidden ${theme.isDark ? 'bg-slate-700' : 'bg-slate-200'}`}>
+              <div
+                className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-500"
+                style={{ width: `${progressPercent}%` }}
+              />
+            </div>
           </div>
+        )}
 
-          {/* Action Buttons */}
-          <div className="flex gap-4">
+        {/* Instructions - Minimal */}
+        <div className={`text-sm ${theme.textSubtle}`}>
+          <p>12 minutos por ronda • Solo preguntas nuevas • Sin segunda oportunidad</p>
+        </div>
+
+        {/* Actions */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            onClick={onStart}
+            className={`group relative px-8 py-4 font-bold rounded-xl transition-all hover:scale-105 shadow-lg flex items-center justify-center gap-3 ${theme.btnPrimary}`}
+          >
+            <Play className="w-5 h-5 fill-current" />
+            {hasStarted ? "Continuar" : "Comenzar"}
+          </button>
+
+          {hasStarted && (
             <button
-              onClick={onStart}
-              className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-lg transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-1"
+              onClick={onReset}
+              className={`px-6 py-4 font-medium rounded-xl border transition-all flex items-center justify-center gap-2 ${theme.btnSecondary}`}
             >
-              <Play className="w-5 h-5 fill-current" />
-              {hasStarted ? "Continuar Siguiente Ronda" : "Iniciar Campaña"}
+              <RotateCcw className="w-4 h-4" />
+              Reiniciar
             </button>
-
-            {hasStarted && (
-              <button
-                onClick={onReset}
-                className="bg-white border-2 border-slate-200 text-slate-600 font-bold py-4 px-4 rounded-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
-                title="Reiniciar todo el progreso"
-              >
-                <RotateCcw className="w-5 h-5" />
-              </button>
-            )}
-          </div>
+          )}
         </div>
+
       </div>
     </div>
   );
