@@ -258,22 +258,8 @@ export const innovation_questions = [
     explanation: "Aplicar automatización inmadura a deuda técnica (legacy) es desastre. **Containment Strategy** permite probar sin riesgo sistémico. Corromper archivos históricos es inaceptable. Esperar demasiado frustra al equipo. Innovar en lo nuevo, proteger lo viejo."
   },
   {
-    id: 'figma_ai_features_adoption_timing',
-    displayId: 'INN-18',
-    category: "Tendencias de Diseño",
-    icon: <Layers className="w-6 h-6 text-indigo-600" />,
-    scenario: "Figma lanzó features de AI y tu equipo quiere aplicarlas inmediatamente para limpiar 3 años de archivos legacy desordenados. La promesa es ahorrar semanas de trabajo manual. Sin embargo, un test rápido reveló que la AI corrompió el 30% de los componentes complejos al 'alucinar' nuevas variantes. La presión por automatizar el trabajo sucio es alta, pero el riesgo de corromper la librería core es sistémico.",
-    question: "¿Cómo manejas la adopción de herramientas inmaduras en sistemas críticos?",
-    options: [
-      { id: 'A', text: "**Containment Strategy:** Habilitas las features solo para proyectos nuevos ('Greenfield'). Prohíbes su uso en archivos legacy hasta que la herramienta madure. Balanceas innovación con estabilidad operativa.", score: 5, type: "Lead (Incremental adoption)" },
-      { id: 'B', text: "**Full Steam Ahead:** Habilitas globalmente y asignas un tiempo de 'cleanup' posterior. El aumento masivo de productividad a largo plazo compensa la fricción inicial de la transición y los errores puntuales.", score: 1, type: "FOMO-driven (Predictable chaos)" },
-      { id: 'C', text: "**Wait for Stable:** Bloqueas la feature por 3 meses hasta la versión 1.1. Dejas que otros equipos sufran los bugs iniciales. Priorizas la integridad de la librería de diseño sobre la novedad tecnológica.", score: 3, type: "Conservative (Timing friction)" }
-    ],
-    explanation: "Aplicar automatización inmadura a deuda técnica (legacy) es desastre. **Containment Strategy** permite probar sin riesgo sistémico. Corromper archivos históricos es inaceptable. Esperar demasiado frustra al equipo. Innovar en lo nuevo, proteger lo viejo."
-  },
-  {
     id: 'generative_ui_vs_design_system',
-    displayId: 'INN-19',
+    displayId: 'INN-18',
     category: "Innovación & AI",
     icon: <Sparkles className="w-6 h-6 text-purple-500" />,
     scenario: "Engineering quiere integrar Vercel v0 (Generative UI) para que el dashboard cree componentes 'on-the-fly' según la data del usuario. Argumentan que esto logra la 'personalización definitiva'. Tu equipo de Design Systems advierte que esto romperá la consistencia visual y de interacción, ya que la AI generará patrones no documentados. El PM está fascinado con la demo y quiere implementarlo.",
@@ -287,7 +273,7 @@ export const innovation_questions = [
   },
   {
     id: 'ai_training_on_user_data_privacy',
-    displayId: 'INN-20',
+    displayId: 'INN-19',
     category: "Innovación & Ética",
     icon: <ShieldAlert className="w-6 h-6 text-red-500" />,
     scenario: "El CTO quiere entrenar un LLM propio usando 5 años de tickets de soporte para automatizar respuestas. Legal dice que los Términos de Servicio no mencionan explícitamente 'entrenamiento de AI', pero que es un 'uso legítimo de mejora de servicio'. Competidores ya lo hacen. Si pides permiso explícito (Opt-in), la data disponible bajará del 100% al 15%, haciendo el modelo inútil.",
@@ -301,7 +287,7 @@ export const innovation_questions = [
   },
   {
     id: 'innovation_lab_vs_core_product_resentment',
-    displayId: 'INN-21',
+    displayId: 'INN-20',
     category: "Estrategia de Producto",
     icon: <Beaker className="w-6 h-6 text-teal-500" />,
     scenario: "Tienes un 'Innovation Lab' (20% del equipo) trabajando en conceptos futuristas de VR/AI que encantan al Board. Mientras tanto, el producto Core (80% del revenue) tiene deuda técnica crítica y bugs que causan churn. El equipo Core está resentido y se siente 'ciudadanos de segunda clase' limpiando el desastre mientras el Lab se divierte.",
@@ -315,7 +301,7 @@ export const innovation_questions = [
   },
   {
     id: 'sustainability_feature_bloat_conflict',
-    displayId: 'INN-22',
+    displayId: 'INN-21',
     category: "Innovación & Ética",
     icon: <Globe className="w-6 h-6 text-green-600" />,
     scenario: "Marketing quiere 'Autoplay Video' en alta resolución en el home para subir engagement (+15% proyectado). Tu equipo de sustentabilidad alerta que esto triplicará la huella de carbono digital del producto, violando el compromiso público de 'Net Zero'. El CEO dice: 'Necesitamos los números de engagement para la ronda de inversión, el planeta puede esperar un trimestre'.",
@@ -329,7 +315,7 @@ export const innovation_questions = [
   },
   {
     id: 'predictive_ux_agency_friction',
-    displayId: 'INN-23',
+    displayId: 'INN-22',
     category: "Innovación & AI",
     icon: <Brain className="w-6 h-6 text-purple-500" />,
     scenario: "Data Science creó un modelo que predice con 85% de exactitud qué 'Add-on' comprará el usuario. Product quiere agregarlo al carrito automáticamente para reducir fricción ('Frictionless Commerce'). Proyectan +20% Revenue. Tú temes que esto erosione la confianza y aumente las devoluciones por compras accidentales.",
@@ -343,7 +329,7 @@ export const innovation_questions = [
   },
   {
     id: 'vendor_lockin_openai_dependency',
-    displayId: 'INN-24',
+    displayId: 'INN-23',
     category: "Arquitectura de Sistemas",
     icon: <Lock className="w-6 h-6 text-orange-500" />,
     scenario: "Tu feature estrella 'Magic Summary' depende 100% de la API de OpenAI. Ayer tuvieron una caída de 4 horas durante el horario pico de tus clientes Enterprise. El CEO está furioso. Engineering propone construir un modelo open-source in-house (Llama 3) para tener control total, pero costará $250K y 4 meses de trabajo.",
@@ -357,7 +343,7 @@ export const innovation_questions = [
   },
   {
     id: 'metaverse_pivot_late_adoption',
-    displayId: 'INN-25',
+    displayId: 'INN-24',
     category: "Estrategia de Producto",
     icon: <Glasses className="w-6 h-6 text-purple-600" />,
     scenario: "El CEO quiere pivotar los eventos de comunidad a un 'Metaverso Propio' 3D porque 'el trabajo remoto llegó para quedarse'. Data muestra que la asistencia a eventos virtuales ha caído 60% post-pandemia y los usuarios prefieren video simple o audio. El CEO insiste en que 'la inmersión es el futuro' y quiere invertir $500K.",
@@ -371,7 +357,7 @@ export const innovation_questions = [
   },
   {
     id: 'biometric_auth_privacy_inclusion',
-    displayId: 'INN-26',
+    displayId: 'INN-25',
     category: "Innovación & Ética",
     icon: <ScanFace className="w-6 h-6 text-blue-500" />,
     scenario: "Security quiere forzar FaceID/Biometrics para todos los logins para eliminar el fraude de 'account sharing'. Marketing alerta que esto aliena a usuarios en regiones donde la desconfianza en la vigilancia estatal es alta, y excluye a usuarios con dispositivos legacy sin sensores biométricos (20% de la base).",
@@ -385,7 +371,7 @@ export const innovation_questions = [
   },
   {
     id: 'eu_ai_act_compliance_panic',
-    displayId: 'INN-27',
+    displayId: 'INN-26',
     category: "Innovación & Ética",
     icon: <ShieldAlert className="w-6 h-6 text-blue-600" />,
     scenario: "Tu feature de 'Scoring de Candidatos' usa AI. El nuevo 'EU AI Act' clasifica esto como 'Alto Riesgo', exigiendo auditorías de sesgo y explicabilidad que tu modelo 'Black Box' no tiene. El CEO quiere lanzar en Europa mañana para ganar market share.",
@@ -399,7 +385,7 @@ export const innovation_questions = [
   },
   {
     id: 'legacy_hardware_ai_limit',
-    displayId: 'INN-28',
+    displayId: 'INN-27',
     category: "Innovación & Infraestructura",
     icon: <Server className="w-6 h-6 text-gray-600" />,
     scenario: "Quieres lanzar 'AI Assistant' en la terminal de punto de venta (POS). El 40% de tus clientes usa hardware legacy (tablets de 2018) que crashean al correr modelos locales. El CEO quiere un lanzamiento unificado: 'No podemos dejar atrás a casi la mitad de los clientes'. Cloud inference es demasiado lento (latencia) para POS.",
