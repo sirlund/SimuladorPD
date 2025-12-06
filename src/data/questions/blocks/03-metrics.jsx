@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  Timer, AlertTriangle, ArrowRight, BarChart2, Users, Zap,
-  Globe, Lock, RefreshCw, Target, Play, Star, AlertOctagon,
-  Trophy, TrendingUp, DollarSign
+  Activity, AlertOctagon, AlertTriangle, ArrowRight, BarChart2, 
+  DollarSign, Globe, Layout, Lock, PieChart, Play, RefreshCw, Star, 
+  Target, Timer, Trash2, TrendingUp, Trophy, Users, Zap
 } from 'lucide-react';
 
 /**
@@ -191,10 +191,10 @@ export const metrics_questions = [
     question: "¿Cómo respondes a la táctica agresiva?",
     options: [
       { id: 'A', text: "**Retención por Valor:** Rechazas el Dark Pattern y propones un flujo digital con ofertas de retención personalizadas (downgrade/pausa). Buscas convencer al usuario de quedarse aportando valor, no secuestrándolo.", score: 5, type: "Lead (Retención Ética)" },
-      { id: 'B', text: "**Standard de Industria:** Aceptas la táctica argumentando que la supervivencia de la empresa es prioritaria. Si los competidores lo hacen, es un riesgo calculado aceptable para estabilizar las finanzas.", score: -1, type: "Mercenario" },
+      { id: 'B', text: "**Concierge Offboarding:** Requieres una llamada telefónica para cancelar, posicionándola como una 'entrevista de salida VIP para asegurar calidad de servicio'. Obtienes feedback cualitativo valioso mientras introduces fricción natural que reduce el churn impulsivo.", score: -1, type: "Dark Pattern Disfrazado" },
       { id: 'C', text: "**Fricción Digital:** Negocias no usar teléfono, pero agregas encuestas obligatorias y múltiples pantallas de confirmación. Buscas un punto medio que dificulte la salida sin cruzar la línea de la ilegalidad explícita.", score: 1, type: "Cómplice 'Light'" }
     ],
-    explanation: "El **Roach Motel** es ilegal (FTC) y tóxico. **Standard de Industria** no es defensa legal. **Fricción Digital** daña el NPS. **Retención por Valor** ataca la causa raíz del churn sin crear pasivos legales o de marca."
+    explanation: "El **Roach Motel** es ilegal (FTC) y tóxico. **Concierge Offboarding** es el mismo Dark Pattern disfrazado de 'buen servicio' - sigue siendo fricción manipulativa. **Fricción Digital** daña el NPS. **Retención por Valor** ataca la causa raíz del churn sin crear pasivos legales o de marca."
   },
   {
     id: 'growth_virality_vs_privacy',
@@ -293,5 +293,89 @@ export const metrics_questions = [
       { id: 'C', text: "**Migración Self-Hosted:** Inicias migración a una solución open-source propia (PostHog). Inviertes ingeniería para eliminar el costo de licencia a largo plazo, asumiendo el riesgo operativo de mantener la infraestructura.", score: 3, type: "Build vs Buy (Alto switching cost)" }
     ],
     explanation: "Cortar data a ciegas (**Limpieza**) ciega al equipo. Migrar (**Self-Hosted**) tiene costos ocultos de mantenimiento enormes. **Estrategia de Muestreo** es la solución de escala: Google y Facebook no trackean cada click de cada usuario; usan inferencia estadística para mantener costos viables."
+  },
+  {
+    id: 'north_star_metric_misalignment',
+    displayId: 'MET-21',
+    category: "Métricas de Producto",
+    icon: <Target className="w-6 h-6 text-red-500" />,
+    scenario: "Tu producto es una herramienta B2B de productividad (tipo Asana). El CEO quiere cambiar la North Star Metric a 'Tiempo en la App' para reportar mayor engagement a inversores. Tú sabes que para una herramienta de productividad, pasar mucho tiempo en la app significa que el usuario es ineficiente o el diseño es confuso. El Board espera ver el nuevo dashboard de KPIs el lunes.",
+    question: "¿Cómo reorientas la definición de éxito?",
+    options: [
+      { id: 'A', text: "**Engagement Optimization:** Aceptas 'Tiempo en la App' como métrica principal. Diseñas features pegajosas (notificaciones, social feed) para maximizar la permanencia. Alineas el producto con la narrativa que el CEO quiere vender a los inversores.", score: 1, type: "Vanity (Métrica tóxica)" },
+      { id: 'B', text: "**Efficiency Metric:** Propones 'Tareas Completadas por Sesión' o 'Tiempo para completar flujo'. Argumentas con data que la retención a largo plazo en B2B correlaciona con la velocidad, no con la permanencia. Alineas el éxito del cliente con el del negocio.", score: 5, type: "Lead (Customer Success Alignment)" },
+      { id: 'C', text: "**Dual Dashboard:** Creas dos sets de métricas: uno de 'Engagement' para inversores y uno de 'Eficiencia' para el equipo interno. Satisfaces la necesidad política externa mientras mantienes al equipo de producto enfocado en la utilidad real.", score: 3, type: "Silos (Disonancia estratégica)" }
+    ],
+    explanation: "En productividad B2B, 'Tiempo en App' es una **Métrica Tóxica** (indica fricción). Maximizarla (**Engagement Optimization**) destruye valor para el usuario. **Dual Dashboard** crea esquizofrenia organizacional. La **Efficiency Metric** es la verdadera **North Star**: si el usuario es eficiente, renueva el contrato."
+  },
+  {
+    id: 'feature_sunset_zombie_usage',
+    displayId: 'MET-22',
+    category: "Gestión de Roadmap",
+    icon: <Trash2 className="w-6 h-6 text-gray-500" />,
+    scenario: "La feature 'Reportes Legacy' es usada por solo el 1.5% de los usuarios, pero genera el 30% de los tickets de soporte y bloquea la migración a la nueva base de datos. Sales advierte: 'Ese 1.5% incluye a Coca-Cola, si quitamos esto, amenazan con churn'. Mantenerla cuesta 2 sprints de ingeniería por trimestre.",
+    question: "¿Cómo gestionas el 'Zombie Feature'?",
+    options: [
+      { id: 'A', text: "**Legacy Support Mode:** Mantienes la feature viva pero congelada. No inviertes en mejoras, solo parches críticos. Proteges el contrato de Coca-Cola asumiendo el costo de mantenimiento como un 'impuesto' necesario para retener cuentas Enterprise.", score: 3, type: "Status Quo (Deuda técnica)" },
+      { id: 'B', text: "**Sunset Estratégico:** Anuncias la deprecación con 6 meses de aviso. Ofreces a Coca-Cola un servicio de migración 'White Glove' a los nuevos reportes o exportación de data. Priorizas la salud sistémica del producto eliminando lastre, gestionando el riesgo de la cuenta con servicio, no con código.", score: 5, type: "Lead (Jardinería de Producto)" },
+      { id: 'C', text: "**Reescritura Moderna:** Reconstruyes los 'Reportes Legacy' en la nueva tecnología para que dejen de bloquear la base de datos. Resuelves el problema técnico y mantienes feliz al cliente, aunque inviertes recursos masivos en una feature con 1.5% de uso.", score: 1, type: "Desperdicio (Mal ROI)" }
+    ],
+    explanation: "Mantener features zombies (**Legacy Support**) frena la innovación de todo el producto. Reconstruir para el 1.5% (**Reescritura**) es mal ROI. El **Sunset Estratégico** es doloroso pero necesario: gestiona la relación con el cliente Enterprise mediante **Service Design** (migración asistida) en lugar de perpetuar **Deuda Técnica**."
+  },
+  {
+    id: 'dashboard_data_density_overload',
+    displayId: 'MET-23',
+    category: "Diseño de Información",
+    icon: <Layout className="w-6 h-6 text-indigo-500" />,
+    scenario: "Un cliente Enterprise clave exige un 'Dashboard Ejecutivo' que muestre 40 métricas en una sola pantalla 'para verlo todo de un vistazo'. Tu equipo de diseño argumenta que eso viola la Ley de Miller y crea sobrecarga cognitiva. El cliente insiste: 'Soy el experto, sé lo que necesito'. Engineering advierte que cargar 40 queries simultáneas hará la página lentísima (5s+ load time).",
+    question: "¿Cómo resuelves el conflicto entre deseo del cliente y usabilidad/performance?",
+    options: [
+      { id: 'A', text: "**Customer Obsession:** Construyes el dashboard tal cual lo piden. En B2B, el cliente es el experto de su dominio. Si quieren densidad, les das densidad. Optimizas el backend para mitigar la lentitud.", score: 1, type: "Toma de pedidos (Order Taker)" },
+      { id: 'B', text: "**Progressive Dashboard:** Diseñas una vista resumen con los 6 KPIs críticos y permites 'Drill-down' (clic para ver detalles) para el resto. Vendes la velocidad de carga y la claridad de decisión como beneficios ejecutivos superiores a la densidad bruta.", score: 5, type: "Lead (Consultor Experto)" },
+      { id: 'C', text: "**Widget Builder:** Construyes un sistema de widgets personalizables. Sales reporta que la 'personalización total' es la feature #1 solicitada en demos de Enterprise. Le das al cliente una página en blanco para que se arme su propio dashboard, empoderándolo con libertad absoluta.", score: 3, type: "Herramienta vs Solución" },
+    ],
+    explanation: "El cliente pide una solución (40 métricas) a un problema (visibilidad). **Customer Obsession** ciega resulta en productos inusables. **Widget Builder** abdica la responsabilidad de diseño. El **Progressive Dashboard** aplica **Progressive Disclosure**: resuelve el problema real (visibilidad rápida) cuidando la performance y la carga cognitiva."
+  },
+  {
+    id: 'leading_vs_lagging_indicators',
+    displayId: 'MET-24',
+    category: "Métricas de Producto",
+    icon: <TrendingUp className="w-6 h-6 text-green-600" />,
+    scenario: "El Revenue del Q se ve plano. El Board pide un plan de acción. El PM propone lanzar una campaña de NPS para 'entender la satisfacción'. Tú notas que la métrica de 'Activación de nuevos usuarios' (Día 1) cayó un 15% hace 2 meses, lo que explica la caída de revenue hoy. El equipo quiere enfocarse en encuestas.",
+    question: "¿Cómo reorientas el esfuerzo del equipo?",
+    options: [
+      { id: 'A', text: "**NPS Deep Dive:** Apoyas la campaña de NPS. Necesitas voz del cliente cualitativa para entender por qué no están pagando. Es una acción visible y rápida que demuestra al Board que están escuchando al mercado.", score: 1, type: "Lagging Indicator Focus" },
+      { id: 'B', text: "**Activation Sprint:** Detienes las encuestas. Reasignas recursos a arreglar el onboarding inmediatamente. Explicas que la Activación es un **Leading Indicator** (predice futuro), mientras que Revenue y NPS son **Lagging Indicators** (espejo retrovisor). Arreglar el input arregla el output.", score: 5, type: "Lead (Causalidad)" },
+      { id: 'C', text: "**Discount Campaign:** Propones ofertas agresivas de fin de Q para levantar el revenue plano. Atacas el síntoma financiero directamente para cumplir la meta del trimestre, ganando tiempo para investigar los problemas de producto.", score: 3, type: "Cortoplacista (Daña margen)" }
+    ],
+    explanation: "El Revenue y el NPS son **Lagging Indicators** (lo que ya pasó). No puedes cambiarlos directamente. La Activación es un **Leading Indicator** (predice revenue futuro). Enfocarse en **NPS** cuando la activación cae es como mirar el termómetro mientras la casa se incendia. El **Activation Sprint** ataca la causa raíz."
+  },
+  {
+    id: 'average_user_fallacy_segmentation',
+    displayId: 'MET-25',
+    category: "Data-Driven Design",
+    icon: <Users className="w-6 h-6 text-purple-500" />,
+    scenario: "Estás rediseñando el editor de documentos. La data dice que el usuario promedio usa 4 botones. El equipo propone simplificar la UI ocultando todo lo demás. Sin embargo, un análisis de distribución muestra dos picos: el 80% usa 2 botones (lectores), y el 20% usa 45 botones (editores power users que pagan la cuenta). Diseñar para el 'promedio' (4 botones) dejaría insatisfechos a ambos grupos.",
+    question: "¿Cómo abordas el rediseño con esta data bimodal?",
+    options: [
+      { id: 'A', text: "**Simplificación Radical:** Optimizas para la mayoría (80%). Ocultas las herramientas complejas en menús para limpiar la interfaz. Priorizas la experiencia de la masa de usuarios, asumiendo que los power users aprenderán los nuevos flujos.", score: 1, type: "Alienación de Power Users" },
+      { id: 'B', text: "**Contextual Modes:** Diseñas dos modos distintos: 'Lectura' (limpio, default) y 'Edición Avanzada' (denso, herramientas visibles). Reconoces que el 'usuario promedio' no existe matemáticamente y sirves a cada segmento según su intención.", score: 5, type: "Lead (Persona-Based Design)" },
+      { id: 'C', text: "**Middle Ground UI:** Dejas visibles los 10 botones más usados. Buscas un equilibrio entre simplicidad y potencia que funcione 'más o menos bien' para todos, evitando la complejidad de mantener modos distintos.", score: 3, type: "Compromiso (Nadie gana)" }
+    ],
+    explanation: "La **Falacia del Usuario Promedio** destruye productos: si diseñas un traje para el cuerpo promedio, no le queda bien a nadie. Cuando la distribución es bimodal (lectores vs editores), el compromiso (**Middle Ground**) falla. **Contextual Modes** adapta la interfaz a la intención, protegiendo tanto la simplicidad para unos como la potencia para quienes pagan (**Power Users**)."
+  },
+  {
+    id: 'attribution_apocalypse_cookies',
+    displayId: 'MET-26',
+    category: "Data & Privacidad",
+    icon: <BarChart2 className="w-6 h-6 text-green-600" />,
+    scenario: "Con el fin de las cookies de terceros, el CAC reportado en dashboard subió un 200% porque Marketing perdió la atribución. El CMO exige implementar 'Server-Side Fingerprinting' agresivo para recuperar el rastreo. Legal advierte que esto viola el espíritu de GDPR/CCPA, aunque técnicamente se puede ocultar.",
+    question: "¿Cómo resuelves la ceguera de datos de Marketing?",
+    options: [
+      { id: 'A', text: "**Fingerprinting Táctico:** Implementas la solución del CMO. La supervivencia del negocio depende de optimizar el gasto en ads. Asumes el riesgo de privacidad bajo la justificación de 'interés legítimo' del negocio.", score: -1, type: "Dark Tech (Riesgo Legal)" },
+      { id: 'B', text: "**Marketing Mix Modeling (MMM):** Rechazas el fingerprinting. Mueves la estrategia de medición hacia modelos probabilísticos (MMM) y encuestas '¿Cómo nos conociste?'. Aceptas que la era de la atribución perfecta 1:1 terminó.", score: 5, type: "Lead (Adaptación al Mercado)" },
+      { id: 'C', text: "**First-Party Data Strategy:** Ofreces un lead magnet agresivo (ebook/curso) para capturar emails antes en el funnel. Recuperas atribución moviendo al usuario a canales propios (email), aunque cambias el flujo de adquisición.", score: 3, type: "Mitigación (Parcial)" }
+    ],
+    explanation: "El Fingerprinting es una carrera armamentista contra Apple/Google que vas a perder. **Marketing Mix Modeling (MMM)** es el estándar moderno post-cookie: medición probabilística, no determinística. **Dark Tech** expone a la empresa a ser bloqueada por navegadores y demandada."
   }
 ];

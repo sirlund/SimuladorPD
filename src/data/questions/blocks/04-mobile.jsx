@@ -1,7 +1,8 @@
-import React from 'react';
 import {
   CheckCircle, Layers, Zap, Globe, FileText, Target,
-  Code, Heart, Smartphone, Languages, Wifi
+  Code, Heart, Smartphone, Languages, Wifi, 
+  AlertTriangle, 
+  Archive, Bell, Link, Menu, Star
 } from 'lucide-react';
 
 /**
@@ -99,7 +100,7 @@ export const mobile_questions = [
     displayId: 'MOB-07',
     category: "Quality Assurance",
     icon: <CheckCircle className="w-6 h-6 text-green-600" />,
-    scenario: "Jueves 5 PM. QA bloquea release por contraste de botón (2.9:1 vs 3:1). Campaña de marketing sale mañana 9 AM. Product quiere lanzar.",
+    scenario: "Jueves 5:30 PM. El equipo está celebrando el cierre de sprint cuando QA bloquea el release: 'El contraste del botón primario es 2.9:1, WCAG exige 3:1 mínimo'. La campaña de Black Friday ($45K en ads) está programada para mañana 9 AM. El PM de Growth explota: 'Es una diferencia de 0.1, nadie lo va a notar'. El Head de Legal te recuerda que tienen un cliente Government con cláusula de accesibilidad. El CEO pregunta: '¿Cuánto nos cuesta arreglarlo vs cuánto nos cuesta no lanzar?'",
     question: "¿Qué decisión tomas?",
     options: [
       { id: 'A', text: "**Risk Acceptance:** Autorizas el release. La diferencia de 0.1 en contraste es imperceptible y no justifica perder la inversión en medios de la campaña. Creas ticket para arreglarlo post-launch.", score: 3, type: "Pragmático (Riesgo calculado)" },
@@ -113,7 +114,7 @@ export const mobile_questions = [
     displayId: 'MOB-08',
     category: "Process",
     icon: <FileText className="w-6 h-6 text-gray-500" />,
-    scenario: "Feature financiera crítica ('Interés Compuesto'). Lógica compleja. PM dice: 'Solo danos pantallas, devs deducen lógica'. Riesgo legal alto.",
+    scenario: "Tu fintech está lanzando la feature más compleja del año: 'Calculadora de Interés Compuesto' para créditos personales. La lógica tiene 14 variables (tasa, plazo, comisiones, seguros, IVA, mora) y el cálculo erróneo es demandable por ley de protección al consumidor. El PM te presiona: 'Solo entréganos las pantallas bonitas, los devs deducen la lógica del flujo'. El Tech Lead te advierte en privado: 'La última vez que dedujimos lógica de mockups, tuvimos 3 bugs en producción que costaron $80K en compensaciones'. El deadline es en 4 días.",
     question: "¿Cómo gestionas el riesgo sin tiempo para documentar?",
     options: [
       { id: 'A', text: "**Visual Handoff:** Entregas las pantallas UI a tiempo. Aclaras por escrito que la lógica de negocio es responsabilidad de Backend/Product, delimitando tu responsabilidad al diseño de interfaz.", score: 1, type: "Handoff tradicional" },
@@ -127,7 +128,7 @@ export const mobile_questions = [
     displayId: 'MOB-09',
     category: "Internationalization (i18n)",
     icon: <Globe className="w-6 h-6 text-blue-500" />,
-    scenario: "Deal $1.2M en Medio Oriente. UI actual no soporta RTL (Right-to-Left). Engineering estima 6 semanas. Cliente espera en 4. Marketing asume 'solo traducción'.",
+    scenario: "Sales cerró el deal más grande de la historia de la empresa: $1.2M anuales con un banco de Arabia Saudita. El contrato especifica 'soporte completo en árabe' para el Q2. Marketing asume que es 'solo traducir los textos'. Cuando Engineering revisa el codebase, el diagnóstico es brutal: la UI está hardcodeada en LTR (Left-to-Right) - iconos de navegación, alineación de formularios, dirección de lectura de tablas. Estiman 6 semanas de refactor. El cliente espera el beta en 4 semanas. El VP de Sales te llama furioso: '¿Me estás diciendo que vamos a perder $1.2M por un tema de CSS?'",
     question: "¿Cómo gestionas el gap de RTL?",
     options: [
       { id: 'A', text: "**Arquitectura Lógica:** Explicas que RTL invierte la cognición espacial, no solo el texto. Negocias las 6 semanas para implementar CSS lógico (margin-inline-start). Es mejor retrasar el beta que entregar un producto culturalmente roto.", score: 5, type: "Lead (Cultural Awareness)" },
@@ -141,7 +142,7 @@ export const mobile_questions = [
     displayId: 'MOB-10',
     category: "Internationalization (i18n)",
     icon: <Languages className="w-6 h-6 text-indigo-500" />,
-    scenario: "Lanzamiento en Alemania. 'Save' -> 'Speichern' rompe 23 botones de ancho fijo. Devs quieren truncar ('Speich...'). Traductor dice no hay sinónimo corto.",
+    scenario: "Primera expansión internacional: Alemania. A 3 días del launch, QA reporta que 23 botones están rotos visualmente. El problema: 'Save' (4 caracteres) se traduce a 'Speichern' (9 caracteres) y los botones tienen ancho fijo de 80px. El texto se desborda o se corta feo. Engineering propone truncar con elipsis ('Speich...'). El equipo de localización responde: 'No existe sinónimo corto en alemán, y truncar verbos es gramaticalmente incorrecto'. El PM de Growth presiona: 'El mercado alemán vale €2M de pipeline, no podemos retrasar por tipografía'.",
     question: "¿Cómo solucionas la escalabilidad?",
     options: [
       { id: 'A', text: "**Responsive Components:** Refactorizas los botones a 'Auto-Layout' para que crezcan con el contenido. Inviertes 1 día en hacer el sistema resiliente a cualquier longitud de idioma futuro, en lugar de parchar el contenido.", score: 5, type: "Lead (Scalable UI)" },
@@ -155,7 +156,7 @@ export const mobile_questions = [
     displayId: 'MOB-11',
     category: "Service Design",
     icon: <Wifi className="w-6 h-6 text-gray-500" />,
-    scenario: "App para técnicos de campo (60% offline). Conflicto de edición simultánea. Engineering propone 'Last Write Wins' (2 semanas). Tú temes pérdida de datos. Demo en 3 semanas.",
+    scenario: "Estás diseñando una app para técnicos de mantenimiento industrial que trabajan en plantas petroleras remotas - el 60% de su jornada están sin conectividad. El problema: dos técnicos pueden editar el mismo reporte de inspección offline y cuando reconectan, hay conflicto. Engineering propone 'Last Write Wins' (la última sincronización sobrescribe todo) porque es simple de implementar en 2 semanas. Tú ves el riesgo: si el Técnico A documenta una fuga de gas crítica offline y el Técnico B sincroniza después con data trivial, se pierde información de seguridad. El demo con el cliente ancla ($500K) es en 3 semanas.",
     question: "¿Cómo diseñas la resolución de conflictos?",
     options: [
       { id: 'A', text: "**Last Write Wins:** Aceptas la solución técnica simple. Priorizas tener una demo funcional y estable en 2 semanas, asumiendo que la colisión de datos es un borde case poco frecuente.", score: 1, type: "Riesgoso (Pérdida de datos)" },
@@ -169,7 +170,7 @@ export const mobile_questions = [
     displayId: 'MOB-12',
     category: "Compliance & UX",
     icon: <Smartphone className="w-6 h-6 text-blue-400" />,
-    scenario: "Botones de 24px causan 'Fat Finger Errors'. Audit falla. Designer Lead dice: '44px se ve feo y desperdicia espacio'.",
+    scenario: "La auditoría de accesibilidad de tu app financiera acaba de fallar. El problema: los botones de acción tienen 24x24px de área táctil, muy por debajo del mínimo de 44x44px (iOS) / 48x48dp (Android). Los usuarios reportan 'Fat Finger Errors' constantes - tocan 'Transferir' y activan 'Eliminar cuenta' que está al lado. El Designer Lead que creó el sistema visual se opone: 'Subir a 44px arruina la densidad de información y se ve como una app para ancianos. Nuestro diferenciador es la elegancia minimalista'. El Head de Producto te pregunta: '¿Accesibilidad o estética? Elige uno'.",
     question: "¿Qué estándar aplicas?",
     options: [
       { id: 'A', text: "**Invisible Touch Targets:** Mantienes el ícono visual de 24px pero expandes el área táctil (hitbox) a 48px con padding transparente. Cumples el estándar de usabilidad y accesibilidad sin comprometer la densidad visual del diseño.", score: 5, type: "Lead (Estándar de Plataforma)" },
@@ -183,21 +184,21 @@ export const mobile_questions = [
     displayId: 'MOB-13',
     category: "Estrategia de Plataforma",
     icon: <Smartphone className="w-6 h-6 text-blue-400" />,
-    scenario: "Debate PWA ($80K) vs Native ($280K). iOS PM exige Native por retención. CFO pregunta costo. Tienes 1 sprint para decidir.",
+    scenario: "Tu startup B2C necesita lanzar app mobile para competir. Engineering presenta dos opciones: PWA ($80K, 6 semanas) vs Native iOS+Android ($280K, 4 meses). El iOS PM argumenta que las push notifications nativas son críticas para retención (60% del engagement). El CFO presiona: 'Con 8 meses de runway, no podemos apostar $280K sin validar tracción'. Marketing insiste en estar en ambos stores 'para credibilidad'. Tienes 1 sprint para presentar la recomendación al Board.",
     question: "¿Cómo decides la arquitectura mobile?",
     options: [
-      { id: 'A', text: "**Hybrid Compromise:** Eliges React Native o Flutter como punto medio. Reduces costos compartiendo lógica, pero mantienes presencia nativa en stores. Evitas los extremos de PWA puro o Native puro.", score: 3, type: "Compromiso político (Nadie gana)" },
+      { id: 'A', text: "**Multiplatform Framework (Flutter):** Unificas el desarrollo en Flutter. Prometes 'escribir una vez, correr en todos lados', reduciendo el headcount necesario para mantener dos bases de código nativas. El CFO aprueba el ahorro de costos proyectado.", score: 3, type: "Compromiso político (Nadie gana)" },
       { id: 'B', text: "**Targeted MVP Strategy:** Lanzas PWA para Android (mercado masivo, update fácil) y Native Wrapper para iOS (mercado high-value, notificaciones críticas). Validamos tracción con inversión segmentada ($150K) antes de unificar arquitectura.", score: 5, type: "Lead (Learn before commit)" },
       { id: 'C', text: "**Engineering Vote:** Delegas la decisión al equipo técnico. Ellos mantendrán el código, así que su preferencia de stack (probablemente PWA por simplicidad) debe prevalecer sobre las preferencias de producto.", score: 1, type: "Delegación técnica" }
     ],
-    explanation: "Decidir arquitectura es decidir negocio. **Targeted MVP Strategy** reconoce que iOS y Android tienen economías diferentes. **Engineering Vote** ignora el **ROI**. **Hybrid Compromise** a veces suma la complejidad de ambos mundos. Validar valor antes de escalar costo es la ruta Lead."
+    explanation: "Decidir arquitectura es decidir negocio. **Targeted MVP Strategy** reconoce que iOS y Android tienen economías diferentes. **Engineering Vote** ignora el **ROI**. **Flutter** promete ahorro pero a escala puede generar deuda de experiencia no-nativa y lock-in de talento especializado. Validar valor antes de escalar costo es la ruta Lead."
   },
   {
     id: 'mobile_performance_budget_sacrifice',
     displayId: 'MOB-14',
     category: "Mobile Performance",
     icon: <Zap className="w-6 h-6 text-yellow-600" />,
-    scenario: "App pesa 85MB. Meta <40MB. 28% abandono en cold start. Devs dicen que 5 SDKs son 'críticos'.",
+    scenario: "El funnel de adquisición está sangrando: 28% de los usuarios abandonan durante la descarga/instalación. Analytics revela que tu app pesa 85MB - el doble del benchmark de la industria (<40MB). Cuando auditas el bundle, encuentras 5 SDKs de analytics y tracking que suman 35MB. Engineering defiende cada uno: 'Firebase es crítico para push, Amplitude para product analytics, Mixpanel lo usa Growth, Segment lo pidió Marketing, y Crashlytics es para estabilidad'. El CFO pregunta por qué están pagando $45K/año en herramientas que hacen lo mismo. El PM de Growth añade: 'El 28% de abandono en mercados emergentes (donde los datos móviles son caros) nos está matando'.",
     question: "¿Cómo alcanzas performance budget?",
     options: [
       { id: 'A', text: "**Ruthless Prioritization:** Auditas el valor de negocio de cada SDK. Eliminas redundancias (ej: quedarte con 1 analytics en lugar de 3). Priorizas la experiencia de usuario (velocidad) sobre la comodidad de recolección de datos interna.", score: 5, type: "Lead (ROI-based pruning)" },
@@ -211,7 +212,7 @@ export const mobile_questions = [
     displayId: 'MOB-15',
     category: "Accesibilidad & Diseño",
     icon: <Smartphone className="w-6 h-6 text-blue-400" />,
-    scenario: "Diseñador estrella ($140K) se niega a usar botones de 44pt por 'estética'. Audit falla. Legal advierte riesgos.",
+    scenario: "Tu diseñador senior más talentoso ($140K/año, 50K seguidores en Dribbble, ganador de 2 Webby Awards) está en guerra abierta con el equipo de accesibilidad. Se niega a implementar touch targets de 44pt porque 'destruye la proporción áurea del sistema visual'. La auditoría de WCAG falló por segunda vez consecutiva. Legal te advierte: 'El cliente Enterprise del sector público tiene cláusula de accesibilidad - si no cumplimos, pueden rescindir el contrato de $200K'. El diseñador te escribe: 'Si me obligan a hacer diseño feo, renuncio. Y me llevo mi audiencia de Twitter conmigo'. HR te recuerda que reemplazarlo tomaría 4 meses.",
     question: "¿Cómo manejas la rebelión de diseño?",
     options: [
       { id: 'A', text: "**Estándar Profesional:** Estableces que la accesibilidad es un requisito de calidad no negociable, igual que la seguridad o performance. Si el diseño no es accesible, no está terminado, independientemente de la fama del diseñador.", score: 5, type: "Lead (Principios > Popularidad)" },
@@ -261,5 +262,117 @@ export const mobile_questions = [
       { id: 'C', text: "**Reward Loops:** Agregas gamificación al onboarding (puntos por completar pasos). Intentas motivar al usuario extrínsecamente para que soporte la fricción del proceso largo.", score: 1, type: "Lipstick on pig" }
     ],
     explanation: "Nadie descarga una app para ver un tutorial. **Just-in-Time Education** elimina la barrera de entrada. **Content Optimization** y **Reward Loops** son intentos de hacer tolerable una experiencia fundamentalmente rota. El mejor onboarding es no tener onboarding."
+  },
+  {
+    id: 'app_store_rejection_iap_tax',
+    displayId: 'MOB-19',
+    category: "App Store & Compliance",
+    icon: <AlertTriangle className="w-6 h-6 text-red-500" />,
+    scenario: "Apple rechazó tu último update (bloqueando un bug fix crítico) citando la regla 3.1.1: estás vendiendo cursos digitales sin usar In-App Purchase (IAP) y evadiendo el 'Apple Tax' del 30%. El CFO prohíbe pagar el 30% porque destruye el margen. El CEO sugiere: 'Esconde el botón de compra solo para los revisores de Apple'. Tienes 24 horas para desbloquear el release.",
+    question: "¿Cómo resuelves el bloqueo de Apple sin cometer fraude ni quebrar el margen?",
+    options: [
+      { id: 'A', text: "**Shadow Toggle (Geofencing):** Implementas un feature flag que oculta el flujo de pago cerca de las oficinas de Cupertino. Desbloqueas el release inmediato protegiendo el negocio, asumiendo el riesgo calculado de un juego del gato y el ratón.", score: -1, type: "Fraude (Riesgo de Ban)" },
+      { id: 'B', text: "**Reader App Strategy:** Eliminas el botón de compra en la app iOS. Cambias el copy a 'Gestiona tu cuenta en la web'. Cumples la normativa estricta permitiendo el consumo de contenido en la app, moviendo la transacción al canal web donde tienes 100% de margen.", score: 5, type: "Lead (Compliance Estratégico)" },
+      { id: 'C', text: "**Premium Markup:** Implementas IAP pero subes el precio un 30% en la app para compensar la comisión. Le das al usuario la opción de la comodidad nativa, transfiriendo el costo de la plataforma al consumidor final.", score: 3, type: "Fricción de Precio" }
+    ],
+    explanation: "Engañar a Apple (**Shadow Toggle**) termina en la **Termination** de la cuenta de desarrollador (riesgo existencial). Subir precios (**Premium Markup**) es permitido pero genera fricción y quejas. **Reader App Strategy** es la vía estándar (Spotify/Netflix) para proteger el margen en negocios de contenido digital."
+  },
+  {
+    id: 'push_notification_marketing_spam',
+    displayId: 'MOB-20',
+    category: "Engagement & Growth",
+    icon: <Bell className="w-6 h-6 text-yellow-500" />,
+    scenario: "Marketing quiere enviar Push Notifications diarias con 'Ofertas Flash' a toda la base. Proyectan un lift de ventas del 15%. Tu data muestra que la tasa de 'Opt-out' (usuarios desactivando notificaciones) sube 4x cuando la frecuencia pasa de semanal a diaria. Una vez que un usuario apaga notificaciones a nivel de OS, es casi imposible recuperarlo.",
+    question: "¿Cómo gestionas el canal de notificaciones?",
+    options: [
+      { id: 'A', text: "**Growth Blast:** Ejecutas la campaña diaria. El incremento del 15% en ventas inmediatas justifica el churn de notificaciones. En e-commerce, la atención se captura con frecuencia y el usuario interesado agradecerá las ofertas.", score: 1, type: "Short-term Gain (Channel Burnout)" },
+      { id: 'B', text: "**Notification Center (Preference Center):** Creas una sección en la app para que el usuario elija la frecuencia. Derivas a Marketing a enviar solo a quienes hicieron opt-in explícito a 'Ofertas Diarias', protegiendo el canal crítico del resto.", score: 5, type: "Lead (Permiso Granular)" },
+      { id: 'C', text: "**Segmentación Silenciosa:** Filtras los envíos solo a usuarios que han comprado en los últimos 30 días. Reduces el riesgo de molestar a usuarios inactivos, enfocando el esfuerzo de marketing en el segmento de mayor conversión.", score: 3, type: "Mitigación Parcial" }
+    ],
+    explanation: "Quemantar el canal de Push (**Channel Burnout**) es irreversible a nivel de OS. **Growth Blast** sacrifica el LTV por ventas de hoy. **Segmentación Silenciosa** ayuda pero no resuelve la preferencia. **Notification Center** transfiere el control al usuario, garantizando que el canal siga abierto para notificaciones transaccionales críticas."
+  },
+  {
+    id: 'deep_linking_infrastructure_hell',
+    displayId: 'MOB-21',
+    category: "Mobile Architecture",
+    icon: <Link className="w-6 h-6 text-blue-400" />,
+    scenario: "Marketing gasta $50K/mes en ads, pero el 40% de los usuarios que tienen la app instalada terminan en la web mobile (sin loguear) al hacer clic, destruyendo la conversión. Engineering dice que arreglar Universal Links (iOS) y App Links (Android) es un 'infierno de configuración' que requiere tocar servidores y certificados, estimado en 2 sprints.",
+    question: "¿Cómo priorizas la infraestructura de Deep Linking?",
+    options: [
+      { id: 'A', text: "**Marketing Wrapper:** Usas una herramienta de atribución externa (ej: AppsFlyer/Branch) para envolver los links. Solucionas el ruteo inmediatamente sin tocar la infraestructura core, delegando la complejidad técnica al proveedor.", score: 3, type: "Dependencia de Vendor" },
+      { id: 'B', text: "**Infrastructure Priority:** Detienes features de producto para arreglar los Universal Links nativos. La experiencia rota de 'Web teniendo la App' es un bug de usabilidad P0 que está quemando el 40% del presupuesto de marketing.", score: 5, type: "Lead (Fix the Foundation)" },
+      { id: 'C', text: "**Smart Banner:** Implementas un banner en la web mobile que dice 'Abrir en la App'. Es una solución low-code que permite al usuario saltar manualmente a la app si lo desea, salvando la conversión sin desarrollo complejo.", score: 1, type: "Fricción de Usuario" }
+    ],
+    explanation: "Si el 40% del tráfico pago rebota por mala redirección, la infraestructura es prioridad de negocio, no técnica. **Smart Banner** agrega fricción. **Marketing Wrapper** (Branch) es válido pero añade costo y dependencia. **Infrastructure Priority** arregla la fuga de dinero en la raíz, asegurando una experiencia **Seamless**."
+  },
+  {
+    id: 'android_fragmentation_low_end_crash',
+    displayId: 'MOB-22',
+    category: "Mobile Performance",
+    icon: <Smartphone className="w-6 h-6 text-green-600" />,
+    scenario: "Tu nueva feature de 'Video Preview' causa crashes en dispositivos Android de gama baja (Samsung J-series, 12% de tu base). El fix requiere reescribir el renderizado de video (3 semanas). Product quiere lanzar ya para capturar la campaña de Navidad. El CEO pregunta: '¿Podemos ignorar ese 12% y lanzar?'",
+    question: "¿Cómo gestionas la fragmentación de Android?",
+    options: [
+      { id: 'A', text: "**Feature Flag por Device Class:** Lanzas la feature habilitada solo para dispositivos de gama media/alta. El 12% de gama baja ve la versión estática anterior. Proteges la estabilidad del release sin retrasar la campaña navideña.", score: 5, type: "Lead (Degradación Graciosa)" },
+      { id: 'B', text: "**Launch & Patch:** Lanzas globalmente aceptando el crash rate temporal. El 88% de usuarios tendrá una experiencia excelente. Publicas un hotfix para los gama baja tan pronto esté listo en enero.", score: -1, type: "Negligencia (Crash Rate spike)" },
+      { id: 'C', text: "**Bloqueo de Calidad:** Retrasas el lanzamiento hasta que funcione en todos los dispositivos soportados. La consistencia de la experiencia es sagrada y no puedes discriminar a usuarios por su poder adquisitivo.", score: 3, type: "Idealista (Pierde Navidad)" }
+    ],
+    explanation: "Lanzar sabiendo que crashea el 12% dispara las vitals de Android (ANR/Crashes) y Google penaliza tu visibilidad en Play Store. **Launch & Patch** es suicida. **Feature Flag por Device Class** aplica **Graceful Degradation**: entrega valor a quien puede recibirlo y estabilidad a quien no, salvando la Navidad."
+  },
+  {
+    id: 'navigation_hamburger_vs_tabs',
+    displayId: 'MOB-23',
+    category: "Information Architecture",
+    icon: <Menu className="w-6 h-6 text-gray-500" />,
+    scenario: "La app creció y el Tab Bar de 5 items ya no aguanta más features. El PM quiere mover todo a un 'Hamburger Menu' lateral para tener espacio infinito. Data muestra que las features ocultas en menús laterales tienen -80% de engagement. Marketing insiste en meter 'Rewards' en el home.",
+    question: "¿Cómo escalas la navegación sin matar el engagement?",
+    options: [
+      { id: 'A', text: "**Hamburger Drawer:** Mueves la navegación secundaria al menú lateral. Limpias la interfaz principal priorizando el contenido, permitiendo escalabilidad infinita de nuevas secciones en el futuro.", score: 1, type: "Oculta valor (Baja engagement)" },
+      { id: 'B', text: "**IA Audit & Consolidation:** Re-evalúas la arquitectura. Agrupas features relacionadas para mantener el Tab Bar en 5 items. Si 'Rewards' es crítico, reemplaza a la feature de menor uso. Priorizas foco sobre volumen.", score: 5, type: "Lead (Hard Choices)" },
+      { id: 'C', text: "**Scrollable Tab Bar:** Haces que la barra de navegación sea scrolleable horizontalmente. Mantienes todo 'a un nivel' sin ocultarlo en un menú, dando acceso rápido a más de 5 secciones.", score: 1, type: "Anti-patrón (Mala UX)" }
+    ],
+    explanation: "El **Hamburger Menu** es el sótano de la app: lo que entra ahí muere. **Scrollable Tab Bar** tiene pobre discoverability. La solución de Lead es **IA Audit**: tomar decisiones difíciles de priorización. Si todo es importante, nada es importante. Mantener 5 tabs obliga a definir la estrategia del producto."
+  },
+  {
+    id: 'rating_prompt_aggressive_growth',
+    displayId: 'MOB-24',
+    category: "Growth & UX",
+    icon: <Star className="w-6 h-6 text-yellow-500" />,
+    scenario: "El rating en App Store es 4.2 y el CEO quiere 4.8. Growth implementó un prompt nativo de 'Califícanos' que aparece cada vez que abres la app. El rating subió a 4.5, pero el tiempo de sesión bajó 10% por la molestia. Los usuarios se quejan en Twitter del 'spam de estrellas'.",
+    question: "¿Cómo optimizas el rating sin destruir la experiencia?",
+    options: [
+      { id: 'A', text: "**Maximización de Volumen:** Mantienes la frecuencia agresiva. La correlación entre rating alto y conversión de installs es directa. Un poco de molestia en usuarios actuales es el costo de adquirir nuevos usuarios orgánicos.", score: 1, type: "Growth Hack (Miope)" },
+      { id: 'B', text: "**Happy Path Trigger:** Mueves el prompt al 'Momento de Éxito' (ej: completar una tarea, recibir un pago). Solo preguntas cuando el usuario siente valor, y limitas la frecuencia a una vez cada 3 meses por política de sistema.", score: 5, type: "Lead (Contextual)" },
+      { id: 'C', text: "**Settings Menu:** Quitas el prompt automático y dejas un botón permanente 'Califícanos' en configuración. Respetas al usuario al 100%, dejando que la calificación sea un acto puramente voluntario.", score: 1, type: "Pasivo (Nadie califica)" }
+    ],
+    explanation: "Interrumpir el inicio de sesión genera fricción cognitiva. **Maximización de Volumen** quema la base instalada. **Settings Menu** solo recolecta quejas (sesgo negativo). **Happy Path Trigger** aprovecha la dopamina del logro para pedir el favor, alineando el incentivo del usuario con el del negocio."
+  },
+  {
+    id: 'legacy_os_support_deprecation',
+    displayId: 'MOB-25',
+    category: "Mobile Architecture",
+    icon: <Archive className="w-6 h-6 text-slate-500" />,
+    scenario: "Engineering quiere dejar de soportar iOS 15 para usar las nuevas APIs de SwiftUI que aceleran el desarrollo un 40%. Analytics muestra que el 8% de tus usuarios (clientes leales antiguos) siguen en iOS 15. Representan $120K de ARR. Si actualizas, la app dejará de funcionar para ellos.",
+    question: "¿Cómo decides el 'End of Life' (EOL) del soporte?",
+    options: [
+      { id: 'A', text: "**Dev Experience First:** Actualizas a iOS 16+. La velocidad de desarrollo (40% más rápido) beneficia al 92% de los usuarios. Mantener código legacy frena la innovación y desmotiva al equipo de ingeniería.", score: 1, type: "Tecnocéntrico (Pierde clientes)" },
+      { id: 'B', text: "**Data-Driven Deprecation Plan:** Anuncias el EOL con 3 meses de aviso. Mides cuántos de ese 8% pueden actualizar dispositivo vs cuántos están atrapados. Ofreces incentivos o acceso web a los atrapados. Ejecutas el corte solo cuando el churn proyectado sea menor al ahorro operativo.", score: 5, type: "Lead (Gestión de Ciclo de Vida)" },
+      { id: 'C', text: "**Legacy Freeze:** Mantienes el soporte a iOS 15 indefinidamente. No puedes permitirte perder $120K de ARR. Bifurcas el código si es necesario para usar SwiftUI en lo nuevo y UIKit en lo viejo.", score: 3, type: "Deuda Técnica (Mantenimiento alto)" }
+    ],
+    explanation: "Cortar el soporte al 8% de golpe es perder $120K. Mantenerlo eternamente (**Legacy Freeze**) frena todo el roadmap. **Data-Driven Deprecation** gestiona la transición: comunica, da tiempo y alternativas, minimizando el impacto financiero mientras desbloquea la velocidad técnica futura."
+  },
+  {
+    id: 'super_app_merger_bloat',
+    displayId: 'MOB-26',
+    category: "Mobile Architecture",
+    icon: <Smartphone className="w-6 h-6 text-purple-600" />,
+    scenario: "El CEO quiere fusionar las apps de 'Rider', 'Driver' y 'Eats' en una sola 'Super App' para 'crear sinergias de ecosistema'. Engineering advierte que el binario pesará 250MB y el tiempo de inicio subirá a 6s. Los equipos de producto de cada vertical temen perder autonomía.",
+    question: "¿Cuál es tu postura arquitectónica ante la Super App?",
+    options: [
+      { id: 'A', text: "**Unified Binary:** Ejecutas la fusión. La fricción de instalación única y el cross-selling justifican el peso. Los usuarios tienen teléfonos modernos y 250MB no es bloqueante hoy en día.", score: 1, type: "Visionary (Ignora Performance)" },
+      { id: 'B', text: "**Ecosystem Linking:** Mantienes apps separadas pero implementas 'App Clips' y Deep Links fluidos entre ellas con Single Sign-On (SSO) compartido. Logras la fricción reducida sin crear un monstruo monolítico inmanejable.", score: 5, type: "Lead (Arquitectura Distribuida)" },
+      { id: 'C', text: "**Modular Architecture:** Fusionas las apps pero usando carga dinámica de módulos (On-demand features). Es una ingeniería compleja que tomará 9 meses, pero teóricamente resuelve el problema del peso.", score: 3, type: "Over-engineering (Riesgo de ejecución)" }
+    ],
+    explanation: "Las 'Super Apps' funcionan en Asia por contextos de OS específicos (WeChat). En occidente, apps monolíticas de 250MB tienen menor conversión. **Ecosystem Linking** (SSO + Deep Links) logra la sinergia comercial sin la deuda técnica y organizacional de un monolito. **Modular Architecture** es teóricamente ideal pero operativamente una pesadilla."
   }
 ];

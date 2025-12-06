@@ -1,6 +1,17 @@
 import React from 'react';
 import {
-  Brain, Layers, Lock, Palette, Users
+  Beaker,
+  Brain,
+  Glasses,
+  Globe,
+  Layers,
+  Lock,
+  Palette,
+  ScanFace,
+  Server,
+  ShieldAlert,
+  Sparkles,
+  Users
 } from 'lucide-react';
 
 /**
@@ -245,5 +256,159 @@ export const innovation_questions = [
       { id: 'C', text: "**Wait for Stable:** Bloqueas la feature por 3 meses hasta la versión 1.1. Dejas que otros equipos sufran los bugs iniciales. Priorizas la integridad de la librería de diseño sobre la novedad.", score: 3, type: "Conservative (Timing friction)" }
     ],
     explanation: "Aplicar automatización inmadura a deuda técnica (legacy) es desastre. **Containment Strategy** permite probar sin riesgo sistémico. Corromper archivos históricos es inaceptable. Esperar demasiado frustra al equipo. Innovar en lo nuevo, proteger lo viejo."
+  },
+  {
+    id: 'figma_ai_features_adoption_timing',
+    displayId: 'INN-18',
+    category: "Tendencias de Diseño",
+    icon: <Layers className="w-6 h-6 text-indigo-600" />,
+    scenario: "Figma lanzó features de AI y tu equipo quiere aplicarlas inmediatamente para limpiar 3 años de archivos legacy desordenados. La promesa es ahorrar semanas de trabajo manual. Sin embargo, un test rápido reveló que la AI corrompió el 30% de los componentes complejos al 'alucinar' nuevas variantes. La presión por automatizar el trabajo sucio es alta, pero el riesgo de corromper la librería core es sistémico.",
+    question: "¿Cómo manejas la adopción de herramientas inmaduras en sistemas críticos?",
+    options: [
+      { id: 'A', text: "**Containment Strategy:** Habilitas las features solo para proyectos nuevos ('Greenfield'). Prohíbes su uso en archivos legacy hasta que la herramienta madure. Balanceas innovación con estabilidad operativa.", score: 5, type: "Lead (Incremental adoption)" },
+      { id: 'B', text: "**Full Steam Ahead:** Habilitas globalmente y asignas un tiempo de 'cleanup' posterior. El aumento masivo de productividad a largo plazo compensa la fricción inicial de la transición y los errores puntuales.", score: 1, type: "FOMO-driven (Predictable chaos)" },
+      { id: 'C', text: "**Wait for Stable:** Bloqueas la feature por 3 meses hasta la versión 1.1. Dejas que otros equipos sufran los bugs iniciales. Priorizas la integridad de la librería de diseño sobre la novedad tecnológica.", score: 3, type: "Conservative (Timing friction)" }
+    ],
+    explanation: "Aplicar automatización inmadura a deuda técnica (legacy) es desastre. **Containment Strategy** permite probar sin riesgo sistémico. Corromper archivos históricos es inaceptable. Esperar demasiado frustra al equipo. Innovar en lo nuevo, proteger lo viejo."
+  },
+  {
+    id: 'generative_ui_vs_design_system',
+    displayId: 'INN-19',
+    category: "Innovación & AI",
+    icon: <Sparkles className="w-6 h-6 text-purple-500" />,
+    scenario: "Engineering quiere integrar Vercel v0 (Generative UI) para que el dashboard cree componentes 'on-the-fly' según la data del usuario. Argumentan que esto logra la 'personalización definitiva'. Tu equipo de Design Systems advierte que esto romperá la consistencia visual y de interacción, ya que la AI generará patrones no documentados. El PM está fascinado con la demo y quiere implementarlo.",
+    question: "¿Cómo gestionas la tensión entre UI generativa y consistencia sistémica?",
+    options: [
+      { id: 'A', text: "**System-Constrained Generation:** Permites la generación por AI pero restringida estrictamente a usar tokens y componentes existentes de tu Design System. Usas la AI como 'assembler' de piezas lego aprobadas, no como creador de nuevos patrones.", score: 5, type: "Lead (Gobernanza Híbrida)" },
+      { id: 'B', text: "**Block & Protect:** Prohíbes la UI generativa en producción. La consistencia cognitiva y la confianza del usuario dependen de patrones predecibles. La marca no puede delegarse a un algoritmo estocástico.", score: 3, type: "Conservador (Frena innovación)" },
+      { id: 'C', text: "**Fluid Interfaces:** Abrazas el caos controlado. Permites que la AI genere interfaces únicas si mejora el KPI del usuario. Evolucionas tu Design System de un set de reglas rígidas a un set de 'principios guía' más flexibles.", score: 1, type: "Futurista (Riesgo de usabilidad)" }
+    ],
+    explanation: "La UI generativa sin rieles crea deuda de usabilidad masiva. Bloquearla te deja atrás. **System-Constrained Generation** es el camino del Lead: usa la AI para orquestar, pero mantiene el Design System como la fuente de la verdad visual, garantizando consistencia y flexibilidad."
+  },
+  {
+    id: 'ai_training_on_user_data_privacy',
+    displayId: 'INN-20',
+    category: "Innovación & Ética",
+    icon: <ShieldAlert className="w-6 h-6 text-red-500" />,
+    scenario: "El CTO quiere entrenar un LLM propio usando 5 años de tickets de soporte para automatizar respuestas. Legal dice que los Términos de Servicio no mencionan explícitamente 'entrenamiento de AI', pero que es un 'uso legítimo de mejora de servicio'. Competidores ya lo hacen. Si pides permiso explícito (Opt-in), la data disponible bajará del 100% al 15%, haciendo el modelo inútil.",
+    question: "¿Qué postura tomas sobre el uso de datos de clientes?",
+    options: [
+      { id: 'A', text: "**Silent Training:** Entrenas el modelo con la data histórica anonimizada bajo la cláusula de 'mejora de servicio'. Priorizas la competitividad del producto y la calidad del modelo, asumiendo el riesgo estándar de la industria.", score: 1, type: "Gris Legal (Riesgo de Trust)" },
+      { id: 'B', text: "**Value-Exchange Opt-In:** Lanzas una campaña transparente: 'Ayúdanos a responderte más rápido'. Ofreces acceso beta prioritario o descuentos a quienes acepten el uso de datos. Reconstruyes el dataset con consentimiento explícito y confianza.", score: 5, type: "Lead (Trust Capital)" },
+      { id: 'C', text: "**Synthetic Data Augmentation:** No usas data real. Generas millones de tickets sintéticos con GPT-4 para entrenar tu modelo. Evitas cualquier riesgo de privacidad, utilizando datos fabricados para simular escenarios reales.", score: 3, type: "Técnico (Calidad inferior)" }
+    ],
+    explanation: "Entrenar sin permiso explícito es una bomba de tiempo de PR y Legal (ver Zoom/Adobe backlash). **Value-Exchange Opt-In** convierte el problema legal en una transacción de valor. **Silent Training** arriesga la confianza de la marca. **Synthetic Data** es seguro pero degrada la calidad del producto final."
+  },
+  {
+    id: 'innovation_lab_vs_core_product_resentment',
+    displayId: 'INN-21',
+    category: "Estrategia de Producto",
+    icon: <Beaker className="w-6 h-6 text-teal-500" />,
+    scenario: "Tienes un 'Innovation Lab' (20% del equipo) trabajando en conceptos futuristas de VR/AI que encantan al Board. Mientras tanto, el producto Core (80% del revenue) tiene deuda técnica crítica y bugs que causan churn. El equipo Core está resentido y se siente 'ciudadanos de segunda clase' limpiando el desastre mientras el Lab se divierte.",
+    question: "¿Cómo reequilibras la cartera de innovación?",
+    options: [
+      { id: 'A', text: "**Kill the Lab:** Disuelves el equipo de innovación y reasignas a todos a arreglar el Core. 'Nadie innova hasta que el barco deje de hundirse'. Priorizas la salud inmediata del negocio sobre apuestas futuras.", score: 1, type: "Reactivo (Mata futuro)" },
+      { id: 'B', text: "**Tour of Duty:** Implementas rotación obligatoria. Nadie está fijo en el Lab; los ingenieros/diseñadores rotan cada 6 meses. Democratizas el acceso al trabajo 'divertido' y aseguras que los innovadores mantengan contacto con la realidad del código base.", score: 5, type: "Lead (Cultura unificada)" },
+      { id: 'C', text: "**Separación Total:** Mueves al Lab a una oficina/Slack separado. Aceptas que son culturas diferentes con misiones diferentes. Proteges a los innovadores de la burocracia del Core para que puedan moverse rápido.", score: 1, type: "Siloing (Empeora resentimiento)" }
+    ],
+    explanation: "Tener una casta privilegiada de 'innovadores' destruye la moral del equipo que paga las cuentas. **Tour of Duty** democratiza la innovación y transfiere conocimiento. Matar el Lab hipoteca el futuro. Separarlos más (**Separación Total**) solo incrementa el resentimiento y desconecta la innovación de la realidad del cliente."
+  },
+  {
+    id: 'sustainability_feature_bloat_conflict',
+    displayId: 'INN-22',
+    category: "Innovación & Ética",
+    icon: <Globe className="w-6 h-6 text-green-600" />,
+    scenario: "Marketing quiere 'Autoplay Video' en alta resolución en el home para subir engagement (+15% proyectado). Tu equipo de sustentabilidad alerta que esto triplicará la huella de carbono digital del producto, violando el compromiso público de 'Net Zero'. El CEO dice: 'Necesitamos los números de engagement para la ronda de inversión, el planeta puede esperar un trimestre'.",
+    question: "¿Cómo manejas el conflicto entre Growth y ESG?",
+    options: [
+      { id: 'A', text: "**Adaptive Loading (Eco-Mode):** Implementas autoplay solo en WiFi y dispositivos de gama alta, y click-to-play en redes móviles o si el usuario tiene 'Ahorro de Datos' activado. Balanceas el lift de métricas con responsabilidad técnica.", score: 5, type: "Lead (Smart Default)" },
+      { id: 'B', text: "**Growth Priority:** Lanzas el video en 4K. La supervivencia de la empresa depende de la ronda de inversión. Si la empresa quiebra, su impacto ambiental es irrelevante. Compensas comprando créditos de carbono.", score: 1, type: "Cortoplacista (Greenwashing)" },
+      { id: 'C', text: "**User Choice:** Pones un toggle de 'Eco-Friendly' en settings, desactivado por default. Transfieres la responsabilidad moral al usuario mientras capturas el engagement de la mayoría que nunca toca la configuración.", score: 3, type: "Dark Pattern (Responsabilidad delegada)" }
+    ],
+    explanation: "El conflicto Growth vs ESG es falso si se diseña inteligentemente. **Adaptive Loading** captura gran parte del valor comercial reduciendo el desperdicio masivo. Ignorar el compromiso (**Growth Priority**) es riesgo reputacional. Delegar al usuario (**User Choice**) es inefectivo porque los defaults gobiernan el comportamiento."
+  },
+  {
+    id: 'predictive_ux_agency_friction',
+    displayId: 'INN-23',
+    category: "Innovación & AI",
+    icon: <Brain className="w-6 h-6 text-purple-500" />,
+    scenario: "Data Science creó un modelo que predice con 85% de exactitud qué 'Add-on' comprará el usuario. Product quiere agregarlo al carrito automáticamente para reducir fricción ('Frictionless Commerce'). Proyectan +20% Revenue. Tú temes que esto erosione la confianza y aumente las devoluciones por compras accidentales.",
+    question: "¿Dónde trazas la línea de la automatización?",
+    options: [
+      { id: 'A', text: "**Auto-Add con Notificación:** Agregas el item al carrito pero muestras un 'Toast' prominente: 'Hemos añadido X basado en tu historial'. Maximizas la conversión aprovechando el default bias, manteniendo una capa de transparencia.", score: 1, type: "Growth Hack (Erosiona confianza)" },
+      { id: 'B', text: "**Suggested Bundle:** Usas la predicción para crear un 'One-Click Bundle' pre-configurado, pero el usuario debe hacer clic activamente para aceptarlo. Reduces la fricción operativa sin violar la agencia del usuario.", score: 5, type: "Lead (Agencia respetada)" },
+      { id: 'C', text: "**Confirmation Friction:** Agregas el item pero introduces un paso extra de confirmación en el checkout ('Revisa tu orden'). Aseguras que nadie compre por error, sacrificando gran parte del lift de conversión por la seguridad.", score: 3, type: "Protector (Mata conversión)" }
+    ],
+    explanation: "Modificar el carrito del usuario sin su acción explícita viola la **Agencia del Usuario** y se siente como robo. **Suggested Bundle** usa la inteligencia para sugerir, no para imponer, logrando conversión ética. **Auto-Add** genera revenue tóxico (devoluciones y quejas). La confianza es más difícil de recuperar que un carrito abandonado."
+  },
+  {
+    id: 'vendor_lockin_openai_dependency',
+    displayId: 'INN-24',
+    category: "Arquitectura de Sistemas",
+    icon: <Lock className="w-6 h-6 text-orange-500" />,
+    scenario: "Tu feature estrella 'Magic Summary' depende 100% de la API de OpenAI. Ayer tuvieron una caída de 4 horas durante el horario pico de tus clientes Enterprise. El CEO está furioso. Engineering propone construir un modelo open-source in-house (Llama 3) para tener control total, pero costará $250K y 4 meses de trabajo.",
+    question: "¿Cómo gestionas el riesgo de dependencia de proveedores de AI?",
+    options: [
+      { id: 'A', text: "**Model Agnostic Wrapper:** Construyes una capa de abstracción (Gateway) que permite switchear entre OpenAI, Anthropic y Azure en tiempo real. Diversificas el riesgo de proveedor sin el costo masivo de mantener infraestructura propia.", score: 5, type: "Lead (Resiliencia Arquitectónica)" },
+      { id: 'B', text: "**Fine-tuned SLM (Small Language Model):** Inicias el fine-tuning de un modelo open source (Llama 3 8B) en infraestructura propia. La soberanía de datos y la eliminación de costos por token justifican la inversión de capital inicial. A largo plazo, reduces OPEX significativamente.", score: 1, type: "Not Invented Here (Costo oculto)" },
+      { id: 'C', text: "**Status Quo con SLA:** Negocias un contrato Enterprise con OpenAI que garantice SLA más alto. Resuelves el problema contractualmente, confiando en que el líder del mercado estabilizará su infraestructura.", score: 3, type: "Administrativo (Riesgo técnico persiste)" }
+    ],
+    explanation: "El **Fine-tuned SLM** suena económicamente atractivo ('sin costos por token') pero oculta: MLOps, GPU compute, talento especializado, y el modelo se queda atrás del state-of-art. Depender de un solo proveedor es frágil. **Model Agnostic Wrapper** es la estrategia resiliente: commoditiza al proveedor de inteligencia. Si OpenAI cae, ruteas a Anthropic. Resiliencia vía arquitectura, no vía propiedad."
+  },
+  {
+    id: 'metaverse_pivot_late_adoption',
+    displayId: 'INN-25',
+    category: "Estrategia de Producto",
+    icon: <Glasses className="w-6 h-6 text-purple-600" />,
+    scenario: "El CEO quiere pivotar los eventos de comunidad a un 'Metaverso Propio' 3D porque 'el trabajo remoto llegó para quedarse'. Data muestra que la asistencia a eventos virtuales ha caído 60% post-pandemia y los usuarios prefieren video simple o audio. El CEO insiste en que 'la inmersión es el futuro' y quiere invertir $500K.",
+    question: "¿Cómo frenas una inversión basada en hype caducado?",
+    options: [
+      { id: 'A', text: "**Smoke Test de Validación:** Creas una landing page anunciando el evento 'Inmersivo 3D' vs 'Video Simple'. Mides registros. Usas la data de desinterés (baja conversión) para matar el proyecto objetivamente antes de escribir código.", score: 5, type: "Lead (Evidence-Based Kill)" },
+      { id: 'B', text: "**Compromiso 2.5D:** Propones usar una plataforma existente (ej: Gather.town) en lugar de construir. Bajas el riesgo financiero de $500K a $5K, permitiendo al CEO probar su hipótesis sin descapitalizar la empresa.", score: 3, type: "Soft Landing (Mitigación)" },
+      { id: 'C', text: "**Ejecución Fiel:** Construyes el Metaverso. Si el CEO tiene esa visión, tu trabajo es materializarla con la mejor UX posible. A veces los líderes ven tendencias que la data actual no refleja.", score: -1, type: "Obedencia Ciega (Desperdicio)" }
+    ],
+    explanation: "Invertir en tendencias en bajada es peligroso. **Smoke Test de Validación** opone datos reales a la intuición del CEO. **Compromiso 2.5D** es una buena salida intermedia. **Ejecución Fiel** quema $500K en un producto que nadie quiere. El rol del Lead es proteger los recursos de la empresa de malas apuestas."
+  },
+  {
+    id: 'biometric_auth_privacy_inclusion',
+    displayId: 'INN-26',
+    category: "Innovación & Ética",
+    icon: <ScanFace className="w-6 h-6 text-blue-500" />,
+    scenario: "Security quiere forzar FaceID/Biometrics para todos los logins para eliminar el fraude de 'account sharing'. Marketing alerta que esto aliena a usuarios en regiones donde la desconfianza en la vigilancia estatal es alta, y excluye a usuarios con dispositivos legacy sin sensores biométricos (20% de la base).",
+    question: "¿Cómo implementas seguridad avanzada sin excluir?",
+    options: [
+      { id: 'A', text: "**Mandato de Seguridad:** Fuerzas Biometrics. El fraude es un problema de negocio existencial y la seguridad no es opcional. Los usuarios con dispositivos viejos tendrán que actualizarse o usar otro servicio.", score: 1, type: "Security Absolutist (Excluyente)" },
+      { id: 'B', text: "**Progressive Security:** Haces Biometrics el default 'Happy Path' incentivado, pero mantienes 2FA (SMS/Email) como fallback robusto. Cubres seguridad y accesibilidad, manteniendo opciones para dispositivos legacy.", score: 5, type: "Lead (Seguridad Inclusiva)" },
+      { id: 'C', text: "**Regional Rollout:** Activas Biometrics solo en mercados 'confiados' (USA/EU) y dejas el sistema viejo en otros. Segmentas la seguridad por geografía, creando ciudadanos de primera y segunda clase en tu plataforma.", score: 3, type: "Fragmentación (Complejidad)" }
+    ],
+    explanation: "La seguridad que excluye al 20% de usuarios no es viable. **Progressive Security** prioriza la biometría por fricción reducida pero mantiene **Fallbacks** inclusivos. El **Mandato de Seguridad** ignora la realidad socioeconómica de la base de usuarios. La seguridad debe ser una capa, no un muro."
+  },
+  {
+    id: 'eu_ai_act_compliance_panic',
+    displayId: 'INN-27',
+    category: "Innovación & Ética",
+    icon: <ShieldAlert className="w-6 h-6 text-blue-600" />,
+    scenario: "Tu feature de 'Scoring de Candidatos' usa AI. El nuevo 'EU AI Act' clasifica esto como 'Alto Riesgo', exigiendo auditorías de sesgo y explicabilidad que tu modelo 'Black Box' no tiene. El CEO quiere lanzar en Europa mañana para ganar market share.",
+    question: "¿Qué haces ante un bloqueo regulatorio de 'Alto Riesgo'?",
+    options: [
+      { id: 'A', text: "**Geofencing Estratégico:** Lanzas globalmente EXCEPTO en la Unión Europea. Proteges a la empresa de multas masivas (6% facturación global) mientras buscas un vendor compliant. Sacrificas mercado temporalmente por seguridad existencial.", score: 5, type: "Lead (Risk Containment)" },
+      { id: 'B', text: "**Disclaimer de 'Asistencia':** Cambias el copy para decir que la AI es solo una 'herramienta de sugerencia' y que el humano toma la decisión final. Argumentas que esto baja la clasificación de riesgo legal ante los reguladores.", score: 1, type: "Legal Hack (Riesgoso)" },
+      { id: 'C', text: "**Vendor Pressure:** Lanzas igual y presionas al vendor para que entregue los reportes de explicabilidad en 30 días. Asumes el riesgo calculado de que los reguladores no auditarán en el primer mes de vigencia.", score: -1, type: "Negligencia Corporativa" }
+    ],
+    explanation: "El **EU AI Act** tiene dientes (multas del 6% revenue). Un sistema de 'High Risk' (RRHH, Salud) no compliant es un pasivo tóxico. **Geofencing** es la única medida responsable. Disclaimers cosméticos (**Legal Hack**) no cambian la naturaleza algorítmica del riesgo."
+  },
+  {
+    id: 'legacy_hardware_ai_limit',
+    displayId: 'INN-28',
+    category: "Innovación & Infraestructura",
+    icon: <Server className="w-6 h-6 text-gray-600" />,
+    scenario: "Quieres lanzar 'AI Assistant' en la terminal de punto de venta (POS). El 40% de tus clientes usa hardware legacy (tablets de 2018) que crashean al correr modelos locales. El CEO quiere un lanzamiento unificado: 'No podemos dejar atrás a casi la mitad de los clientes'. Cloud inference es demasiado lento (latencia) para POS.",
+    question: "¿Cómo despliegas innovación sobre hardware obsoleto?",
+    options: [
+      { id: 'A', text: "**Cloud Fallback:** Implementas un sistema híbrido. Los dispositivos nuevos corren el modelo local (rápido), los viejos van a la nube (lento pero funcional). Aceptas la inconsistencia de UX para lograr cobertura total.", score: 3, type: "Compromiso (Mala UX legacy)" },
+      { id: 'B', text: "**Hardware Refresh Incentive:** Lanzas la feature como exclusiva para hardware nuevo y ofreces un descuento agresivo de upgrade a los clientes legacy. Usas la feature como palanca para modernizar tu flota de dispositivos.", score: 5, type: "Lead (Ecosistema)" },
+      { id: 'C', text: "**Model Optimization:** Dedicas 3 meses a intentar comprimir el modelo (quantization) para que corra en hardware de 2018. Retrasas el lanzamiento global para intentar salvar la experiencia en dispositivos obsoletos.", score: 1, type: "Sunk Cost (Lucha contra física)" }
+    ],
+    explanation: "Luchar contra los límites físicos de hardware de 2018 es perder el tiempo. **Hardware Refresh Incentive** convierte una limitación técnica en una oportunidad comercial y operativa (retirar deuda de hardware). **Cloud Fallback** crea clientes de segunda clase con mala experiencia."
   }
 ];

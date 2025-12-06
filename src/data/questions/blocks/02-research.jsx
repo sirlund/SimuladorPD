@@ -322,4 +322,60 @@ export const research_questions = [
     ],
     explanation: "Regla de oro: **Behavioral > Attitudinal**. Las encuestas miden aspiraciones ('Quiero ser organizado'), la usabilidad mide realidad ('No tengo tiempo'). **Prioridad Conductual** ahorra 3 sprints de trabajo inútil. N=10 bien observado vale más que N=1000 mal preguntado."
   },
+  {
+    id: 'user_research_budget_cut_qual_vs_quant',
+    displayId: 'RES-23',
+    category: "User Research",
+    icon: <BarChart2 className="w-6 h-6 text-green-600" />,
+    scenario: "El CFO cortó el presupuesto de herramientas de Research (adiós UserTesting). Solo queda Google Analytics. El PM dice: 'Ahora somos 100% Data-Driven, ya no necesitamos hablar con usuarios porque los números no mienten'.",
+    question: "¿Cómo defiendes el research cualitativo sin presupuesto?",
+    options: [
+      { id: 'A', text: "**Guerrilla Research:** Reclutas usuarios gratis (Soporte, Redes) y usas herramientas gratuitas. Demuestras que la empatía no depende del presupuesto. Analytics te dice QUÉ pasa (síntoma), pero necesitas cualitativo para entender POR QUÉ pasa (causa).", score: 5, type: "Lead (Resourceful)" },
+      { id: 'B', text: "**Alineación Financiera:** Aceptas la restricción y te enfocas en optimizar funnels con data cuantitativa. Demuestras adaptabilidad a la realidad financiera de la empresa, maximizando el valor de las herramientas de analytics que sí tienes disponibles.", score: 1, type: "Resignado" },
+      { id: 'C', text: "**Inversión Personal:** Pagas una suscripción básica de tu bolsillo para mantener un estándar mínimo de calidad en las entrevistas. Muestras compromiso profesional inquebrantable con la voz del usuario, asegurando que los insights sigan llegando.", score: 1, type: "Mártir" }
+    ],
+    explanation: "El research es una mentalidad, no un software. **Guerrilla Research** mantiene el pulso del usuario a costo cero. **Alineación Financiera** normaliza la ceguera cualitativa. **Inversión Personal** sienta un precedente tóxico e insostenible."
+  },
+  {
+    id: 'user_research_ceo_demands_speed_vs_quality',
+    displayId: 'RES-24',
+    category: "User Research",
+    icon: <Timer className="w-6 h-6 text-red-500" />,
+    scenario: "El CEO ordena lanzar una feature nueva en 2 semanas sin validación previa: 'Yo soy el usuario target, sé que funciona'. Ya se han invertido $80K en desarrollo y el deadline es inamovible.",
+    question: "¿Cómo gestionas el riesgo de construir lo incorrecto?",
+    options: [
+      { id: 'A', text: "**Research Paralelo (Lean):** Aceptas el deadline pero corres tests de usabilidad rápidos en paralelo al desarrollo. Si encuentras un fallo catastrófico, tienes data para frenar. Inyectas validación sin detener el tren político del CEO.", score: 5, type: "Lead (Agile Validation)" },
+      { id: 'B', text: "**Registro de Riesgo:** Envías un correo formal detallando que lanzas bajo protesta y deslindando responsabilidad por la falta de validación. Proteges tu reputación profesional documentando la decisión ejecutiva en caso de fallo.", score: 1, type: "CYA (Cover Your Ass)" },
+      { id: 'C', text: "**Bloqueo Metodológico:** Te niegas a diseñar sin validación previa. Defiendes el proceso de diseño como estándar de calidad no negociable, protegiendo a la empresa de lanzar productos basados en suposiciones no probadas.", score: 1, type: "Dogmático" }
+    ],
+    explanation: "Bloquear al CEO (**Bloqueo Metodológico**) te saca de la empresa. Obedecer ciegamente (**CYA**) te hace irrelevante. **Research Paralelo** compra seguridad mediante velocidad: valida mientras se construye, mitigando el riesgo de los $80K sin confrontar el ego ejecutivo."
+  },
+  {
+    id: 'user_research_conflicting_data_survey_vs_usability',
+    displayId: 'RES-25',
+    category: "User Research",
+    icon: <Brain className="w-6 h-6 text-purple-500" />,
+    scenario: "Conflicto de Data: Una encuesta masiva (N=1000) dice que el 70% de usuarios 'quiere personalizar su dashboard'. Sin embargo, en tests de usabilidad (N=10), nadie usa la personalización y todos se confunden con la complejidad extra.",
+    question: "¿A qué data le crees para decidir el roadmap?",
+    options: [
+      { id: 'A', text: "**Prioridad Conductual:** Crees a la Usabilidad. Lo que la gente HACE (**Behavioral**) predice mejor el éxito que lo que la gente DICE (**Attitudinal**). Evitas construir 'Feature Graveyards' que suenan bien en encuestas pero fracasan en la realidad.", score: 5, type: "Lead (Behavioral > Attitudinal)" },
+      { id: 'B', text: "**Validación Estadística:** Crees a la Encuesta. N=1000 tiene significancia estadística; N=10 es anecdótico. Respetas la voz de la mayoría democrática de tu base de usuarios, asumiendo que el test de usabilidad tuvo una muestra sesgada.", score: 1, type: "Ingenuo (Self-reported bias)" },
+      { id: 'C', text: "**Desempate A/B:** Construyes un MVP funcional para testear en producción. Es la única forma de tener certeza absoluta. Inviertes recursos para obtener data real de mercado, resolviendo la discrepancia con evidencia irrefutable.", score: 3, type: "Data-driven costoso" }
+    ],
+    explanation: "Regla de oro: **Behavioral > Attitudinal**. Las encuestas miden aspiraciones ('Quiero ser organizado'), la usabilidad mide realidad ('No tengo tiempo'). **Prioridad Conductual** ahorra sprints de trabajo inútil. N=10 bien observado vale más que N=1000 mal preguntado."
+  },
+  {
+    id: 'global_research_fallacy',
+    displayId: 'RES-26',
+    category: "Research Global",
+    icon: <Globe className="w-6 h-6 text-blue-500" />,
+    scenario: "Lanzas en India y Brasil. El producto falla miserablemente a pesar de que el UX Research en USA fue estelar. El equipo de producto dice: 'Los usuarios no entienden la interfaz'. Tu análisis muestra que la UI minimalista con mucho espacio blanco no carga bien en redes 3G y los iconos 'universales' no se entienden localmente.",
+    question: "¿Cómo corriges el fallo de expansión global?",
+    options: [
+      { id: 'A', text: "**Localization UI:** Traduces los textos y cambias los iconos por otros más explícitos. Mantienes la estructura general pero adaptas la capa superficial para mejorar la comprensión inmediata.", score: 3, type: "Adaptación Superficial" },
+      { id: 'B', text: "**Market-Specific Lite Version:** Creas una versión 'Lite' específica para mercados emergentes: alta densidad de información, bajo uso de datos, texto sobre iconos. Aceptas que lo que es 'buen diseño' en Silicon Valley es ineficiente en Jakarta.", score: 5, type: "Lead (Contextual Design)" },
+      { id: 'C', text: "**Education Onboarding:** Mantienes la UI global (para consistencia de marca) pero agregas un tutorial intensivo para nuevos mercados. Asumes que es un problema de curva de aprendizaje, no de diseño fundamental.", score: 1, type: "Imperialismo de Diseño" }
+    ],
+    explanation: "El 'Buen Diseño' es contextual. El minimalismo de USA falla en mercados de alta densidad y baja conectividad. **Market-Specific Lite Version** reconoce las restricciones de infraestructura y cultura. **Education Onboarding** es culpar al usuario. **Localization UI** no resuelve el problema de rendimiento en 3G."
+  }
 ];

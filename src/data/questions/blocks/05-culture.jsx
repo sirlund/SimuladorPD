@@ -1,7 +1,9 @@
 import React from 'react';
 import {
   Users, Brain, MessageSquare, Briefcase, Heart,
-  Target, TrendingUp, DollarSign, Wifi
+  Target, TrendingUp, DollarSign, Wifi, Shield,
+  AlertTriangle, Globe, Building, Layers, UserMinus,
+  GitBranch, Clock, Award
 } from 'lucide-react';
 
 /**
@@ -192,5 +194,217 @@ export const culture_questions = [
       { id: 'C', text: "**Expectation Setting:** Le explicas que la resiliencia es clave en esta etapa. Validas sus sentimientos pero refuerzas que entregar bajo presión es la habilidad que lo llevará al siguiente nivel.", score: 1, type: "Normalize Overload (Gaslighting)" }
     ],
     explanation: "El **Context Switching** de 4 proyectos mata a un Junior. Coaching de tiempo es inútil si la carga es irreal. **Priorización Ruthless** defiende la sostenibilidad. Normalizar el burnout es liderazgo fallido."
+  },
+
+  // --- BLOQUE 14: CULTURA CORPORATE & ENTERPRISE (GEMINI STYLE - Zero Trade-off Visible) ---
+  {
+    id: 'feature_factory_pride_dead',
+    displayId: 'CUL-14',
+    category: "Cultura de Producto",
+    icon: <Target className="w-6 h-6 text-red-500" />,
+    scenario: "Tu equipo ha entregado 47 features en 6 meses. El VP de Product celebra la velocidad en el All-Hands. El problema: en tu encuesta anónima, el 80% del equipo responde que 'no sabe si su trabajo genera impacto real'. Un Senior te confiesa: 'Somos una fábrica de features, no un equipo de producto. Mi portfolio se ve impresionante pero no sé si algo de lo que diseñé importa'. La rotación del equipo subió 35% este año.",
+    question: "¿Cómo reconectas al equipo con el impacto de su trabajo?",
+    options: [
+      { id: 'A', text: "**Celebration Ritual:** Implementas un 'Demo Day' mensual donde el equipo presenta features y recibe aplausos de stakeholders. Creas momentos de reconocimiento que validan el esfuerzo y la velocidad de entrega.", score: 1, type: "Applause Theater (No muestra impacto)" },
+      { id: 'B', text: "**Impact Dashboard:** Creas visibilidad permanente de métricas post-launch. Cada diseñador ve la adopción, retención y revenue de sus features. Conectas el trabajo diario con resultados de negocio medibles.", score: 5, type: "Lead (Outcome Visibility)" },
+      { id: 'C', text: "**User Stories:** Compartes testimonios y quotes de usuarios satisfechos en cada standup. Humanizas el impacto con historias reales que demuestran que el producto importa a personas reales.", score: 3, type: "Anecdotal Evidence (Selección positiva)" }
+    ],
+    explanation: "Los aplausos no reemplazan la evidencia. **Impact Dashboard** hace visible la conexión entre esfuerzo y resultado. Las **User Stories** son inspiradoras pero sufren **Survivorship Bias**—solo ves a los felices. La calidad debe ser un hábito, no un acto de fe."
+  },
+  {
+    id: 'hippo_effect_silent_hierarchy',
+    displayId: 'CUL-15',
+    category: "Team Dynamics",
+    icon: <Users className="w-6 h-6 text-purple-600" />,
+    scenario: "Tu equipo de diseño tiene sesiones de critique semanales. Notas un patrón: cuando tú opinas primero, el 90% del equipo se alinea inmediatamente con tu perspectiva. Cuando una Junior ofrece una alternativa después de tu comentario, hay silencio incómodo. Los datos de tu encuesta anónima revelan: 'Siento que mis ideas no importan cuando [tu nombre] ya habló'. El VP de Producto te pregunta por qué tus critiques no generan innovación.",
+    question: "¿Cómo generas disidencia productiva en tus sesiones de critique?",
+    options: [
+      { id: 'A', text: "**Hablar al Final:** Cambias tu dinámica para ser siempre el último en opinar. Creas espacio explícito para que los juniors expongan sus argumentos sin el sesgo de tu autoridad previa.", score: 5, type: "Lead (Cambio Estructural)" },
+      { id: 'B', text: "**Abogado del Diablo:** Asignas rotativamente a un miembro del equipo el rol de 'Crítico Designado' en cada reunión. Institucionalizas el disenso dándole un sombrero formal.", score: 3, type: "Mecánica Artificial (Artificial Dissent)" },
+      { id: 'C', text: "**Cultura de Debate:** Envías un memo reafirmando que 'las mejores ideas ganan' y animas al equipo a ser más vocales. Refuerzas verbalmente que valoras la valentía.", score: 1, type: "Mandato Verbal (Inefectivo)" }
+    ],
+    explanation: "Pedirle a la gente que sea valiente (**Cultura de Debate**) ignora la dinámica de poder. El **Abogado del Diablo** funciona pero es artificial y depende del 'sombrero'. **Hablar al Final** es una intervención estructural que elimina el sesgo de autoridad por diseño. Si la reunión fuera segura, la gente querría disentir."
+  },
+  {
+    id: 'credit_stealing_pm_politics',
+    displayId: 'CUL-16',
+    category: "Política Organizacional",
+    icon: <Briefcase className="w-6 h-6 text-orange-500" />,
+    scenario: "Tu PM presentó el caso de éxito del último launch al board sin mencionar al equipo de diseño. El slide deck usa tus mockups pero el crédito dice 'Product Team Achievement'. Tu Senior está furioso: 'Pasé 3 meses en ese rediseño y ni una mención'. El PM te responde: 'Era un deck ejecutivo, no había espacio para nombres'. Tienes 1:1 con el PM mañana y el equipo espera que 'hagas algo'.",
+    question: "¿Cómo gestionas la atribución de crédito sin escalar el conflicto?",
+    options: [
+      { id: 'A', text: "**Documentación Preventiva:** Implementas un proceso donde cada deck ejecutivo incluye una slide de 'Team Credits'. Sistematizas la atribución para que no dependa de la memoria o buena voluntad de nadie.", score: 5, type: "Lead (Systemic Fix)" },
+      { id: 'B', text: "**Confrontación Directa:** En tu 1:1 le dices al PM: 'Mi equipo se sintió invisible. La próxima vez necesito ver crédito explícito'. Estableces expectativas claras para el futuro.", score: 3, type: "Direct Feedback (Reactivo)" },
+      { id: 'C', text: "**Escalation Formal:** Reportas el incidente a tu Head of Design y pides que intervenga con el VP de Product. Dejas que liderazgo resuelva el conflicto entre funciones.", score: 1, type: "Escalation (Daña relación)" }
+    ],
+    explanation: "Quejarse después del hecho es reactivo. **Documentación Preventiva** hace que el crédito correcto sea el camino de menor resistencia. El PM no es malicioso, solo optimizó para lo fácil. Los líderes comen al final y reparten el crédito."
+  },
+  {
+    id: 'survivor_guilt_post_layoff',
+    displayId: 'CUL-17',
+    category: "Gestión de Crisis",
+    icon: <UserMinus className="w-6 h-6 text-red-500" />,
+    scenario: "Hace 3 semanas hubo layoffs. Tu equipo perdió 2 de 6 diseñadores. Los 4 que quedaron heredaron el trabajo de los que se fueron sin ajuste de expectativas. En el standup de hoy, tu Senior dice: 'Me siento culpable de tener trabajo mientras Ana busca empleo. Y ahora encima tengo el doble de carga'. El velocity del equipo cayó 40% y nadie habla del elefante en la sala.",
+    question: "¿Cómo ayudas al equipo a procesar el trauma y recuperar productividad?",
+    options: [
+      { id: 'A', text: "**Espacio de Duelo:** Organizas una sesión facilitada donde el equipo puede expresar emociones sobre los layoffs. Normalizas el 'survivor guilt' y creas espacio para procesar antes de volver al trabajo.", score: 3, type: "Emotional Processing (Necesario pero insuficiente)" },
+      { id: 'B', text: "**Scope Reset:** Vas al VP de Product con data: 'Perdí 33% del equipo. El roadmap necesita reducirse 33% o necesito headcount'. Proteges al equipo de expectativas irrealistas mientras procesas la pérdida.", score: 5, type: "Lead (Expectation Management)" },
+      { id: 'C', text: "**Forward Focus:** Reúnes al equipo y dices: 'Entiendo que es difícil, pero la mejor forma de honrar a los que se fueron es demostrar que este equipo puede entregar. Vamos a enfocarnos en lo que podemos controlar'.", score: 1, type: "Toxic Positivity (Invalida emociones)" }
+    ],
+    explanation: "El **survivor guilt** es real y productivo ignorarlo no lo desaparece. Pero las emociones sin acción son terapia, no liderazgo. **Scope Reset** protege al equipo del burnout inevitable. Pedir más esfuerzo post-trauma es **negligencia disfrazada de motivación**."
+  },
+  {
+    id: 'design_eng_tribalism_war',
+    displayId: 'CUL-18',
+    category: "Cross-functional",
+    icon: <Layers className="w-6 h-6 text-indigo-500" />,
+    scenario: "La relación entre Design y Engineering está rota. En Slack, los ingenieros se burlan de specs 'imposibles de implementar'. Los diseñadores responden con memes de 'devs que no entienden UX'. El Tech Lead te dice: 'Tus diseñadores viven en fantasyland'. Tu Senior responde: 'Engineering es donde la creatividad va a morir'. El VP te pide 'arreglar la dinámica' antes de Q2.",
+    question: "¿Cómo reconstruyes la confianza entre funciones en guerra?",
+    options: [
+      { id: 'A', text: "**Embedded Pairing:** Asignas a cada diseñador 2 horas semanales de pair programming con su ingeniero. Creas empatía a través de trabajo conjunto donde cada uno entiende las restricciones del otro.", score: 5, type: "Lead (Structural Empathy)" },
+      { id: 'B', text: "**Communication Workshop:** Traes un facilitador externo para una sesión de 'Comunicación No-Violenta' entre ambos equipos. Creas un espacio seguro para expresar frustraciones y establecer acuerdos.", score: 3, type: "One-time Intervention (Efecto temporal)" },
+      { id: 'C', text: "**Clear Boundaries:** Documentas un proceso formal de handoff con checkpoints de aprobación. Reduces fricción minimizando las interacciones necesarias entre ambos equipos.", score: 1, type: "Process Wall (Institucionaliza silos)" }
+    ],
+    explanation: "Los procesos de handoff no arreglan relaciones rotas—las evitan. Los workshops son catárticos pero el efecto dura semanas. **Embedded Pairing** crea empatía estructural: es difícil odiar a quien trabaja contigo. El enemigo deja de ser 'ellos' y pasa a ser 'el problema del usuario'."
+  },
+  {
+    id: 'senior_refuses_grunt_work',
+    displayId: 'CUL-19',
+    category: "People Management",
+    icon: <Shield className="w-6 h-6 text-slate-600" />,
+    scenario: "Tu Senior Designer ($150K/año) se niega a hacer tareas 'de bajo nivel': actualizar la documentación del Design System, crear assets para marketing, o mentorear juniors. Dice: 'No me contrataron para eso, mi tiempo vale más resolviendo problemas estratégicos'. El problema: esas tareas no se hacen, los juniors no aprenden, y el resto del equipo lo resiente. Pero su trabajo estratégico es brillante y difícil de reemplazar.",
+    question: "¿Cómo gestionas la selectividad del Senior sin perder su talento ni el respeto del equipo?",
+    options: [
+      { id: 'A', text: "**Role Clarity:** Tienes una conversación directa: 'El rol de Senior incluye mentoría y trabajo operativo. No es opcional. ¿Cómo lo hacemos funcionar?'. Estableces que el título tiene responsabilidades no negociables.", score: 5, type: "Lead (Standards Apply to All)" },
+      { id: 'B', text: "**Strategic Reframe:** Renombras sus tareas 'de bajo nivel' como 'Design System Leadership' y 'Junior Enablement Program'. Le das ownership y título de lo que antes evitaba.", score: 3, type: "Title Engineering (Cosmético)" },
+      { id: 'C', text: "**Specialization Acceptance:** Aceptas que su valor está en el trabajo estratégico. Redistribuyes las tareas operativas entre juniors y contratas un Mid-Level para llenar el gap. Optimizas para su fortaleza.", score: 1, type: "Exception Culture (Genera resentimiento)" }
+    ],
+    explanation: "Crear excepciones para 'estrellas' destruye la cultura. Si el Senior no hace mentoría, los juniors no crecen y tú creas dependencia de una persona. **Role Clarity** aplica el estándar: el título tiene obligaciones. La alternativa es un equipo de divas sin bench strength."
+  },
+  {
+    id: 'promotion_perceived_injustice',
+    displayId: 'CUL-20',
+    category: "Career Growth",
+    icon: <Award className="w-6 h-6 text-yellow-500" />,
+    scenario: "Promoviste a María a Senior. Al día siguiente, Carlos (mismo nivel, 6 meses más de antigüedad) te pide un 1:1 urgente. Está visiblemente molesto: 'Llevo más tiempo, mis reviews son iguales de buenas. ¿Por qué ella y no yo?'. Revisas: María lideró un proyecto cross-funcional exitoso; Carlos tiene excelente craft pero evita visibilidad. No puedes revelar detalles del caso de María, pero Carlos amenaza con 'reconsiderar su futuro aquí'.",
+    question: "¿Cómo gestionas la percepción de injusticia sin violar confidencialidad?",
+    options: [
+      { id: 'A', text: "**Criteria Transparency:** Le explicas los criterios generales del nivel Senior sin hablar de María. Le muestras exactamente qué evidencia necesitas ver de él para el próximo ciclo. Haces el camino visible.", score: 5, type: "Lead (Path Visibility)" },
+      { id: 'B', text: "**Empathy First:** Validas su frustración: 'Entiendo que duele. Tu trabajo es valioso'. Le das espacio para procesar sin defender la decisión ni atacarla.", score: 3, type: "Emotional Validation (Sin resolución)" },
+      { id: 'C', text: "**Acceleration Promise:** Le ofreces un 'fast track' para la próxima promoción si demuestra liderazgo en Q2. Compensas la frustración con una promesa de acción rápida.", score: 1, type: "Appeasement (Promesa vacía)" }
+    ],
+    explanation: "La frustración de Carlos es válida pero su diagnóstico está mal. **Criteria Transparency** le da agencia: si quiere Senior, aquí está el mapa. Prometer fast-tracks bajo presión crea expectativas imposibles. La validación emocional sin acción es terapia, no management."
+  },
+  {
+    id: 'dei_tokenism_vs_reality',
+    displayId: 'CUL-21',
+    category: "Diversidad & Inclusión",
+    icon: <Users className="w-6 h-6 text-purple-500" />,
+    scenario: "HR te pide que 'des visibilidad' a Lucia, la única mujer Latina en tu equipo de 8 diseñadores. Quieren que presente en el próximo All-Hands para 'mostrar diversidad'. Lucia te dice en privado: 'Me siento usada como token. No quiero que mi cara sea la foto de diversidad cuando soy la única y nadie más de mi background ha sido promovido en 2 años'. Pero rechazar la invitación de HR puede verse como 'no colaborar con iniciativas de diversidad'.",
+    question: "¿Cómo navegas entre las demandas de HR y la comodidad de Lucia?",
+    options: [
+      { id: 'A', text: "**Lucia's Choice:** Le das a Lucia la decisión final con tu respaldo en cualquier dirección. Si dice no, tú manejas la conversación con HR. Priorizas su agencia sobre la óptica corporativa.", score: 5, type: "Lead (Individual Agency)" },
+      { id: 'B', text: "**Systemic Redirect:** Vas a HR con una contrapropuesta: 'En lugar de visibilidad individual, ayúdenme a armar un pipeline de diversidad real'. Cambias la conversación de óptica a acción.", score: 3, type: "Systemic Fix (Largo plazo)" },
+      { id: 'C', text: "**Gentle Persuasion:** Hablas con Lucia sobre los beneficios de visibilidad para su carrera. A veces hay que 'jugar el juego' para cambiar el sistema desde adentro.", score: 1, type: "Coercion Lite (Ignora su voz)" }
+    ],
+    explanation: "Lucia tiene derecho a no ser la 'cara de diversidad' de una empresa que no la promueve. Convencerla de presentar para 'su carrera' es **tokenism con pasos extra**. **Lucia's Choice** respeta su agencia. La diversidad real se mide en promociones, no en slides."
+  },
+  {
+    id: 'cameras_off_disengagement',
+    displayId: 'CUL-22',
+    category: "Trabajo Remoto",
+    icon: <Wifi className="w-6 h-6 text-blue-400" />,
+    scenario: "En las últimas 4 semanas, las cámaras de tu equipo remoto están permanentemente apagadas. Los standups son monólogos donde nadie responde. El chat de Slack tiene actividad mínima. Cuando preguntas '¿todo bien?', recibes 'sí, todo normal'. Pero el velocity cayó 25% y perdiste 2 personas el mes pasado. El VP te pregunta: '¿Qué está pasando con tu equipo?'. Honestamente, no lo sabes.",
+    question: "¿Cómo diagnosticas y resuelves el disengagement silencioso?",
+    options: [
+      { id: 'A', text: "**Mandatory Cameras:** Implementas política de cámaras encendidas en reuniones de equipo. La conexión visual es importante para cohesión y necesitas ver las caras de tu gente para leer el ambiente.", score: 1, type: "Surveillance Culture (Genera resentimiento)" },
+      { id: 'B', text: "**1:1 Deep Dive:** Agendas 1:1s extendidos (45 min) con cada miembro. Empiezas con '¿Cómo estás realmente?' y dejas espacio para silencio. Buscas la verdad detrás del 'todo normal'.", score: 5, type: "Lead (Psychological Safety)" },
+      { id: 'C', text: "**Anonymous Pulse:** Lanzas una encuesta anónima de 5 preguntas sobre satisfacción y blockers. Das un canal seguro para feedback sin el peso de la conversación cara a cara.", score: 3, type: "Data Gathering (Distancia emocional)" }
+    ],
+    explanation: "Las cámaras apagadas son síntoma, no causa. Forzar cámaras genera compliance, no confianza. Las encuestas dan data pero no conexión. Los **1:1s profundos** crean el espacio donde la gente puede ser honesta. Si nadie te dice la verdad, no tienes **Psychological Safety**."
+  },
+  {
+    id: 'junior_bypasses_hierarchy',
+    displayId: 'CUL-23',
+    category: "People Management",
+    icon: <TrendingUp className="w-6 h-6 text-green-600" />,
+    scenario: "Tu Junior Designer (3 meses en la empresa) tiene reuniones directas con el CEO. Empezó como 'brainstorming casual' pero ahora el CEO le pide entregables sin pasar por ti. Esta mañana descubriste que tu Junior está diseñando una 'nueva feature prioritaria' que no está en ningún roadmap. Cuando le preguntas, responde: 'El CEO me lo pidió directamente, pensé que estaba bien'. Tu autoridad como manager está siendo bypasseada.",
+    question: "¿Cómo reestableces la estructura sin parecer territorial ni alienar al CEO?",
+    options: [
+      { id: 'A', text: "**Process Clarity:** Hablas con el Junior: 'Me encanta tu iniciativa. Para que tu trabajo tenga impacto real, necesita pasar por priorización. ¿Cómo lo alineamos?'. Lo educas sobre cómo funciona el sistema.", score: 3, type: "Junior Education (No resuelve el CEO)" },
+      { id: 'B', text: "**CEO Alignment:** Agendas un 1:1 con el CEO: 'Me encanta que trabajes con Juniors. ¿Cómo hacemos que sus ideas pasen por priorización para que no se pierdan?'. Reencuadras el problema como proceso, no como territorio.", score: 5, type: "Lead (Upward Management)" },
+      { id: 'C', text: "**Boundary Setting:** Le dices al Junior: 'Cualquier pedido del CEO pasa por mí primero'. Estableces jerarquía clara para evitar confusión futura.", score: 1, type: "Territorial Defense (Bloquea al Junior)" }
+    ],
+    explanation: "El Junior no es el problema; el CEO creando un canal paralelo es el problema. Bloquear al Junior es tratar el síntoma. **CEO Alignment** resuelve la raíz: alinear al ejecutivo con el proceso de priorización. Si el CEO quiere features, debe pasar por el roadmap."
+  },
+  {
+    id: 'research_hostile_culture',
+    displayId: 'CUL-24',
+    category: "Research Culture",
+    icon: <Brain className="w-6 h-6 text-indigo-500" />,
+    scenario: "Tu empresa tiene una cultura anti-research. El VP de Product dice públicamente: 'El research es lento y caro. Los buenos PMs ya saben lo que necesitan los usuarios'. Los diseñadores no tienen acceso a usuarios y deben 'usar su intuición'. El último intento de research fue cancelado porque 'no había tiempo'. Los productos se lanzan con 40% de churn en el primer mes.",
+    question: "¿Cómo introduces research en una cultura que lo rechaza?",
+    options: [
+      { id: 'A', text: "**Guerrilla Research:** Haces research en secreto. Entrevistas 5 usuarios en tu tiempo libre, documentas hallazgos, y los presentas como 'insights que encontré'. Construyes evidencia antes de pedir permiso.", score: 3, type: "Subversive (Insostenible)" },
+      { id: 'B', text: "**Failure Forensics:** Tomas el último producto con 40% churn y haces un post-mortem conectando fallos específicos con falta de research. Usas datos internos para demostrar el costo de la intuición fallida.", score: 5, type: "Lead (Evidence-Based Advocacy)" },
+      { id: 'C', text: "**Education Campaign:** Organizas lunch & learns sobre metodologías de research. Compartes casos de estudio de empresas exitosas. Cambias la cultura a través de conocimiento.", score: 1, type: "Awareness Building (Ignorado)" }
+    ],
+    explanation: "Las culturas anti-research no cambian con educación—cambian con dolor. **Failure Forensics** conecta el costo visible (churn) con la causa invisible (no research). Los lunch & learns son ignorados por quienes más los necesitan. El research guerrilla funciona una vez, no como sistema."
+  },
+  {
+    id: 'shadow_designer_ceo',
+    displayId: 'CUL-25',
+    category: "Stakeholder Management",
+    icon: <Building className="w-6 h-6 text-slate-600" />,
+    scenario: "Tu CEO era diseñador hace 15 años. Ahora revisa cada pixel de cada entrega y hace redlines detallados en Figma. Los diseños del CEO son visualmente impresionantes y el Board los ama, pero ignoran sistemáticamente los casos borde y la escalabilidad del sistema. Tu equipo se siente como meros ejecutores. Un Senior renunció citando: 'No vine a ser el cursor del CEO'. El CEO cree que está 'ayudando a mantener la calidad'.",
+    question: "¿Cómo gestionas a un stakeholder que cree ser el diseñador jefe?",
+    options: [
+      { id: 'A', text: "**Structured Feedback:** Propones un proceso donde el CEO tiene un checkpoint formal de feedback antes del 80% de avance. Limitas su intervención a momentos específicos del proceso.", score: 3, type: "Process Containment (Parcial)" },
+      { id: 'B', text: "**Data Shield:** Para cada decisión de diseño, presentas la evidencia de research primero. 'Los usuarios prefieren X porque [data]'. Haces que contradecir el diseño sea contradecir la data.", score: 5, type: "Lead (Evidence-Based Defense)" },
+      { id: 'C', text: "**Executive Accommodation:** Aceptas que el CEO tiene la última palabra. Implementas su feedback y documenta internamente cuando va contra research. Proteges tu posición política.", score: 1, type: "Compliance Culture (Mata ownership)" }
+    ],
+    explanation: "Rechazar trabajo malo es fácil; rechazar trabajo visualmente bueno que rompe la gobernanza es casi imposible. Pelear sobre gusto o estética es una batalla perdida. **Data Shield** cambia el campo de batalla a casos borde y escalabilidad: 'Tu diseño es hermoso, pero falla en [escenario específico validado]'. Ahora no es opinión vs opinión, sino **System Design** vs **Hero Shot**."
+  },
+  {
+    id: 'bus_factor_knowledge_silo',
+    displayId: 'CUL-26',
+    category: "Gestión de Riesgo Humano",
+    icon: <Users className="w-6 h-6 text-orange-600" />,
+    scenario: "Tu 'Principal Designer' (7 años en la empresa) es el único que entiende el motor de reglas legacy. Se niega a documentar porque 'es más rápido si lo hago yo'. Acaba de pedir 4 semanas de vacaciones desconectado. El CEO quiere lanzar una feature que toca ese motor justo en esas fechas.",
+    question: "¿Cómo mitigas el riesgo existencial del 'Bus Factor 1'?",
+    options: [
+      { id: 'A', text: "**Shadowing Forzado:** Asignas a dos seniors para que sean su 'sombra' durante las 2 semanas previas. Graban cada sesión. Priorizas la extracción de conocimiento sobre cualquier otro deliverable del sprint.", score: 5, type: "Lead (Mitigación de Riesgo)" },
+      { id: 'B', text: "**Retención de Emergencia:** Le ofreces un bono significativo para que posponga sus vacaciones o esté disponible 'on-call'. Aseguras la continuidad del negocio utilizando incentivos financieros.", score: 1, type: "Parche (Valida el secuestro)" },
+      { id: 'C', text: "**Documentation Sprint:** Le exiges que pase sus últimas 2 semanas escribiendo documentación en Confluence. Confías en que un profesional senior puede estructurar su conocimiento para el equipo.", score: 3, type: "Optimista (Doc será mala)" }
+    ],
+    explanation: "Quien retiene conocimiento como poder no documentará bien bajo presión (**Documentation Sprint**). Pagarle (**Retención**) valida que es indispensable. **Shadowing Forzado** es la única forma de extraer conocimiento tácito: observar, preguntar y grabar. Costoso hoy, barato comparado con un outage."
+  },
+  {
+    id: 'hiring_senior_for_junior_role',
+    displayId: 'CUL-27',
+    category: "Gestión de Talento",
+    icon: <Briefcase className="w-6 h-6 text-purple-600" />,
+    scenario: "Tienes budget para un Junior ($60K). Aplica un Senior con 8 años de experiencia ($140K mercado) desesperado tras un layoff que acepta el sueldo de $60K. Tu equipo dice: '¡Es una ganga!'. Tú ves un problema estructural.",
+    question: "¿Contratas al Senior sobrecalificado por precio de Junior?",
+    options: [
+      { id: 'A', text: "**Oportunismo Táctico:** Lo contratas. Obtienes output Senior por precio Junior. Es un win-win inmediato para el roadmap y eleva la vara del equipo. Si se va en 6 meses, ya habrás sacado valor.", score: 1, type: "Mercenario (Riesgo de Flight)" },
+      { id: 'B', text: "**Honestidad Radical:** Le dices que está sobrecalificado. Si insiste, lo contratas con título de 'Lead' temporal pero sueldo bajo, prometiendo revisión en 6 meses si hay budget. Alineas expectativas.", score: 3, type: "Compromiso (Riesgo de resentimiento)" },
+      { id: 'C', text: "**Rechazo por Flight Risk:** No lo contratas. Sabes que es un **Flight Risk**: se irá apenas el mercado mejore, dejándote con el costo de onboarding perdido. Buscas al Junior con hambre de aprender que se quedará 2 años.", score: 5, type: "Lead (Sostenibilidad)" }
+    ],
+    explanation: "Contratar por necesidad económica es rentar un problema. Se llama **Flight Risk**. Se irá apenas tenga una oferta justa, y tú habrás invertido 3 meses de onboarding para 3 meses de trabajo. Un Lead prioriza la **Retención y Sostenibilidad** sobre una 'ganga' temporal."
+  },
+  {
+    id: 'remote_rto_ultimatum_top_talent',
+    displayId: 'CUL-28',
+    category: "Cultura & Políticas",
+    icon: <Globe className="w-6 h-6 text-blue-500" />,
+    scenario: "El CEO decreta 'Return to Office' (RTO) obligatorio 3 días/semana. Tu mejor diseñadora (responsable del 40% del revenue) se mudó a 4 horas de la oficina durante la pandemia con aprobación verbal de tu predecesor. Ella dice: 'Si me obligan a ir, renuncio'. El CEO dice: 'Sin excepciones'.",
+    question: "¿Cómo gestionas el conflicto entre política y talento clave?",
+    options: [
+      { id: 'A', text: "**Excepción de Alto Rendimiento:** Negocias una excepción silenciosa para ella basada en sus métricas de desempeño. Mantienes el talento crítico protegiéndolo de la burocracia, asumiendo el riesgo de que otros se enteren.", score: 1, type: "Inequidad (Riesgo cultural)" },
+      { id: 'B', text: "**Transición de Salida:** Aceptas su renuncia pero negocias un periodo de transición de 3 meses como consultora remota. Mantienes la integridad de la política de la empresa mientras mitigas el impacto operativo de su salida.", score: 5, type: "Lead (Integridad Sistémica)" },
+      { id: 'C', text: "**Cabildeo Político:** Intentas convencer al CEO de cambiar la política global a 'Remote-First' usando a esta diseñadora como ejemplo del talento que se perderá. Luchas la batalla cultural más grande.", score: 3, type: "Idealista (Batalla perdida)" }
+    ],
+    explanation: "Las excepciones secretas (**Excepción**) destruyen la confianza del equipo cuando se descubren. Pelear la política global (**Cabildeo**) en medio de un mandato de CEO es suicidio. **Transición de Salida** es la jugada madura: respeta la política de la empresa y la vida del empleado, gestionando el riesgo operativo."
   }
 ];

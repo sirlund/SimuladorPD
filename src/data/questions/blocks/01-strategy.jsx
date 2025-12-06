@@ -79,9 +79,9 @@ export const strategy_questions = [
     options: [
       { id: 'A', text: "**Stop the Line:** Te sientas con ellos a configurar los tokens ahora, aunque implique quedarse tarde. Aseguras que la base del sistema sea sólida desde el día 1, evitando que el costo de refactorización se multiplique exponencialmente en el futuro.", score: 5, type: "Lead / Correct" },
       { id: 'B', text: "**Pragmatismo Documentado:** Autorizas el hardcode creando un ticket de 'Limpieza de Tokens' en el backlog prioritario. Priorizas el Time-to-Market y el cumplimiento del deadline, gestionando la deuda técnica de forma responsable a través de procesos de Jira.", score: 1, type: "Pragmático / Incorrect" },
-      { id: 'C', text: "**Solución Híbrida:** Usas variables SASS genéricas ($blue-500). Llegas al deadline con un código ordenado y legible, logrando un balance aceptable entre velocidad de entrega y mantenibilidad del código.", score: 3, type: "Operativo / Incorrect" }
+      { id: 'C', text: "**Utility Classes (Tailwind-style):** Adoptas un enfoque de clases utilitarias directas. Aceleras el desarrollo eliminando la abstracción de nombres semánticos, alineando al equipo con prácticas modernas de frontend que priorizan velocidad sobre pureza arquitectónica.", score: 3, type: "Operativo / Incorrect" }
     ],
-    explanation: "El **Pragmatismo Documentado** es falaz: el ticket de refactor nunca se prioriza (**Hyperbolic Discounting**). La **Solución Híbrida** fragmenta la arquitectura. **Stop the Line** es doloroso pero aplica la **Regla del 1-10-100**: corregir el cimiento hoy cuesta 1; corregirlo post-lanzamiento costará 100."
+    explanation: "El **Pragmatismo Documentado** es falaz: el ticket de refactor nunca se prioriza (**Hyperbolic Discounting**). Las **Utility Classes** sin gobernanza crean inconsistencia a escala corporativa y eliminan el vocabulario compartido del sistema. **Stop the Line** es doloroso pero aplica la **Regla del 1-10-100**: corregir el cimiento hoy cuesta 1; corregirlo post-lanzamiento costará 100."
   },
   {
     id: 'legacy_ui_refactor_strategy',
@@ -112,64 +112,8 @@ export const strategy_questions = [
     explanation: "Si el usuario (diseñador) hace 'detach', el sistema falló, no el usuario. **Governance + Training** intenta corregir un fallo de producto con burocracia. La **Especialización** fragmenta el mantenimiento. El **Refactor de Arquitectura** ataca la causa raíz (**Over-engineering**): un sistema que es difícil de usar, inevitablemente será ignorado."
   },
   {
-    id: 'mobile_first_habit_change',
-    displayId: 'STR-08',
-    category: "Design Ops",
-    icon: <Smartphone className="w-6 h-6 text-purple-600" />,
-    scenario: "El equipo diseña en Desktop y 'adapta' a Mobile al final, generando UX móvil pobre. 72% del tráfico es móvil. Los workshops educativos fallaron. El CEO exige resultados inmediatos tras ver una demo rota en su iPhone. Tienes 2 semanas para cambiar un hábito cultural arraigado.",
-    question: "¿Cómo fuerzas el cambio de comportamiento cuando la educación falló?",
-    options: [
-      { id: 'A', text: "**Environment Nudge:** Cambias los defaults de Figma a mobile (375px) y eliminas templates desktop. Haces que diseñar mobile-first sea el camino de menor resistencia (Path of least resistance), moldeando el comportamiento desde la herramienta.", score: 5, type: "Lead (Behavioral design del sistema)" },
-      { id: 'B', text: "**Quality Gate Estricto:** Implementas una política de 'No Mobile, No Review'. Rechazas cualquier diseño en revisión que no presente la vista móvil primero. Garantizas compliance inmediato mediante enforcement directo de estándares.", score: 3, type: "Process enforcement" },
-      { id: 'C', text: "**Incentivos de Desempeño:** Ligas la adopción de 'Mobile-First' a las evaluaciones de performance trimestrales. Alineas los objetivos individuales de carrera con la estrategia de la empresa para motivar el cambio voluntario.", score: 1, type: "Incentive-based" }
-    ],
-    explanation: "La educación pasiva falló. Los **Incentivos** tardan meses en surtir efecto y el **Quality Gate** requiere vigilancia policial constante. El **Environment Nudge** aplica **Behavioral Design**: al cambiar el entorno para que lo correcto sea lo automático, modificas el hábito sin fricción interpersonal constante."
-  },
-  {
-    id: 'senior_toxic_genius_feedback',
-    displayId: 'STR-09',
-    category: "Gestión de Talento",
-    icon: <Users className="w-6 h-6 text-purple-600" />,
-    scenario: "Tienes un Diseñador Senior que es un 'genio' técnico: resuelve problemas complejos en horas y ha salvado 3 launches. Pero en los Code Reviews humilla a los desarrolladores y rechaza agresivamente el feedback. Dos desarrolladores Mid han insinuado que consideran irse debido al ambiente.",
-    question: "¿Cómo procedes con este perfil de alto rendimiento pero baja cultura?",
-    options: [
-      { id: 'A', text: "**Mediación Activa:** Asumes el rol de filtro entre él y el equipo. Gestionas sus entregas personalmente para asegurar que el trabajo brillante llegue a producción sin el 'ruido' interpersonal, manteniendo la paz y el delivery.", score: 1, type: "Niñera / Incorrect" },
-      { id: 'B', text: "**Aislamiento Estratégico:** Lo asignas a proyectos 'Black Ops' individuales. Maximizas su output técnico increíble en tareas críticas aisladas, eliminando la fricción diaria con el equipo multidisciplinario.", score: 1, type: "Utilitario / Incorrect" },
-      { id: 'C', text: "**PIP Cultural:** Inicias un Plan de Mejora (PIP) enfocado exclusivamente en soft skills con consecuencias claras. Proteges la salud sistémica del equipo, aceptando el riesgo real de perder a tu mejor ejecutor técnico si no se adapta.", score: 5, type: "Lead / Correct" }
-    ],
-    explanation: "El costo oculto de un 'Genio Tóxico' es la fuga silenciosa del resto del talento (**Brain Drain**). **Aislamiento** y **Mediación** son parches que validan el comportamiento implícitamente. El **PIP Cultural** es la única solución escalable: priorizas la **Psychological Safety** del sistema sobre la velocidad individual de una estrella."
-  },
-  {
-    id: 'mentoria_junior_failure',
-    displayId: 'STR-10',
-    category: "Mentoría & Crecimiento",
-    icon: <Star className="w-6 h-6 text-yellow-500" />,
-    scenario: "Tu Junior lidera su primer proyecto solo. Vas que cometerá un error de usabilidad (CTA secundario muy prominente) que no es crítico pero causará confusión. El PM pregunta si está listo. El Junior te escribe orgulloso: 'Ya casi termino, ¿quieres revisar?'.",
-    question: "¿Intervienes antes del lanzamiento?",
-    options: [
-      { id: 'A', text: "**Corrección Directa:** Le das la solución exacta o ajustas el diseño tú mismo antes del handoff. Aseguras la excelencia del producto en este lanzamiento y previenes deuda de usabilidad antes de que llegue a producción.", score: 1, type: "Micro-manager" },
-      { id: 'B', text: "**Fallo Controlado:** No intervienes. Dejas que lance y esperas a los resultados (data/soporte) para hacer la retrospectiva. Usas el error real como herramienta pedagógica para enseñar análisis de consecuencias.", score: 5, type: "Lead (Maestro)" },
-      { id: 'C', text: "**Coaching Socrático:** Le haces preguntas guía ('¿Qué pasaría si el usuario ve esto en móvil?') esperando que llegue a la conclusión solo. Ofreces una red de seguridad suave que fomenta el pensamiento crítico sin imponer tu solución.", score: 3, type: "Coach Pasivo" }
-    ],
-    explanation: "El **Aprendizaje Experiencial** tiene mayor retención que la teoría. La **Corrección Directa** crea dependencia y el **Coaching Socrático** a veces genera ambigüedad. El **Fallo Controlado** (en errores no catastróficos) permite al Junior desarrollar criterio propio ('Cicatrices de batalla') y ownership real sobre sus decisiones."
-  },
-  {
-    id: 'burnout_detection_action',
-    displayId: 'STR-11',
-    category: "Bienestar del Equipo",
-    icon: <AlertTriangle className="w-6 h-6 text-orange-500" />,
-    scenario: "A 10 días del Investor Demo que define tu Serie A ($3M en juego), tu Senior Designer envía PRs a las 2 AM por tercera noche consecutiva. En el standup de hoy admite: 'No duermo bien, pero puedo aguantar'. El componente que lidera (el Dashboard de Analytics) representa el 40% del demo y el equipo depende completamente de él para el handoff final. El CEO te pregunta en privado: '¿Llegamos o necesito llamar a una agencia?'.",
-    question: "¿Cómo intervienes con un deadline inamovible y burnout inminente?",
-    options: [
-      { id: 'A', text: "**Incentivo de Impacto:** Ofreces un bono spot y reconocimiento público por el 'esfuerzo heroico' en la recta final. Motivas al diseñador validando que su sacrificio es visible y será recompensado monetariamente.", score: -1, type: "Incentivo / Incorrect" },
-      { id: 'B', text: "**Scope Cutting Quirúrgico:** Cortas 2 features no esenciales y prohíbes trabajo post-7 PM. Asumes el golpe político de entregar un producto 'menos completo' para proteger el activo humano que necesitas para operar el día después del demo.", score: 5, type: "Lead / Correct" },
-      { id: 'C', text: "**Refuerzo Operativo:** Asignas un Junior o Freelance para quitarle carga manual (exportar assets, QA visual). Alivias la presión operativa inmediata permitiendo que el Senior se enfoque solo en lo crítico.", score: 3, type: "Soporte / Incorrect" }
-    ],
-    explanation: "El 'Modo Héroe' no es estrategia, es fallo de planificación. El **Incentivo** institucionaliza el burnout. Añadir gente tarde (**Ley de Brooks**, Opción C) suele retrasar más por costo de coordinación. **Scope Cutting** es la única decisión de liderazgo: sacrificas alcance para salvar al equipo (**Sustainable Pace**)."
-  },
-  {
     id: 'hiring_profile_gap_logic',
-    displayId: 'STR-12',
+    displayId: 'STR-08',
     category: "Contratación Estratégica",
     icon: <Search className="w-6 h-6 text-indigo-500" />,
     scenario: "Tu equipo actual es visualmente excelente (Awwwards-tier) pero débil en lógica compleja (Fintech). Product desconfía de sus flujos. Tienes una vacante. Llega un candidato: portfolio visual 'promedio' pero 6 años de experiencia en Core Banking y Compliance.",
@@ -183,13 +127,13 @@ export const strategy_questions = [
   },
   {
     id: 'legacy_code_rewrite_temptation',
-    displayId: 'STR-13',
+    displayId: 'STR-09',
     category: "Estrategia de Migración",
     icon: <RotateCcw className="w-6 h-6 text-orange-500" />,
     scenario: "Frontend en Angular.js (5 años old). Deploys tardan 45 min. CTO propone: 'Paremos todo 6 meses y reescribamos en React (Big Bang)'. CFO advierte pérdida de $1.2M en oportunidades. Tienes reunión de roadmap mañana.",
     question: "¿Cuál es tu postura como stakeholder de diseño ante la reescritura?",
     options: [
-      { id: 'A', text: "**Big Bang Rewrite:** Apoyas la reescritura total. Argumentas que una base limpia permitirá iterar 3x más rápido en el futuro. Aceptas el dolor a corto plazo para garantizar la viabilidad técnica a largo plazo.", score: 1, type: "Optimismo técnico" },
+      { id: 'A', text: "**Big Bang Rewrite:** Apoyas la reescritura total. El CTO garantiza que pasar a React permitirá contratar talento un 20% más económico y acelerar el hiring. Aceptas el dolor a corto plazo para ganar eficiencia financiera y técnica a largo plazo.", score: 1, type: "Optimismo técnico" },
       { id: 'B', text: "**Strangler Fig Pattern:** Propones migrar pantalla por pantalla, permitiendo coexistencia. Priorizas vistas con alto tráfico para validar valor incrementalmente. Modernizas el stack progresivamente sin detener el flujo de revenue.", score: 5, type: "Lead (Incremental De-Risking)" },
       { id: 'C', text: "**Feature Prioritization:** Sugieres posponer el refactor y enfocarse en revenue. Si el código actual funciona, no lo toques. Maximizas el retorno financiero inmediato exprimiendo el sistema legacy un año más.", score: 3, type: "Cortoplacista" }
     ],
@@ -197,7 +141,7 @@ export const strategy_questions = [
   },
   {
     id: 'design_system_v2_breaking_changes',
-    displayId: 'STR-14',
+    displayId: 'STR-10',
     category: "Arquitectura de Sistemas",
     icon: <Code className="w-6 h-6 text-blue-500" />,
     scenario: "Design System V2 listo (Tokens semánticos, Dark mode). Tech Lead dice: 'Migrar rompe 200 archivos y toma 3 sprints'. Negocio tiene 4 features críticas en cola y se niega a pausar. El equipo de diseño está frustrado usando V1.",
@@ -211,7 +155,7 @@ export const strategy_questions = [
   },
   {
     id: 'production_bug_major_incident',
-    displayId: 'STR-15',
+    displayId: 'STR-11',
     category: "Gestión de Crisis & Liderazgo",
     icon: <AlertOctagon className="w-6 h-6 text-red-500" />,
     scenario: "Un cambio de diseño 'menor' (quitar confirmación) causó un Data Leak de 50k usuarios. Legal redacta notificaciones. El CTO dice públicamente: 'Diseño insistió en quitar la confirmación para reducir fricción'. Todos te miran.",
@@ -225,7 +169,7 @@ export const strategy_questions = [
   },
   {
     id: 'user_backlash_social_media',
-    displayId: 'STR-16',
+    displayId: 'STR-12',
     category: "Community Management",
     icon: <MessageSquare className="w-6 h-6 text-purple-400" />,
     scenario: "Cambiaste el modelo de precios y la UI para hacerlo más difícil de cancelar. Un influencer de TikTok hizo un video criticándolo y el rating en el App Store bajó de 4.8 a 3.2 en dos días. Marketing está pidiendo respuestas.",
@@ -239,7 +183,7 @@ export const strategy_questions = [
   },
   {
     id: 'crisis_investor_demo_failure',
-    displayId: 'STR-17',
+    displayId: 'STR-13',
     category: "Gestión de Crisis & Liderazgo",
     icon: <AlertTriangle className="w-6 h-6 text-red-600" />,
     scenario: "Es el día del demo crítico con inversionistas para cerrar la Serie A. 30 minutos antes, el ambiente de staging se cae por un problema de infraestructura. El equipo de ingeniería dice que tomará 2 horas arreglarlo. Los inversionistas ya están en camino.",
@@ -253,7 +197,7 @@ export const strategy_questions = [
   },
   {
     id: 'crisis_key_designer_quits',
-    displayId: 'STR-18',
+    displayId: 'STR-14',
     category: "Gestión de Crisis & Liderazgo",
     icon: <Users className="w-6 h-6 text-red-600" />,
     scenario: "Tu diseñador estrella, que lidera el rediseño completo del sistema de pagos (60% completado), renuncia abruptamente por una oferta de FAANG. Tiene 2 semanas de notice. El deadline con el cliente no se puede mover.",
@@ -267,7 +211,7 @@ export const strategy_questions = [
   },
   {
     id: 'sales_promise_impossible_timeline',
-    displayId: 'STR-19',
+    displayId: 'STR-15',
     category: "Producto vs Ventas",
     icon: <Briefcase className="w-6 h-6 text-blue-700" />,
     scenario: "El equipo de Ventas prometió a un cliente Enterprise una integración con Salesforce 'en 3 semanas' para cerrar un contrato de $800K. El tech lead dice que realistamente toma 3 meses construirla bien.",
@@ -280,36 +224,8 @@ export const strategy_questions = [
     explanation: "Aceptar plazos imposibles (**Wartime Sprint**) genera **Trust Debt** y burnout. El **No-Code Bridge** es un riesgo de seguridad inaceptable en Enterprise. La **Renegociación Estructurada** transforma un 'No' en un roadmap creíble, protegiendo la reputación técnica y la relación comercial."
   },
   {
-    id: 'sales_discount_feature_negotiation',
-    displayId: 'STR-20',
-    category: "Producto vs Ventas",
-    icon: <Target className="w-6 h-6 text-red-500" />,
-    scenario: "Ventas ofreció un 40% de descuento anual a un cliente a cambio de construir una feature específica de reporting que ellos necesitan. El cliente aceptó. Ahora Product debe entregarla en 2 meses sin haber participado en la negociación.",
-    question: "¿Cómo estableces límites para que esto no vuelva a pasar?",
-    options: [
-      { id: 'A', text: "**Compliance Constructivo:** Cumples el compromiso para honrar la palabra de la empresa ante el cliente. Documentas el incidente post-mortem para sugerir mejoras en el proceso de ventas futuro.", score: 3, type: "Cumplimiento con Documentación" },
-      { id: 'B', text: "**Deal Desk Governance:** Implementas un comité obligatorio (Product+Eng+Sales) para aprobar términos no estándar antes de la firma. Institucionalizas un Check & Balance que previene promesas unilaterales.", score: 5, type: "Lead (Proceso de Gobernanza)" },
-      { id: 'C', text: "**Cross-Charging:** Aceptas construir la feature pero descontando el costo de desarrollo (Opportunity Cost) directamente del presupuesto o comisión de Ventas. Creas accountability financiero real.", score: 1, type: "Político (Guerra interna)" }
-    ],
-    explanation: "Quejarse no cambia incentivos. **Compliance Constructivo** es pasivo. **Cross-Charging** inicia una guerra civil. El **Deal Desk Governance** es la solución sistémica: bloquea contractualmente la venta de vaporware sin validación de viabilidad técnica previa."
-  },
-  {
-    id: 'stakeholder_ceo_personal_opinion',
-    displayId: 'STR-21',
-    category: "Gestión de Stakeholders",
-    icon: <Briefcase className="w-6 h-6 text-blue-700" />,
-    scenario: "El VP de Producto volvió de una conferencia obsesionado con 'Conversational UI'. Te pide reemplazar la navegación principal con un chat. Tienes 500k usuarios que dependen de la navegación actual. Él insiste: 'Es el futuro, hay que innovar'.",
-    question: "¿Cómo gestionas una idea ejecutiva disruptiva pero riesgosa?",
-    options: [
-      { id: 'A', text: "**Execution Excellence:** Diseñas la mejor interfaz conversacional posible. Como líder, tu trabajo es materializar la visión estratégica de la directiva con la mayor calidad posible, confiando en su instinto de mercado.", score: 1, type: "Mercenario" },
-      { id: 'B', text: "**Fake Door / Beta Test:** 'Hagamos un experimento'. Implementas un acceso al chat en un segmento pequeño (5%) y mides engagement real. Usas la data resultante para validar o descartar la idea objetivamente.", score: 5, type: "Lead (Data como Escudo)" },
-      { id: 'C', text: "**Defensa Académica:** Presentas un reporte de Nielsen Norman Group explicando por qué el chat tiene mayor costo de interacción. Apelas a las leyes fundamentales de UX para proteger a la base de usuarios actual.", score: 1, type: "Académico" }
-    ],
-    explanation: "Pelear opiniones con teoría (**Defensa Académica**) falla contra el ego ejecutivo. **Execution Excellence** ciega es irresponsable. El **Fake Door Test** canaliza la emoción del VP hacia un marco científico: deja que la data mate la idea (**HIPPO Management**) sin que tú seas el villano."
-  },
-  {
     id: 'stakeholder_legal_vs_ux_tension',
-    displayId: 'STR-22',
+    displayId: 'STR-16',
     category: "Gestión de Stakeholders",
     icon: <ShieldAlert className="w-6 h-6 text-orange-600" />,
     scenario: "Legal exige que cada feature tenga un disclaimer de 2 párrafos visible antes de usar. UX Research muestra que nadie lee esos textos y aumentan la fricción un 30%. Legal no cede porque 'es riesgo regulatorio'.",
@@ -323,7 +239,7 @@ export const strategy_questions = [
   },
   {
     id: 'strategy_platform_vs_feature_focus',
-    displayId: 'STR-23',
+    displayId: 'STR-17',
     category: "Estrategia de Producto",
     icon: <Target className="w-6 h-6 text-red-500" />,
     scenario: "El VP de Producto quiere convertir el producto en una 'plataforma' con APIs públicas y marketplace. Actualmente tienen 500 clientes y el core product aún tiene bugs básicos de usabilidad sin resolver. El equipo de ingeniería está dividido.",
@@ -337,7 +253,7 @@ export const strategy_questions = [
   },
   {
     id: 'strategy_competitor_feature_parity',
-    displayId: 'STR-24',
+    displayId: 'STR-18',
     category: "Estrategia de Producto",
     icon: <Zap className="w-6 h-6 text-yellow-600" />,
     scenario: "El competidor principal acaba de lanzar 10 features nuevas en un mega-release. Product Manager entra en pánico y quiere copiar todas las features para 'no quedarse atrás' en la matriz de comparación.",
@@ -350,36 +266,8 @@ export const strategy_questions = [
     explanation: "La paridad es una trampa de **Commoditization**. **Market Parity** te convierte en seguidor. **Strategic Focus** ciego puede ser arrogante. El **Churn Audit** utiliza datos para distinguir entre 'ruido de marketing' y 'amenaza existencial', aplicando **Evidence-Based Management**."
   },
   {
-    id: 'designops_figma_file_chaos',
-    displayId: 'STR-25',
-    category: "Design Ops",
-    icon: <Layers className="w-6 h-6 text-cyan-600" />,
-    scenario: "El workspace de Figma es un caos: 400 archivos sin nombrar bien, duplicados, versiones antiguas mezcladas con nuevas. Nadie encuentra nada y pierden 30 minutos diarios buscando archivos.",
-    question: "¿Cómo implementas orden sin frenar la operación?",
-    options: [
-      { id: 'A', text: "**Total Reset Sprint:** Pausas el diseño por una semana para que todo el equipo organice, renombre y archive. Solucionas la deuda operativa de raíz con una inversión de tiempo concentrada y efectiva.", score: -1, type: "Debt Payoff (Nunca se aprueba)" },
-      { id: 'B', text: "**Progressive Governance:** Estableces estructura de carpetas y 'File Owners' hoy. Migras solo los archivos activos gradualmente ('Boy Scout Rule') y archivas el resto, arreglando el avión mientras vuela.", score: 5, type: "Lead (Sistema Sostenible)" },
-      { id: 'C', text: "**Operational Hiring:** Contratas un freelance o Design Ops specialist dedicado exclusivamente a la limpieza. Permites que el equipo de producto siga enfocado en delivery mientras un experto resuelve el caos.", score: 1, type: "Especialización Externa" }
-    ],
-    explanation: "El orden no es un evento, es un hábito. **Total Reset** paraliza y el caos vuelve en un mes. **Operational Hiring** impide que el equipo internalice la disciplina. **Progressive Governance** crea cultura de **Hygiene** sostenible sin detener la fábrica."
-  },
-  {
-    id: 'designops_version_control_disaster',
-    displayId: 'STR-26',
-    category: "Design Ops",
-    icon: <RotateCcw className="w-6 h-6 text-orange-500" />,
-    scenario: "Un diseñador borró accidentalmente 3 días de trabajo en Figma (el flujo completo de checkout) y Version History no va tan atrás. No hay backup. El deadline es mañana. El diseñador está en pánico.",
-    question: "¿Cómo prevenis que vuelva a pasar?",
-    options: [
-      { id: 'A', text: "**Automated Safety Net:** Implementas un plugin/script de auto-backup diario a almacenamiento externo. Eliminas el factor humano de la ecuación de seguridad mediante redundancia automatizada.", score: 5, type: "Lead (Systemic Solution)" },
-      { id: 'B', text: "**Training & Awareness:** Refuerzas la capacitación sobre el uso de Version History y buenas prácticas de guardado. Empoderas al equipo con el conocimiento necesario para gestionar sus herramientas correctamente.", score: 1, type: "Educativo (No previene accidentes)" },
-      { id: 'C', text: "**Manual Checkpoint Protocol:** Instituyes una política de duplicar archivos clave cada viernes ('Checkpoint'). Creas un proceso simple y sin costo que asegura puntos de restauración semanales.", score: 1, type: "Backup Manual (Falible)" }
-    ],
-    explanation: "Confiar en humanos bajo estrés (**Training**, **Manual Checkpoint**) garantiza fallos futuros. La única solución de liderazgo es sistémica: **Automated Safety Net**. En Ops, si no es automático, no existe."
-  },
-  {
     id: 'arquitectura_monorepo_vs_separate_systems',
-    displayId: 'STR-27',
+    displayId: 'STR-19',
     category: "Arquitectura de Sistemas",
     icon: <Layers className="w-6 h-6 text-cyan-600" />,
     scenario: "Tienes 3 productos diferentes (Web App, Mobile App, Marketing Site) cada uno con su propio Design System. Empiezan a divergir visualmente y duplicas trabajo. Ingeniería pregunta si deberían centralizar.",
@@ -392,22 +280,8 @@ export const strategy_questions = [
     explanation: "El **Unified Monolith** se vuelve un cuello de botella rígido. La **Decentralized Agility** perpetúa deuda y silos. La **Federated Architecture** aplica el principio de **Loose Coupling**: comparte lo esencial (Core), permite libertad en lo específico."
   },
   {
-    id: 'arquitectura_atomic_design_complexity',
-    displayId: 'STR-28',
-    category: "Arquitectura de Sistemas",
-    icon: <Code className="w-6 h-6 text-blue-500" />,
-    scenario: "Implementaste Atomic Design. Ahora el equipo pasa más tiempo debatiendo 'si X es molécula u organismo' que diseñando. La taxonomía se volvió un obstáculo.",
-    question: "¿Cómo simplificas sin perder estructura?",
-    options: [
-      { id: 'A', text: "**Methodological Rigor:** Organizas workshops de alineación para profundizar el entendimiento de Atomic Design. Inviertes en educación para que el equipo domine la metodología estándar de la industria.", score: -1, type: "Training Investment (Over-engineered)" },
-      { id: 'B', text: "**Pragmatic Reduction:** Colapsas la taxonomía a solo 2 niveles (Components + Patterns). Eliminas la carga cognitiva de la categorización científica para priorizar la velocidad de ensamblaje.", score: 5, type: "Lead (Utilidad > Pureza)" },
-      { id: 'C', text: "**Team Autonomy:** Eliminas la taxonomía centralizada y permites que cada squad organice sus librerías como prefiera. Fomentas el ownership y la velocidad eliminando restricciones burocráticas.", score: -1, type: "Radical Autonomy (Caos)" }
-    ],
-    explanation: "Si la herramienta genera fricción, la herramienta falla. **Methodological Rigor** es culpar al usuario. **Team Autonomy** invita al caos. **Pragmatic Reduction** prioriza la **Developer Experience (DX)** interna: un sistema simple que se usa es infinitamente superior a un sistema perfecto que se ignora."
-  },
-  {
     id: 'migracion_forced_upgrade_user_backlash',
-    displayId: 'STR-29',
+    displayId: 'STR-20',
     category: "Estrategia de Migración",
     icon: <RefreshCw className="w-6 h-6 text-blue-400" />,
     scenario: "Lanzas V2 del producto y fuerzas la migración. El 30% de los power users están furiosos porque removiste features 'legacy' que usaban diariamente.",
@@ -421,7 +295,7 @@ export const strategy_questions = [
   },
   {
     id: 'migracion_sunset_product_line',
-    displayId: 'STR-30',
+    displayId: 'STR-21',
     category: "Estrategia de Migración",
     icon: <XCircle className="w-6 h-6 text-red-600" />,
     scenario: "Discontinuas un producto con 500 usuarios leales. Tienes 6 meses para migrarlos al producto principal (que no tiene feature parity) o perderlos.",
@@ -435,7 +309,7 @@ export const strategy_questions = [
   },
   {
     id: 'manageup_ceo_designs_features',
-    displayId: 'STR-31',
+    displayId: 'STR-22',
     category: "Manage Up",
     icon: <Target className="w-6 h-6 text-red-600" />,
     scenario: "El CEO (ex-diseñador) diseña un 'Tab de Notificaciones' directamente en producción y pide lanzarlo. Rompe 4 patterns del sistema y no tiene validación de usuario.",
@@ -448,22 +322,8 @@ export const strategy_questions = [
     explanation: "**Process Defense** te vuelve un burócrata. **Silent Execution** destruye calidad. **Political Judo** redefine la acción del CEO como un 'input' en lugar de una 'orden', protegiendo el producto y el ego del ejecutivo simultáneamente."
   },
   {
-    id: 'manageup_cto_blockchain_pet_project',
-    displayId: 'STR-32',
-    category: "Manage Up",
-    icon: <ShieldAlert className="w-6 h-6 text-orange-600" />,
-    scenario: "El Director de Innovación pide un 'Wallet de NFTs' urgente. Cero research, cero demanda. Tienes tickets críticos de UX en el checkout bloqueados.",
-    question: "¿Cómo gestionas el pet project sin quemar puentes?",
-    options: [
-      { id: 'A', text: "**Stakeholder Alignment:** Aceptas el proyecto para alinearte con la visión de innovación de la empresa. Construyes capital político demostrando flexibilidad y apoyo a las iniciativas directivas.", score: 1, type: "Obediente (Desperdicia recursos)" },
-      { id: 'B', text: "**Discovery Filter:** 'Hagamos un Sprint de 3 días para validar'. Usas el proceso de research rápido para testear la hipótesis. Dejas que la data (falta de interés) mate el proyecto objetivamente.", score: 5, type: "Lead (Research como filtro)" },
-      { id: 'C', text: "**Roadmap Logic:** Explicas que optimizar el checkout tiene mayor ROI inmediato. Intentas convencer con lógica de negocio racional para despriorizar la idea especulativa.", score: 1, type: "Racional (Ignora emoción)" }
-    ],
-    explanation: "La lógica (**Roadmap Logic**) pierde contra la emoción de la 'innovación'. **Stakeholder Alignment** desperdicia recursos. El **Discovery Filter** usa la metodología de diseño como escudo: objetiviza la decisión con pruebas, evitando el conflicto de opinión vs opinión."
-  },
-  {
     id: 'manageup_cfo_design_system_roi',
-    displayId: 'STR-33',
+    displayId: 'STR-23',
     category: "Manage Up",
     icon: <Briefcase className="w-6 h-6 text-blue-700" />,
     scenario: "Necesitas $120K para un Design Systems Engineer. El CFO pregunta: '¿Cuál es el ROI? Los devs ya tienen librerías'. Tienes que justificar el budget.",
@@ -477,7 +337,7 @@ export const strategy_questions = [
   },
   {
     id: 'manageup_cto_designers_should_code',
-    displayId: 'STR-34',
+    displayId: 'STR-24',
     category: "Manage Up",
     icon: <Users className="w-6 h-6 text-purple-600" />,
     scenario: "El CTO dice: 'Los diseñadores que no codean son menos valiosos'. Tu equipo es visual/estrategico. Varios temen por su empleo.",
@@ -491,7 +351,7 @@ export const strategy_questions = [
   },
   {
     id: 'political_ma_duplicate_teams_layoffs',
-    displayId: 'STR-35',
+    displayId: 'STR-25',
     category: "Crisis Política Organizacional",
     icon: <AlertOctagon className="w-6 h-6 text-red-700" />,
     scenario: "Adquisición de empresa. Ahora hay 2 equipos de diseño duplicados. Tienes que proponer el nuevo organigrama unificado reduciendo headcount.",
@@ -505,21 +365,21 @@ export const strategy_questions = [
   },
   {
     id: 'enterprise_client_custom_request',
-    displayId: 'STR-36',
+    displayId: 'STR-26',
     category: "Producto vs Ventas",
     icon: <Briefcase className="w-6 h-6 text-blue-700" />,
-    scenario: "Cliente Enterprise (18% del ARR) exige una feature ultra-customizada o se va. Es inútil para otros clientes.",
+    scenario: "Tu cliente Enterprise más grande (Banco LATAM que representa el 40% de tu ARR total - Riesgo de Concentración crítico) exige una feature ultra-customizada o se va. Es inútil para otros clientes.",
     question: "¿Cómo evalúas la solicitud?",
     options: [
-      { id: 'A', text: "**Revenue First:** Construyes la feature inmediatamente. Proteges el cash flow crítico de la empresa (18% ARR), entendiendo que la supervivencia financiera habilita la estrategia futura.", score: 1, type: "Revenue-first (Consultora)" },
-      { id: 'B', text: "**Professional Services Model:** Ofreces construirlo como proyecto custom con costo adicional, mantenido fuera del core. Monetizas la necesidad sin contaminar el roadmap del producto SaaS.", score: 5, type: "Lead (ROI-based decision)" },
-      { id: 'C', text: "**SaaS Purity:** Rechazas la solicitud ofreciendo APIs abiertas. Mantienes la disciplina de producto, evitando convertir la empresa en una consultora de desarrollo a medida.", score: 3, type: "Principios (Alto riesgo)" }
+      { id: 'A', text: "**Revenue First:** Construyes la feature inmediatamente en el core product. Proteges el 40% del ARR entendiendo que perder este cliente es cerrar la empresa. La supervivencia financiera habilita cualquier estrategia futura.", score: 1, type: "Revenue-first (Consultora)" },
+      { id: 'B', text: "**Professional Services Model:** Ofreces construirlo como proyecto custom con costo adicional, mantenido fuera del core. Monetizas la necesidad sin contaminar el roadmap del producto SaaS, aislando la complejidad.", score: 5, type: "Lead (ROI-based decision)" },
+      { id: 'C', text: "**SaaS Purity:** Rechazas la solicitud ofreciendo APIs abiertas. Mantienes la disciplina de producto, evitando convertir la empresa en una consultora de desarrollo a medida.", score: -1, type: "Principios (Suicidio empresarial)" }
     ],
-    explanation: "Perder 18% de ARR por dogma (**SaaS Purity**) es suicidio. Construirlo en el core (**Revenue First**) crea deuda técnica y te vuelve consultora. El modelo de **Professional Services** aísla la complejidad custom y captura valor adicional, protegiendo el **Product Roadmap**."
+    explanation: "Con 40% del ARR en juego, **SaaS Purity** es suicidio empresarial. Pero construirlo en el core (**Revenue First**) te convierte en consultora y crea deuda técnica permanente. El **Professional Services Model** es la única salida viable: aísla la complejidad custom, captura valor adicional, y protege el **Product Roadmap** mientras retienes al cliente."
   },
   {
     id: 'pricing_page_complexity',
-    displayId: 'STR-37',
+    displayId: 'STR-27',
     category: "Estrategia de Producto",
     icon: <BarChart2 className="w-6 h-6 text-green-600" />,
     scenario: "Página de Pricing con 5 planes y tabla de 30 features. Bounce rate del 60%. Usuarios paralizados.",
@@ -533,7 +393,7 @@ export const strategy_questions = [
   },
   {
     id: 'political_founder_conflict_design_caught',
-    displayId: 'STR-38',
+    displayId: 'STR-28',
     category: "Crisis Política Organizacional",
     icon: <Shield className="w-6 h-6 text-orange-700" />,
     scenario: "El CEO y el CTO llevan 3 semanas en guerra fría: el CEO quiere pivotar a B2B Enterprise ('El dinero real está en contratos de $100K'), mientras el CTO defiende B2C ('Tenemos 50K usuarios, no los abandonemos'). Ambos te han pedido diseños para sus respectivas visiones, y tu equipo de 4 diseñadores está paralizado sin saber qué priorizar. El último sprint se perdió en reuniones de alineación que terminaron en gritos. El runway es de 6 meses y cada semana sin dirección clara quema $40K.",
@@ -547,7 +407,7 @@ export const strategy_questions = [
   },
   {
     id: 'political_vp_product_fired_interim_no_design',
-    displayId: 'STR-39',
+    displayId: 'STR-29',
     category: "Crisis Política Organizacional",
     icon: <AlertTriangle className="w-6 h-6 text-red-600" />,
     scenario: "VP de Producto despedido. El CFO es 'Interim Head'. No entiende diseño y sugiere usar templates y cortar research.",
@@ -559,4 +419,32 @@ export const strategy_questions = [
     ],
     explanation: "El CFO ve costos, tú vendes valor. **Compliance Mode** valida que el diseño es prescindible. **Override** es políticamente peligroso. **Financial Translation** convierte el diseño de 'gasto estético' a 'herramienta de rentabilidad', asegurando la supervivencia del departamento."
   },
+  {
+    id: 'merger_design_system_civil_war',
+    displayId: 'STR-30',
+    category: "Arquitectura de Sistemas (M&A)",
+    icon: <Layers className="w-6 h-6 text-red-700" />,
+    scenario: "Tras la fusión, tienes dos Design Systems: 'Titan' (React, feo pero accesible y estable) y 'Nova' (Vue, hermoso pero lleno de bugs y sin a11y). El CMO exige el look de Nova. El CTO exige la estabilidad de Titan. Los equipos se odian y se niegan a migrar. Debes elegir la base para el Q3.",
+    question: "¿Cuál es tu estrategia de unificación en terreno hostil?",
+    options: [
+      { id: 'A', text: "**Visual Wrapper (Theming):** Mantienes la base de código de Titan (infraestructura sólida) pero aplicas encima los Design Tokens visuales de Nova. Satisfaces al CMO (estética) y al CTO (estabilidad), aunque fuerzas al equipo de Nova a abandonar su código.", score: 5, type: "Lead (Pragmatismo Arquitectónico)" },
+      { id: 'B', text: "**Best of Both Worlds:** Creas un tercer sistema nuevo ('Genesis') tomando los mejores componentes de cada uno. Prometes un inicio limpio que unifica a los equipos en una misión compartida, eliminando deuda heredada.", score: 1, type: "Idealista (Tercer Sistema)" },
+      { id: 'C', text: "**Nova Evolution:** Adoptas Nova como base porque el 'Look & Feel' es lo que vende. Asignas recursos masivos para arreglar sus bugs y accesibilidad sobre la marcha. Priorizas el momentum de mercado sobre la pureza técnica.", score: 3, type: "Market-Driven (Riesgo Técnico)" }
+    ],
+    explanation: "Crear un tercer sistema (**Best of Both Worlds**) garantiza 2 años sin delivery. Adoptar el sistema 'bonito pero roto' (**Nova**) hipoteca el futuro. La jugada maestra es **Visual Wrapper**: infraestructura sólida (**Titan**) vestida con la marca ganadora, minimizando el riesgo técnico."
+  },
+  {
+    id: 'feature_flag_debt_bankruptcy',
+    displayId: 'STR-31',
+    category: "Deuda Técnica",
+    icon: <Code className="w-6 h-6 text-slate-600" />,
+    scenario: "Tu producto tiene 140 'Feature Flags' activos; algunos de hace 2 años. La matriz de combinaciones es imposible de testear (2^140). Ayer, una combinación rara causó un error de facturación silencioso en Enterprise. Engineering pide 'Flag Freeze' de 1 mes. Product dice que el roadmap no puede parar.",
+    question: "¿Cómo saneas la configuración sin detener el negocio?",
+    options: [
+      { id: 'A', text: "**Política de Caducidad (TTL):** Estableces una regla de 'Time-to-Live' de 45 días para todo flag nuevo. Si no se limpia, el sistema alerta o bloquea deploys. Frenas el sangrado futuro inmediatamente.", score: 3, type: "Gobernanza Futura (No limpia el pasado)" },
+      { id: 'B', text: "**Taxonomía de Flags:** Separas 'Release Flags' (temporales) de 'Permission Flags' (permanentes). Asignas un squad 'Janitor' al 20% de capacidad para eliminar flags temporales viejos en cada sprint, pagando la deuda progresivamente.", score: 5, type: "Lead (Limpieza Estructural)" },
+      { id: 'C', text: "**Cleanup Sprint:** Autorizas la pausa de 1 mes. El riesgo de facturación es existencial. Un mes de roadmap perdido es preferible a perder la confianza de clientes Enterprise por errores aleatorios.", score: 1, type: "Reactivo (Drástico)" }
+    ],
+    explanation: "Parar el roadmap (**Cleanup Sprint**) es políticamente inviable. Solo poner reglas (**TTL**) no limpia la basura actual. La **Taxonomía de Flags** distingue deuda (release) de infraestructura (permission), y la **Jardinería Constante** paga la deuda sin quebrar el momentum."
+  }
 ];
