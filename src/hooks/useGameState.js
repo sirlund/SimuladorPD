@@ -11,7 +11,7 @@ export const useGameState = () => {
   const [burnedQuestionIds, setBurnedQuestionIds] = useLocalStorage('pd_burned_questions', []);
 
   // Estados del juego
-  const [gameState, setGameState] = useState('intro'); // intro | test | round_transition | review | campaign_complete
+  const [gameState, setGameState] = useState('intro'); // intro | test | round_transition | review | learning | campaign_complete
   const [round, setRound] = useState(1);
   const [roundBatches, setRoundBatches] = useState({}); // { 1: [], 2: [], 3: [] }
   const [activeQuestions, setActiveQuestions] = useState([]);
@@ -143,6 +143,16 @@ export const useGameState = () => {
     setGameState('intro');
   }, [setBurnedQuestionIds]);
 
+  // Navegar al plan de aprendizaje
+  const goToLearning = useCallback(() => {
+    setGameState('learning');
+  }, []);
+
+  // Volver a review desde learning
+  const backToReview = useCallback(() => {
+    setGameState('review');
+  }, []);
+
   // Stats
   const getStats = useCallback(() => {
     // Total de preguntas en ESTA sesión (sumando todos los batches)
@@ -200,6 +210,8 @@ export const useGameState = () => {
     finishAssessment,
     handleRoundTimeout,
     resetCampaign,
+    goToLearning,
+    backToReview,
     getStats,
     // Constantes
     ROUND_TIME_SECONDS,

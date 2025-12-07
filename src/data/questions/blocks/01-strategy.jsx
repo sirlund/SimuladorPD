@@ -23,7 +23,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Cierre Ceremonial:** Dedicas el resto del viernes a una retrospectiva de cierre para documentar lo aprendido y celebrar el esfuerzo. Das un cierre digno al trabajo realizado, permitiendo que el equipo sienta que su tiempo no fue desperdiciado antes de cambiar de contexto.", score: 3, type: "Cultural / Incorrect" },
       { id: 'C', text: "**Cooldown & Recharge:** Negocias con el CEO un 'fin de semana largo' y reinicias el lunes. Priorizas la salud mental inmediata bajo la lógica de Psychological Safety, permitiendo que el equipo procese el cambio para retomar con máxima energía y sin resentimientos el lunes.", score: 1, type: "Protector / Incorrect" }
     ],
-    explanation: "Con 4 meses de vida, el tiempo es oro. El **Cooldown** es un lujo suicida en crisis y el **Cierre Ceremonial** quema runway en rituales. Solo la **Gestión de Cambio Radical** detiene la rumiación validando la emoción con acción inmediata. En **Wartime Leadership**, la claridad reduce la ansiedad más que el descanso."
+    explanation: "Con 4 meses de vida, el tiempo es oro. El **Cooldown** es un lujo suicida en crisis y el **Cierre Ceremonial** quema runway en rituales. Solo la **Gestión de Cambio Radical** detiene la rumiación validando la emoción con acción inmediata. En **Wartime Leadership**, la claridad reduce la ansiedad más que el descanso.",
+    learning: {
+      topic: 'crisis-management',
+      concepts: ['wartime-leadership', 'change-management', 'team-morale']
+    }
   },
   {
     id: 'metrics_vanity_vs_reality',
@@ -37,7 +41,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Transparencia Radical:** Presentas el reporte crudo en el QBR: +200% tráfico, -15% conversión. Mantienes la Integridad de Datos absoluta y dejas que los números hablen por sí mismos, permitiendo que los ejecutivos saquen sus propias conclusiones basadas en la realidad objetiva.", score: 1, type: "Técnico / Incorrect" },
       { id: 'C', text: "**Enfoque en Soluciones:** Validas el tráfico de Marketing públicamente y te comprometes a optimizar el funnel en tu lado. Mantienes la armonía del equipo de liderazgo y te enfocas en lo que puedes controlar (el producto), evitando fricciones políticas innecesarias.", score: 1, type: "Silo / Incorrect" }
     ],
-    explanation: "La data sin política es ingenua. La **Transparencia Radical** humilla aliados públicamente y el **Enfoque en Soluciones** permite seguir quemando caja en Vanity Metrics. La **Alineación Privada** es la única que protege tu **Political Capital** y controla la narrativa del 'Hallazgo de Calidad' antes de entrar a la sala."
+    explanation: "La data sin política es ingenua. La **Transparencia Radical** humilla aliados públicamente y el **Enfoque en Soluciones** permite seguir quemando caja en Vanity Metrics. La **Alineación Privada** es la única que protege tu **Political Capital** y controla la narrativa del 'Hallazgo de Calidad' antes de entrar a la sala.",
+    learning: {
+      topic: 'metrics-analytics',
+      concepts: ['vanity-metrics', 'political-capital', 'data-storytelling']
+    }
   },
   {
     id: 'sales_custom_demands',
@@ -51,7 +59,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Defensa de Estándares:** Te niegas rotundamente explicando las limitaciones del sistema actual. Aprovechas la oportunidad para educar a Ventas sobre la importancia de la Escalabilidad y evitas sentar el precedente de que el equipo de ingeniería funciona como una agencia de personalización.", score: 1, type: "Bloqueador / Incorrect" },
       { id: 'C', text: "**Feature Flag Táctico:** Implementas el logo en producción oculto tras un flag. Es la solución más rápida y eficiente: satisface al cliente inmediatamente y mantiene el código 'limpio' ante los ojos del usuario final mediante control de versiones.", score: 1, type: "Quick Win / Incorrect" }
     ],
-    explanation: "Matar un deal vital por pureza técnica (**Defensa de Estándares**) es ceguera de negocio; contaminar producción con **Feature Flags** permanentes es negligencia técnica. La **Rama Desechable** acepta el **Waste** (desperdicio) como costo de venta, protegiendo la **Technical Hygiene** del sistema principal al aislar la basura."
+    explanation: "Matar un deal vital por pureza técnica (**Defensa de Estándares**) es ceguera de negocio; contaminar producción con **Feature Flags** permanentes es negligencia técnica. La **Rama Desechable** acepta el **Waste** (desperdicio) como costo de venta, protegiendo la **Technical Hygiene** del sistema principal al aislar la basura.",
+    learning: {
+      topic: 'product-strategy',
+      concepts: ['sales-engineering-balance', 'technical-debt', 'throwaway-code']
+    }
   },
   {
     id: 'okr_conflict_dashboard',
@@ -65,7 +77,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Workshop de Resultados:** Rechazas la vigilancia y contra-propones visualizar 'Conversiones por Etapa' (Outcome). Reorientas el problema hacia el valor real del negocio, ayudando a Ventas a entender qué métricas realmente mueven la aguja.", score: 5, type: "Lead / Correct" },
       { id: 'C', text: "**Escalación Ejecutiva:** Solicitas que el CEO arbitre la decisión basándose en las prioridades de la empresa. Aseguras que la decisión venga de la máxima autoridad, garantizando alineación estratégica y evitando que Producto quede atrapado en fuego cruzado.", score: 3, type: "Burocrático / Incorrect" }
     ],
-    explanation: "Convertirte en policía de empleados (**Agilidad y Servicio**) te vuelve mercenario; pedirle a papá CEO que decida (**Escalación Ejecutiva**) muestra debilidad. El **Workshop de Resultados** es el único camino de **Managing Up**: mueve la conversación de **Output** (horas silla) a **Outcome** (ventas), evitando ser una Feature Factory."
+    explanation: "Convertirte en policía de empleados (**Agilidad y Servicio**) te vuelve mercenario; pedirle a papá CEO que decida (**Escalación Ejecutiva**) muestra debilidad. El **Workshop de Resultados** es el único camino de **Managing Up**: mueve la conversación de **Output** (horas silla) a **Outcome** (ventas), evitando ser una Feature Factory.",
+    learning: {
+      topic: 'stakeholder-management',
+      concepts: ['outcome-vs-output', 'manage-up', 'feature-factory']
+    }
   },
 
   // --- BLOQUE 2: SISTEMAS DE DISEÑO, OPS & DEUDA TÉCNICA ---
@@ -81,7 +97,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Pragmatismo Documentado:** Autorizas el hardcode creando un ticket de 'Limpieza de Tokens' en el backlog prioritario. Priorizas el Time-to-Market y el cumplimiento del deadline, gestionando la deuda técnica de forma responsable a través de procesos de Jira.", score: 1, type: "Pragmático / Incorrect" },
       { id: 'C', text: "**Utility Classes (Tailwind-style):** Adoptas un enfoque de clases utilitarias directas. Aceleras el desarrollo eliminando la abstracción de nombres semánticos, alineando al equipo con prácticas modernas de frontend que priorizan velocidad sobre pureza arquitectónica.", score: 3, type: "Operativo / Incorrect" }
     ],
-    explanation: "El **Pragmatismo Documentado** es falaz: el ticket de refactor nunca se prioriza (**Hyperbolic Discounting**). Las **Utility Classes** sin gobernanza crean inconsistencia a escala corporativa y eliminan el vocabulario compartido del sistema. **Stop the Line** es doloroso pero aplica la **Regla del 1-10-100**: corregir el cimiento hoy cuesta 1; corregirlo post-lanzamiento costará 100."
+    explanation: "El **Pragmatismo Documentado** es falaz: el ticket de refactor nunca se prioriza (**Hyperbolic Discounting**). Las **Utility Classes** sin gobernanza crean inconsistencia a escala corporativa y eliminan el vocabulario compartido del sistema. **Stop the Line** es doloroso pero aplica la **Regla del 1-10-100**: corregir el cimiento hoy cuesta 1; corregirlo post-lanzamiento costará 100.",
+    learning: {
+      topic: 'design-systems',
+      concepts: ['design-tokens', 'technical-debt', 'stop-the-line']
+    }
   },
   {
     id: 'legacy_ui_refactor_strategy',
@@ -95,7 +115,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Brand Evolution (Forward Only):** Aplicas el nuevo sistema SOLO en features nuevas. Comunicas externamente que es una evolución gradual de la marca, manteniendo el velocity de entrega alto y evitando el riesgo de romper código legacy.", score: 3, type: "Pragmático con spin de marketing" },
       { id: 'C', text: "**Design Debt Sprint:** Presentas un Business Case (NPS = Churn) para pausar features no-críticas por 2 semanas y unificar las top 20 pantallas. Prometes una recuperación visible de la confianza del cliente antes de la reunión del Board.", score: 1, type: "Bold con riesgo político" }
     ],
-    explanation: "Los sprints dedicados a deuda técnica (**Design Debt Sprint**) rara vez se aprueban porque no generan revenue visible. **Brand Evolution** valida la inconsistencia, confundiendo al usuario y aumentando la carga cognitiva. La **Boy Scout Rule** es la única sostenible: paga deuda técnica como costo operativo (COGS) sin detener la maquinaria de ingresos."
+    explanation: "Los sprints dedicados a deuda técnica (**Design Debt Sprint**) rara vez se aprueban porque no generan revenue visible. **Brand Evolution** valida la inconsistencia, confundiendo al usuario y aumentando la carga cognitiva. La **Boy Scout Rule** es la única sostenible: paga deuda técnica como costo operativo (COGS) sin detener la maquinaria de ingresos.",
+    learning: {
+      topic: 'design-systems',
+      concepts: ['boy-scout-rule', 'design-debt', 'incremental-migration']
+    }
   },
   {
     id: 'component_complexity_detach',
@@ -123,7 +147,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Hire for Gaps:** Lo contratas. Priorizas inyectar el conocimiento de dominio (Fintech) que le falta al equipo. Asumes que la calidad visual se puede elevar con mentoría, pero la lógica bancaria es difícil de enseñar rápido.", score: 5, type: "Lead (Team building)" },
       { id: 'C', text: "**Estrategia Híbrida:** Contratas un freelance visual para mantener el delivery estético mientras sigues buscando el perfil perfecto full-time. Ganas tiempo sin comprometer estándares ni cerrar la puerta al candidato ideal.", score: 1, type: "Indeciso" }
     ],
-    explanation: "Un Lead contrata para cubrir brechas, no para clonar fortalezas (**Hire for Gaps**). **Hire for Excellence** visual ignora que tu debilidad actual es funcional, no estética. La **Estrategia Híbrida** es un parche que pospone la solución estructural. Necesitas **Domain Expertise** para desbloquear la credibilidad con Producto."
+    explanation: "Un Lead contrata para cubrir brechas, no para clonar fortalezas (**Hire for Gaps**). **Hire for Excellence** visual ignora que tu debilidad actual es funcional, no estética. La **Estrategia Híbrida** es un parche que pospone la solución estructural. Necesitas **Domain Expertise** para desbloquear la credibilidad con Producto.",
+    learning: {
+      topic: 'team-leadership',
+      concepts: ['hire-for-gaps', 'domain-expertise', 'team-composition']
+    }
   },
   {
     id: 'legacy_code_rewrite_temptation',
@@ -137,7 +165,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Strangler Fig Pattern:** Propones migrar pantalla por pantalla, permitiendo coexistencia. Priorizas vistas con alto tráfico para validar valor incrementalmente. Modernizas el stack progresivamente sin detener el flujo de revenue.", score: 5, type: "Lead (Incremental De-Risking)" },
       { id: 'C', text: "**Feature Prioritization:** Sugieres posponer el refactor y enfocarse en revenue. Si el código actual funciona, no lo toques. Maximizas el retorno financiero inmediato exprimiendo el sistema legacy un año más.", score: 3, type: "Cortoplacista" }
     ],
-    explanation: "El **Big Bang Rewrite** tiene una tasa de fallo del +70% por fatiga de negocio. **Feature Prioritization** acumula **Technical Debt** hasta la parálisis. El **Strangler Fig Pattern** es el estándar de industria: rodeas el sistema viejo con el nuevo gradualmente, entregando valor continuo mientras modernizas."
+    explanation: "El **Big Bang Rewrite** tiene una tasa de fallo del +70% por fatiga de negocio. **Feature Prioritization** acumula **Technical Debt** hasta la parálisis. El **Strangler Fig Pattern** es el estándar de industria: rodeas el sistema viejo con el nuevo gradualmente, entregando valor continuo mientras modernizas.",
+    learning: {
+      topic: 'innovation-tech',
+      concepts: ['strangler-fig-pattern', 'big-bang-rewrite', 'incremental-modernization']
+    }
   },
   {
     id: 'design_system_v2_breaking_changes',
@@ -165,7 +197,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Extreme Ownership:** Asumes la responsabilidad pública total inmediatamente. Presentas el plan de reversión (ya ejecutado) y la estrategia de comunicación al usuario. Desarmas el ataque tomando control de la solución.", score: 5, type: "Lead (Liderazgo en Crisis)" },
       { id: 'C', text: "**Gestión Centralizada (Legal Shield):** Remites todas las consultas a Legal y PR para asegurar un mensaje unificado y proteger a la empresa de responsabilidad civil. Sigues el protocolo corporativo de gestión de crisis al pie de la letra.", score: -1, type: "Burocrático / Abdica" }
     ],
-    explanation: "En crisis, quien culpa pierde. **Análisis de Proceso** suena a excusa en medio del incendio. **Gestión Centralizada** (esconderse tras Legal) abdica el liderazgo técnico. **Extreme Ownership** es contraintuitivo pero efectivo: al asumir la culpa y presentar la solución, pasas de 'acusado' a 'líder de la resolución'."
+    explanation: "En crisis, quien culpa pierde. **Análisis de Proceso** suena a excusa en medio del incendio. **Gestión Centralizada** (esconderse tras Legal) abdica el liderazgo técnico. **Extreme Ownership** es contraintuitivo pero efectivo: al asumir la culpa y presentar la solución, pasas de 'acusado' a 'líder de la resolución'.",
+    learning: {
+      topic: 'crisis-management',
+      concepts: ['extreme-ownership', 'incident-response', 'accountability']
+    }
   },
   {
     id: 'user_backlash_social_media',
@@ -179,7 +215,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Corrección y Transparencia:** Publicas un update reconociendo el error, simplificas la UI inmediatamente y respondes reviews clave. Priorizas detener la hemorragia de confianza sobre el orgullo corporativo.", score: 5, type: "Lead (Escucha y Actúa)" },
       { id: 'C', text: "**Brand Defense:** Publicas un comunicado oficial explicando que los cambios cumplen con los términos de servicio y educas al usuario sobre el valor del nuevo modelo. Defiendes la postura de la empresa ante la desinformación.", score: 1, type: "Sordo (Tone-deaf)" }
     ],
-    explanation: "Cuando el rating cae, sube el **CAC** y muere el crecimiento orgánico. **Strategic Silence** permite que la narrativa negativa se consolide. **Brand Defense** valida al atacante. Solo la **Corrección y Transparencia** detiene la crisis demostrando **Accountability** real ante el usuario."
+    explanation: "Cuando el rating cae, sube el **CAC** y muere el crecimiento orgánico. **Strategic Silence** permite que la narrativa negativa se consolide. **Brand Defense** valida al atacante. Solo la **Corrección y Transparencia** detiene la crisis demostrando **Accountability** real ante el usuario.",
+    learning: {
+      topic: 'ethics-compliance',
+      concepts: ['dark-patterns', 'user-trust', 'crisis-communication']
+    }
   },
   {
     id: 'crisis_investor_demo_failure',
@@ -235,7 +275,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Co-Design Workshop:** Reúnes a Legal y Product para diseñar alternativas (tooltips, progressive disclosure) que cumplan el requisito legal sin romper la UI. Transformas la demanda legal en un reto de diseño compartido.", score: 5, type: "Lead (Facilitador de Soluciones)" },
       { id: 'C', text: "**Technical Workaround:** Muestras el disclaimer solo una vez (cookie) y lo ocultas después. Reduces la fricción para el usuario recurrente mientras técnicamente cumples con mostrar el texto legal.", score: 1, type: "Workaround (Riesgoso)" }
     ],
-    explanation: "Legal no es el enemigo, es una restricción de diseño. **Risk Management First** abdica la UX. El **Technical Workaround** es jugar con fuego regulatorio. El **Co-Design Workshop** alinea objetivos: logra **Compliance** legal a través de una implementación de **User Experience** superior."
+    explanation: "Legal no es el enemigo, es una restricción de diseño. **Risk Management First** abdica la UX. El **Technical Workaround** es jugar con fuego regulatorio. El **Co-Design Workshop** alinea objetivos: logra **Compliance** legal a través de una implementación de **User Experience** superior.",
+    learning: {
+      topic: 'stakeholder-management',
+      concepts: ['legal-compliance', 'progressive-disclosure', 'cross-functional-collaboration']
+    }
   },
   {
     id: 'strategy_platform_vs_feature_focus',
@@ -249,7 +293,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Sequencing Strategy:** Argumentas que 'primero profundidad, luego amplitud'. Deben dominar el caso de uso core (Product-Market Fit sólido) antes de abrir la superficie de ataque como plataforma.", score: 5, type: "Lead (Secuenciación Estratégica)" },
       { id: 'C', text: "**Compromiso Híbrido:** Propones lanzar solo las APIs públicas como MVP de plataforma, posponiendo el marketplace. Avanzas en la visión estratégica sin comprometer todos los recursos de ingeniería de inmediato.", score: 1, type: "Compromiso (Diluye el foco)" }
     ],
-    explanation: "El **Premature Scaling** mata startups. Intentar ser plataforma sin un core sólido es construir sobre arena. El **Compromiso Híbrido** diluye el foco igual. La **Sequencing Strategy** entiende que las plataformas exitosas (Salesforce, Shopify) nacieron como productos excepcionales primero."
+    explanation: "El **Premature Scaling** mata startups. Intentar ser plataforma sin un core sólido es construir sobre arena. El **Compromiso Híbrido** diluye el foco igual. La **Sequencing Strategy** entiende que las plataformas exitosas (Salesforce, Shopify) nacieron como productos excepcionales primero.",
+    learning: {
+      topic: 'product-strategy',
+      concepts: ['premature-scaling', 'product-market-fit', 'sequencing']
+    }
   },
   {
     id: 'strategy_competitor_feature_parity',
@@ -319,7 +367,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Political Judo (Validate & Redirect):** Agradeces el 'prototipo de alta fidelidad' y propones una sesión de refinamiento técnico. Validas su aporte pero reinsertas el trabajo en el flujo de calidad normal.", score: 5, type: "Lead (Manage Up)" },
       { id: 'C', text: "**Silent Execution:** Implementas el diseño tal cual. El CEO es el stakeholder final y eliges tus batallas, priorizando la armonía política sobre la pureza del sistema.", score: 1, type: "Obediente / Incorrect" }
     ],
-    explanation: "**Process Defense** te vuelve un burócrata. **Silent Execution** destruye calidad. **Political Judo** redefine la acción del CEO como un 'input' en lugar de una 'orden', protegiendo el producto y el ego del ejecutivo simultáneamente."
+    explanation: "**Process Defense** te vuelve un burócrata. **Silent Execution** destruye calidad. **Political Judo** redefine la acción del CEO como un 'input' en lugar de una 'orden', protegiendo el producto y el ego del ejecutivo simultáneamente.",
+    learning: {
+      topic: 'stakeholder-management',
+      concepts: ['manage-up', 'political-judo', 'executive-communication']
+    }
   },
   {
     id: 'manageup_cfo_design_system_roi',
@@ -333,7 +385,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Efficiency Calculator:** Presentas el ahorro en horas de ingeniería (Velocity). 'Cada componente ahorra 4h. 100 componentes = 2 FTEs liberados'. Traduces consistencia en dinero ahorrado.", score: 5, type: "Lead (Business Case)" },
       { id: 'C', text: "**Industry Standard:** Muestras que Uber, Airbnb y Google tienen equipos dedicados. Argumentas que para competir al mismo nivel, la empresa debe adoptar las mejores prácticas de la industria.", score: 1, type: "Social Proof (Débil)" }
     ],
-    explanation: "El CFO habla Excel, no Figma. **Quality & Craft** es irrelevante en el P&L. **Efficiency Calculator** conecta el Design System con **OPEX Reduction** y **Time-to-Market**, métricas que justifican la inversión financiera."
+    explanation: "El CFO habla Excel, no Figma. **Quality & Craft** es irrelevante en el P&L. **Efficiency Calculator** conecta el Design System con **OPEX Reduction** y **Time-to-Market**, métricas que justifican la inversión financiera.",
+    learning: {
+      topic: 'stakeholder-management',
+      concepts: ['business-case', 'roi-justification', 'design-value']
+    }
   },
   {
     id: 'manageup_cto_designers_should_code',
@@ -347,7 +403,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Role Clarity:** Defiendes la especialización: 'El valor del diseño es resolver el problema correcto, el código es la implementación'. Reafirmas que la división de trabajo genera mayor calidad en ambas puntas.", score: 5, type: "Lead (Claridad de roles)" },
       { id: 'C', text: "**Structural Hiring:** Propones contratar un 'Design Engineer' puente. Resuelves la fricción operativa con un rol híbrido sin forzar a los diseñadores actuales a cambiar su perfil.", score: 3, type: "Estructural (Parche)" }
     ],
-    explanation: "Forzar a todos a codear (**Skill Expansion**) crea generalistas mediocres. **Role Clarity** establece el valor de la **Especialización**: un gran investigador vale más que un mal desarrollador de frontend. Defiende el **Core Competency** de tu disciplina."
+    explanation: "Forzar a todos a codear (**Skill Expansion**) crea generalistas mediocres. **Role Clarity** establece el valor de la **Especialización**: un gran investigador vale más que un mal desarrollador de frontend. Defiende el **Core Competency** de tu disciplina.",
+    learning: {
+      topic: 'team-leadership',
+      concepts: ['role-clarity', 'specialization', 'design-engineering']
+    }
   },
   {
     id: 'political_ma_duplicate_teams_layoffs',
@@ -375,7 +435,11 @@ export const strategy_questions = [
       { id: 'B', text: "**Professional Services Model:** Ofreces construirlo como proyecto custom con costo adicional, mantenido fuera del core. Monetizas la necesidad sin contaminar el roadmap del producto SaaS, aislando la complejidad.", score: 5, type: "Lead (ROI-based decision)" },
       { id: 'C', text: "**SaaS Purity:** Rechazas la solicitud ofreciendo APIs abiertas. Mantienes la disciplina de producto, evitando convertir la empresa en una consultora de desarrollo a medida.", score: -1, type: "Principios (Suicidio empresarial)" }
     ],
-    explanation: "Con 40% del ARR en juego, **SaaS Purity** es suicidio empresarial. Pero construirlo en el core (**Revenue First**) te convierte en consultora y crea deuda técnica permanente. El **Professional Services Model** es la única salida viable: aísla la complejidad custom, captura valor adicional, y protege el **Product Roadmap** mientras retienes al cliente."
+    explanation: "Con 40% del ARR en juego, **SaaS Purity** es suicidio empresarial. Pero construirlo en el core (**Revenue First**) te convierte en consultora y crea deuda técnica permanente. El **Professional Services Model** es la única salida viable: aísla la complejidad custom, captura valor adicional, y protege el **Product Roadmap** mientras retienes al cliente.",
+    learning: {
+      topic: 'product-strategy',
+      concepts: ['professional-services', 'revenue-concentration', 'saas-vs-consulting']
+    }
   },
   {
     id: 'pricing_page_complexity',

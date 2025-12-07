@@ -1,4 +1,4 @@
-import { RefreshCw, Trophy, Target, Zap, Flame, Brain, ChevronDown, Check, X, TrendingUp, TrendingDown } from 'lucide-react';
+import { RefreshCw, Trophy, Target, Zap, Flame, Brain, ChevronDown, Check, X, TrendingUp, TrendingDown, BookOpen } from 'lucide-react';
 import { MarkdownText } from '../ui/MarkdownText';
 import { useState } from 'react';
 import { useTheme } from '../../context/ThemeContext';
@@ -8,7 +8,8 @@ export const ReviewScreen = ({
   stats,
   answers,
   activeQuestions,
-  onContinue
+  onContinue,
+  onViewLearning
 }) => {
   const { totalScore, maxPossibleScore } = stats;
   const questionsAnswered = Object.keys(answers).length;
@@ -268,10 +269,17 @@ export const ReviewScreen = ({
 
       {/* Footer */}
       <div className={`sticky bottom-0 backdrop-blur-xl border-t ${theme.bgHeader} ${theme.border}`}>
-        <div className="max-w-4xl mx-auto px-6 py-4 flex justify-center">
+        <div className="max-w-4xl mx-auto px-6 py-4 flex justify-center gap-3">
+          <button
+            onClick={onViewLearning}
+            className={`px-6 py-3 font-bold rounded-xl transition-all flex items-center gap-2 ${theme.btnPrimary}`}
+          >
+            <BookOpen className="w-4 h-4" />
+            Plan de Desarrollo
+          </button>
           <button
             onClick={onContinue}
-            className={`px-8 py-3 font-bold rounded-xl transition-all flex items-center gap-2 ${theme.btnPrimary}`}
+            className={`px-6 py-3 font-bold rounded-xl transition-all flex items-center gap-2 border ${theme.btnSecondary}`}
           >
             <RefreshCw className="w-4 h-4" />
             Reiniciar

@@ -1,8 +1,10 @@
 import { useGameState } from '../hooks/useGameState';
 import { useTimer } from '../hooks/useTimer';
+import { useSessionAnalysis } from '../hooks/useSessionAnalysis';
 import { IntroScreen } from './screens/IntroScreen';
 import { QuestionScreen } from './screens/QuestionScreen';
 import { ReviewScreen } from './screens/ReviewScreen';
+import { LearningArticleScreen } from './screens/LearningArticleScreen';
 import { CampaignCompleteScreen } from './screens/CampaignCompleteScreen';
 import { RoundTransitionScreen } from './screens/RoundTransitionScreen';
 
@@ -21,12 +23,17 @@ const PDAssessment = () => {
     handleAnswer,
     handleRoundTimeout,
     resetCampaign,
+    goToLearning,
+    backToReview,
     getStats,
     round,
     nextRound,
     ROUND_TIME_SECONDS,
     allPlayedQuestions
   } = useGameState();
+
+  // Análisis de sesión para el plan de aprendizaje
+  const sessionAnalysis = useSessionAnalysis(answers, allPlayedQuestions);
 
   // Custom hook de timer (solo activo durante el test)
   // Cuando el timer llega a 0, handleRoundTimeout verifica si hay más rondas
@@ -93,6 +100,15 @@ const PDAssessment = () => {
           answers={answers}
           activeQuestions={allPlayedQuestions}
           onContinue={handleStart}
+          onViewLearning={goToLearning}
+        />
+      );
+
+    case 'learning':
+      return (
+        <LearningArticleScreen
+          analysis={sessionAnalysis}
+          onBack={backToReview}
         />
       );
 
