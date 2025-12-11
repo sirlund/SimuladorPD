@@ -1,14 +1,12 @@
 import { useState } from 'react';
-import { ArrowLeft, Copy, Check, DollarSign, Eye, Pill, Target, AlertTriangle, TrendingUp, Zap } from 'lucide-react';
+import { ArrowLeft, Copy, Check, DollarSign, Eye, Pill, AlertTriangle, TrendingUp, Share2, BookOpen, ExternalLink } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { MarkdownText } from '../ui/MarkdownText';
 
 /**
  * LearningScreenV2 - Template Fusionado con Evidencia Dinámica
- *
- * Combina lo mejor de Template A (estructura) y Template B (impacto)
- * con secciones dinámicas basadas en las respuestas reales del usuario.
+ * v2.2 - Con mejoras de UX: color coding, total damage, donut chart, etc.
  */
 export const LearningScreenV2 = ({ analysis, onBack }) => {
   const theme = useTheme();
@@ -35,16 +33,32 @@ export const LearningScreenV2 = ({ analysis, onBack }) => {
     dominantBias,
     worstDecisions,
     mondayMission,
-    dynamicEvidence // Nueva: evidencia dinámica de la sesión
+    dynamicEvidence,
+    sniperResources
   } = diagnosis || {};
 
   const isSuccess = dominantBias?.type === 'success';
+
+  // Color scheme based on archetype type
+  const accentColor = isSuccess
+    ? { light: 'emerald', dark: 'emerald' }
+    : { light: 'orange', dark: 'orange' };
 
   const handleCopyMarkdown = async () => {
     const markdown = generateMarkdownV2(analysis);
     await navigator.clipboard.writeText(markdown);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleShare = async () => {
+    const text = `${dominantBias?.emoji} Soy "${dominantBias?.title}" según el Simulador de Product Lead\n\nScore: ${accuracy}%\n\n${dominantBias?.tagline}\n\n🎮 Juega en: simulador.com`;
+    if (navigator.share) {
+      await navigator.share({ text });
+    } else {
+      await navigator.clipboard.writeText(text);
+      alert('Resultado copiado al portapapeles');
+    }
   };
 
   const formatDate = (isoString) => {
@@ -55,10 +69,25 @@ export const LearningScreenV2 = ({ analysis, onBack }) => {
     });
   };
 
+  // Calculate total damage from evidence
+  const totalDamage = (dynamicEvidence || []).reduce((sum, item) => {
+    const cost = item.impact?.cost || '';
+    const match = cost.match(/\$?([\d,]+)K?/);
+    if (match) {
+      const num = parseInt(match[1].replace(',', ''));
+      return sum + (cost.includes('K') ? num * 1000 : num);
+    }
+    return sum;
+  }, 0);
+
   return (
     <div className={`min-h-screen ${theme.bg}`}>
-      {/* Header */}
-      <div className={`sticky top-0 z-50 backdrop-blur-xl border-b ${theme.bgHeader} ${theme.border}`}>
+      {/* Header with accent color based on archetype */}
+      <div className={`sticky top-0 z-50 backdrop-blur-xl border-b ${
+        isSuccess
+          ? theme.isDark ? 'bg-emerald-950/90 border-emerald-800' : 'bg-emerald-50/90 border-emerald-200'
+          : theme.isDark ? 'bg-orange-950/90 border-orange-800' : 'bg-orange-50/90 border-orange-200'
+      }`}>
         <div className="max-w-3xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <button
@@ -70,13 +99,23 @@ export const LearningScreenV2 = ({ analysis, onBack }) => {
             </button>
             <div className="flex items-center gap-2">
               <span className={`text-xs px-2 py-1 rounded font-mono ${
-                theme.isDark ? 'bg-emerald-500/20 text-emerald-400' : 'bg-emerald-100 text-emerald-700'
+                isSuccess
+                  ? theme.isDark ? 'bg-emerald-500/20 text-emerald-400' : 'bg-emerald-100 text-emerald-700'
+                  : theme.isDark ? 'bg-orange-500/20 text-orange-400' : 'bg-orange-100 text-orange-700'
               }`}>
-                v2.1
+                v2.2
               </span>
               <button
+                onClick={handleShare}
+                className={`p-2 rounded-lg border transition-colors ${theme.btnSecondary}`}
+                title="Compartir resultado"
+              >
+                <Share2 className="w-4 h-4" />
+              </button>
+              <button
                 onClick={handleCopyMarkdown}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors ${theme.btnSecondary}`}
+                className={`p-2 rounded-lg border transition-colors ${theme.btnSecondary}`}
+                title="Copiar como Markdown"
               >
                 {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
               </button>
@@ -87,21 +126,12 @@ export const LearningScreenV2 = ({ analysis, onBack }) => {
       </div>
 
       {/* Content */}
-      <div className="max-w-3xl mx-auto px-6 py-12 space-y-12">
+      <div className="max-w-3xl mx-auto px-6 py-12 space-y-16">
 
-        {/* Hero Section */}
+        {/* Hero Section with Score Ring */}
         <HeroSection
           dominantBias={dominantBias}
           accuracy={accuracy}
-          isSuccess={isSuccess}
-          theme={theme}
-        />
-
-        {/* Stats Row */}
-        <StatsRow
-          accuracy={accuracy}
-          totalScore={totalScore}
-          maxPossibleScore={maxPossibleScore}
           levelFeedback={levelFeedback}
           isSuccess={isSuccess}
           theme={theme}
@@ -118,6 +148,7 @@ export const LearningScreenV2 = ({ analysis, onBack }) => {
           <FailureEvidenceSection
             evidence={dynamicEvidence}
             worstDecisions={worstDecisions}
+            totalDamage={totalDamage}
             theme={theme}
           />
         )}
@@ -130,13 +161,13 @@ export const LearningScreenV2 = ({ analysis, onBack }) => {
         )}
 
         {/* The Pivot / Action Plan */}
-        {!isSuccess && (
-          <PivotSection
-            dominantBias={dominantBias}
-            mondayMission={mondayMission}
-            theme={theme}
-          />
-        )}
+        <PivotSection
+          dominantBias={dominantBias}
+          mondayMission={mondayMission}
+          sniperResources={sniperResources}
+          isSuccess={isSuccess}
+          theme={theme}
+        />
 
         {/* Footer */}
         <div className={`text-center pt-8 border-t ${theme.border}`}>
@@ -154,187 +185,265 @@ export const LearningScreenV2 = ({ analysis, onBack }) => {
 // Sub-components
 // ============================================
 
-const HeroSection = ({ dominantBias, accuracy, isSuccess, theme }) => {
+// Donut Chart Component
+const ScoreRing = ({ percentage, isSuccess, size = 120 }) => {
+  const strokeWidth = 8;
+  const radius = (size - strokeWidth) / 2;
+  const circumference = radius * 2 * Math.PI;
+  const offset = circumference - (percentage / 100) * circumference;
+
+  const getColor = () => {
+    if (percentage >= 80) return { stroke: '#10b981', text: 'text-emerald-500' }; // green
+    if (percentage >= 60) return { stroke: '#f59e0b', text: 'text-amber-500' }; // yellow
+    return { stroke: '#ef4444', text: 'text-red-500' }; // red
+  };
+
+  const color = getColor();
+
   return (
-    <div className="space-y-4">
-      <div className="flex items-center gap-3">
-        <span className="text-5xl">{dominantBias?.emoji || (isSuccess ? '🏆' : '📉')}</span>
-        {isSuccess && (
-          <span className={`px-3 py-1 rounded-full text-sm font-bold ${
-            theme.isDark ? 'bg-emerald-500/20 text-emerald-400' : 'bg-emerald-100 text-emerald-700'
-          }`}>
-            ÉXITO
-          </span>
-        )}
+    <div className="relative" style={{ width: size, height: size }}>
+      <svg width={size} height={size} className="transform -rotate-90">
+        {/* Background circle */}
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={strokeWidth}
+          className="text-slate-200 dark:text-slate-700"
+        />
+        {/* Progress circle */}
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke={color.stroke}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
+          className="transition-all duration-1000 ease-out"
+        />
+      </svg>
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <span className={`text-3xl font-black ${color.text}`}>{percentage}%</span>
       </div>
-
-      <h1 className={`text-3xl md:text-4xl font-black leading-tight ${theme.text}`}>
-        {dominantBias?.headline || `Diagnóstico: ${dominantBias?.title}`}
-      </h1>
-
-      <p className={`text-lg leading-relaxed ${theme.text}`}>
-        {dominantBias?.tagline || dominantBias?.subtitle || dominantBias?.description}
-      </p>
     </div>
   );
 };
 
-const StatsRow = ({ accuracy, totalScore, maxPossibleScore, levelFeedback, isSuccess, theme }) => (
-  <div className="grid grid-cols-3 gap-4">
-    <div className={`text-center p-4 rounded-xl border ${theme.bgCard} ${theme.border}`}>
-      <div className={`text-2xl font-black ${theme.text}`}>{levelFeedback}</div>
-      <div className={`text-xs ${theme.textSubtle}`}>Nivel</div>
-    </div>
-    <div className={`text-center p-4 rounded-xl border ${theme.bgCard} ${theme.border}`}>
-      <div className={`text-3xl font-black ${isSuccess ? 'text-green-500' : theme.text}`}>
-        {accuracy}%
+const HeroSection = ({ dominantBias, accuracy, levelFeedback, isSuccess, theme }) => {
+  return (
+    <div className="space-y-6">
+      {/* Emoji + Badge Row */}
+      <div className="flex items-center gap-4">
+        <span className="text-6xl">{dominantBias?.emoji || (isSuccess ? '🏆' : '📉')}</span>
+        <div className="flex flex-col gap-2">
+          <span className={`px-3 py-1 rounded-full text-sm font-bold inline-block w-fit ${
+            isSuccess
+              ? theme.isDark ? 'bg-emerald-500/20 text-emerald-400' : 'bg-emerald-100 text-emerald-700'
+              : theme.isDark ? 'bg-orange-500/20 text-orange-400' : 'bg-orange-100 text-orange-700'
+          }`}>
+            {isSuccess ? 'ÉXITO' : 'DIAGNÓSTICO'}
+          </span>
+          <span className={`text-sm font-medium ${theme.textMuted}`}>{levelFeedback}</span>
+        </div>
       </div>
-      <div className={`text-xs ${theme.textSubtle}`}>Precisión</div>
-    </div>
-    <div className={`text-center p-4 rounded-xl border ${theme.bgCard} ${theme.border}`}>
-      <div className={`text-3xl font-black ${theme.text}`}>{totalScore}/{maxPossibleScore}</div>
-      <div className={`text-xs ${theme.textSubtle}`}>Puntos</div>
-    </div>
-  </div>
-);
 
-const FailureEvidenceSection = ({ evidence, worstDecisions, theme }) => {
-  // Usar evidencia dinámica si existe, sino fallback a worstDecisions
+      {/* Title */}
+      <h1 className={`text-3xl md:text-4xl font-black leading-tight ${theme.text}`}>
+        {dominantBias?.headline || `Diagnóstico: ${dominantBias?.title}`}
+      </h1>
+
+      {/* Score Ring + Tagline */}
+      <div className="flex items-center gap-6">
+        <ScoreRing percentage={accuracy} isSuccess={isSuccess} />
+        <p className={`text-lg leading-relaxed flex-1 ${theme.text}`}>
+          {dominantBias?.tagline || dominantBias?.subtitle || dominantBias?.description}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const FailureEvidenceSection = ({ evidence, worstDecisions, totalDamage, theme }) => {
   const items = evidence?.length > 0 ? evidence : worstDecisions;
 
   if (!items?.length) return null;
 
+  const formatCurrency = (num) => {
+    if (num >= 1000000) return `$${(num / 1000000).toFixed(1)}M`;
+    if (num >= 1000) return `$${Math.round(num / 1000)}K`;
+    return `$${num}`;
+  };
+
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-3">
-        <DollarSign className={`w-8 h-8 ${theme.isDark ? 'text-red-400' : 'text-red-600'}`} />
-        <h2 className={`text-2xl font-black ${theme.text}`}>
-          El Costo Real de tu Sesión
-        </h2>
+      {/* Header with Total Damage */}
+      <div className={`p-6 rounded-2xl ${
+        theme.isDark ? 'bg-red-950/50 border border-red-800' : 'bg-red-50 border border-red-200'
+      }`}>
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-3">
+            <DollarSign className={`w-8 h-8 ${theme.isDark ? 'text-red-400' : 'text-red-600'}`} />
+            <h2 className={`text-2xl font-black ${theme.text}`}>
+              El Costo Real de tu Sesión
+            </h2>
+          </div>
+        </div>
+
+        {/* Total Damage Counter */}
+        {totalDamage > 0 && (
+          <div className="mt-4 pt-4 border-t border-red-200 dark:border-red-800">
+            <p className={`text-sm font-medium uppercase tracking-wider mb-1 ${theme.isDark ? 'text-red-400' : 'text-red-600'}`}>
+              Pérdida Total Estimada
+            </p>
+            <p className={`text-4xl font-black ${theme.isDark ? 'text-red-400' : 'text-red-600'}`}>
+              {formatCurrency(totalDamage)}
+            </p>
+          </div>
+        )}
       </div>
 
-      <p className={`text-lg ${theme.textMuted}`}>
-        Basado en tus respuestas, este es el daño hipotético que causaste hoy:
-      </p>
-
+      {/* Evidence Cards - Receipt Style */}
       <div className="space-y-4">
         {items.map((item, i) => (
-          <div
-            key={i}
-            className={`p-5 rounded-xl border-l-4 ${
-              theme.isDark
-                ? 'bg-slate-800/50 border-red-500'
-                : 'bg-slate-50 border-red-500'
-            }`}
-          >
-            {/* Si es evidencia dinámica nueva */}
-            {item.impact ? (
-              <>
-                <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-2xl">{item.impact.emoji}</span>
-                  <span className={`text-xl font-black ${
-                    theme.isDark ? 'text-red-400' : 'text-red-600'
-                  }`}>
-                    {item.impact.cost}
-                  </span>
-                  <span className={`text-sm ${theme.textMuted}`}>
-                    {item.impact.consequence}
-                  </span>
-                </div>
-                <p className={theme.text}>
-                  <span className="font-bold text-indigo-500">{item.questionId}:</span>{' '}
-                  En esta situación, elegiste <em className={theme.isDark ? 'text-orange-400' : 'text-orange-600'}>
-                    {item.selectedType}
-                  </em>.
-                </p>
-                <p className={`text-sm mt-1 ${theme.textSubtle}`}>
-                  {item.scenario}
-                </p>
-              </>
-            ) : (
-              /* Fallback a formato antiguo (worstDecisions) */
-              <>
-                <p className={theme.text}>
-                  <span className="font-bold text-indigo-500">{item.id}:</span>{' '}
-                  {item.scenario}
-                </p>
-                {item.consequence && (
-                  <p className={`text-sm mt-2 ${theme.isDark ? 'text-red-400' : 'text-red-600'}`}>
-                    → {item.consequence}
-                  </p>
-                )}
-              </>
-            )}
-          </div>
+          <EvidenceCard key={i} item={item} theme={theme} />
         ))}
       </div>
     </div>
   );
 };
 
+const EvidenceCard = ({ item, theme }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  // Clean the type for display
+  const cleanType = (type) => {
+    if (!type) return '';
+    return type.split('(')[0].split('/')[0].trim();
+  };
+
+  return (
+    <div className={`rounded-xl overflow-hidden border-l-4 border-red-500 ${
+      theme.isDark ? 'bg-slate-800/80' : 'bg-white'
+    } shadow-sm`}>
+      {/* Header - Receipt style */}
+      <div className={`px-5 py-4 flex items-center justify-between ${
+        theme.isDark ? 'bg-slate-800' : 'bg-slate-50'
+      }`}>
+        <div className="flex items-center gap-3">
+          <span className="text-2xl">{item.impact?.emoji || '💸'}</span>
+          <div>
+            <span className={`text-xs font-medium uppercase tracking-wider ${theme.textSubtle}`}>
+              {item.category || 'Impacto'}
+            </span>
+            <p className={`text-xs ${theme.textMuted}`}>{item.questionId}</p>
+          </div>
+        </div>
+        <div className="text-right">
+          <p className={`text-2xl font-black ${theme.isDark ? 'text-red-400' : 'text-red-600'}`}>
+            {item.impact?.cost || '$100K'}
+          </p>
+          <p className={`text-xs ${theme.textMuted}`}>
+            {item.impact?.consequence || 'en costos'}
+          </p>
+        </div>
+      </div>
+
+      {/* Body */}
+      <div className="px-5 py-4 space-y-3">
+        {/* Scenario */}
+        <p className={`text-sm leading-relaxed ${theme.text} ${!expanded && 'line-clamp-2'}`}>
+          {item.scenario}
+        </p>
+
+        {item.scenario?.length > 120 && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className={`text-xs font-medium ${theme.isDark ? 'text-indigo-400' : 'text-indigo-600'}`}
+          >
+            {expanded ? 'Ver menos' : 'Ver más'}
+          </button>
+        )}
+
+        {/* What you chose */}
+        <div className={`p-3 rounded-lg ${theme.isDark ? 'bg-red-500/10' : 'bg-red-50'}`}>
+          <p className={`text-xs font-bold uppercase tracking-wider mb-1 ${theme.isDark ? 'text-red-400' : 'text-red-600'}`}>
+            ❌ Tu elección
+          </p>
+          <p className={`text-sm font-medium ${theme.text}`}>
+            {cleanType(item.selectedType) || 'Opción incorrecta'}
+          </p>
+        </div>
+
+        {/* Lesson/Explanation if available */}
+        {item.explanation && (
+          <div className={`p-3 rounded-lg border-l-2 ${
+            theme.isDark ? 'bg-amber-500/10 border-amber-500' : 'bg-amber-50 border-amber-500'
+          }`}>
+            <p className={`text-xs font-bold uppercase tracking-wider mb-1 ${theme.isDark ? 'text-amber-400' : 'text-amber-700'}`}>
+              💡 Lección
+            </p>
+            <p className={`text-sm ${theme.text}`}>
+              {item.explanation.substring(0, 150)}...
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const SuccessEvidenceSection = ({ evidence, dominantBias, theme }) => {
-  // Usar evidencia dinámica o wins del arquetipo
   const items = evidence?.length > 0 ? evidence : dominantBias?.wins;
 
   if (!items?.length) return null;
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-3">
-        <TrendingUp className={`w-8 h-8 ${theme.isDark ? 'text-emerald-400' : 'text-emerald-600'}`} />
-        <h2 className={`text-2xl font-black ${theme.text}`}>
-          Tus Superpoderes Detectados
-        </h2>
+      <div className={`p-6 rounded-2xl ${
+        theme.isDark ? 'bg-emerald-950/50 border border-emerald-800' : 'bg-emerald-50 border border-emerald-200'
+      }`}>
+        <div className="flex items-center gap-3">
+          <TrendingUp className={`w-8 h-8 ${theme.isDark ? 'text-emerald-400' : 'text-emerald-600'}`} />
+          <div>
+            <h2 className={`text-2xl font-black ${theme.text}`}>
+              Tus Superpoderes Detectados
+            </h2>
+            <p className={`text-sm ${theme.textMuted}`}>
+              Has demostrado instinto de liderazgo en situaciones críticas
+            </p>
+          </div>
+        </div>
       </div>
-
-      <p className={`text-lg ${theme.textMuted}`}>
-        Has demostrado instinto de liderazgo en situaciones críticas:
-      </p>
 
       <div className="space-y-4">
         {items.map((item, i) => (
           <div
             key={i}
-            className={`p-5 rounded-xl border-l-4 ${
-              theme.isDark
-                ? 'bg-slate-800/50 border-emerald-500'
-                : 'bg-slate-50 border-emerald-500'
-            }`}
+            className={`p-5 rounded-xl border-l-4 border-emerald-500 ${
+              theme.isDark ? 'bg-slate-800/80' : 'bg-white'
+            } shadow-sm`}
           >
-            {/* Si es evidencia dinámica */}
-            {item.impact ? (
-              <>
-                <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-2xl">{item.impact.emoji}</span>
-                  <span className={`text-lg font-bold ${
-                    theme.isDark ? 'text-emerald-400' : 'text-emerald-600'
-                  }`}>
-                    {item.impact.type}
-                  </span>
-                </div>
-                <p className={theme.text}>
-                  <span className="font-bold text-indigo-500">{item.questionId}:</span>{' '}
-                  Elegiste <em className={theme.isDark ? 'text-emerald-400' : 'text-emerald-600'}>
-                    {item.correctChoice}
-                  </em>, evitando {item.impact.avoided}.
+            <div className="flex items-start gap-4">
+              <span className="text-2xl">{item.impact?.emoji || '✅'}</span>
+              <div className="flex-1">
+                <p className={`font-bold ${theme.isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>
+                  {item.impact?.type || item.type}
                 </p>
-                <p className={`text-sm mt-1 ${theme.textSubtle}`}>
-                  {item.scenario}
+                <p className={`text-sm mt-1 ${theme.text}`}>
+                  {item.scenario || item.description}
                 </p>
-              </>
-            ) : (
-              /* Fallback a wins del arquetipo */
-              <>
-                <div className="flex items-baseline gap-2 mb-2">
-                  <span className={`text-lg font-bold ${
-                    theme.isDark ? 'text-emerald-400' : 'text-emerald-600'
-                  }`}>
-                    {item.type}
-                  </span>
-                </div>
-                <p className={theme.text}>{item.description}</p>
-              </>
-            )}
+                {item.correctChoice && (
+                  <p className={`text-sm mt-2 ${theme.textMuted}`}>
+                    ✓ Elegiste: <strong>{item.correctChoice}</strong>
+                  </p>
+                )}
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -346,44 +455,76 @@ const BlindSpotSection = ({ dominantBias, theme }) => {
   if (!dominantBias) return null;
 
   return (
-    <div className={`p-8 rounded-2xl ${theme.isDark ? 'bg-slate-800' : 'bg-slate-100'}`}>
+    <div className={`p-8 rounded-2xl ${
+      theme.isDark ? 'bg-purple-950/30 border border-purple-800' : 'bg-purple-50 border border-purple-200'
+    }`}>
       <div className="flex items-center gap-3 mb-6">
         <Eye className={`w-8 h-8 ${theme.isDark ? 'text-purple-400' : 'text-purple-600'}`} />
         <h2 className={`text-2xl font-black ${theme.text}`}>
-          Tu Punto Ciego: "{dominantBias?.blindSpot?.name || 'Patrón Detectado'}"
+          Tu Punto Ciego
         </h2>
       </div>
 
-      <div className={`space-y-4 text-lg leading-relaxed ${theme.text}`}>
+      {/* Blind Spot Name as Badge */}
+      {dominantBias?.blindSpot?.name && (
+        <div className={`inline-block px-4 py-2 rounded-lg mb-6 ${
+          theme.isDark ? 'bg-purple-500/20' : 'bg-purple-100'
+        }`}>
+          <p className={`text-lg font-bold ${theme.isDark ? 'text-purple-300' : 'text-purple-700'}`}>
+            "{dominantBias.blindSpot.name}"
+          </p>
+        </div>
+      )}
+
+      <div className={`space-y-6 text-lg leading-relaxed ${theme.text}`}>
+        {/* Hard Truth with highlighted key phrases */}
         {dominantBias?.hardTruth && (
-          <MarkdownText className={theme.text}>
-            {dominantBias.hardTruth}
-          </MarkdownText>
+          <div className="prose prose-lg dark:prose-invert max-w-none">
+            <MarkdownText className={theme.text}>
+              {dominantBias.hardTruth}
+            </MarkdownText>
+          </div>
         )}
 
         {dominantBias?.blindSpot?.description && (
-          <p className={theme.isDark ? 'text-amber-400' : 'text-amber-700'}>
-            {dominantBias.blindSpot.description}
+          <p className={`p-4 rounded-lg border-l-4 ${
+            theme.isDark ? 'bg-amber-500/10 border-amber-500 text-amber-300' : 'bg-amber-50 border-amber-500 text-amber-800'
+          }`}>
+            ⚠️ {dominantBias.blindSpot.description}
           </p>
         )}
 
+        {/* Concept Comparison - Visual */}
         {dominantBias?.conceptToInternalize && (
-          <div className={`p-4 rounded-lg ${theme.isDark ? 'bg-slate-700' : 'bg-white'}`}>
+          <div className={`p-6 rounded-xl ${theme.isDark ? 'bg-slate-800' : 'bg-white'} shadow-sm`}>
+            <p className={`text-sm font-bold uppercase tracking-wider mb-4 ${theme.textSubtle}`}>
+              Concepto a Internalizar
+            </p>
             <div className="flex items-center gap-4 flex-wrap">
-              <span className={`px-3 py-1 rounded-lg font-bold ${
-                theme.isDark ? 'bg-green-500/20 text-green-400' : 'bg-green-100 text-green-700'
+              <div className={`flex-1 min-w-[140px] p-4 rounded-xl text-center ${
+                theme.isDark ? 'bg-emerald-500/20 border-2 border-emerald-500' : 'bg-emerald-50 border-2 border-emerald-500'
               }`}>
-                {dominantBias.conceptToInternalize.name}
-              </span>
-              <span className={theme.textMuted}>vs</span>
-              <span className={`px-3 py-1 rounded-lg font-bold line-through ${
-                theme.isDark ? 'bg-red-500/20 text-red-400' : 'bg-red-100 text-red-700'
+                <p className={`text-xs uppercase tracking-wider mb-1 ${theme.isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>
+                  ✓ Adoptar
+                </p>
+                <p className={`font-bold ${theme.isDark ? 'text-emerald-300' : 'text-emerald-700'}`}>
+                  {dominantBias.conceptToInternalize.name}
+                </p>
+              </div>
+              <span className={`text-2xl ${theme.textMuted}`}>→</span>
+              <div className={`flex-1 min-w-[140px] p-4 rounded-xl text-center ${
+                theme.isDark ? 'bg-red-500/20 border-2 border-red-500 border-dashed' : 'bg-red-50 border-2 border-red-300 border-dashed'
               }`}>
-                {dominantBias.conceptToInternalize.vs}
-              </span>
+                <p className={`text-xs uppercase tracking-wider mb-1 ${theme.isDark ? 'text-red-400' : 'text-red-600'}`}>
+                  ✗ Abandonar
+                </p>
+                <p className={`font-bold line-through ${theme.isDark ? 'text-red-300' : 'text-red-600'}`}>
+                  {dominantBias.conceptToInternalize.vs}
+                </p>
+              </div>
             </div>
             {dominantBias.conceptToInternalize.explanation && (
-              <p className={`mt-3 text-base ${theme.textMuted}`}>
+              <p className={`mt-4 text-base ${theme.textMuted}`}>
                 {dominantBias.conceptToInternalize.explanation}
               </p>
             )}
@@ -398,7 +539,9 @@ const NextCeilingSection = ({ dominantBias, theme }) => {
   if (!dominantBias?.nextCeiling) return null;
 
   return (
-    <div className={`p-8 rounded-2xl ${theme.isDark ? 'bg-slate-800' : 'bg-slate-100'}`}>
+    <div className={`p-8 rounded-2xl ${
+      theme.isDark ? 'bg-amber-950/30 border border-amber-800' : 'bg-amber-50 border border-amber-200'
+    }`}>
       <div className="flex items-center gap-3 mb-6">
         <AlertTriangle className={`w-8 h-8 ${theme.isDark ? 'text-amber-400' : 'text-amber-600'}`} />
         <h2 className={`text-2xl font-black ${theme.text}`}>
@@ -406,40 +549,57 @@ const NextCeilingSection = ({ dominantBias, theme }) => {
         </h2>
       </div>
 
-      <div className={`space-y-4 text-lg leading-relaxed ${theme.text}`}>
-        <div className={`p-4 rounded-lg border-l-4 ${
-          theme.isDark ? 'bg-amber-500/10 border-amber-500' : 'bg-amber-50 border-amber-500'
-        }`}>
-          <p className={`font-bold mb-2 ${theme.isDark ? 'text-amber-400' : 'text-amber-700'}`}>
-            Desafío:
+      <div className="space-y-4">
+        <div className={`p-5 rounded-xl ${theme.isDark ? 'bg-slate-800' : 'bg-white'} shadow-sm`}>
+          <p className={`text-xs font-bold uppercase tracking-wider mb-2 ${theme.isDark ? 'text-amber-400' : 'text-amber-700'}`}>
+            Desafío
           </p>
-          <p>{dominantBias.nextCeiling.challenge}</p>
+          <p className={`text-lg ${theme.text}`}>{dominantBias.nextCeiling.challenge}</p>
         </div>
 
-        <div className={`p-4 rounded-lg border-l-4 ${
+        <div className={`p-5 rounded-xl border-l-4 ${
           theme.isDark ? 'bg-red-500/10 border-red-500' : 'bg-red-50 border-red-500'
         }`}>
-          <p className={`font-bold mb-2 ${theme.isDark ? 'text-red-400' : 'text-red-700'}`}>
-            Riesgo:
+          <p className={`text-xs font-bold uppercase tracking-wider mb-2 ${theme.isDark ? 'text-red-400' : 'text-red-700'}`}>
+            ⚠️ Riesgo
           </p>
-          <p>{dominantBias.nextCeiling.risk}</p>
+          <p className={theme.text}>{dominantBias.nextCeiling.risk}</p>
         </div>
-
-        {dominantBias.executiveReading && (
-          <p className={`text-base ${theme.textMuted}`}>
-            📚 <strong>Lectura Ejecutiva:</strong> {dominantBias.executiveReading}
-          </p>
-        )}
       </div>
     </div>
   );
 };
 
-const PivotSection = ({ dominantBias, mondayMission, theme }) => {
+const PivotSection = ({ dominantBias, mondayMission, sniperResources, isSuccess, theme }) => {
+  // For success archetypes, show executive reading
+  if (isSuccess) {
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center gap-3">
+          <BookOpen className={`w-8 h-8 ${theme.isDark ? 'text-indigo-400' : 'text-indigo-600'}`} />
+          <h2 className={`text-2xl font-black ${theme.text}`}>
+            Tu Siguiente Lectura
+          </h2>
+        </div>
+
+        {dominantBias?.executiveReading && (
+          <div className={`p-6 rounded-xl ${theme.isDark ? 'bg-indigo-950/30 border border-indigo-800' : 'bg-indigo-50 border border-indigo-200'}`}>
+            <p className={`text-lg font-bold ${theme.text}`}>
+              📚 {dominantBias.executiveReading}
+            </p>
+            <p className={`mt-2 text-sm ${theme.textMuted}`}>
+              Lectura recomendada para tu siguiente nivel de liderazgo.
+            </p>
+          </div>
+        )}
+      </div>
+    );
+  }
+
   if (!mondayMission && !dominantBias?.pivotActions) return null;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="flex items-center gap-3">
         <Pill className={`w-8 h-8 ${theme.isDark ? 'text-emerald-400' : 'text-emerald-600'}`} />
         <h2 className={`text-2xl font-black ${theme.text}`}>
@@ -447,81 +607,139 @@ const PivotSection = ({ dominantBias, mondayMission, theme }) => {
         </h2>
       </div>
 
-      {/* Monday Mission */}
+      {/* Unified Mission Card */}
       {mondayMission && (
-        <div className={`p-6 rounded-xl border-2 ${
-          theme.isDark ? 'border-emerald-500/50 bg-emerald-500/10' : 'border-emerald-500 bg-emerald-50'
+        <div className={`rounded-2xl overflow-hidden border-2 ${
+          theme.isDark ? 'border-emerald-500/50 bg-emerald-950/30' : 'border-emerald-500 bg-emerald-50'
         }`}>
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-2xl">{mondayMission.emoji}</span>
-            <p className={`text-lg font-bold ${theme.isDark ? 'text-emerald-400' : 'text-emerald-700'}`}>
-              Misión: {mondayMission.title}
-            </p>
+          {/* Mission Header */}
+          <div className={`px-6 py-4 ${theme.isDark ? 'bg-emerald-500/20' : 'bg-emerald-100'}`}>
+            <div className="flex items-center gap-3">
+              <span className="text-3xl">{mondayMission.emoji}</span>
+              <div>
+                <p className={`text-xs font-bold uppercase tracking-wider ${theme.isDark ? 'text-emerald-400' : 'text-emerald-700'}`}>
+                  Tu Misión
+                </p>
+                <p className={`text-xl font-bold ${theme.text}`}>
+                  {mondayMission.title}
+                </p>
+              </div>
+            </div>
           </div>
 
-          <p className={`mb-4 ${theme.text}`}>
-            <strong>Trigger:</strong> {mondayMission.trigger}
-          </p>
+          {/* Mission Body */}
+          <div className="px-6 py-5 space-y-4">
+            <div>
+              <p className={`text-xs font-bold uppercase tracking-wider mb-1 ${theme.textSubtle}`}>
+                Trigger
+              </p>
+              <p className={theme.text}>{mondayMission.trigger}</p>
+            </div>
 
-          {mondayMission.script && (
-            <blockquote className={`p-4 rounded-lg border-l-4 mb-4 ${
-              theme.isDark
-                ? 'bg-slate-800 border-emerald-500 text-emerald-300'
-                : 'bg-white border-emerald-500 text-emerald-800'
-            }`}>
-              <MarkdownText className="font-medium">
-                {mondayMission.script}
-              </MarkdownText>
-            </blockquote>
-          )}
+            {mondayMission.script && (
+              <blockquote className={`p-4 rounded-lg border-l-4 ${
+                theme.isDark
+                  ? 'bg-slate-800 border-emerald-500'
+                  : 'bg-white border-emerald-500'
+              }`}>
+                <p className={`text-xs font-bold uppercase tracking-wider mb-2 ${theme.isDark ? 'text-emerald-400' : 'text-emerald-700'}`}>
+                  Di esto literalmente:
+                </p>
+                <MarkdownText className={`font-medium ${theme.text}`}>
+                  {mondayMission.script}
+                </MarkdownText>
+              </blockquote>
+            )}
 
-          {mondayMission.principle && (
-            <p className={`text-sm font-medium ${theme.isDark ? 'text-amber-400' : 'text-amber-700'}`}>
-              💡 {mondayMission.principle}
-            </p>
+            {mondayMission.principle && (
+              <p className={`p-3 rounded-lg text-sm ${
+                theme.isDark ? 'bg-amber-500/10 text-amber-300' : 'bg-amber-50 text-amber-800'
+              }`}>
+                💡 <strong>Principio:</strong> {mondayMission.principle}
+              </p>
+            )}
+          </div>
+
+          {/* Don'ts Section */}
+          {mondayMission?.donts && mondayMission.donts.length > 0 && (
+            <div className={`px-6 py-4 ${theme.isDark ? 'bg-red-500/10' : 'bg-red-50'}`}>
+              <p className={`text-xs font-bold uppercase tracking-wider mb-3 ${
+                theme.isDark ? 'text-red-400' : 'text-red-700'
+              }`}>
+                🚫 Qué NO hacer
+              </p>
+              <ul className={`space-y-1 text-sm ${theme.text}`}>
+                {mondayMission.donts.map((dont, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-red-500">✗</span>
+                    {dont}
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
+        </div>
+      )}
+
+      {/* Resource Card */}
+      {sniperResources?.[0] && (
+        <div className={`p-5 rounded-xl ${theme.isDark ? 'bg-slate-800' : 'bg-white'} shadow-sm border ${theme.border}`}>
+          <div className="flex items-start gap-4">
+            <div className={`p-3 rounded-lg ${theme.isDark ? 'bg-indigo-500/20' : 'bg-indigo-100'}`}>
+              <BookOpen className={`w-6 h-6 ${theme.isDark ? 'text-indigo-400' : 'text-indigo-600'}`} />
+            </div>
+            <div className="flex-1">
+              <p className={`text-xs font-bold uppercase tracking-wider mb-1 ${theme.isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>
+                📖 Recurso Clave
+              </p>
+              <p className={`font-bold ${theme.text}`}>
+                {sniperResources[0].title}
+              </p>
+              <p className={`text-sm ${theme.textMuted}`}>
+                {sniperResources[0].author} {sniperResources[0].section && `• ${sniperResources[0].section}`}
+              </p>
+              {sniperResources[0].why && (
+                <p className={`text-sm mt-2 ${theme.isDark ? 'text-indigo-300' : 'text-indigo-700'}`}>
+                  → {sniperResources[0].why}
+                </p>
+              )}
+            </div>
+            {sniperResources[0].url && (
+              <a
+                href={sniperResources[0].url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`p-2 rounded-lg transition-colors ${
+                  theme.isDark ? 'hover:bg-slate-700' : 'hover:bg-slate-100'
+                }`}
+              >
+                <ExternalLink className={`w-5 h-5 ${theme.textMuted}`} />
+              </a>
+            )}
+          </div>
         </div>
       )}
 
       {/* Pivot Actions */}
       {dominantBias?.pivotActions && (
-        <div className="space-y-4">
+        <div className="space-y-3">
           {dominantBias.pivotActions.map((action, i) => (
-            <div key={i} className={`p-5 rounded-xl border ${theme.bgCard} ${theme.border}`}>
-              <div className="flex items-start gap-4">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-black text-white bg-emerald-500">
-                  {i + 1}
-                </span>
-                <div>
-                  <h3 className={`text-lg font-bold mb-1 ${theme.text}`}>
-                    {action.title}
-                  </h3>
-                  <p className={theme.textMuted}>
-                    {action.description}
-                  </p>
-                </div>
+            <div key={i} className={`p-4 rounded-xl flex items-start gap-4 ${theme.isDark ? 'bg-slate-800' : 'bg-white'} shadow-sm border ${theme.border}`}>
+              <span className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-black text-white ${
+                theme.isDark ? 'bg-emerald-600' : 'bg-emerald-500'
+              }`}>
+                {i + 1}
+              </span>
+              <div>
+                <h3 className={`font-bold ${theme.text}`}>
+                  {action.title}
+                </h3>
+                <p className={`text-sm ${theme.textMuted}`}>
+                  {action.description}
+                </p>
               </div>
             </div>
           ))}
-        </div>
-      )}
-
-      {/* Don'ts */}
-      {mondayMission?.donts && mondayMission.donts.length > 0 && (
-        <div className={`p-5 rounded-xl ${theme.isDark ? 'bg-red-500/10' : 'bg-red-50'}`}>
-          <p className={`text-sm font-bold uppercase tracking-wider mb-3 ${
-            theme.isDark ? 'text-red-400' : 'text-red-700'
-          }`}>
-            🚫 Qué NO hacer
-          </p>
-          <ul className={`space-y-2 ${theme.text}`}>
-            {mondayMission.donts.map((dont, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span className="text-red-500">✗</span>
-                {dont}
-              </li>
-            ))}
-          </ul>
         </div>
       )}
     </div>
@@ -583,7 +801,7 @@ function generateMarkdownV2(analysis) {
   }
 
   md += `---\n\n`;
-  md += `*Simulador Product Lead v2.1*\n`;
+  md += `*Simulador Product Lead v2.2*\n`;
 
   return md;
 }
