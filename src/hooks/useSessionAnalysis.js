@@ -1,5 +1,19 @@
 import { useMemo } from 'react';
-import { detectArchetypes, getResourcesByTopic, topics, resources } from '../data/learning';
+import {
+  detectArchetypes,
+  getResourcesByTopic,
+  topics,
+  resources,
+  // V2: Diagnosis System (Archetype System)
+  selectArchetype,
+  calculateCompetencyMap,
+  getMissionByBias,
+  getResourcesByBias
+} from '../data/learning';
+import {
+  generateFailureEvidence,
+  generateSuccessEvidence
+} from '../data/learning/questionArchetypeMapping';
 
 /**
  * Hook para analizar los resultados de una sesión y detectar gaps de aprendizaje
@@ -204,6 +218,61 @@ export const useSessionAnalysis = (answers, activeQuestions) => {
       levelTip = 'Foco: entender trade-offs entre calidad, velocidad y scope.';
     }
 
+    // === 11. DIAGNÓSTICO V2 (Archetype System) ===
+    // Preguntas acertadas para arquetipos de éxito
+    const succeededQuestions = activeQuestions.filter(q => {
+      const ans = answers[q.id];
+      return ans && ans.score === 5;
+    });
+
+    // Seleccionar arquetipo basado en score (>=80% = éxito, <80% = fallo)
+    const dominantBias = selectArchetype(accuracy, failedQuestions, succeededQuestions, answers);
+    const competencyMap = calculateCompetencyMap(activeQuestions, answers);
+
+    // Para arquetipos de éxito, usamos el fallback 'order-taker' para missions/resources
+    // ya que aún no tenemos contenido específico para arquetipos de éxito
+    const biasIdForResources = dominantBias.type === 'success' ? 'order-taker' : dominantBias.id;
+    const mondayMission = getMissionByBias(biasIdForResources);
+    const sniperResources = getResourcesByBias(biasIdForResources);
+
+    // Las 3 peores decisiones con consecuencias
+    const worstDecisions = failedQuestions
+      .filter(q => q.score <= 1)
+      .slice(0, 3)
+      .map(q => {
+        const consequenceMap = {
+          'Gestión de Crisis & Liderazgo': { icon: '💀', type: 'Crisis' },
+          'Producto vs Ventas': { icon: '💸', type: 'Revenue' },
+          'Arquitectura de Sistemas': { icon: '📉', type: 'Deuda Técnica' },
+          'Manage Up': { icon: '🔥', type: 'Credibilidad' },
+          'Estrategia de Producto': { icon: '🎯', type: 'Roadmap' },
+          'Gestión de Stakeholders': { icon: '🤝', type: 'Relaciones' },
+          'Community Management': { icon: '📱', type: 'Reputación' }
+        };
+        const consequence = consequenceMap[q.category] || { icon: '⚠️', type: 'Impacto' };
+        return {
+          id: q.displayId,
+          scenario: q.scenario.substring(0, 80) + '...',
+          consequence: `${consequence.icon} **${consequence.type}:** Error en ${q.category}`,
+          score: q.score
+        };
+      });
+
+    // === 12. EVIDENCIA DINÁMICA (V2.1) ===
+    // Genera evidencia basada en las preguntas reales de la sesión
+    const dynamicEvidence = dominantBias.type === 'success'
+      ? generateSuccessEvidence(succeededQuestions, answers, dominantBias.id, 3)
+      : generateFailureEvidence(failedQuestions, answers, dominantBias.id, 3);
+
+    const diagnosis = {
+      dominantBias,
+      competencyMap,
+      worstDecisions,
+      sniperResources,
+      mondayMission,
+      dynamicEvidence // V2.1: Evidencia dinámica basada en la sesión
+    };
+
     // === RETURN ===
     return {
       // Métricas
@@ -231,6 +300,9 @@ export const useSessionAnalysis = (answers, activeQuestions) => {
       level,
       levelFeedback,
       levelTip,
+
+      // V2: Diagnóstico
+      diagnosis,
 
       // Metadata
       timestamp: new Date().toISOString(),
