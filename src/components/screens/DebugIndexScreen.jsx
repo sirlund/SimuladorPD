@@ -5,11 +5,8 @@ import { QuestionScreen } from './QuestionScreen';
 import { RoundTransitionScreen } from './RoundTransitionScreen';
 import { ReviewScreen } from './ReviewScreen';
 import { CampaignCompleteScreen } from './CampaignCompleteScreen';
-import { LearningArticleScreen } from './LearningArticleScreen';
-import { LearningArticleScreenB } from './LearningArticleScreenB';
-import { LearningScreenV2 } from './LearningScreenV2';
+import { LearningScreen } from './LearningScreen';
 import { allQuestions } from '../../data/questions';
-import { useTheme } from '../../context/ThemeContext';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { failureArchetypes, successArchetypes } from '../../data/learning/diagnoses';
 import { competencies } from '../../data/learning/vpFeedback';
@@ -201,8 +198,6 @@ const flowScreens = [
 export default function DebugIndexScreen() {
     const [activeScreen, setActiveScreen] = useState(null);
     const [activeArchetype, setActiveArchetype] = useState(null);
-    const [template, setTemplate] = useState('A');
-    const theme = useTheme();
 
     const handleArchetypeClick = (archetypeId) => {
         setActiveScreen('archetype');
@@ -227,16 +222,10 @@ export default function DebugIndexScreen() {
             return `${mins}:${secs.toString().padStart(2, '0')}`;
         };
 
-        // Si es un arquetipo, renderizar el template correspondiente
+        // Si es un arquetipo, renderizar LearningScreen
         if (activeArchetype) {
             const analysis = archetypeAnalysis[activeArchetype];
-            if (template === 'A') {
-                return <LearningArticleScreen analysis={analysis} onBack={noopFn} />;
-            } else if (template === 'B') {
-                return <LearningArticleScreenB analysis={analysis} onBack={noopFn} />;
-            } else {
-                return <LearningScreenV2 analysis={analysis} onBack={noopFn} />;
-            }
+            return <LearningScreen analysis={analysis} onBack={noopFn} />;
         }
 
         // Screens del flujo principal
@@ -269,59 +258,20 @@ export default function DebugIndexScreen() {
         return (
             <div className="relative">
                 {/* Header fijo con controles */}
-                <div className={`fixed top-0 left-0 right-0 z-[100] px-4 py-3 flex items-center justify-between backdrop-blur-xl border-b ${
-                    theme.isDark ? 'bg-slate-900/90 border-slate-700' : 'bg-white/90 border-slate-200'
-                }`}>
+                <div className="fixed top-0 left-0 right-0 z-[100] px-4 py-3 flex items-center justify-between backdrop-blur-xl border-b bg-white/90 border-slate-200 dark:bg-slate-900/90 dark:border-slate-700">
                     {/* Izquierda: Volver */}
                     <button
                         onClick={handleBack}
-                        className={`px-3 py-1.5 rounded-lg flex items-center gap-2 font-medium transition-colors ${theme.btnSecondary}`}
+                        className="px-3 py-1.5 rounded-lg flex items-center gap-2 font-medium transition-colors bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-700"
                     >
                         <ArrowLeft className="w-4 h-4" />
                         Volver
                     </button>
 
-                    {/* Centro: Nombre + Template Switch (solo para arquetipos) */}
-                    <div className="flex items-center gap-4">
-                        <div className={`flex items-center gap-2 ${theme.text}`}>
-                            <Eye className="w-4 h-4" />
-                            <span className="font-mono text-sm font-medium">{getScreenLabel()}</span>
-                        </div>
-
-                        {activeArchetype && (
-                            <div className={`flex rounded-lg overflow-hidden border ${theme.border}`}>
-                                <button
-                                    onClick={() => setTemplate('A')}
-                                    className={`px-3 py-1.5 text-sm font-bold transition-colors ${
-                                        template === 'A'
-                                            ? theme.isDark ? 'bg-indigo-600 text-white' : 'bg-indigo-500 text-white'
-                                            : theme.isDark ? 'bg-slate-800 text-slate-400 hover:text-white' : 'bg-slate-100 text-slate-600 hover:text-slate-900'
-                                    }`}
-                                >
-                                    A
-                                </button>
-                                <button
-                                    onClick={() => setTemplate('B')}
-                                    className={`px-3 py-1.5 text-sm font-bold transition-colors ${
-                                        template === 'B'
-                                            ? theme.isDark ? 'bg-orange-600 text-white' : 'bg-orange-500 text-white'
-                                            : theme.isDark ? 'bg-slate-800 text-slate-400 hover:text-white' : 'bg-slate-100 text-slate-600 hover:text-slate-900'
-                                    }`}
-                                >
-                                    B
-                                </button>
-                                <button
-                                    onClick={() => setTemplate('V2')}
-                                    className={`px-3 py-1.5 text-sm font-bold transition-colors ${
-                                        template === 'V2'
-                                            ? theme.isDark ? 'bg-emerald-600 text-white' : 'bg-emerald-500 text-white'
-                                            : theme.isDark ? 'bg-slate-800 text-slate-400 hover:text-white' : 'bg-slate-100 text-slate-600 hover:text-slate-900'
-                                    }`}
-                                >
-                                    V2
-                                </button>
-                            </div>
-                        )}
+                    {/* Centro: Nombre */}
+                    <div className="flex items-center gap-2 text-slate-900 dark:text-white">
+                        <Eye className="w-4 h-4" />
+                        <span className="font-mono text-sm font-medium">{getScreenLabel()}</span>
                     </div>
 
                     {/* Derecha: Theme Toggle */}
@@ -338,18 +288,18 @@ export default function DebugIndexScreen() {
 
     // Vista de índice
     return (
-        <div className={`min-h-screen p-6 ${theme.bg}`}>
+        <div className="min-h-screen p-6 bg-gradient-to-br from-slate-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900">
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="mb-8">
                     <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-4">
-                            <a href="/" className={`flex items-center gap-2 transition-colors ${theme.textMuted} hover:${theme.text}`}>
+                            <a href="/" className="flex items-center gap-2 transition-colors text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white">
                                 <ArrowLeft className="w-4 h-4" />
                                 Home
                             </a>
-                            <span className={theme.textSubtle}>|</span>
-                            <a href="/debug" className={`flex items-center gap-2 transition-colors ${theme.textMuted} hover:${theme.text}`}>
+                            <span className="text-slate-300 dark:text-slate-600">|</span>
+                            <a href="/debug" className="flex items-center gap-2 transition-colors text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white">
                                 <Layers className="w-4 h-4" />
                                 Questions
                             </a>
@@ -357,17 +307,17 @@ export default function DebugIndexScreen() {
                         <ThemeToggle />
                     </div>
 
-                    <h1 className={`text-4xl font-black mb-2 ${theme.text}`}>
+                    <h1 className="text-4xl font-black mb-2 text-slate-900 dark:text-white">
                         Debug Index
                     </h1>
-                    <p className={theme.textMuted}>
+                    <p className="text-slate-600 dark:text-slate-400">
                         Navega a cualquier pantalla del flujo o arquetipo
                     </p>
                 </div>
 
                 {/* Flujo Principal */}
-                <div className={`rounded-xl p-6 mb-6 border ${theme.bgCard} ${theme.border}`}>
-                    <h2 className={`text-sm font-bold uppercase tracking-wider mb-4 ${theme.textSubtle}`}>
+                <div className="rounded-xl p-6 mb-6 border bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50">
+                    <h2 className="text-sm font-bold uppercase tracking-wider mb-4 text-slate-500 dark:text-slate-500">
                         Flujo del Juego
                     </h2>
                     <div className="grid gap-2">
@@ -377,12 +327,12 @@ export default function DebugIndexScreen() {
                                 <button
                                     key={screen.id}
                                     onClick={() => handleFlowScreenClick(screen.id)}
-                                    className={`w-full text-left p-3 rounded-lg border transition-all hover:-translate-y-0.5 ${theme.bgCard} ${theme.border} ${theme.bgCardHover}`}
+                                    className="w-full text-left p-3 rounded-lg border transition-all hover:-translate-y-0.5 bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 hover:border-indigo-300 dark:hover:border-indigo-500/50"
                                 >
                                     <div className="flex items-center gap-3">
-                                        <Icon className={`w-4 h-4 ${theme.textMuted}`} />
-                                        <span className={`font-medium ${theme.text}`}>{screen.name}</span>
-                                        <span className={`text-sm ${theme.textSubtle}`}>- {screen.description}</span>
+                                        <Icon className="w-4 h-4 text-slate-600 dark:text-slate-400" />
+                                        <span className="font-medium text-slate-900 dark:text-white">{screen.name}</span>
+                                        <span className="text-sm text-slate-500 dark:text-slate-500">- {screen.description}</span>
                                     </div>
                                 </button>
                             );
@@ -391,80 +341,76 @@ export default function DebugIndexScreen() {
                 </div>
 
                 {/* Arquetipos de FALLO */}
-                <div className={`rounded-xl p-6 mb-6 border ${theme.bgCard} ${theme.border}`}>
-                    <h2 className={`text-sm font-bold uppercase tracking-wider mb-2 flex items-center gap-2 ${theme.textSubtle}`}>
+                <div className="rounded-xl p-6 mb-6 border bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50">
+                    <h2 className="text-sm font-bold uppercase tracking-wider mb-2 flex items-center gap-2 text-slate-500 dark:text-slate-500">
                         <AlertTriangle className="w-4 h-4 text-red-500" />
                         Arquetipos de Fallo (&lt;80%)
                     </h2>
-                    <p className={`text-xs mb-4 ${theme.textMuted}`}>
-                        Click para ver • Usa el switch en el header para cambiar entre Template A y B
+                    <p className="text-xs mb-4 text-slate-600 dark:text-slate-400">
+                        Click para ver LearningScreen
                     </p>
                     <div className="grid grid-cols-2 gap-3">
                         {Object.values(failureArchetypes).map((arch) => (
                             <button
                                 key={arch.id}
                                 onClick={() => handleArchetypeClick(arch.id)}
-                                className={`text-left p-4 rounded-lg border transition-all hover:-translate-y-0.5 hover:border-red-500/50 ${theme.bgCard} ${theme.border}`}
+                                className="text-left p-4 rounded-lg border transition-all hover:-translate-y-0.5 hover:border-red-500/50 bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50"
                             >
                                 <div className="flex items-center gap-2 mb-1">
                                     <span className="text-lg">{arch.emoji}</span>
-                                    <span className={`text-xs px-2 py-0.5 rounded ${
-                                        theme.isDark ? 'bg-red-500/20 text-red-400' : 'bg-red-100 text-red-700'
-                                    }`}>
+                                    <span className="text-xs px-2 py-0.5 rounded bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400">
                                         58%
                                     </span>
                                 </div>
-                                <h3 className={`font-bold ${theme.text}`}>{arch.title}</h3>
-                                <p className={`text-xs ${theme.textSubtle}`}>{arch.subtitle}</p>
+                                <h3 className="font-bold text-slate-900 dark:text-white">{arch.title}</h3>
+                                <p className="text-xs text-slate-500 dark:text-slate-500">{arch.subtitle}</p>
                             </button>
                         ))}
                     </div>
                 </div>
 
                 {/* Arquetipos de ÉXITO */}
-                <div className={`rounded-xl p-6 mb-6 border ${theme.bgCard} ${theme.border}`}>
-                    <h2 className={`text-sm font-bold uppercase tracking-wider mb-2 flex items-center gap-2 ${theme.textSubtle}`}>
+                <div className="rounded-xl p-6 mb-6 border bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50">
+                    <h2 className="text-sm font-bold uppercase tracking-wider mb-2 flex items-center gap-2 text-slate-500 dark:text-slate-500">
                         <Trophy className="w-4 h-4 text-emerald-500" />
                         Arquetipos de Éxito (≥80%)
                     </h2>
-                    <p className={`text-xs mb-4 ${theme.textMuted}`}>
-                        Click para ver • Usa el switch en el header para cambiar entre Template A y B
+                    <p className="text-xs mb-4 text-slate-600 dark:text-slate-400">
+                        Click para ver LearningScreen
                     </p>
                     <div className="grid grid-cols-3 gap-3">
                         {Object.values(successArchetypes).map((arch) => (
                             <button
                                 key={arch.id}
                                 onClick={() => handleArchetypeClick(arch.id)}
-                                className={`text-left p-4 rounded-lg border transition-all hover:-translate-y-0.5 hover:border-emerald-500/50 ${theme.bgCard} ${theme.border}`}
+                                className="text-left p-4 rounded-lg border transition-all hover:-translate-y-0.5 hover:border-emerald-500/50 bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50"
                             >
                                 <div className="flex items-center gap-2 mb-1">
                                     <span className="text-lg">{arch.emoji}</span>
-                                    <span className={`text-xs px-2 py-0.5 rounded ${
-                                        theme.isDark ? 'bg-emerald-500/20 text-emerald-400' : 'bg-emerald-100 text-emerald-700'
-                                    }`}>
+                                    <span className="text-xs px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400">
                                         85%
                                     </span>
                                 </div>
-                                <h3 className={`font-bold text-sm ${theme.text}`}>{arch.title}</h3>
-                                <p className={`text-xs ${theme.textSubtle}`}>{arch.subtitle}</p>
+                                <h3 className="font-bold text-sm text-slate-900 dark:text-white">{arch.title}</h3>
+                                <p className="text-xs text-slate-500 dark:text-slate-500">{arch.subtitle}</p>
                             </button>
                         ))}
                     </div>
                 </div>
 
                 {/* Links */}
-                <div className={`pt-6 border-t ${theme.border}`}>
+                <div className="pt-6 border-t border-slate-200 dark:border-slate-700/50">
                     <a
                         href="/debug"
-                        className={`p-4 rounded-lg border block transition-colors group ${theme.bgCard} ${theme.border} ${theme.bgCardHover}`}
+                        className="p-4 rounded-lg border block transition-colors group bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 hover:border-indigo-300 dark:hover:border-indigo-500/50"
                     >
                         <div className="flex items-center gap-3">
-                            <Layers className={`w-5 h-5 ${theme.textMuted} group-hover:text-indigo-500`} />
+                            <Layers className="w-5 h-5 text-slate-600 dark:text-slate-400 group-hover:text-indigo-500" />
                             <div>
-                                <h3 className={`font-bold group-hover:text-indigo-500 ${theme.text}`}>
+                                <h3 className="font-bold text-slate-900 dark:text-white group-hover:text-indigo-500">
                                     Questions Browser
                                 </h3>
-                                <p className={`text-sm ${theme.textSubtle}`}>
+                                <p className="text-sm text-slate-500 dark:text-slate-500">
                                     Ver todas las preguntas por bloque
                                 </p>
                             </div>

@@ -4,7 +4,7 @@ import { useSessionAnalysis } from '../hooks/useSessionAnalysis';
 import { IntroScreen } from './screens/IntroScreen';
 import { QuestionScreen } from './screens/QuestionScreen';
 import { ReviewScreen } from './screens/ReviewScreen';
-import { LearningScreenV2 } from './screens/LearningScreenV2';
+import { LearningScreen } from './screens/LearningScreen';
 import { CampaignCompleteScreen } from './screens/CampaignCompleteScreen';
 import { RoundTransitionScreen } from './screens/RoundTransitionScreen';
 
@@ -106,7 +106,7 @@ const PDAssessment = () => {
 
     case 'learning':
       return (
-        <LearningScreenV2
+        <LearningScreen
           analysis={sessionAnalysis}
           onBack={backToReview}
         />

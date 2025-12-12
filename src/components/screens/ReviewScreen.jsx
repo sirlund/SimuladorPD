@@ -1,7 +1,6 @@
 import { RefreshCw, Trophy, Target, Zap, Flame, Brain, ChevronDown, Check, X, TrendingUp, TrendingDown, BookOpen } from 'lucide-react';
 import { MarkdownText } from '../ui/MarkdownText';
 import { useState } from 'react';
-import { useTheme } from '../../context/ThemeContext';
 import { ThemeToggle } from '../ui/ThemeToggle';
 
 export const ReviewScreen = ({
@@ -14,7 +13,6 @@ export const ReviewScreen = ({
   const { totalScore, maxPossibleScore } = stats;
   const questionsAnswered = Object.keys(answers).length;
   const accuracy = maxPossibleScore > 0 ? Math.round((totalScore / maxPossibleScore) * 100) : 0;
-  const theme = useTheme();
 
   const [expandedQuestions, setExpandedQuestions] = useState({});
 
@@ -82,50 +80,42 @@ export const ReviewScreen = ({
   }
 
   const getScoreStyles = (score) => {
-    if (score === 5) return theme.isDark
-      ? { border: 'border-green-500/50', bg: 'bg-green-500/10', color: 'text-green-400' }
-      : { border: 'border-green-300', bg: 'bg-green-50', color: 'text-green-700' };
-    if (score === 3) return theme.isDark
-      ? { border: 'border-yellow-500/50', bg: 'bg-yellow-500/10', color: 'text-yellow-400' }
-      : { border: 'border-yellow-300', bg: 'bg-yellow-50', color: 'text-yellow-700' };
-    if (score === 1) return theme.isDark
-      ? { border: 'border-orange-500/50', bg: 'bg-orange-500/10', color: 'text-orange-400' }
-      : { border: 'border-orange-300', bg: 'bg-orange-50', color: 'text-orange-700' };
-    return theme.isDark
-      ? { border: 'border-red-500/50', bg: 'bg-red-500/10', color: 'text-red-400' }
-      : { border: 'border-red-300', bg: 'bg-red-50', color: 'text-red-700' };
+    if (score === 5) return { border: 'border-green-300 dark:border-green-500/50', bg: 'bg-green-50 dark:bg-green-500/10', color: 'text-green-700 dark:text-green-400' };
+    if (score === 3) return { border: 'border-yellow-300 dark:border-yellow-500/50', bg: 'bg-yellow-50 dark:bg-yellow-500/10', color: 'text-yellow-700 dark:text-yellow-400' };
+    if (score === 1) return { border: 'border-orange-300 dark:border-orange-500/50', bg: 'bg-orange-50 dark:bg-orange-500/10', color: 'text-orange-700 dark:text-orange-400' };
+    return { border: 'border-red-300 dark:border-red-500/50', bg: 'bg-red-50 dark:bg-red-500/10', color: 'text-red-700 dark:text-red-400' };
   };
 
   const distBars = [
-    { key: 'perfect', label: 'Lead', count: distribution.perfect, color: theme.isDark ? 'bg-green-500' : 'bg-green-500' },
-    { key: 'good', label: 'Ok', count: distribution.good, color: theme.isDark ? 'bg-yellow-500' : 'bg-yellow-500' },
-    { key: 'bad', label: 'Bad', count: distribution.bad, color: theme.isDark ? 'bg-orange-500' : 'bg-orange-500' },
-    { key: 'negative', label: 'Fail', count: distribution.negative, color: theme.isDark ? 'bg-red-500' : 'bg-red-500' },
+    { key: 'perfect', label: 'Lead', count: distribution.perfect, color: 'bg-green-500' },
+    { key: 'good', label: 'Ok', count: distribution.good, color: 'bg-yellow-500' },
+    { key: 'bad', label: 'Bad', count: distribution.bad, color: 'bg-orange-500' },
+    { key: 'negative', label: 'Fail', count: distribution.negative, color: 'bg-red-500' },
   ];
 
   return (
-    <div className={`min-h-screen font-sans ${theme.bg}`}>
+    <div className="min-h-screen font-sans bg-gradient-to-br from-slate-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900">
 
       {/* Header Summary */}
-      <div className={`sticky top-0 z-50 backdrop-blur-xl border-b ${theme.bgHeader} ${theme.border}`}>
+      <div className="sticky top-0 z-50 backdrop-blur-xl border-b bg-white/80 border-slate-200 dark:bg-slate-900/80 dark:border-slate-700/50">
         <div className="max-w-4xl mx-auto px-6 py-4">
 
           {/* Row 1: Level + Score + Toggle */}
           <div className="flex items-center justify-between gap-4 mb-4">
             <div className="flex items-center gap-3">
-              <div className={`p-2.5 rounded-xl ${theme.isDark ? 'bg-indigo-500/20 text-indigo-400' : 'bg-indigo-100 text-indigo-600'}`}>
+              <div className="p-2.5 rounded-xl bg-indigo-100 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400">
                 {levelIcon}
               </div>
               <div>
-                <h1 className={`text-xl font-bold ${theme.text}`}>{level}</h1>
-                <p className={`text-xs ${theme.textMuted}`}>{levelDesc}</p>
+                <h1 className="text-xl font-bold text-slate-900 dark:text-white">{level}</h1>
+                <p className="text-xs text-slate-600 dark:text-slate-400">{levelDesc}</p>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
               <div className="text-right">
-                <div className={`text-2xl font-black ${theme.text}`}>{accuracy}%</div>
-                <div className={`text-xs ${theme.textSubtle}`}>{totalScore}/{maxPossibleScore} pts</div>
+                <div className="text-2xl font-black text-slate-900 dark:text-white">{accuracy}%</div>
+                <div className="text-xs text-slate-500 dark:text-slate-500">{totalScore}/{maxPossibleScore} pts</div>
               </div>
               <ThemeToggle />
             </div>
@@ -146,16 +136,16 @@ export const ReviewScreen = ({
           {/* Row 3: Insights */}
           <div className="flex flex-wrap gap-4 text-xs">
             {/* Tip */}
-            <div className={`flex-1 min-w-[200px] p-2 rounded-lg ${theme.isDark ? 'bg-slate-800/50' : 'bg-slate-100'}`}>
-              <span className={theme.textSubtle}>💡 </span>
-              <span className={theme.textMuted}>{levelTip}</span>
+            <div className="flex-1 min-w-[200px] p-2 rounded-lg bg-slate-100 dark:bg-slate-800/50">
+              <span className="text-slate-500 dark:text-slate-500">💡 </span>
+              <span className="text-slate-600 dark:text-slate-400">{levelTip}</span>
             </div>
 
             {/* Strengths */}
             {strengths.length > 0 && (
-              <div className={`flex items-center gap-2 px-3 py-2 rounded-lg ${theme.isDark ? 'bg-green-500/10' : 'bg-green-50'}`}>
-                <TrendingUp className={`w-3 h-3 ${theme.isDark ? 'text-green-400' : 'text-green-600'}`} />
-                <span className={theme.isDark ? 'text-green-400' : 'text-green-700'}>
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-green-50 dark:bg-green-500/10">
+                <TrendingUp className="w-3 h-3 text-green-600 dark:text-green-400" />
+                <span className="text-green-700 dark:text-green-400">
                   {strengths.map(s => s.name).join(', ')}
                 </span>
               </div>
@@ -163,9 +153,9 @@ export const ReviewScreen = ({
 
             {/* Weaknesses */}
             {weaknesses.length > 0 && (
-              <div className={`flex items-center gap-2 px-3 py-2 rounded-lg ${theme.isDark ? 'bg-orange-500/10' : 'bg-orange-50'}`}>
-                <TrendingDown className={`w-3 h-3 ${theme.isDark ? 'text-orange-400' : 'text-orange-600'}`} />
-                <span className={theme.isDark ? 'text-orange-400' : 'text-orange-700'}>
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-orange-50 dark:bg-orange-500/10">
+                <TrendingDown className="w-3 h-3 text-orange-600 dark:text-orange-400" />
+                <span className="text-orange-700 dark:text-orange-400">
                   {weaknesses.map(w => w.name).join(', ')}
                 </span>
               </div>
@@ -196,68 +186,68 @@ export const ReviewScreen = ({
               {/* Header */}
               <button
                 onClick={() => toggleQuestion(q.id)}
-                className={`w-full text-left p-5 flex items-center gap-4 transition-colors ${theme.bgCardHover}`}
+                className="w-full text-left p-5 flex items-center gap-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50"
               >
                 <div className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
                   isPerfect
-                    ? theme.isDark ? 'bg-green-500/20' : 'bg-green-100'
-                    : theme.isDark ? 'bg-slate-700' : 'bg-slate-200'
+                    ? 'bg-green-100 dark:bg-green-500/20'
+                    : 'bg-slate-200 dark:bg-slate-700'
                 }`}>
                   {isPerfect ? (
-                    <Check className={`w-4 h-4 ${theme.isDark ? 'text-green-400' : 'text-green-600'}`} />
+                    <Check className="w-4 h-4 text-green-600 dark:text-green-400" />
                   ) : (
-                    <X className={`w-4 h-4 ${theme.textMuted}`} />
+                    <X className="w-4 h-4 text-slate-600 dark:text-slate-400" />
                   )}
                 </div>
 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-xs font-bold text-indigo-500">{q.displayId}</span>
-                    <span className={`text-xs ${theme.textSubtle}`}>{q.category}</span>
+                    <span className="text-xs text-slate-500 dark:text-slate-500">{q.category}</span>
                   </div>
-                  <p className={`text-sm truncate ${theme.isDark ? 'text-slate-300' : 'text-slate-700'}`}>{q.scenario}</p>
+                  <p className="text-sm truncate text-slate-700 dark:text-slate-300">{q.scenario}</p>
                 </div>
 
                 <div className={`flex-shrink-0 px-3 py-1 rounded-lg text-sm font-bold ${styles.color}`}>
                   {answerData.score > 0 ? '+' : ''}{answerData.score}
                 </div>
 
-                <ChevronDown className={`w-5 h-5 transition-transform ${theme.textSubtle} ${isExpanded ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-5 h-5 transition-transform text-slate-500 dark:text-slate-500 ${isExpanded ? 'rotate-180' : ''}`} />
               </button>
 
               {/* Expanded */}
               {isExpanded && (
-                <div className={`px-5 pb-5 space-y-4 border-t ${theme.border}`}>
+                <div className="px-5 pb-5 space-y-4 border-t border-slate-200 dark:border-slate-700/50">
                   <div className="pt-4">
-                    <p className={`leading-relaxed ${theme.isDark ? 'text-slate-300' : 'text-slate-700'}`}>{q.scenario}</p>
-                    <p className={`font-medium mt-3 ${theme.text}`}>{q.question}</p>
+                    <p className="leading-relaxed text-slate-700 dark:text-slate-300">{q.scenario}</p>
+                    <p className="font-medium mt-3 text-slate-900 dark:text-white">{q.question}</p>
                   </div>
 
                   <div className="grid gap-3">
-                    <div className={`p-4 rounded-lg border ${!isPerfect ? (theme.isDark ? 'border-red-500/30 bg-red-500/5' : 'border-red-200 bg-red-50') : (theme.isDark ? 'border-green-500/30 bg-green-500/5' : 'border-green-200 bg-green-50')}`}>
+                    <div className={`p-4 rounded-lg border ${!isPerfect ? 'border-red-200 bg-red-50 dark:border-red-500/30 dark:bg-red-500/5' : 'border-green-200 bg-green-50 dark:border-green-500/30 dark:bg-green-500/5'}`}>
                       <div className="flex items-center gap-2 mb-2">
-                        <span className={`text-xs font-bold ${theme.textMuted}`}>TU RESPUESTA</span>
-                        <span className={`text-xs font-bold px-2 py-0.5 rounded ${isPerfect ? (theme.isDark ? 'bg-green-500/20 text-green-400' : 'bg-green-100 text-green-700') : (theme.isDark ? 'bg-red-500/20 text-red-400' : 'bg-red-100 text-red-700')}`}>
+                        <span className="text-xs font-bold text-slate-600 dark:text-slate-400">TU RESPUESTA</span>
+                        <span className={`text-xs font-bold px-2 py-0.5 rounded ${isPerfect ? 'bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400' : 'bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400'}`}>
                           {answerData.score > 0 ? '+' : ''}{answerData.score} pts
                         </span>
                       </div>
-                      <MarkdownText className={`text-sm ${theme.isDark ? 'text-slate-300' : 'text-slate-700'}`}>{selectedOption?.text}</MarkdownText>
+                      <MarkdownText className="text-sm text-slate-700 dark:text-slate-300">{selectedOption?.text}</MarkdownText>
                     </div>
 
                     {!isPerfect && bestOption && (
-                      <div className={`p-4 rounded-lg border ${theme.isDark ? 'border-green-500/30 bg-green-500/5' : 'border-green-200 bg-green-50'}`}>
+                      <div className="p-4 rounded-lg border border-green-200 bg-green-50 dark:border-green-500/30 dark:bg-green-500/5">
                         <div className="flex items-center gap-2 mb-2">
-                          <span className={`text-xs font-bold ${theme.textMuted}`}>MEJOR OPCIÓN</span>
-                          <span className={`text-xs font-bold px-2 py-0.5 rounded ${theme.isDark ? 'bg-green-500/20 text-green-400' : 'bg-green-100 text-green-700'}`}>+5 pts</span>
+                          <span className="text-xs font-bold text-slate-600 dark:text-slate-400">MEJOR OPCIÓN</span>
+                          <span className="text-xs font-bold px-2 py-0.5 rounded bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400">+5 pts</span>
                         </div>
-                        <MarkdownText className={`text-sm ${theme.isDark ? 'text-slate-300' : 'text-slate-700'}`}>{bestOption.text}</MarkdownText>
+                        <MarkdownText className="text-sm text-slate-700 dark:text-slate-300">{bestOption.text}</MarkdownText>
                       </div>
                     )}
                   </div>
 
-                  <div className={`p-4 rounded-lg border ${theme.isDark ? 'bg-slate-800/50 border-slate-700/50' : 'bg-slate-50 border-slate-200'}`}>
+                  <div className="p-4 rounded-lg border bg-slate-50 border-slate-200 dark:bg-slate-800/50 dark:border-slate-700/50">
                     <div className="text-xs font-bold text-indigo-500 mb-2">EXPLICACIÓN</div>
-                    <MarkdownText className={`text-sm leading-relaxed ${theme.textMuted}`}>{q.explanation}</MarkdownText>
+                    <MarkdownText className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">{q.explanation}</MarkdownText>
                   </div>
                 </div>
               )}
@@ -268,18 +258,18 @@ export const ReviewScreen = ({
       </div>
 
       {/* Footer */}
-      <div className={`sticky bottom-0 backdrop-blur-xl border-t ${theme.bgHeader} ${theme.border}`}>
+      <div className="sticky bottom-0 backdrop-blur-xl border-t bg-white/80 border-slate-200 dark:bg-slate-900/80 dark:border-slate-700/50">
         <div className="max-w-4xl mx-auto px-6 py-4 flex justify-center gap-3">
           <button
             onClick={onViewLearning}
-            className={`px-6 py-3 font-bold rounded-xl transition-all flex items-center gap-2 ${theme.btnPrimary}`}
+            className="px-6 py-3 font-bold rounded-xl transition-all flex items-center gap-2 bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100"
           >
             <BookOpen className="w-4 h-4" />
             Plan de Desarrollo
           </button>
           <button
             onClick={onContinue}
-            className={`px-6 py-3 font-bold rounded-xl transition-all flex items-center gap-2 border ${theme.btnSecondary}`}
+            className="px-6 py-3 font-bold rounded-xl transition-all flex items-center gap-2 border bg-white text-slate-700 border-slate-300 hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-700 dark:hover:text-white"
           >
             <RefreshCw className="w-4 h-4" />
             Reiniciar
