@@ -12,7 +12,8 @@ import {
 } from '../data/learning';
 import {
   generateFailureEvidence,
-  generateSuccessEvidence
+  generateSuccessEvidence,
+  categoryBusinessImpact
 } from '../data/learning/questionArchetypeMapping';
 
 /**
@@ -240,20 +241,24 @@ export const useSessionAnalysis = (answers, activeQuestions) => {
       .filter(q => q.score <= 1)
       .slice(0, 3)
       .map(q => {
-        const consequenceMap = {
-          'Gestión de Crisis & Liderazgo': { icon: '💀', type: 'Crisis' },
-          'Producto vs Ventas': { icon: '💸', type: 'Revenue' },
-          'Arquitectura de Sistemas': { icon: '📉', type: 'Deuda Técnica' },
-          'Manage Up': { icon: '🔥', type: 'Credibilidad' },
-          'Estrategia de Producto': { icon: '🎯', type: 'Roadmap' },
-          'Gestión de Stakeholders': { icon: '🤝', type: 'Relaciones' },
-          'Community Management': { icon: '📱', type: 'Reputación' }
+        const answer = answers[q.id];
+        const impact = categoryBusinessImpact[q.category] || {
+          emoji: '💸',
+          impactType: 'Impacto',
+          costRange: ['$50K', '$150K'],
+          consequence: 'en costos evitables'
         };
-        const consequence = consequenceMap[q.category] || { icon: '⚠️', type: 'Impacto' };
         return {
           id: q.displayId,
-          scenario: q.scenario.substring(0, 80) + '...',
-          consequence: `${consequence.icon} **${consequence.type}:** Error en ${q.category}`,
+          questionId: q.displayId,
+          selectedOptionId: answer?.selectedOption,
+          category: q.category,
+          impact: {
+            emoji: impact.emoji,
+            type: impact.impactType,
+            cost: impact.costRange[Math.floor(Math.random() * 2)],
+            consequence: impact.consequence
+          },
           score: q.score
         };
       });

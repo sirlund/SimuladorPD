@@ -5,7 +5,7 @@ Simulador interactivo de evaluación para Product Design Leaders. Una aplicació
 ## 🚀 Características
 
 - ✅ **164 Escenarios Complejos**: Preguntas basadas en situaciones reales de liderazgo (startup y enterprise)
-- 🔄 **Sistema de Rondas**: 3 rondas de 5 minutos cada una
+- 🔄 **Sistema de Rondas**: 3 rondas de 3 minutos cada una
 - 🏆 **Scoring de 4 Niveles**: Lead (5), Mid (3), Junior (1), Tóxico (-1)
 - 💾 **Persistencia de Campaña**: Progreso guardado en localStorage - las preguntas no se repiten
 - 🎨 **UI/UX Profesional**: Diseñado con Tailwind CSS y dark mode
@@ -94,7 +94,7 @@ src/
 ### Flujo del Assessment
 
 1. **Intro**: Pantalla de bienvenida con progreso de campaña (preguntas restantes)
-2. **Ronda 1**: 5 minutos para responder el primer batch de preguntas
+2. **Ronda 1**: 3 minutos para responder el primer batch de preguntas
 3. **Transición**: Pantalla de transición entre rondas
 4. **Ronda 2-3**: Continúan con nuevos batches de preguntas
 5. **Review**: Análisis detallado con puntuación, precisión y feedback por pregunta
@@ -134,8 +134,8 @@ Ver [docs/SCORING_GUIDELINES.md](docs/SCORING_GUIDELINES.md) para más detalles.
 ### Constantes del Timer
 
 Puedes modificar las constantes en:
-- `src/hooks/useGameState.js` - `ROUND_TIME_SECONDS = 5 * 60` (5 minutos por ronda)
-- `src/utils/constants.js` - `URGENT_THRESHOLD = 150` (alerta visual a 2.5 minutos)
+- `src/hooks/useGameState.js` - `ROUND_TIME_SECONDS = 3 * 60` (3 minutos por ronda)
+- `src/utils/constants.js` - `URGENT_THRESHOLD = 60` (alerta visual en último minuto)
 
 ### Sistema de Rondas
 
@@ -212,7 +212,7 @@ Desarrollado para evaluar habilidades de liderazgo en Product Design.
 #### 🎯 Cambios Mayores
 - **Pool de preguntas expandido**: 164 preguntas totales en 6 bloques temáticos
 - **Sistema de puntuación rediseñado**: Scoring numérico con 4 niveles (5, 3, 1, -1)
-- **Sistema de rondas**: 3 rondas de 5 minutos cada una
+- **Sistema de rondas**: 3 rondas de 3 minutos cada una
 
 #### ✨ Nuevas Características
 - **Leadership Maturity Index**: Sistema de arquetipos (éxito/fallo)

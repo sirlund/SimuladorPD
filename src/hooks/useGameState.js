@@ -20,7 +20,7 @@ export const useGameState = () => {
   const [totalScore, setTotalScore] = useState(0);
   const [maxPossibleScore, setMaxPossibleScore] = useState(0);
 
-  const ROUND_TIME_SECONDS = 5 * 60; // 5 minutos por ronda
+  const ROUND_TIME_SECONDS = 3 * 60; // 3 minutos por ronda
 
   // Iniciar nueva sesión de assessment (3 rondas)
   const startAssessment = useCallback(() => {

@@ -43,7 +43,7 @@ export const RoundTransitionScreen = ({
                         Ronda {round + 1} de {totalRounds}
                     </div>
                     <div className="text-slate-500 dark:text-slate-500">
-                        5 minutos • Nuevos escenarios
+                        3 minutos • Nuevos escenarios
                     </div>
                 </div>
 

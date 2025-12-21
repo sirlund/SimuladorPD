@@ -122,6 +122,30 @@ export const categoryBusinessImpact = {
     impactType: 'Mantenimiento',
     costRange: ['$100K/año', '$300K/año'],
     consequence: 'en costo de mantenimiento evitable'
+  },
+  'User Research': {
+    emoji: '🔬',
+    impactType: 'Validación',
+    costRange: ['$50K', '$200K'],
+    consequence: 'en features construidos sin validar'
+  },
+  'Innovación & Ética': {
+    emoji: '⚖️',
+    impactType: 'Trust',
+    costRange: ['-15% NPS', '-40% NPS'],
+    consequence: 'de confianza de usuarios perdida'
+  },
+  'Gestión de Roadmap': {
+    emoji: '🗺️',
+    impactType: 'Scope',
+    costRange: ['2 sprints', '6 sprints'],
+    consequence: 'de retraso por scope creep'
+  },
+  'Compliance & Accesibilidad': {
+    emoji: '♿',
+    impactType: 'Legal',
+    costRange: ['$50K', '$500K'],
+    consequence: 'en multas y demandas potenciales'
   }
 };
 

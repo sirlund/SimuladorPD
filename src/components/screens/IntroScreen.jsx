@@ -47,7 +47,7 @@ export const IntroScreen = ({ stats, onStart, onReset }) => {
 
         {/* Instructions - Minimal */}
         <div className="text-sm text-slate-500 dark:text-slate-500">
-          <p>12 minutos por ronda • Solo preguntas nuevas • Sin segunda oportunidad</p>
+          <p>3 minutos por ronda • Solo preguntas nuevas • Sin segunda oportunidad</p>
         </div>
 
         {/* Actions */}
