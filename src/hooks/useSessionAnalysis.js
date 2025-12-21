@@ -220,10 +220,16 @@ export const useSessionAnalysis = (answers, activeQuestions) => {
     }
 
     // === 11. DIAGNÓSTICO V2 (Archetype System) ===
-    // Preguntas acertadas para arquetipos de éxito
+    // Preguntas acertadas para arquetipos de éxito (con options originales)
     const succeededQuestions = activeQuestions.filter(q => {
       const ans = answers[q.id];
       return ans && ans.score === 5;
+    });
+
+    // Preguntas fallidas con options originales (para generateFailureEvidence)
+    const failedQuestionsWithOptions = activeQuestions.filter(q => {
+      const ans = answers[q.id];
+      return ans && ans.score < 5;
     });
 
     // Seleccionar arquetipo basado en score (>=80% = éxito, <80% = fallo)
@@ -265,9 +271,10 @@ export const useSessionAnalysis = (answers, activeQuestions) => {
 
     // === 12. EVIDENCIA DINÁMICA (V2.1) ===
     // Genera evidencia basada en las preguntas reales de la sesión
+    // Usa failedQuestionsWithOptions para tener acceso a q.options y obtener decisionSummary
     const dynamicEvidence = dominantBias.type === 'success'
       ? generateSuccessEvidence(succeededQuestions, answers, dominantBias.id, 3)
-      : generateFailureEvidence(failedQuestions, answers, dominantBias.id, 3);
+      : generateFailureEvidence(failedQuestionsWithOptions, answers, dominantBias.id, 3);
 
     const diagnosis = {
       dominantBias,
