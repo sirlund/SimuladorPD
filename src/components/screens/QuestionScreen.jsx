@@ -1,18 +1,18 @@
 import { Clock } from 'lucide-react';
 import { MarkdownText } from '../ui/MarkdownText';
 import { ThemeToggle } from '../ui/ThemeToggle';
+import { GAME_CONFIG } from '../../utils/constants';
 
 export const QuestionScreen = ({
   question,
-  currentIndex,
-  totalQuestions,
   timeLeft,
   formatTime,
   onAnswer,
   round,
   totalRounds
 }) => {
-  const progress = ((currentIndex) / totalQuestions) * 100;
+  // Progress basado en tiempo restante (más presión visual)
+  const timeProgress = (timeLeft / GAME_CONFIG.roundTimeSeconds) * 100;
   const isUrgent = timeLeft < 60;
 
   return (
@@ -31,20 +31,19 @@ export const QuestionScreen = ({
         <div className="max-w-4xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between gap-6">
 
-            {/* Progress */}
+            {/* Progress - basado en tiempo */}
             <div className="flex-1">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-medium text-slate-600 dark:text-slate-400">
-                  Ronda {round}/{totalRounds}
-                </span>
-                <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                  {currentIndex + 1} / {totalQuestions}
-                </span>
-              </div>
+              {totalRounds > 1 && (
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-medium text-slate-600 dark:text-slate-400">
+                    Ronda {round}/{totalRounds}
+                  </span>
+                </div>
+              )}
               <div className="h-1.5 rounded-full overflow-hidden bg-slate-200 dark:bg-slate-700">
                 <div
-                  className={`h-full rounded-full transition-all duration-300 ${isUrgent ? 'bg-red-500' : 'bg-gradient-to-r from-indigo-500 to-purple-500'}`}
-                  style={{ width: `${progress}%` }}
+                  className={`h-full rounded-full transition-all duration-1000 ${isUrgent ? 'bg-red-500' : 'bg-gradient-to-r from-indigo-500 to-purple-500'}`}
+                  style={{ width: `${timeProgress}%` }}
                 />
               </div>
             </div>

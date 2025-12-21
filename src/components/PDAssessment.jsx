@@ -7,6 +7,7 @@ import { ReviewScreen } from './screens/ReviewScreen';
 import { LearningScreen } from './screens/LearningScreen';
 import { CampaignCompleteScreen } from './screens/CampaignCompleteScreen';
 import { RoundTransitionScreen } from './screens/RoundTransitionScreen';
+import { GAME_CONFIG } from '../utils/constants';
 
 /**
  * Componente principal del Assessment
@@ -74,13 +75,11 @@ const PDAssessment = () => {
       return (
         <QuestionScreen
           question={currentQuestion}
-          currentIndex={currentQuestionIndex}
-          totalQuestions={activeQuestions.length}
           timeLeft={timeLeft}
           formatTime={formatTime}
           onAnswer={handleAnswer}
           round={round}
-          totalRounds={3}
+          totalRounds={GAME_CONFIG.totalRounds}
         />
       );
 
@@ -88,7 +87,7 @@ const PDAssessment = () => {
       return (
         <RoundTransitionScreen
           round={round}
-          totalRounds={3}
+          totalRounds={GAME_CONFIG.totalRounds}
           onNextRound={handleNextRound}
         />
       );
