@@ -4,12 +4,25 @@ import { getQuestions } from '../data/getQuestions';
 import { GAME_CONFIG } from '../utils/constants';
 
 /**
+ * Detectar modo de juego desde URL (?mode=thaloz)
+ */
+const getGameModeFromURL = () => {
+  const params = new URLSearchParams(window.location.search);
+  const mode = params.get('mode');
+  return mode === 'thaloz' ? 'thaloz' : 'base';
+};
+
+/**
  * Hook personalizado para manejar todo el estado del juego
  * @returns {Object} - Estado y funciones del juego
  */
 export const useGameState = () => {
-  // Persistencia de campaña en localStorage
-  const [burnedQuestionIds, setBurnedQuestionIds] = useLocalStorage('pd_burned_questions', []);
+  // Detectar modo de juego
+  const [gameMode] = useState(getGameModeFromURL);
+
+  // Persistencia de campaña en localStorage (separada por modo)
+  const storageKey = gameMode === 'thaloz' ? 'pd_burned_questions_thaloz' : 'pd_burned_questions';
+  const [burnedQuestionIds, setBurnedQuestionIds] = useLocalStorage(storageKey, []);
 
   // Estados del juego
   const [gameState, setGameState] = useState('intro'); // intro | test | round_transition | review | learning | campaign_complete
@@ -28,7 +41,8 @@ export const useGameState = () => {
     // 1. Obtener todas las preguntas disponibles (no quemadas)
     const fullPool = getQuestions({
       shuffleOptions: true,
-      shuffleQuestions: true
+      shuffleQuestions: true,
+      pack: gameMode
     });
 
     const availableQuestions = fullPool.filter(q => !burnedQuestionIds.includes(q.id));
@@ -67,7 +81,7 @@ export const useGameState = () => {
     setTotalScore(0);
     setMaxPossibleScore(0);
     setGameState('test');
-  }, [burnedQuestionIds]);
+  }, [burnedQuestionIds, gameMode]);
 
   // Avanzar a la siguiente ronda
   const nextRound = useCallback(() => {
@@ -166,7 +180,7 @@ export const useGameState = () => {
     const answeredCount = Object.keys(answers).length;
 
     // Total de preguntas en toda la campaña (burned + disponibles)
-    const fullPool = getQuestions({ shuffleOptions: false, shuffleQuestions: false });
+    const fullPool = getQuestions({ shuffleOptions: false, shuffleQuestions: false, pack: gameMode });
     const totalCampaignQuestions = fullPool.length;
     const remainingQuestions = totalCampaignQuestions - burnedQuestionIds.length;
     const progressPercent = totalCampaignQuestions > 0
@@ -186,7 +200,7 @@ export const useGameState = () => {
       currentRound: round,
       totalRounds: Object.keys(roundBatches).length
     };
-  }, [roundBatches, answers, totalScore, maxPossibleScore, round, burnedQuestionIds]);
+  }, [roundBatches, answers, totalScore, maxPossibleScore, round, burnedQuestionIds, gameMode]);
 
   // URL Sync
   useEffect(() => {
@@ -200,6 +214,7 @@ export const useGameState = () => {
 
   return {
     gameState,
+    gameMode,
     activeQuestions,
     currentQuestionIndex,
     answers,

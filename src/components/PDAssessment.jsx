@@ -17,6 +17,7 @@ const PDAssessment = () => {
   // Custom hook de gestión de estado del juego
   const {
     gameState,
+    gameMode,
     activeQuestions,
     currentQuestionIndex,
     answers,
@@ -67,6 +68,7 @@ const PDAssessment = () => {
           stats={stats}
           onStart={handleStart}
           onReset={resetCampaign}
+          gameMode={gameMode}
         />
       );
 

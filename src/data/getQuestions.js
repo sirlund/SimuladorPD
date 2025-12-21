@@ -21,11 +21,12 @@ const shuffleQuestionOptions = (question) => {
 /**
  * Función pública mejorada con opciones de configuración
  * Por defecto mezcla las opciones para romper el patrón detectado
- * 
+ *
  * @param {Object} options - Opciones de configuración
- * @param {boolean} options.shuffleOptions - Mezclar opciones A/B/C (default: true) 
+ * @param {boolean} options.shuffleOptions - Mezclar opciones A/B/C (default: true)
  * @param {boolean} options.shuffleQuestions - Mezclar orden de preguntas (default: false)
  * @param {string} options.category - Filtrar por categoría
+ * @param {string} options.pack - Pack de preguntas: 'base', 'thaloz', or 'all' (default: 'base')
  * @param {number} options.limit - Limitar número de preguntas
  * @returns {Array} Array de preguntas procesadas
  */
@@ -34,10 +35,11 @@ export const getQuestions = (options = {}) => {
         shuffleOptions = true,  // ← Por defecto TRUE para romper patrón
         shuffleQuestions = false,
         category = 'all',
+        pack = 'base',  // ← Pack de preguntas
         limit = null
     } = options;
 
-    let pool = getOriginalPool().map((q) => ({
+    let pool = getOriginalPool({ pack }).map((q) => ({
         ...q,
         // displayId ya viene asignado desde index.js (STR-01, RES-01, etc)
     }));

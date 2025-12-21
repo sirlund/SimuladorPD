@@ -1,11 +1,33 @@
-import { Play, RotateCcw, Zap } from 'lucide-react';
+import { Play, RotateCcw, Zap, Sparkles } from 'lucide-react';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { GAME_CONFIG } from '../../utils/constants';
 
-export const IntroScreen = ({ stats, onStart, onReset }) => {
+// Configuración de modos de juego
+const GAME_MODES = {
+  base: {
+    badge: 'Brutal Mode',
+    icon: Zap,
+    title: 'Product Lead',
+    subtitle: 'Simulador de Decisiones Estratégicas',
+    badgeClass: 'bg-indigo-100 border-indigo-200 text-indigo-600 dark:bg-indigo-500/10 dark:border-indigo-500/20 dark:text-indigo-400'
+  },
+  thaloz: {
+    badge: 'Thaloz Expansion',
+    icon: Sparkles,
+    title: 'Thaloz Challenge',
+    subtitle: '5 escenarios exclusivos de UX Ops',
+    badgeClass: 'bg-emerald-100 border-emerald-200 text-emerald-600 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400'
+  }
+};
+
+export const IntroScreen = ({ stats, onStart, onReset, gameMode = 'base' }) => {
   const { totalQuestions, remainingQuestions, progressPercent } = stats;
   const hasStarted = progressPercent > 0;
   const completed = totalQuestions - remainingQuestions;
+
+  // Obtener configuración del modo actual
+  const modeConfig = GAME_MODES[gameMode] || GAME_MODES.base;
+  const BadgeIcon = modeConfig.icon;
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 p-6 font-sans">
@@ -18,15 +40,15 @@ export const IntroScreen = ({ stats, onStart, onReset }) => {
 
         {/* Logo/Title */}
         <div className="space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-indigo-100 border border-indigo-200 text-indigo-600 dark:bg-indigo-500/10 dark:border-indigo-500/20 dark:text-indigo-400">
-            <Zap className="w-4 h-4" />
-            Brutal Mode
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border ${modeConfig.badgeClass}`}>
+            <BadgeIcon className="w-4 h-4" />
+            {modeConfig.badge}
           </div>
           <h1 className="text-5xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white">
-            Product Lead
+            {modeConfig.title}
           </h1>
           <p className="text-slate-600 dark:text-slate-400">
-            Simulador de Decisiones Estratégicas
+            {modeConfig.subtitle}
           </p>
         </div>
 
