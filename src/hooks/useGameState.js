@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 import { getQuestions } from '../data/getQuestions';
+import { GAME_CONFIG } from '../utils/constants';
 
 /**
  * Hook personalizado para manejar todo el estado del juego
@@ -20,7 +21,7 @@ export const useGameState = () => {
   const [totalScore, setTotalScore] = useState(0);
   const [maxPossibleScore, setMaxPossibleScore] = useState(0);
 
-  const ROUND_TIME_SECONDS = 3 * 60; // 3 minutos por ronda
+  const ROUND_TIME_SECONDS = GAME_CONFIG.roundTimeSeconds;
 
   // Iniciar nueva sesión de assessment (3 rondas)
   const startAssessment = useCallback(() => {
@@ -38,23 +39,25 @@ export const useGameState = () => {
       return;
     }
 
-    // 2. Dividir en 3 lotes (Batches)
-    // Intentamos hacer 3 rondas equitativas. Si hay pocas preguntas, se ajusta.
+    // 2. Dividir en N lotes (Batches) según GAME_CONFIG.totalRounds
     const totalAvailable = availableQuestions.length;
-    const batchSize = Math.ceil(totalAvailable / 3);
+    const numRounds = GAME_CONFIG.totalRounds;
+    const batchSize = Math.ceil(totalAvailable / numRounds);
 
-    const batches = {
-      1: availableQuestions.slice(0, batchSize),
-      2: availableQuestions.slice(batchSize, batchSize * 2),
-      3: availableQuestions.slice(batchSize * 2, batchSize * 3)
-    };
+    const batches = {};
+    for (let i = 0; i < numRounds; i++) {
+      const start = i * batchSize;
+      const end = start + batchSize;
+      batches[i + 1] = availableQuestions.slice(start, end);
+    }
 
-    // Filtrar batches vacíos (por si quedan menos de 3 rondas)
+    // Filtrar batches vacíos (por si quedan menos preguntas que rondas)
     const validBatches = {};
-    let validRoundCount = 0;
-    if (batches[1].length > 0) { validBatches[1] = batches[1]; validRoundCount++; }
-    if (batches[2].length > 0) { validBatches[2] = batches[2]; validRoundCount++; }
-    if (batches[3].length > 0) { validBatches[3] = batches[3]; validRoundCount++; }
+    Object.entries(batches).forEach(([roundNum, questions]) => {
+      if (questions.length > 0) {
+        validBatches[parseInt(roundNum)] = questions;
+      }
+    });
 
     setRoundBatches(validBatches);
     setRound(1);

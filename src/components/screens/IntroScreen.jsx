@@ -1,5 +1,6 @@
 import { Play, RotateCcw, Zap } from 'lucide-react';
 import { ThemeToggle } from '../ui/ThemeToggle';
+import { GAME_CONFIG } from '../../utils/constants';
 
 export const IntroScreen = ({ stats, onStart, onReset }) => {
   const { totalQuestions, remainingQuestions, progressPercent } = stats;
@@ -47,7 +48,12 @@ export const IntroScreen = ({ stats, onStart, onReset }) => {
 
         {/* Instructions - Minimal */}
         <div className="text-sm text-slate-500 dark:text-slate-500">
-          <p>3 minutos por ronda • Solo preguntas nuevas • Sin segunda oportunidad</p>
+          <p>
+            {GAME_CONFIG.totalRounds === 1
+              ? `${Math.floor(GAME_CONFIG.roundTimeSeconds / 60)} minutos`
+              : `${GAME_CONFIG.totalRounds} rondas de ${Math.floor(GAME_CONFIG.roundTimeSeconds / 60)} minutos`
+            } • Solo preguntas nuevas • Sin segunda oportunidad
+          </p>
         </div>
 
         {/* Actions */}
