@@ -1,15 +1,15 @@
 # 🎯 SimuladorPD - Assessment de Liderazgo en Product Design
 
-Simulador interactivo de evaluación para Product Design Leaders. Una aplicación de assessment con 130 escenarios realistas de liderazgo, gestión de equipos, estrategia de producto y toma de decisiones difíciles bajo presión.
+Simulador interactivo de evaluación para Product Design Leaders. Una aplicación de assessment con 164 escenarios realistas de liderazgo, gestión de equipos, estrategia de producto y toma de decisiones difíciles bajo presión.
 
 ## 🚀 Características
 
-- ✅ **130 Escenarios Complejos**: Preguntas basadas en situaciones reales de liderazgo (startup y enterprise)
+- ✅ **164 Escenarios Complejos**: Preguntas basadas en situaciones reales de liderazgo (startup y enterprise)
 - 🔄 **Sistema de Rondas**: 3 rondas de 5 minutos cada una
 - 🏆 **Scoring de 4 Niveles**: Lead (5), Mid (3), Junior (1), Tóxico (-1)
 - 💾 **Persistencia de Campaña**: Progreso guardado en localStorage - las preguntas no se repiten
-- 🎨 **UI/UX Profesional**: Diseñado con Tailwind CSS
-- 📊 **Análisis Detallado**: Puntos totales, precisión y feedback por pregunta
+- 🎨 **UI/UX Profesional**: Diseñado con Tailwind CSS y dark mode
+- 📊 **Leadership Maturity Index**: Análisis de arquetipos con evidencia de decisiones
 - 🏗️ **Arquitectura Modular**: Hooks personalizados y componentes reutilizables
 - 📚 **6 Bloques Temáticos**: Strategy, Research, Metrics, Mobile, Culture, Innovation
 
@@ -43,35 +43,45 @@ npm run preview
 src/
 ├── components/
 │   ├── PDAssessment.jsx            # Componente principal
-│   ├── screens/                     # Pantallas del juego (6)
+│   ├── screens/                     # Pantallas del flujo
 │   │   ├── IntroScreen.jsx
 │   │   ├── QuestionScreen.jsx
 │   │   ├── RoundTransitionScreen.jsx
 │   │   ├── ReviewScreen.jsx
-│   │   └── CampaignCompleteScreen.jsx
-│   ├── game/                        # Componentes de juego
-│   │   ├── OptionButton.jsx
-│   │   ├── QuestionCard.jsx
-│   │   └── ScoreBreakdown.jsx
+│   │   ├── CampaignCompleteScreen.jsx
+│   │   ├── LearningScreen.jsx      # Análisis con Evidence Cards
+│   │   ├── DebugScreen.jsx         # Debug de preguntas
+│   │   └── DebugIndexScreen.jsx    # Índice de debug por arquetipo
 │   └── ui/                          # Componentes reutilizables
 │       ├── ProgressBar.jsx
 │       ├── Timer.jsx
-│       └── MarkdownText.jsx
+│       ├── MarkdownText.jsx
+│       └── ThemeToggle.jsx
 ├── hooks/                           # Custom hooks
 │   ├── useGameState.js             # Lógica del juego
 │   ├── useTimer.js                 # Lógica del timer
-│   └── useLocalStorage.js          # Persistencia
+│   ├── useLocalStorage.js          # Persistencia
+│   └── useSessionAnalysis.js       # Análisis de sesión y arquetipos
+├── context/
+│   └── ThemeContext.jsx            # Dark/Light mode
 ├── data/
-│   └── questions/                   # Sistema de preguntas
-│       ├── blocks/                  # 6 bloques temáticos (130 preguntas)
-│       │   ├── 01-strategy.jsx     # 36 preguntas
-│       │   ├── 02-research.jsx     # 24 preguntas
-│       │   ├── 03-metrics.jsx      # 18 preguntas
-│       │   ├── 04-mobile.jsx       # 18 preguntas
-│       │   ├── 05-culture.jsx      # 16 preguntas
-│       │   └── 06-innovation.jsx   # 18 preguntas
-│       ├── index.js                 # Agregador de bloques
-│       └── getQuestions.js          # API de acceso
+│   ├── questions/                   # Sistema de preguntas
+│   │   ├── blocks/                  # 6 bloques temáticos (164 preguntas)
+│   │   │   ├── 01-strategy.jsx     # 31 preguntas
+│   │   │   ├── 02-research.jsx     # 26 preguntas
+│   │   │   ├── 03-metrics.jsx      # 26 preguntas
+│   │   │   ├── 04-mobile.jsx       # 26 preguntas
+│   │   │   ├── 05-culture.jsx      # 28 preguntas
+│   │   │   └── 06-innovation.jsx   # 27 preguntas
+│   │   └── index.js                 # Agregador de bloques
+│   ├── learning/                    # Sistema de arquetipos y diagnóstico
+│   │   ├── archetypes.js           # Definición de arquetipos (éxito/fallo)
+│   │   ├── diagnoses.js            # Lógica de diagnóstico
+│   │   ├── questionArchetypeMapping.js  # Generadores de evidencia
+│   │   ├── sniperResources.js      # Recursos por arquetipo
+│   │   ├── mondayMissions.js       # Misiones semanales
+│   │   └── index.js
+│   └── getQuestions.js              # API de acceso
 ├── utils/
 │   └── constants.js                 # Constantes globales
 ├── App.jsx
@@ -88,7 +98,7 @@ src/
 3. **Transición**: Pantalla de transición entre rondas
 4. **Ronda 2-3**: Continúan con nuevos batches de preguntas
 5. **Review**: Análisis detallado con puntuación, precisión y feedback por pregunta
-6. **Campaña**: Las preguntas usadas se "queman" y no se repiten hasta completar las 130
+6. **Campaña**: Las preguntas usadas se "queman" y no se repiten hasta completar las 164
 
 ### Estados del Juego
 
@@ -144,23 +154,26 @@ Para documentación completa del proyecto, consulta:
 
 ### Agregar nuevas preguntas
 
-Edita `src/data/questionPool.js` y añade nuevos objetos al array:
+Edita los archivos en `src/data/questions/blocks/` y añade nuevos objetos al array:
 
 ```javascript
 {
   id: 'unique_id',
+  displayId: 'STR-99',
   category: "Categoría",
   icon: <IconComponent />,
   scenario: "Descripción del escenario...",
   question: "¿Qué harías?",
   options: [
-    { id: 'A', text: "Opción A", score: 5, type: "Perfecto" },
-    { id: 'B', text: "Opción B", score: 2, type: "Bueno" },
-    { id: 'C', text: "Opción C", score: 0, type: "Malo" }
+    { id: 'A', text: "Opción A", score: 5, type: "Lead", decisionSummary: "Tomaste la decisión óptima." },
+    { id: 'B', text: "Opción B", score: 3, type: "Mid", decisionSummary: "Decisión aceptable con trade-offs." },
+    { id: 'C', text: "Opción C", score: 1, type: "Junior", decisionSummary: "Decisión subóptima." }
   ],
   explanation: "Explicación de la mejor opción..."
 }
 ```
+
+> **Nota**: El campo `decisionSummary` en cada opción se usa en LearningScreen para mostrar qué decidió el usuario.
 
 ## 📄 Licencia
 
@@ -174,66 +187,39 @@ Desarrollado para evaluar habilidades de liderazgo en Product Design.
 
 ## 📋 CHANGELOG
 
+### [v7.1] - 2025-12-21
+
+#### 🎯 Evidence Cards Mejorados
+- **Nuevo campo `decisionSummary`**: Cada opción ahora incluye un resumen corto de la decisión tomada
+- **LearningScreen mejorado**: Evidence Cards muestran título (categoría) + descripción (decisionSummary) + contexto expandible
+- **Limpieza de mocks**: Removidos campos redundantes y corregidos IDs inválidos en DebugIndexScreen
+
+#### 🧹 Limpieza de Código
+- Eliminada función `truncateText()` obsoleta de questionArchetypeMapping.js
+- Eliminados scripts obsoletos: `analyzeScoring.cjs`, `updateScoring.js`
+- Actualizado inventario de scripts
+
+#### 📝 Preguntas con decisionSummary (MVP)
+- 01-strategy.jsx: STR-01 a STR-08, STR-26, STR-30
+- 02-research.jsx: RES-09, RES-24
+- 03-metrics.jsx: MET-06, MET-16
+- 04-mobile.jsx: MOB-01, MOB-06, MOB-07
+- 05-culture.jsx: CUL-01, CUL-06, CUL-19, CUL-20, CUL-21
+- 06-innovation.jsx: INN-06, INN-15, INN-24, INN-26
+
 ### [v7.0] - 2025-11-27
 
 #### 🎯 Cambios Mayores
-- **Pool de preguntas expandido**: De 64 a **96 preguntas** totales (+32 nuevas)
-- **Modo Brutal activado**: Eliminado límite de 24 preguntas por sesión
-- **Sistema de puntuación rediseñado**: De porcentaje a **puntuación numérica con niveles**
-- **Tiempo ajustado**: De 5 a **7 minutos** por sesión
+- **Pool de preguntas expandido**: 164 preguntas totales en 6 bloques temáticos
+- **Sistema de puntuación rediseñado**: Scoring numérico con 4 niveles (5, 3, 1, -1)
+- **Sistema de rondas**: 3 rondas de 5 minutos cada una
 
 #### ✨ Nuevas Características
-- **Sistema de niveles de seniority**: 5 niveles basados en precisión y cantidad respondida
-  - Head of Design (90%+, 15+ preguntas)
-  - Lead Designer (80%+, 12+ preguntas)
-  - Senior Designer (65%+, 10+ preguntas)
-  - Mid-Level Designer (50%+, 8+ preguntas)
-  - Diseñador en Crecimiento (<50%)
-
-- **Métricas mejoradas en pantalla de resultados**:
-  - Puntos totales (ej: 45/65 puntos)
-  - Cantidad de preguntas respondidas
-  - Respuestas perfectas (score = 5)
-  - Barra de precisión con porcentaje
-  - Badge de nivel con icono
-
-- **32 preguntas nuevas distribuidas en 16 categorías core** (2 por categoría):
-  - Gestión de Crisis & Liderazgo
-  - Data-Driven Design
-  - Producto vs Ventas
-  - Gestión de Talento
-  - Gestión de Stakeholders
-  - Estrategia de Producto
-  - Design Ops
-  - Cultura de Diseño
-  - Colaboración con Ingeniería
-  - Bienestar del Equipo
-  - Arquitectura de Sistemas
-  - Ética de Diseño
-  - Validación Ágil
-  - Mentoría & Crecimiento
-  - Innovación & AI
-  - Estrategia de Migración
-
-#### 🔧 Mejoras Técnicas
-- Score y maxPossibleScore se calculan dinámicamente durante el juego
-- El juego termina cuando el timer llega a 0 (sin importar cuántas preguntas respondiste)
-- Todas las preguntas disponibles se cargan al inicio de la sesión
-- Instrucciones actualizadas: "7 minutos para responder tantas preguntas como puedas"
+- **Leadership Maturity Index**: Sistema de arquetipos (éxito/fallo)
+- **Evidence Cards**: Visualización de impacto de decisiones
+- **Dark Mode**: Soporte completo para tema oscuro
 
 #### 🎨 Mejoras de UI/UX
 - Badge de nivel con color e icono distintivo
-- Grid de 3 estadísticas principales
 - Barra de precisión animada
 - Mejor jerarquía visual en pantalla de resultados
-- Iconos específicos por nivel (Trophy, Target, Zap, Flame, Brain)
-
-### [v6.0] - 2025-11-26
-- Pool inicial de 72 preguntas (3x el tamaño original)
-- Casos tanto de startup como enterprise
-- Timer de 5 minutos, 24 preguntas por sesión
-
-### [v5.0] - 2025-11-25
-- Lanzamiento inicial del simulador
-- 24 preguntas base
-- Sistema de porcentaje

@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { ArrowLeft, Copy, Check, DollarSign, Eye, Pill, AlertTriangle, TrendingUp, BookOpen, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Copy, Check, DollarSign, Eye, Pill, AlertTriangle, TrendingUp, BookOpen, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { MarkdownText } from '../ui/MarkdownText';
+import { allQuestions } from '../../data/questions';
 
 /**
  * LearningScreen - Leadership Gap Report
@@ -35,9 +36,11 @@ export const LearningScreen = ({ analysis, onBack }) => {
     sniperResources
   } = diagnosis || {};
 
-  // Success is determined by score (>=83%), not archetype type
-  const isSuccess = accuracy >= 83;
-  const isAlmost = accuracy >= 83 && accuracy < 85; // "A un paso de Lead"
+  // Result states based on Leadership Maturity Index
+  const isSuccess = accuracy >= 88;              // Strategic Lead+
+  const isAlmost = accuracy >= 83 && accuracy < 88; // Operational Lead (base success)
+  const isGap = accuracy >= 70 && accuracy < 83;    // Senior Craftsperson (deal breaker)
+  const isFail = accuracy < 70;                     // Tactical Senior / Execution Focused
 
   const handleCopyMarkdown = async () => {
     const markdown = generateMarkdownV2(analysis);
@@ -65,58 +68,81 @@ export const LearningScreen = ({ analysis, onBack }) => {
     return sum;
   }, 0);
 
-  // Get detected level based on accuracy
+  // Leadership Maturity Index - Get detected level based on accuracy
+  // Returns both 'label' (technical level for cards) and 'profile' (descriptive for title)
   const getDetectedLevel = () => {
-    if (accuracy >= 98) return 'C-Level';
-    if (accuracy >= 93) return 'Head of Design';
-    if (accuracy >= 85) return 'Lead';
-    if (accuracy >= 75) return 'Senior';
-    if (accuracy >= 60) return 'Mid-Level';
-    return 'Junior';
+    if (accuracy >= 96) return { label: 'Venture Architect', profile: 'The Architect', subtitle: 'Equilibrio perfecto entre ejecución y visión de negocio' };
+    if (accuracy >= 88) return { label: 'Strategic Lead', profile: 'The Strategist', subtitle: 'Conectas diseño con impacto en revenue' };
+    if (accuracy >= 83) return { label: 'Operational Lead', profile: 'The Operator', subtitle: 'Ejecución sólida, oportunidad en pensamiento estratégico' };
+    if (accuracy >= 70) return { label: 'Senior Craftsperson', profile: 'The Craftsman', subtitle: 'Excelente técnicamente, gaps en visión de negocio' };
+    if (accuracy >= 50) return { label: 'Tactical Senior', profile: 'The Tactician', subtitle: 'Atrapado en la operación del día a día' };
+    return { label: 'Execution Focused', profile: 'The Executor', subtitle: 'Mentalidad de Task Completer' };
   };
 
   // Determine result type: success, almost, or fail
   const getResultType = () => {
-    if (accuracy >= 85) return 'success';
-    if (accuracy >= 83) return 'almost'; // "A un paso de Lead"
-    return 'fail';
+    if (accuracy >= 88) return 'success';      // Strategic Lead+
+    if (accuracy >= 83) return 'almost';       // Operational Lead (base success)
+    if (accuracy >= 70) return 'gap';          // Senior Craftsperson (deal breaker zone)
+    return 'fail';                             // Tactical Senior / Execution Focused
   };
 
   const resultType = getResultType();
 
-  // Get third card value based on result and proximity to next level
+  // Get the worst performing block for "Deal Breaker" message
+  const getWorstBlock = () => {
+    // Try to get from diagnosis data - only if items have category
+    if (dynamicEvidence?.length > 0) {
+      const categoryErrors = {};
+      dynamicEvidence.forEach(item => {
+        if (item.category) {
+          categoryErrors[item.category] = (categoryErrors[item.category] || 0) + 1;
+        }
+      });
+      const entries = Object.entries(categoryErrors);
+      if (entries.length > 0) {
+        const worst = entries.sort((a, b) => b[1] - a[1])[0];
+        return worst[0];
+      }
+    }
+    // Fallback to archetype-based
+    const title = dominantBias?.title?.toLowerCase() || '';
+    if (title.includes('order') || title.includes('taker')) return 'Autonomía';
+    if (title.includes('craft') || title.includes('obsessive')) return 'Visión de Negocio';
+    if (title.includes('process') || title.includes('bureaucrat')) return 'Agilidad';
+    if (title.includes('lone') || title.includes('wolf')) return 'Delegación';
+    if (title.includes('consensus') || title.includes('people')) return 'Toma de Decisiones';
+    if (title.includes('metric') || title.includes('data')) return 'Intuición Cualitativa';
+    if (title.includes('innovation') || title.includes('shiny')) return 'Ejecución';
+    return 'Estrategia';
+  };
+
+  // Get third card value based on result type
   const getThirdCardData = () => {
-    // Define level thresholds and their "ready for" zones (last ~2% of range)
-    const levels = [
-      { min: 98, name: 'C-Level', next: null, readyZone: null },
-      { min: 93, name: 'Head of Design', next: 'C-Level', readyZone: 97 },
-      { min: 85, name: 'Lead', next: 'Head of Design', readyZone: 91 },
-      { min: 83, name: 'Senior', next: 'Lead', readyZone: null }, // "almost" zone - always shows area
-      { min: 75, name: 'Senior', next: 'Lead', readyZone: 81 },
-      { min: 60, name: 'Mid-Level', next: 'Senior', readyZone: 73 },
-      { min: 0, name: 'Junior', next: 'Mid-Level', readyZone: null }, // always area
-    ];
+    const level = getDetectedLevel();
 
-    // Find current level
-    const currentLevel = levels.find(l => accuracy >= l.min);
-
-    // C-Level is max
-    if (accuracy >= 98) {
-      return { label: 'Status', value: 'Máximo Nivel' };
+    // Top level - max achieved
+    if (accuracy >= 96) {
+      return { label: 'Status', value: 'C-Suite Ready' };
     }
 
-    // "Almost" zone (83-84%) - always shows area de mejora
+    // Success: show next step
+    if (resultType === 'success') {
+      return { label: 'Objetivo', value: accuracy >= 88 ? 'C-Suite' : 'Strategic Lead' };
+    }
+
+    // Almost (Operational Lead 83-87%): show what's missing
     if (resultType === 'almost') {
-      return { label: 'Para ser Lead', value: getGrowthArea() };
+      return { label: 'Para Escalar', value: getGrowthArea() };
     }
 
-    // Check if in "ready for" zone
-    if (currentLevel?.readyZone && accuracy >= currentLevel.readyZone) {
-      return { label: 'Ready For', value: currentLevel.next };
+    // Gap zone (Senior Craftsperson 70-82%): show deal breaker
+    if (resultType === 'gap') {
+      return { label: 'Deal Breaker', value: getWorstBlock() };
     }
 
-    // Default: show area de mejora
-    return { label: 'Área de Mejora', value: getGrowthArea() };
+    // Fail: show growth area
+    return { label: 'Cambio de Chip', value: getGrowthArea() };
   };
 
   // Get growth area based on archetype
@@ -177,14 +203,15 @@ export const LearningScreen = ({ analysis, onBack }) => {
         <HeroSection
           dominantBias={dominantBias}
           accuracy={accuracy}
-          detectedLevel={getDetectedLevel()}
+          level={getDetectedLevel()}
           thirdCard={thirdCard}
           isSuccess={isSuccess}
           isAlmost={isAlmost}
+          isGap={isGap}
         />
 
         {/* Dynamic Evidence Section */}
-        {isSuccess ? (
+        {(isSuccess || isAlmost) ? (
           <SuccessEvidenceSection
             evidence={dynamicEvidence}
             dominantBias={dominantBias}
@@ -194,14 +221,15 @@ export const LearningScreen = ({ analysis, onBack }) => {
             evidence={dynamicEvidence}
             worstDecisions={worstDecisions}
             totalDamage={totalDamage}
+            isGap={isGap}
           />
         )}
 
         {/* Superpower / Blind Spot */}
-        {isSuccess ? (
+        {(isSuccess || isAlmost) ? (
           <SuperpowerSection dominantBias={dominantBias} />
         ) : (
-          <BlindSpotSection dominantBias={dominantBias} />
+          <BlindSpotSection dominantBias={dominantBias} isGap={isGap} />
         )}
 
         {/* The Pivot / Action Plan */}
@@ -210,6 +238,8 @@ export const LearningScreen = ({ analysis, onBack }) => {
           mondayMission={mondayMission}
           sniperResources={sniperResources}
           isSuccess={isSuccess}
+          isAlmost={isAlmost}
+          isGap={isGap}
         />
 
         {/* Footer */}
@@ -232,88 +262,96 @@ export const LearningScreen = ({ analysis, onBack }) => {
 // ============================================
 
 // Stats Card Component for glassmorphism grid
-const StatCard = ({ label, value, isHighlighted = false, isSuccess = false, isAlmost = false }) => {
+const StatCard = ({ label, value, isHighlighted = false, isSuccess = false, isAlmost = false, isGap = false }) => {
   const getCardClasses = () => {
     if (!isHighlighted) return 'bg-white/80 border-slate-200 dark:bg-white/5 dark:border-white/10';
-    if (isAlmost) return 'bg-gradient-to-br from-amber-50 to-yellow-50 border-amber-200 dark:from-amber-500/10 dark:to-yellow-500/10 dark:border-amber-500/30';
-    if (isSuccess) return 'bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-200 dark:from-emerald-500/10 dark:to-teal-500/10 dark:border-emerald-500/30';
-    return 'bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200 dark:from-orange-500/10 dark:to-amber-500/10 dark:border-orange-500/30';
+    if (isSuccess) return 'bg-gradient-to-br from-teal-50 to-cyan-50 border-teal-200 dark:from-teal-500/10 dark:to-cyan-500/10 dark:border-teal-500/30';
+    if (isAlmost) return 'bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-200 dark:from-emerald-500/10 dark:to-teal-500/10 dark:border-emerald-500/30';
+    if (isGap) return 'bg-gradient-to-br from-amber-50 to-yellow-50 border-amber-200 dark:from-amber-500/10 dark:to-yellow-500/10 dark:border-amber-500/30';
+    return 'bg-gradient-to-br from-orange-50 to-red-50 border-orange-200 dark:from-orange-500/10 dark:to-red-500/10 dark:border-orange-500/30';
   };
 
   const getValueClasses = () => {
-    if (!isHighlighted) return 'text-slate-900 dark:text-white';
-    if (isAlmost) return 'bg-gradient-to-r from-amber-500 to-yellow-500 bg-clip-text text-transparent';
-    if (isSuccess) return 'bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent';
-    return 'bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent';
+    const sizeClass = isHighlighted ? 'text-5xl' : 'text-2xl';
+    if (!isHighlighted) return `${sizeClass} text-slate-900 dark:text-white`;
+    if (isSuccess) return `${sizeClass} bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent`;
+    if (isAlmost) return `${sizeClass} bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent`;
+    if (isGap) return `${sizeClass} bg-gradient-to-r from-amber-500 to-yellow-500 bg-clip-text text-transparent`;
+    return `${sizeClass} bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent`;
   };
 
   return (
-    <div className={`text-center p-5 rounded-2xl border transition-transform hover:-translate-y-0.5 ${getCardClasses()} backdrop-blur-xl`}>
-      <p className="text-[11px] font-semibold uppercase tracking-[1.5px] text-slate-500 dark:text-slate-400 mb-2">
+    <div className={`flex flex-col justify-between text-center p-5 rounded-2xl border transition-transform hover:-translate-y-0.5 ${getCardClasses()} backdrop-blur-xl min-h-[120px]`}>
+      <p className="text-[11px] font-semibold uppercase tracking-[1.5px] text-slate-500 dark:text-slate-400">
         {label}
       </p>
-      <p className={`text-2xl font-bold ${getValueClasses()}`}>
+      <p className={`font-bold leading-tight ${getValueClasses()}`}>
         {value}
       </p>
+      <div className="h-0" /> {/* Spacer for vertical centering */}
     </div>
   );
 };
 
-const HeroSection = ({ dominantBias, accuracy, detectedLevel, thirdCard, isSuccess, isAlmost }) => {
+const HeroSection = ({ dominantBias, accuracy, level, thirdCard, isSuccess, isAlmost, isGap }) => {
   // Badge text based on result
   const getBadgeText = () => {
-    if (isAlmost) return '⚡ A un paso de Lead';
-    if (isSuccess) return '✓ Diagnóstico: Excelencia';
-    return 'Diagnóstico de Fallo';
+    if (isSuccess) return '🏆 Excelencia';
+    if (isAlmost) return '✅ Éxito Base';
+    if (isGap) return '⚠️ Brechas Detectadas';
+    return '❌ Cambio de Mentalidad';
   };
 
-  // Badge colors: almost uses amber/yellow
+  // Badge colors based on result type
   const getBadgeClasses = () => {
-    if (isAlmost) return 'bg-amber-500/15 text-amber-600 border-amber-500/30 dark:text-amber-400';
-    if (isSuccess) return 'bg-emerald-500/15 text-emerald-600 border-emerald-500/30 dark:text-emerald-400';
-    return 'bg-orange-500/15 text-orange-600 border-orange-500/30 dark:text-[#FEB47B]';
+    if (isSuccess) return 'bg-teal-500/15 text-teal-600 border-teal-500/30 dark:text-teal-400';
+    if (isAlmost) return 'bg-emerald-500/15 text-emerald-600 border-emerald-500/30 dark:text-emerald-400';
+    if (isGap) return 'bg-amber-500/15 text-amber-600 border-amber-500/30 dark:text-amber-400';
+    return 'bg-red-500/15 text-red-600 border-red-500/30 dark:text-red-400';
   };
 
-  // Gradient colors for title
-  const getTitleGradient = () => {
-    if (isAlmost) return 'bg-gradient-to-r from-amber-400 to-yellow-400';
-    if (isSuccess) return 'bg-gradient-to-r from-emerald-400 to-teal-400';
-    return 'bg-gradient-to-r from-orange-400 to-amber-400';
+  // Gradient colors for level label
+  const getLevelGradient = () => {
+    if (isSuccess) return 'bg-gradient-to-r from-teal-400 to-cyan-400';
+    if (isAlmost) return 'bg-gradient-to-r from-emerald-400 to-teal-400';
+    if (isGap) return 'bg-gradient-to-r from-amber-400 to-yellow-400';
+    return 'bg-gradient-to-r from-orange-400 to-red-400';
   };
 
   return (
     <header className="text-center space-y-8">
-      {/* Archetype Badge */}
+      {/* Result Badge */}
       <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold tracking-wide border backdrop-blur-lg ${getBadgeClasses()}`}>
         {getBadgeText()}
       </div>
 
-      {/* Main Title with Gradient */}
+      {/* Main Title: Leadership Profile */}
       <div className="space-y-4">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
-          Estás operando como un{' '}
+          Tu perfil:{' '}
           <br className="hidden sm:block" />
-          <span className={`${getTitleGradient()} bg-clip-text text-transparent`}>
-            "{dominantBias?.title || 'Arquetipo'}"
+          <span className={`${getLevelGradient()} bg-clip-text text-transparent`}>
+            "{level.profile}"
           </span>
         </h1>
         <p className="text-xl text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
-          {dominantBias?.tagline || dominantBias?.subtitle || dominantBias?.description}
+          {level.subtitle}
         </p>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-3 gap-4 mt-12">
         <StatCard
-          label={isSuccess ? "Nivel Actual" : "Nivel Detectado"}
-          value={detectedLevel}
+          label="Madurez"
+          value={level.label}
         />
         <StatCard
-          label={isSuccess ? "Performance" : "Tu Score"}
+          label="Performance"
           value={`${accuracy}%`}
           isHighlighted
-          isSuccess={isSuccess && !isAlmost}
+          isSuccess={isSuccess}
           isAlmost={isAlmost}
+          isGap={isGap}
         />
         <StatCard
           label={thirdCard.label}
@@ -379,11 +417,39 @@ const FailureEvidenceSection = ({ evidence, worstDecisions, totalDamage }) => {
 const EvidenceItem = ({ item }) => {
   const [expanded, setExpanded] = useState(false);
 
-  // Clean the type for display
-  const cleanType = (type) => {
-    if (!type) return '';
-    return type.split('(')[0].split('/')[0].trim();
+  // Find the original question by ID (could be questionId or id depending on source)
+  const questionId = item.questionId || item.id || item.displayId;
+  const originalQuestion = allQuestions.find(q =>
+    q.displayId === questionId || q.id === questionId
+  );
+
+  // Title: Category from original question
+  const title = originalQuestion?.category || 'Decisión';
+
+  // Description: What the user chose (summarized from their selected option)
+  const getDecisionSummary = () => {
+    // Priority 1: Use decisionSummary from the selected option (if available)
+    if (item.selectedOptionId && originalQuestion?.options) {
+      const selectedOption = originalQuestion.options.find(o => o.id === item.selectedOptionId);
+      if (selectedOption?.decisionSummary) {
+        return selectedOption.decisionSummary;
+      }
+      // Fallback: clean markdown and truncate text
+      if (selectedOption?.text) {
+        const cleanText = selectedOption.text.replace(/\*\*/g, '');
+        const firstSentence = cleanText.split('.')[0];
+        return firstSentence.length > 120 ? firstSentence.substring(0, 117) + '...' : firstSentence + '.';
+      }
+    }
+    // Fallback: use consequence from impact or a short summary
+    if (item.impact?.consequence) {
+      return item.impact.consequence;
+    }
+    // Last fallback - generic message based on category
+    return `Decisión subóptima en ${title}.`;
   };
+
+  const description = getDecisionSummary();
 
   return (
     <div className="py-5 first:pt-0 last:pb-0">
@@ -391,26 +457,58 @@ const EvidenceItem = ({ item }) => {
         {/* Left: Title & Description */}
         <div className="flex-1 min-w-0">
           <h4 className="text-lg font-bold text-slate-900 mb-1.5">
-            {item.impact?.type || item.category || 'Impacto Detectado'}
+            {title}
           </h4>
-          <p className={`text-[15px] text-slate-500 leading-relaxed ${!expanded && 'line-clamp-2'}`}>
-            {item.scenario}
+          <p className="text-[15px] text-slate-500 leading-relaxed">
+            {description}
           </p>
-          {item.scenario?.length > 100 && (
+
+          {/* Expand button - only if original question exists */}
+          {originalQuestion && (
             <button
               onClick={() => setExpanded(!expanded)}
-              className="text-xs font-medium text-indigo-600 mt-1"
+              className="mt-2 text-sm font-medium text-indigo-600 hover:text-indigo-700 flex items-center gap-1"
             >
-              {expanded ? 'Ver menos' : 'Ver más'}
+              {expanded ? (
+                <>
+                  <ChevronUp className="w-4 h-4" />
+                  Ocultar contexto
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="w-4 h-4" />
+                  Ver pregunta original
+                </>
+              )}
             </button>
+          )}
+
+          {/* Expanded: Scenario + Question */}
+          {expanded && originalQuestion && (
+            <div className="mt-4 p-4 bg-slate-50 rounded-xl border border-slate-200">
+              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
+                Contexto
+              </p>
+              <p className="text-sm text-slate-600 leading-relaxed mb-3">
+                {originalQuestion.scenario}
+              </p>
+              <p className="text-sm font-medium text-slate-900">
+                {originalQuestion.question}
+              </p>
+            </div>
           )}
         </div>
 
         {/* Right: Tag & Cost */}
         <div className="text-right flex-shrink-0">
-          <span className="inline-block text-[11px] font-mono bg-slate-100 text-slate-500 px-2.5 py-1.5 rounded-md mb-1.5">
-            {item.questionId || 'ERR-01'}
-          </span>
+          <a
+            href={`/debug/screens?q=${questionId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-[11px] font-mono bg-slate-100 text-slate-500 px-2.5 py-1.5 rounded-md mb-1.5 hover:bg-slate-200 transition-colors"
+          >
+            {questionId || 'ERR-01'}
+          </a>
           <p className="text-lg font-bold font-mono text-red-500">
             -{item.impact?.cost || '$100K'}
           </p>
@@ -477,33 +575,110 @@ const SuccessEvidenceSection = ({ evidence, dominantBias }) => {
         {/* Evidence Items */}
         <div className="divide-y divide-slate-100">
           {items.map((item, i) => (
-            <div key={i} className="py-5 first:pt-0 last:pb-0">
-              <div className="flex justify-between items-start gap-4">
-                {/* Left: Type & Description */}
-                <div className="flex-1 min-w-0">
-                  <h4 className="text-lg font-bold text-slate-900 mb-1.5">
-                    {item.impact?.type || item.type || 'Decisión Acertada'}
-                  </h4>
-                  <p className="text-[15px] text-slate-500 leading-relaxed">
-                    {item.scenario || item.description}
-                  </p>
-                </div>
-
-                {/* Right: Saved indicator */}
-                <div className="text-right flex-shrink-0">
-                  <span className="inline-block text-[11px] font-mono bg-emerald-50 text-emerald-600 px-2.5 py-1.5 rounded-md mb-1.5">
-                    {item.questionId || 'WIN'}
-                  </span>
-                  <p className="text-lg font-bold font-mono text-emerald-500">
-                    +{item.impact?.saved || '$50K'}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <SuccessEvidenceItem key={i} item={item} />
           ))}
         </div>
       </div>
     </section>
+  );
+};
+
+const SuccessEvidenceItem = ({ item }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  // Find the original question by ID
+  const questionId = item.questionId || item.id || item.displayId;
+  const originalQuestion = allQuestions.find(q =>
+    q.displayId === questionId || q.id === questionId
+  );
+
+  // Title: Category from original question
+  const title = originalQuestion?.category || 'Decisión Acertada';
+
+  // Description: What the user chose (summarized from their selected option)
+  const getDecisionSummary = () => {
+    // Priority 1: Use decisionSummary from the selected option (if available)
+    if (item.selectedOptionId && originalQuestion?.options) {
+      const selectedOption = originalQuestion.options.find(o => o.id === item.selectedOptionId);
+      if (selectedOption?.decisionSummary) {
+        return selectedOption.decisionSummary;
+      }
+      // Fallback: clean markdown and truncate text
+      if (selectedOption?.text) {
+        const cleanText = selectedOption.text.replace(/\*\*/g, '');
+        const firstSentence = cleanText.split('.')[0];
+        return firstSentence.length > 120 ? firstSentence.substring(0, 117) + '...' : firstSentence + '.';
+      }
+    }
+    return item.scenario || item.description || 'Decisión acertada.';
+  };
+
+  const description = getDecisionSummary();
+
+  return (
+    <div className="py-5 first:pt-0 last:pb-0">
+      <div className="flex justify-between items-start gap-4">
+        {/* Left: Type & Description */}
+        <div className="flex-1 min-w-0">
+          <h4 className="text-lg font-bold text-slate-900 mb-1.5">
+            {title}
+          </h4>
+          <p className="text-[15px] text-slate-500 leading-relaxed">
+            {description}
+          </p>
+
+          {/* Expand button - only if original question exists */}
+          {originalQuestion && (
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="mt-2 text-sm font-medium text-emerald-600 hover:text-emerald-700 flex items-center gap-1"
+            >
+              {expanded ? (
+                <>
+                  <ChevronUp className="w-4 h-4" />
+                  Ocultar contexto
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="w-4 h-4" />
+                  Ver pregunta original
+                </>
+              )}
+            </button>
+          )}
+
+          {/* Expanded: Scenario + Question */}
+          {expanded && originalQuestion && (
+            <div className="mt-4 p-4 bg-emerald-50 rounded-xl border border-emerald-200">
+              <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wide mb-2">
+                Contexto
+              </p>
+              <p className="text-sm text-slate-600 leading-relaxed mb-3">
+                {originalQuestion.scenario}
+              </p>
+              <p className="text-sm font-medium text-slate-900">
+                {originalQuestion.question}
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Right: Saved indicator */}
+        <div className="text-right flex-shrink-0">
+          <a
+            href={`/debug/screens?q=${questionId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-[11px] font-mono bg-emerald-50 text-emerald-600 px-2.5 py-1.5 rounded-md mb-1.5 hover:bg-emerald-100 transition-colors"
+          >
+            {questionId || 'WIN'}
+          </a>
+          <p className="text-lg font-bold font-mono text-emerald-500">
+            +{item.impact?.saved || '$50K'}
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 

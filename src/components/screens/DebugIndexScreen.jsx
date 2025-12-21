@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Play, Clock, Trophy, BarChart3, Home, Layers, Eye, AlertTriangle } from 'lucide-react';
 import { IntroScreen } from './IntroScreen';
 import { QuestionScreen } from './QuestionScreen';
@@ -50,61 +50,71 @@ const mockAnswers = {
     }
 };
 
-// Mock dynamic evidence examples per archetype
+// Mock dynamic evidence - simplified: only questionId, selectedOptionId, and impact
+// decisionSummary is now pulled from the question options directly via EvidenceItem
 const mockDynamicEvidence = {
     'order-taker': [
-        { questionId: 'INN-15', scenario: 'CEO exige construir app Vision Pro sin usuarios...', selectedType: 'Complaciente', impact: { emoji: '💸', cost: '$150K', consequence: 'en desarrollo de vaporware' } },
-        { questionId: 'MOB-06', scenario: 'Scope creep de "solo un dropdown" sin negociar...', selectedType: 'Obediente', impact: { emoji: '📉', cost: '2 sprints', consequence: 'de roadmap destruido' } },
-        { questionId: 'CUL-21', scenario: 'Presionaste a Lucia para presentar dañando confianza...', selectedType: 'Sándwich', impact: { emoji: '🚪', cost: '1 renuncia', consequence: 'de talento clave' } }
+        { questionId: 'INN-15', selectedOptionId: 'B', impact: { emoji: '💸', cost: '$150K', consequence: 'en desarrollo de vaporware' } },
+        { questionId: 'MOB-06', selectedOptionId: 'C', impact: { emoji: '📉', cost: '2 sprints', consequence: 'de roadmap destruido' } },
+        { questionId: 'CUL-21', selectedOptionId: 'B', impact: { emoji: '🚪', cost: '1 renuncia', consequence: 'de talento clave' } }
     ],
     'craft-obsessive': [
-        { questionId: 'MOB-07', scenario: 'Bloqueaste lanzamiento por contraste de 0.1...', selectedType: 'Perfeccionista', impact: { emoji: '🔥', cost: '$80K', consequence: 'en campaña perdida' } },
-        { questionId: 'INN-06', scenario: 'Rechazaste librerías estándar por sistema custom...', selectedType: 'Purista', impact: { emoji: '🏚️', cost: '$400K/año', consequence: 'en mantenimiento' } },
-        { questionId: 'MET-16', scenario: 'Exigiste A/B test de 3 meses para decisión reversible...', selectedType: 'Over-engineer', impact: { emoji: '🐌', cost: '3 meses', consequence: 'de parálisis' } }
+        { questionId: 'MOB-07', selectedOptionId: 'C', impact: { emoji: '🔥', cost: '$80K', consequence: 'en campaña perdida' } },
+        { questionId: 'INN-06', selectedOptionId: 'C', impact: { emoji: '🏚️', cost: '$400K/año', consequence: 'en mantenimiento' } },
+        { questionId: 'MET-16', selectedOptionId: 'C', impact: { emoji: '🐌', cost: '3 meses', consequence: 'de parálisis' } }
     ],
     'process-bureaucrat': [
-        { questionId: 'STR-26', scenario: 'Rechazaste deal del 40% ARR citando "SaaS Purity"...', selectedType: 'Dogmático', impact: { emoji: '🤝', cost: '$500K', consequence: 'en cliente perdido' } },
-        { questionId: 'RES-24', scenario: 'Bloqueaste al CEO exigiendo research completo...', selectedType: 'Risk Averse', impact: { emoji: '💤', cost: '-50%', consequence: 'de influencia' } },
-        { questionId: 'CUL-06', scenario: 'Impusiste horarios rígidos en equipo global...', selectedType: 'Burocrático', impact: { emoji: '🔒', cost: '3 renuncias', consequence: 'de talento remoto' } }
+        { questionId: 'STR-26', selectedOptionId: 'B', impact: { emoji: '🤝', cost: '$500K', consequence: 'en cliente perdido' } },
+        { questionId: 'RES-24', selectedOptionId: 'C', impact: { emoji: '💤', cost: '-50%', consequence: 'de influencia' } },
+        { questionId: 'CUL-06', selectedOptionId: 'B', impact: { emoji: '🔒', cost: '3 renuncias', consequence: 'de talento remoto' } }
     ],
     'lone-wolf': [
-        { questionId: 'RES-09', scenario: 'Decidiste revisar personalmente cada archivo...', selectedType: 'Heroico', impact: { emoji: '🚌', cost: 'Bus Factor = 1', consequence: 'punto único de fallo' } },
-        { questionId: 'CUL-19', scenario: 'Contrataste soporte en vez de exigir accountability...', selectedType: 'Micromanager', impact: { emoji: '👶', cost: '0 promos', consequence: 'equipo infantilizado' } },
-        { questionId: 'STR-05', scenario: 'Te quedaste configurando tokens tú mismo...', selectedType: 'Centralizado', impact: { emoji: '😫', cost: '60+ hrs/sem', consequence: 'burnout propio' } }
+        { questionId: 'RES-09', selectedOptionId: 'C', impact: { emoji: '🚌', cost: 'Bus Factor = 1', consequence: 'punto único de fallo' } },
+        { questionId: 'CUL-19', selectedOptionId: 'B', impact: { emoji: '👶', cost: '0 promos', consequence: 'equipo infantilizado' } },
+        { questionId: 'STR-05', selectedOptionId: 'C', impact: { emoji: '😫', cost: '60+ hrs/sem', consequence: 'burnout propio' } }
     ],
     'venture-architect': [
-        { questionId: 'MET-06', scenario: 'Expusiste falta de retención al CEO...', correctChoice: 'Alineación Privada', impact: { emoji: '💰', type: 'Capital Efficiency', saved: '$2M', avoided: 'Serie B fallida' } },
-        { questionId: 'STR-42', scenario: 'Usaste Loss Leader para proteger mercado...', correctChoice: 'Defensa Estratégica', impact: { emoji: '🛡️', type: 'Strategic Defense', saved: '30% market', avoided: 'pérdida de mercado' } },
-        { questionId: 'STR-30', scenario: 'Elegiste Visual Wrapper en merger...', correctChoice: 'M&A Mastery', impact: { emoji: '🤝', type: 'M&A Mastery', saved: '$800K', avoided: 'reescritura total' } }
+        { questionId: 'MET-06', selectedOptionId: 'B', impact: { emoji: '💰', type: 'Capital Efficiency', saved: '$2M', avoided: 'Serie B fallida' } },
+        { questionId: 'STR-26', selectedOptionId: 'A', impact: { emoji: '🛡️', type: 'Strategic Defense', saved: '40% ARR', avoided: 'pérdida de cliente' } },
+        { questionId: 'STR-30', selectedOptionId: 'A', impact: { emoji: '🤝', type: 'M&A Mastery', saved: '$800K', avoided: 'reescritura total' } }
     ],
     'culture-builder': [
-        { questionId: 'CUL-01', scenario: 'Cambiaste estructura de incentivos...', correctChoice: 'Psychological Safety', impact: { emoji: '🧠', type: 'Retention', saved: '4 talentos', avoided: 'fuga de juniors' } },
-        { questionId: 'CUL-20', scenario: 'Usaste transparencia de criterios...', correctChoice: 'Justicia Procesal', impact: { emoji: '⚖️', type: 'Fairness', saved: 'Trust', avoided: 'resentimiento' } },
-        { questionId: 'INN-26', scenario: 'Implementaste seguridad progresiva...', correctChoice: 'Inclusión Real', impact: { emoji: '🌍', type: 'Inclusion', saved: '15% users', avoided: 'exclusión legacy' } }
+        { questionId: 'CUL-01', selectedOptionId: 'B', impact: { emoji: '🧠', type: 'Retention', saved: '4 talentos', avoided: 'fuga de juniors' } },
+        { questionId: 'CUL-20', selectedOptionId: 'A', impact: { emoji: '⚖️', type: 'Fairness', saved: 'Trust', avoided: 'resentimiento' } },
+        { questionId: 'INN-26', selectedOptionId: 'A', impact: { emoji: '🌍', type: 'Inclusion', saved: '15% users', avoided: 'exclusión legacy' } }
     ],
     'force-multiplier': [
-        { questionId: 'INN-24', scenario: 'Diseñaste Wrapper Agnóstico...', correctChoice: 'Arquitectura Resiliente', impact: { emoji: '🏗️', type: 'System Architecture', saved: '$300K', avoided: 'vendor lock-in' } },
-        { questionId: 'MOB-01', scenario: 'Elegiste React Native Wrapper...', correctChoice: 'Speed to Market', impact: { emoji: '🚀', type: 'Operational Scale', saved: '6 meses', avoided: 'rewrite native' } },
-        { questionId: 'STR-41', scenario: 'Estableciste limpieza de feature flags...', correctChoice: 'Technical Hygiene', impact: { emoji: '🧹', type: 'Technical Hygiene', saved: '$150K/año', avoided: 'bancarrota técnica' } }
+        { questionId: 'INN-24', selectedOptionId: 'A', impact: { emoji: '🏗️', type: 'System Architecture', saved: '$300K', avoided: 'vendor lock-in' } },
+        { questionId: 'MOB-01', selectedOptionId: 'A', impact: { emoji: '🚀', type: 'Operational Scale', saved: '6 meses', avoided: 'rewrite native' } },
+        { questionId: 'STR-05', selectedOptionId: 'A', impact: { emoji: '🧹', type: 'Technical Hygiene', saved: '$150K/año', avoided: 'burnout evitado' } }
     ]
 };
 
-// Helper: Genera mock analysis para cualquier arquetipo
-const createMockAnalysis = (archetype, isSuccess = false) => {
-    const accuracy = isSuccess ? 85 : 58;
+// Helper: Genera mock analysis para cualquier arquetipo con accuracy específico
+const createMockAnalysis = (archetype, accuracy) => {
     const biasId = archetype.id;
+    const maxScore = 60;
+    const totalScore = Math.round((accuracy / 100) * maxScore);
+
+    // Determine distribution based on accuracy
+    const getDistribution = (acc) => {
+        if (acc >= 96) return { perfect: 10, good: 2, bad: 0, negative: 0 };
+        if (acc >= 88) return { perfect: 8, good: 3, bad: 1, negative: 0 };
+        if (acc >= 83) return { perfect: 7, good: 3, bad: 2, negative: 0 };
+        if (acc >= 70) return { perfect: 5, good: 4, bad: 2, negative: 1 };
+        if (acc >= 50) return { perfect: 3, good: 4, bad: 4, negative: 1 };
+        return { perfect: 1, good: 3, bad: 5, negative: 3 };
+    };
 
     return {
         questionsAnswered: 12,
-        totalScore: isSuccess ? 51 : 35,
-        maxPossibleScore: 60,
+        totalScore,
+        maxPossibleScore: maxScore,
         accuracy,
-        distribution: isSuccess
-            ? { perfect: 8, good: 3, bad: 1, negative: 0 }
-            : { perfect: 3, good: 4, bad: 4, negative: 1 },
-        level: isSuccess ? 'lead' : 'mid',
-        levelFeedback: isSuccess ? 'Lead Designer' : 'Mid-Level Designer',
-        levelTip: isSuccess
+        distribution: getDistribution(accuracy),
+        level: accuracy >= 88 ? 'lead' : accuracy >= 70 ? 'senior' : 'mid',
+        levelFeedback: accuracy >= 88 ? 'Lead Designer' : accuracy >= 70 ? 'Senior Designer' : 'Mid-Level Designer',
+        levelTip: accuracy >= 88
             ? 'Foco: reducir errores en situaciones de alta presión política.'
             : 'Foco: más exposición a decisiones estratégicas.',
         diagnosis: {
@@ -119,18 +129,18 @@ const createMockAnalysis = (archetype, isSuccess = false) => {
                     id: 'politics-power',
                     name: 'Política & Poder',
                     icon: '🎯',
-                    percentage: isSuccess ? 82 : 42,
-                    level: isSuccess ? 'senior' : 'junior',
-                    levelData: competencies['politics-power'].levels[isSuccess ? 'senior' : 'junior'],
+                    percentage: Math.min(accuracy + 5, 100),
+                    level: accuracy >= 80 ? 'senior' : 'junior',
+                    levelData: competencies['politics-power'].levels[accuracy >= 80 ? 'senior' : 'junior'],
                     count: 4
                 },
                 {
                     id: 'business-vision',
                     name: 'Visión de Negocio',
                     icon: '📊',
-                    percentage: isSuccess ? 88 : 58,
-                    level: isSuccess ? 'staff' : 'mid',
-                    levelData: competencies['business-vision'].levels[isSuccess ? 'staff' : 'mid'],
+                    percentage: accuracy,
+                    level: accuracy >= 85 ? 'staff' : 'mid',
+                    levelData: competencies['business-vision'].levels[accuracy >= 85 ? 'staff' : 'mid'],
                     count: 5
                 },
                 {
@@ -143,7 +153,7 @@ const createMockAnalysis = (archetype, isSuccess = false) => {
                     count: 3
                 }
             ],
-            worstDecisions: isSuccess ? [] : [
+            worstDecisions: accuracy >= 88 ? [] : [
                 {
                     id: 'STR-04',
                     scenario: 'Pipeline cayó 23% y el cierre promedio pasó de 18 a 32 días...',
@@ -173,17 +183,18 @@ const createMockAnalysis = (archetype, isSuccess = false) => {
     };
 };
 
-// Pre-generar análisis para todos los arquetipos
+// Pre-generar análisis para todos los arquetipos con % variados
+// para demostrar los distintos niveles del Leadership Maturity Index
 const archetypeAnalysis = {
-    // Failure archetypes
-    'order-taker': createMockAnalysis(failureArchetypes['order-taker'], false),
-    'craft-obsessive': createMockAnalysis(failureArchetypes['craft-obsessive'], false),
-    'process-bureaucrat': createMockAnalysis(failureArchetypes['process-bureaucrat'], false),
-    'lone-wolf': createMockAnalysis(failureArchetypes['lone-wolf'], false),
-    // Success archetypes
-    'venture-architect': createMockAnalysis(successArchetypes['venture-architect'], true),
-    'culture-builder': createMockAnalysis(successArchetypes['culture-builder'], true),
-    'force-multiplier': createMockAnalysis(successArchetypes['force-multiplier'], true),
+    // Failure archetypes - variados para mostrar distintos estados
+    'order-taker': createMockAnalysis(failureArchetypes['order-taker'], 42),        // Execution Focused (<50%)
+    'craft-obsessive': createMockAnalysis(failureArchetypes['craft-obsessive'], 55), // Tactical Senior (50-69%)
+    'process-bureaucrat': createMockAnalysis(failureArchetypes['process-bureaucrat'], 65), // Tactical Senior (50-69%)
+    'lone-wolf': createMockAnalysis(failureArchetypes['lone-wolf'], 75),            // Senior Craftsperson - GAP/Deal Breaker (70-82%)
+    // Success archetypes - variados para mostrar distintos estados
+    'venture-architect': createMockAnalysis(successArchetypes['venture-architect'], 98), // Venture Architect (96%+) - C-Suite Ready
+    'culture-builder': createMockAnalysis(successArchetypes['culture-builder'], 92),    // Strategic Lead (88-95%) - Success
+    'force-multiplier': createMockAnalysis(successArchetypes['force-multiplier'], 85),  // Operational Lead (83-87%) - Almost
 };
 
 // Screens del flujo principal
@@ -198,6 +209,20 @@ const flowScreens = [
 export default function DebugIndexScreen() {
     const [activeScreen, setActiveScreen] = useState(null);
     const [activeArchetype, setActiveArchetype] = useState(null);
+    const [activeQuestion, setActiveQuestion] = useState(null);
+
+    // Check URL params on mount for ?q=XXX
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const questionId = params.get('q');
+        if (questionId) {
+            const question = allQuestions.find(q => q.displayId === questionId || q.id === questionId);
+            if (question) {
+                setActiveQuestion(question);
+                setActiveScreen('single_question');
+            }
+        }
+    }, []);
 
     const handleArchetypeClick = (archetypeId) => {
         setActiveScreen('archetype');
@@ -212,6 +237,9 @@ export default function DebugIndexScreen() {
     const handleBack = () => {
         setActiveScreen(null);
         setActiveArchetype(null);
+        setActiveQuestion(null);
+        // Clear URL param
+        window.history.replaceState({}, '', '/debug/screens');
     };
 
     const renderScreen = () => {
@@ -226,6 +254,11 @@ export default function DebugIndexScreen() {
         if (activeArchetype) {
             const analysis = archetypeAnalysis[activeArchetype];
             return <LearningScreen analysis={analysis} onBack={noopFn} />;
+        }
+
+        // Si es una pregunta específica
+        if (activeQuestion) {
+            return <QuestionScreen question={activeQuestion} currentIndex={1} totalQuestions={1} timeLeft={180} formatTime={formatTime} onAnswer={noopFn} round={1} totalRounds={1} />;
         }
 
         // Screens del flujo principal
@@ -249,6 +282,9 @@ export default function DebugIndexScreen() {
         if (activeArchetype) {
             const arch = failureArchetypes[activeArchetype] || successArchetypes[activeArchetype];
             return arch?.title || activeArchetype;
+        }
+        if (activeQuestion) {
+            return activeQuestion.displayId || activeQuestion.id;
         }
         return flowScreens.find(s => s.id === activeScreen)?.name || activeScreen;
     };
@@ -344,28 +380,36 @@ export default function DebugIndexScreen() {
                 <div className="rounded-xl p-6 mb-6 border bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50">
                     <h2 className="text-sm font-bold uppercase tracking-wider mb-2 flex items-center gap-2 text-slate-500 dark:text-slate-500">
                         <AlertTriangle className="w-4 h-4 text-red-500" />
-                        Arquetipos de Fallo (&lt;80%)
+                        Arquetipos de Fallo (&lt;88%)
                     </h2>
                     <p className="text-xs mb-4 text-slate-600 dark:text-slate-400">
-                        Click para ver LearningScreen
+                        Click para ver LearningScreen - % variados para distintos estados
                     </p>
                     <div className="grid grid-cols-2 gap-3">
-                        {Object.values(failureArchetypes).map((arch) => (
-                            <button
-                                key={arch.id}
-                                onClick={() => handleArchetypeClick(arch.id)}
-                                className="text-left p-4 rounded-lg border transition-all hover:-translate-y-0.5 hover:border-red-500/50 bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50"
-                            >
-                                <div className="flex items-center gap-2 mb-1">
-                                    <span className="text-lg">{arch.emoji}</span>
-                                    <span className="text-xs px-2 py-0.5 rounded bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400">
-                                        58%
-                                    </span>
-                                </div>
-                                <h3 className="font-bold text-slate-900 dark:text-white">{arch.title}</h3>
-                                <p className="text-xs text-slate-500 dark:text-slate-500">{arch.subtitle}</p>
-                            </button>
-                        ))}
+                        {Object.values(failureArchetypes).map((arch) => {
+                            const analysis = archetypeAnalysis[arch.id];
+                            const accuracy = analysis?.accuracy || 50;
+                            const isGap = accuracy >= 70 && accuracy < 83;
+                            const badgeColor = isGap
+                                ? 'bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400'
+                                : 'bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400';
+                            return (
+                                <button
+                                    key={arch.id}
+                                    onClick={() => handleArchetypeClick(arch.id)}
+                                    className="text-left p-4 rounded-lg border transition-all hover:-translate-y-0.5 hover:border-red-500/50 bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50"
+                                >
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <span className="text-lg">{arch.emoji}</span>
+                                        <span className={`text-xs px-2 py-0.5 rounded ${badgeColor}`}>
+                                            {accuracy}%
+                                        </span>
+                                    </div>
+                                    <h3 className="font-bold text-slate-900 dark:text-white">{arch.title}</h3>
+                                    <p className="text-xs text-slate-500 dark:text-slate-500">{arch.subtitle}</p>
+                                </button>
+                            );
+                        })}
                     </div>
                 </div>
 
@@ -373,28 +417,36 @@ export default function DebugIndexScreen() {
                 <div className="rounded-xl p-6 mb-6 border bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50">
                     <h2 className="text-sm font-bold uppercase tracking-wider mb-2 flex items-center gap-2 text-slate-500 dark:text-slate-500">
                         <Trophy className="w-4 h-4 text-emerald-500" />
-                        Arquetipos de Éxito (≥80%)
+                        Arquetipos de Éxito (≥83%)
                     </h2>
                     <p className="text-xs mb-4 text-slate-600 dark:text-slate-400">
-                        Click para ver LearningScreen
+                        Click para ver LearningScreen - % variados para distintos estados
                     </p>
                     <div className="grid grid-cols-3 gap-3">
-                        {Object.values(successArchetypes).map((arch) => (
-                            <button
-                                key={arch.id}
-                                onClick={() => handleArchetypeClick(arch.id)}
-                                className="text-left p-4 rounded-lg border transition-all hover:-translate-y-0.5 hover:border-emerald-500/50 bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50"
-                            >
-                                <div className="flex items-center gap-2 mb-1">
-                                    <span className="text-lg">{arch.emoji}</span>
-                                    <span className="text-xs px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400">
-                                        85%
-                                    </span>
-                                </div>
-                                <h3 className="font-bold text-sm text-slate-900 dark:text-white">{arch.title}</h3>
-                                <p className="text-xs text-slate-500 dark:text-slate-500">{arch.subtitle}</p>
-                            </button>
-                        ))}
+                        {Object.values(successArchetypes).map((arch) => {
+                            const analysis = archetypeAnalysis[arch.id];
+                            const accuracy = analysis?.accuracy || 85;
+                            const isAlmost = accuracy >= 83 && accuracy < 88;
+                            const badgeColor = isAlmost
+                                ? 'bg-teal-100 text-teal-700 dark:bg-teal-500/20 dark:text-teal-400'
+                                : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400';
+                            return (
+                                <button
+                                    key={arch.id}
+                                    onClick={() => handleArchetypeClick(arch.id)}
+                                    className="text-left p-4 rounded-lg border transition-all hover:-translate-y-0.5 hover:border-emerald-500/50 bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50"
+                                >
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <span className="text-lg">{arch.emoji}</span>
+                                        <span className={`text-xs px-2 py-0.5 rounded ${badgeColor}`}>
+                                            {accuracy}%
+                                        </span>
+                                    </div>
+                                    <h3 className="font-bold text-sm text-slate-900 dark:text-white">{arch.title}</h3>
+                                    <p className="text-xs text-slate-500 dark:text-slate-500">{arch.subtitle}</p>
+                                </button>
+                            );
+                        })}
                     </div>
                 </div>
 

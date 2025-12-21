@@ -196,7 +196,7 @@ export const generateFailureEvidence = (failedQuestions, answers, archetypeId, l
 
     return {
       questionId: q.displayId || q.id,
-      scenario: truncateText(q.scenario, 100),
+      selectedOptionId: answer?.selectedOption, // Para obtener decisionSummary en EvidenceItem
       category: q.category,
       selectedType: answer?.selectedType || 'Desconocido',
       impact: {
@@ -232,6 +232,7 @@ export const generateSuccessEvidence = (succeededQuestions, answers, archetypeId
     : [...relevantQuestions, ...succeededQuestions.filter(q => !relevantQuestions.includes(q))].slice(0, limit);
 
   return questionsToUse.map(q => {
+    const answer = answers[q.id];
     const correctOption = q.options?.find(opt => opt.score === 5 || opt.type?.includes('Correct'));
     const impact = categoryBusinessImpact[q.category] || {
       emoji: '✅',
@@ -242,7 +243,7 @@ export const generateSuccessEvidence = (succeededQuestions, answers, archetypeId
 
     return {
       questionId: q.displayId || q.id,
-      scenario: truncateText(q.scenario, 100),
+      selectedOptionId: answer?.selectedOption, // Para obtener decisionSummary en SuccessEvidenceItem
       category: q.category,
       correctChoice: correctOption?.text?.split('**')[1] || 'Decisión correcta',
       impact: {
@@ -256,12 +257,6 @@ export const generateSuccessEvidence = (succeededQuestions, answers, archetypeId
 };
 
 // Helpers
-const truncateText = (text, maxLength) => {
-  if (!text) return '';
-  if (text.length <= maxLength) return text;
-  return text.substring(0, maxLength).trim() + '...';
-};
-
 const extractConsequence = (optionText, explanation) => {
   // Intentar extraer una consecuencia corta del texto
   const patterns = [
