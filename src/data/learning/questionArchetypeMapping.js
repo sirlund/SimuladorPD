@@ -206,7 +206,7 @@ export const generateFailureEvidence = (failedQuestions, answers, archetypeId, l
 
   return questionsToUse.map(q => {
     const answer = answers[q.id];
-    const selectedOption = q.options?.find(opt => opt.id === answer?.selectedOption);
+    const selectedOption = q.options?.find(opt => opt.id === answer?.selectedId);
     const impact = categoryBusinessImpact[q.category] || {
       emoji: '💸',
       impactType: 'Impacto',
@@ -220,7 +220,7 @@ export const generateFailureEvidence = (failedQuestions, answers, archetypeId, l
 
     return {
       questionId: q.displayId || q.id,
-      selectedOptionId: answer?.selectedOption, // Para obtener decisionSummary en EvidenceItem
+      selectedOptionId: answer?.selectedId, // Para obtener decisionSummary en EvidenceItem
       category: q.category,
       selectedType: answer?.selectedType || 'Desconocido',
       impact: {
@@ -267,7 +267,7 @@ export const generateSuccessEvidence = (succeededQuestions, answers, archetypeId
 
     return {
       questionId: q.displayId || q.id,
-      selectedOptionId: answer?.selectedOption, // Para obtener decisionSummary en SuccessEvidenceItem
+      selectedOptionId: answer?.selectedId, // Para obtener decisionSummary en SuccessEvidenceItem
       category: q.category,
       correctChoice: correctOption?.text?.split('**')[1] || 'Decisión correcta',
       impact: {

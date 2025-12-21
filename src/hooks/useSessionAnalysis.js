@@ -251,7 +251,7 @@ export const useSessionAnalysis = (answers, activeQuestions) => {
         return {
           id: q.displayId,
           questionId: q.displayId,
-          selectedOptionId: answer?.selectedOption,
+          selectedOptionId: answer?.selectedId,
           category: q.category,
           impact: {
             emoji: impact.emoji,
